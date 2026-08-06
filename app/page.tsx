@@ -77,10 +77,12 @@ export default function Home() {
             Apps propias para Android
           </span>
 
-          {/* El slogan de marca es el título del sitio */}
-          <h1 className="mt-6 text-[2.35rem] leading-[1.03] font-semibold tracking-[-0.035em] text-balance sm:text-6xl lg:text-[4.6rem]">
-            Full-cycle,
-            <br />
+          {/*
+            El slogan de marca es el título del sitio, en una sola línea: el
+            clamp lo hace escalar con el viewport para que nunca corte.
+          */}
+          <h1 className="mt-6 text-[clamp(1.55rem,7vw,4.4rem)] leading-[1.05] font-semibold tracking-[-0.035em] whitespace-nowrap">
+            Full-cycle,{" "}
             <span className="bg-linear-to-r from-coral-300 via-coral-400 to-coral-500 bg-clip-text text-transparent">
               full-stack
             </span>
