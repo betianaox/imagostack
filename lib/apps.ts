@@ -170,6 +170,14 @@ export const apps: App[] = [
         alt: "Marcado de puntos en vivo en Vigía, con winner, error forzado y no forzado para cada uno de los cuatro jugadores",
       },
       {
+        src: "/apps/vigia/08.jpeg",
+        alt: "Detalle de un error no forzado en Vigía: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
+      },
+      {
+        src: "/apps/vigia/09.jpeg",
+        alt: "Detalle de un error forzado en Vigía: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
+      },
+      {
         src: "/apps/vigia/05.jpeg",
         alt: "Estadísticas del partido en Vigía: errores no forzados, winners por error, break points y comparación jugador por jugador",
       },

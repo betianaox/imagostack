@@ -80,7 +80,7 @@ export default async function AppPage({ params }: PageProps<"/apps/[slug]">) {
             <div className="flex items-start gap-5">
               <AppIcon app={app} className="size-20 shrink-0 md:size-24" />
               <div>
-                <p className="text-[11px] font-semibold tracking-[0.16em] text-white/65 uppercase">
+                <p className="text-[13px] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {app.category}
                 </p>
                 <h1 className="mt-2 text-4xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance md:text-5xl">

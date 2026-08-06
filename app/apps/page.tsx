@@ -20,7 +20,7 @@ export default function AppsPage() {
         <div className="grid-lines absolute inset-0" />
 
         <div className="shell relative py-16 md:py-24">
-          <p className="text-[11px] font-semibold tracking-[0.16em] text-coral-300 uppercase">
+          <p className="text-[13px] font-semibold tracking-[0.14em] text-coral-300 uppercase">
             Catálogo
           </p>
           <h1 className="mt-4 max-w-3xl text-4xl leading-[1.08] font-semibold tracking-[-0.03em] text-balance md:text-6xl">

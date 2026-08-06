@@ -38,7 +38,7 @@ export function LegalPage({
             </Link>
           )}
 
-          <p className="mt-7 text-[11px] font-semibold tracking-[0.16em] text-coral-300 uppercase">
+          <p className="mt-7 text-[13px] font-semibold tracking-[0.14em] text-coral-300 uppercase">
             {kicker}
           </p>
           <h1 className="mt-3 max-w-3xl text-3xl leading-[1.1] font-semibold tracking-[-0.03em] text-balance md:text-5xl">

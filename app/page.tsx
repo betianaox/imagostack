@@ -72,7 +72,7 @@ export default function Home() {
         <div className="grid-lines absolute inset-0" />
 
         <div className="shell relative pt-16 pb-16 md:pt-24 md:pb-20">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium tracking-wide text-white/85 backdrop-blur">
+          <span className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium tracking-wide text-white/85 backdrop-blur">
             <span className="size-1.5 rounded-full bg-coral-400" />
             Apps propias para Android
           </span>
@@ -296,7 +296,7 @@ function SectionKicker({
 }) {
   return (
     <p
-      className={`text-[11px] font-semibold tracking-[0.16em] uppercase ${
+      className={`text-[13px] font-semibold tracking-[0.14em] uppercase ${
         tone === "dark" ? "text-coral-300" : "text-coral-600"
       }`}
     >
