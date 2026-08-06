@@ -1,6 +1,6 @@
 /**
  * Configuración global del sitio.
- * Todo lo que se repite en metadatos, footer y páginas legales sale de acá.
+ * Todo lo que se repite en metadatos, footer y páginas legales sale de aquí.
  */
 export const site = {
   name: "Imagostack",
@@ -12,7 +12,7 @@ export const site = {
   /** Bajada descriptiva, para metadatos y footer */
   pitch: "Apps móviles que se sienten bien de usar",
   description:
-    "Imagostack diseña, desarrolla y publica aplicaciones móviles para Android de punta a punta. Descubrí nuestras apps en Google Play.",
+    "Imagostack diseña, desarrolla y publica aplicaciones móviles para Android de punta a punta. Descubre nuestras apps en Google Play.",
   locale: "es_AR",
   /**
    * Las dos únicas casillas del sitio. Las consultas de privacidad y de
@@ -38,11 +38,16 @@ export const site = {
   },
 } as const;
 
-/** Formatea una fecha ISO al formato legible que usan las páginas legales. */
-export function formatDate(iso: string): string {
-  return new Date(`${iso}T00:00:00`).toLocaleDateString("es-AR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+const dateLocales: Record<string, string> = {
+  es: "es-AR",
+  en: "en-GB",
+  pt: "pt-BR",
+};
+
+/** Formatea una fecha ISO al formato legible de cada idioma. */
+export function formatDate(iso: string, lang = "es"): string {
+  return new Date(`${iso}T00:00:00`).toLocaleDateString(
+    dateLocales[lang] ?? "es-AR",
+    { day: "numeric", month: "long", year: "numeric" },
+  );
 }

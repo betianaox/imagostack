@@ -5,6 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import type { Screenshot } from "@/lib/apps";
 import { Icon } from "@/components/icons";
 import { PhoneFrame } from "@/components/app-visuals";
+import { fillText, type Dictionary } from "@/lib/dictionaries";
+import { t, type Locale } from "@/lib/i18n";
 
 /**
  * Visor de capturas: una pantalla grande con miniaturas para cambiar de una a
@@ -14,10 +16,14 @@ export function ScreenshotGallery({
   shots,
   accent,
   appName,
+  lang,
+  dict,
 }: {
   shots: Screenshot[];
   accent: [string, string];
   appName: string;
+  lang: Locale;
+  dict: Dictionary;
 }) {
   const [active, setActive] = useState(0);
   const [zoomed, setZoomed] = useState(false);
@@ -53,12 +59,13 @@ export function ScreenshotGallery({
   if (shots.length === 0) {
     return (
       <div className="mx-auto w-full max-w-60">
-        <PhoneFrame accent={accent} label={appName} />
+        <PhoneFrame lang={lang} accent={accent} label={appName} />
       </div>
     );
   }
 
   const current = shots[active];
+  const currentAlt = t(current.alt, lang);
 
   return (
     <>
@@ -68,19 +75,27 @@ export function ScreenshotGallery({
           <button
             type="button"
             onClick={() => setZoomed(true)}
-            aria-label={`Ampliar: ${current.alt}`}
+            aria-label={fillText(dict.gallery.zoom, { alt: currentAlt })}
             className="block w-full cursor-zoom-in rounded-4xl transition duration-500 hover:-translate-y-1"
           >
-            <PhoneFrame shot={current} accent={accent} priority />
+            <PhoneFrame shot={current} lang={lang} accent={accent} priority />
           </button>
 
           {shots.length > 1 && (
             <div className="mt-5 flex items-center justify-center gap-2 lg:justify-start">
-              <StepButton dir={-1} onClick={() => step(-1)} />
+              <StepButton
+                dir={-1}
+                onClick={() => step(-1)}
+                label={dict.gallery.previous}
+              />
               <span className="min-w-14 text-center text-xs font-medium text-ink/50 tabular-nums">
                 {active + 1} / {shots.length}
               </span>
-              <StepButton dir={1} onClick={() => step(1)} />
+              <StepButton
+                dir={1}
+                onClick={() => step(1)}
+                label={dict.gallery.next}
+              />
             </div>
           )}
         </div>
@@ -91,7 +106,7 @@ export function ScreenshotGallery({
             className="border-l-2 pl-4 text-[15px] leading-relaxed text-ink/70"
             style={{ borderColor: accent[1] }}
           >
-            {current.alt}
+            {currentAlt}
           </p>
 
           <ul className="mt-7 grid grid-cols-4 gap-3 sm:grid-cols-5 sm:gap-4 lg:grid-cols-6">
@@ -102,7 +117,10 @@ export function ScreenshotGallery({
                   <button
                     type="button"
                     onClick={() => setActive(index)}
-                    aria-label={`Ver captura ${index + 1} de ${appName}`}
+                    aria-label={fillText(dict.gallery.thumb, {
+                      n: index + 1,
+                      app: appName,
+                    })}
                     aria-current={isActive}
                     className={`relative block w-full overflow-hidden rounded-xl transition duration-300 ${
                       isActive
@@ -111,7 +129,9 @@ export function ScreenshotGallery({
                     }`}
                     style={
                       isActive
-                        ? ({ "--tw-ring-color": accent[1] } as React.CSSProperties)
+                        ? ({
+                            "--tw-ring-color": accent[1],
+                          } as React.CSSProperties)
                         : undefined
                     }
                   >
@@ -137,14 +157,14 @@ export function ScreenshotGallery({
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={current.alt}
+          aria-label={currentAlt}
           onClick={() => setZoomed(false)}
           className="fixed inset-0 z-50 flex items-center justify-center bg-ink/92 p-4 backdrop-blur-sm sm:p-8"
         >
           <button
             type="button"
             onClick={() => setZoomed(false)}
-            aria-label="Cerrar"
+            aria-label={dict.gallery.close}
             className="absolute top-4 right-4 grid size-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
           >
             <Icon name="close" className="size-5" />
@@ -152,8 +172,16 @@ export function ScreenshotGallery({
 
           {shots.length > 1 && (
             <>
-              <ZoomNav dir={-1} onClick={() => step(-1)} />
-              <ZoomNav dir={1} onClick={() => step(1)} />
+              <ZoomNav
+                dir={-1}
+                onClick={() => step(-1)}
+                label={dict.gallery.previous}
+              />
+              <ZoomNav
+                dir={1}
+                onClick={() => step(1)}
+                label={dict.gallery.next}
+              />
             </>
           )}
 
@@ -163,7 +191,7 @@ export function ScreenshotGallery({
           >
             <Image
               src={current.src}
-              alt={current.alt}
+              alt={currentAlt}
               width={900}
               height={1900}
               className="h-full w-auto rounded-3xl object-contain shadow-2xl"
@@ -179,12 +207,20 @@ export function ScreenshotGallery({
   );
 }
 
-function StepButton({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) {
+function StepButton({
+  dir,
+  onClick,
+  label,
+}: {
+  dir: -1 | 1;
+  onClick: () => void;
+  label: string;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
-      aria-label={dir === -1 ? "Captura anterior" : "Captura siguiente"}
+      aria-label={label}
       className="grid size-9 place-items-center rounded-full border border-brand-500/20 bg-white text-brand-600 shadow-sm transition hover:border-brand-500/40 hover:bg-brand-50"
     >
       <Icon
@@ -195,7 +231,15 @@ function StepButton({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) {
   );
 }
 
-function ZoomNav({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) {
+function ZoomNav({
+  dir,
+  onClick,
+  label,
+}: {
+  dir: -1 | 1;
+  onClick: () => void;
+  label: string;
+}) {
   return (
     <button
       type="button"
@@ -203,7 +247,7 @@ function ZoomNav({ dir, onClick }: { dir: -1 | 1; onClick: () => void }) {
         event.stopPropagation();
         onClick();
       }}
-      aria-label={dir === -1 ? "Captura anterior" : "Captura siguiente"}
+      aria-label={label}
       className={`absolute z-10 grid size-11 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 ${
         dir === -1 ? "left-3 sm:left-6" : "right-3 sm:right-6"
       }`}

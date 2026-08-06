@@ -1,9 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Dictionary } from "@/lib/dictionaries";
 import { apps } from "@/lib/apps";
+import { path, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
-export function SiteFooter() {
+export function SiteFooter({
+  lang,
+  dict,
+}: {
+  lang: Locale;
+  dict: Dictionary;
+}) {
   const year = new Date().getFullYear();
 
   return (
@@ -21,42 +29,52 @@ export function SiteFooter() {
             {site.tagline}
           </p>
           <p className="mt-2 max-w-xs text-sm leading-relaxed">
-            {site.pitch}. Diseñamos, desarrollamos y mantenemos nuestras propias
-            apps para Android, de la idea a la Play Store.
+            {dict.footer.pitch}
           </p>
         </div>
 
-        <FooterColumn title="Apps">
+        <FooterColumn title={dict.footer.apps}>
           {apps.map((app) => (
-            <FooterLink key={app.slug} href={`/apps/${app.slug}`}>
+            <FooterLink key={app.slug} href={path(`/apps/${app.slug}`, lang)}>
               {app.name}
             </FooterLink>
           ))}
-          <FooterLink href="/apps">Ver todas</FooterLink>
+          <FooterLink href={path("/apps", lang)}>
+            {dict.footer.allApps}
+          </FooterLink>
         </FooterColumn>
 
-        <FooterColumn title="Compañía">
-          <FooterLink href="/#nosotros">Nosotros</FooterLink>
-          <FooterLink href="/soporte">Soporte</FooterLink>
-          <FooterLink href="/#contacto">Contacto</FooterLink>
+        <FooterColumn title={dict.footer.company}>
+          <FooterLink href={`${path("/", lang)}#nosotros`}>
+            {dict.nav.about}
+          </FooterLink>
+          <FooterLink href={path("/soporte", lang)}>
+            {dict.nav.support}
+          </FooterLink>
+          <FooterLink href={`${path("/", lang)}#contacto`}>
+            {dict.nav.contact}
+          </FooterLink>
         </FooterColumn>
 
-        <FooterColumn title="Legales">
-          <FooterLink href="/privacidad">Privacidad</FooterLink>
-          <FooterLink href="/terminos">Términos de uso</FooterLink>
-          <FooterLink href="/eliminar-datos">Eliminar mis datos</FooterLink>
+        <FooterColumn title={dict.footer.legal}>
+          <FooterLink href={path("/privacidad", lang)}>
+            {dict.footer.privacy}
+          </FooterLink>
+          <FooterLink href={path("/terminos", lang)}>
+            {dict.footer.terms}
+          </FooterLink>
+          <FooterLink href={path("/eliminar-datos", lang)}>
+            {dict.footer.deleteData}
+          </FooterLink>
         </FooterColumn>
       </div>
 
       <div className="border-t border-white/10">
         <div className="shell flex flex-col gap-2 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName}. Todos los derechos reservados.
+            © {year} {site.legalName}. {dict.footer.rights}
           </p>
-          <p className="text-white/45">
-            Google Play y el logo de Google Play son marcas registradas de Google
-            LLC.
-          </p>
+          <p className="text-white/45">{dict.footer.trademark}</p>
         </div>
       </div>
     </footer>

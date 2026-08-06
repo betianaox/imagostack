@@ -68,6 +68,24 @@
     text-rendering: optimizeLegibility;
   }
 
+  /*
+   * Tailwind v4 cambió el default de los botones a `cursor: default`.
+   * Restauramos el puntero en todo lo que se pueda clickear, para que el
+   * cursor comunique lo mismo que el diseño.
+   */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  select,
+  label[for],
+  a[href] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
   ::selection {
     background: var(--color-coral-200);
     color: var(--color-brand-900);

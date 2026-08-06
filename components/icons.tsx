@@ -115,6 +115,18 @@ export const icons = {
       <path d="m9.5 6 6 6-6 6" />
     </svg>
   ),
+  globe: (p: Props) => (
+    <svg {...base} {...p}>
+      <circle cx="12" cy="12" r="8.75" />
+      <path d="M3.25 12h17.5" />
+      <path d="M12 3.25c2.2 2.3 3.4 5.4 3.4 8.75S14.2 18.45 12 20.75c-2.2-2.3-3.4-5.4-3.4-8.75S9.8 5.55 12 3.25Z" />
+    </svg>
+  ),
+  chevronDown: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="m6 9.5 6 6 6-6" />
+    </svg>
+  ),
   close: (p: Props) => (
     <svg {...base} {...p}>
       <path d="m6 6 12 12M18 6 6 18" />

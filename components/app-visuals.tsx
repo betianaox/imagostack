@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { App, Screenshot } from "@/lib/apps";
+import { t, type Locale } from "@/lib/i18n";
 import { Icon } from "@/components/icons";
 
 /** Icono de la app: usa el PNG si existe, si no un monograma con su degradado. */
@@ -16,7 +17,7 @@ export function AppIcon({
     return (
       <Image
         src={app.icon}
-        alt={`Icono de ${app.name}`}
+        alt={app.name}
         width={128}
         height={128}
         className={`${className} ${rounded} object-cover shadow-lg shadow-brand-950/20 ring-1 ring-black/5`}
@@ -27,7 +28,7 @@ export function AppIcon({
   const monogram = app.name
     .split(/\s+/)
     .slice(0, 2)
-    .map((w) => w[0])
+    .map((word) => word[0])
     .join("")
     .toUpperCase();
 
@@ -50,12 +51,14 @@ export function AppIcon({
  */
 export function PhoneFrame({
   shot,
+  lang,
   accent,
   label,
   priority = false,
   className = "",
 }: {
   shot?: Screenshot;
+  lang: Locale;
   accent: [string, string];
   /** Texto del placeholder cuando no hay captura */
   label?: string;
@@ -73,7 +76,7 @@ export function PhoneFrame({
         {shot ? (
           <Image
             src={shot.src}
-            alt={shot.alt}
+            alt={t(shot.alt, lang)}
             fill
             sizes="(max-width: 640px) 70vw, 280px"
             priority={priority}

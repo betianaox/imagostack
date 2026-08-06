@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/icons";
+import type { Locale } from "@/lib/i18n";
 import { formatDate } from "@/lib/site";
 
 /** Encabezado y contenedor común de todas las páginas legales. */
@@ -8,6 +9,8 @@ export function LegalPage({
   title,
   intro,
   updatedAt,
+  updatedAtLabel,
+  lang,
   backHref,
   backLabel,
   children,
@@ -17,6 +20,8 @@ export function LegalPage({
   intro?: string;
   /** Fecha ISO de última actualización */
   updatedAt: string;
+  updatedAtLabel: string;
+  lang: Locale;
   backHref?: string;
   backLabel?: string;
   children: React.ReactNode;
@@ -34,7 +39,7 @@ export function LegalPage({
               className="inline-flex items-center gap-1.5 text-sm font-medium text-white/70 transition hover:text-white"
             >
               <Icon name="chevronLeft" className="size-4" />
-              {backLabel ?? "Volver"}
+              {backLabel}
             </Link>
           )}
 
@@ -50,7 +55,7 @@ export function LegalPage({
             </p>
           )}
           <p className="mt-6 text-xs text-white/50">
-            Última actualización: {formatDate(updatedAt)}
+            {updatedAtLabel} {formatDate(updatedAt, lang)}
           </p>
         </div>
       </section>
