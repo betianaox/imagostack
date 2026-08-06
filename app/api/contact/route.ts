@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
  * Requiere dos variables de entorno en Vercel (ver .env.example):
  *
  *   RESEND_API_KEY   — la clave de la cuenta de Resend
- *   CONTACT_FROM     — remitente verificado, ej "Imagostack <web@imagostack.com>"
+ *   CONTACT_FROM     — remitente verificado, ej "ImagoStack <web@imagostack.com>"
  */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";

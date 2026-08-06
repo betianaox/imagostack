@@ -30,7 +30,7 @@ export function HomeView({ lang }: { lang: Locale }) {
             El slogan de marca es el título del sitio, en una sola línea: el
             clamp lo hace escalar con el viewport para que nunca corte.
           */}
-          <h1 className="mt-6 text-[clamp(1.55rem,7vw,4.4rem)] leading-[1.05] font-semibold tracking-[-0.035em] whitespace-nowrap">
+          <h1 className="mt-6 text-[clamp(1.5rem,7.7vw,4.4rem)] leading-[1.05] font-semibold tracking-[-0.035em] whitespace-nowrap">
             Full-cycle,{" "}
             <span className="bg-linear-to-r from-coral-300 via-coral-400 to-coral-500 bg-clip-text text-transparent">
               full-stack
@@ -193,47 +193,54 @@ export function HomeView({ lang }: { lang: Locale }) {
       </section>
 
       {/* ───────────────────────── Contacto ───────────────────────── */}
-      <section id="contacto" className="shell scroll-mt-24 py-20 md:py-28">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-4xl bg-ink px-7 py-14 text-white md:px-14 md:py-20">
-            <div className="aurora absolute inset-0 opacity-55" />
-            <div className="grid-lines absolute inset-0" />
+      {/*
+        En mobile el bloque va a sangre y pegado al footer —que también es
+        oscuro, así que se leen como una sola pieza— para no perder ancho útil
+        del formulario en padding. Desde md vuelve a ser una tarjeta redondeada.
+      */}
+      <section id="contacto" className="scroll-mt-24 pt-20 md:pt-28 md:pb-28">
+        <div className="mx-auto w-full max-w-304 md:px-8">
+          <Reveal>
+            <div className="relative overflow-hidden bg-ink px-5 pt-14 pb-20 text-white md:rounded-4xl md:px-14 md:py-20">
+              <div className="aurora absolute inset-0 opacity-55" />
+              <div className="grid-lines absolute inset-0" />
 
-            {/* El mismo formulario que en /soporte */}
-            <div className="relative grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
-              <div>
-                <SectionKicker tone="dark">
-                  {dict.home.contactKicker}
-                </SectionKicker>
-                <h2 className="mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance md:text-[2.6rem]">
-                  {dict.home.contactTitle}
-                </h2>
-                <p className="mt-5 text-lg leading-relaxed text-white/70">
-                  {dict.home.contactText}
-                </p>
+              {/* El mismo formulario que en /soporte */}
+              <div className="relative grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-start lg:gap-16">
+                <div>
+                  <SectionKicker tone="dark">
+                    {dict.home.contactKicker}
+                  </SectionKicker>
+                  <h2 className="mt-4 text-3xl leading-tight font-semibold tracking-tight text-balance md:text-[2.6rem]">
+                    {dict.home.contactTitle}
+                  </h2>
+                  <p className="mt-5 text-lg leading-relaxed text-white/70">
+                    {dict.home.contactText}
+                  </p>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <a
-                    href={`mailto:${site.email.general}`}
-                    className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/5"
-                  >
-                    <Icon name="mail" className="size-4.5" />
-                    {site.email.general}
-                  </a>
-                  <Link
-                    href={path("/soporte", lang)}
-                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/5"
-                  >
-                    {dict.home.supportCenter}
-                    <Icon name="arrowRight" className="size-4" />
-                  </Link>
+                  <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                    <a
+                      href={`mailto:${site.email.general}`}
+                      className="inline-flex items-center justify-center gap-2.5 rounded-2xl border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/5"
+                    >
+                      <Icon name="mail" className="size-4.5" />
+                      {site.email.general}
+                    </a>
+                    <Link
+                      href={path("/soporte", lang)}
+                      className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/20 px-5 py-3 text-sm font-semibold text-white/90 transition hover:border-white/40 hover:bg-white/5"
+                    >
+                      {dict.home.supportCenter}
+                      <Icon name="arrowRight" className="size-4" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
 
-              <ContactForm dict={dict} />
+                <ContactForm dict={dict} />
+              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
     </>
   );

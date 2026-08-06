@@ -12,7 +12,7 @@ export const pt: Dictionary = {
     closeMenu: "Fechar menu",
     skipToContent: "Ir para o conteúdo",
     languageLabel: "Idioma",
-    homeAria: "Imagostack — início",
+    homeAria: "ImagoStack — início",
   },
 
   footer: {
@@ -33,7 +33,7 @@ export const pt: Dictionary = {
   home: {
     badge: "Apps próprios para Android",
     intro:
-      "Somos a Imagostack: pensamos, projetamos, desenvolvemos, publicamos e mantemos nossos próprios aplicativos para Android. Todo o ciclo, toda a pilha — sem intermediários.",
+      "Somos a ImagoStack: pensamos, projetamos, desenvolvemos, publicamos e mantemos nossos próprios aplicativos para Android. Todo o ciclo, toda a pilha — sem intermediários.",
     seeApps: "Ver nossos apps",
     howWeWork: "Como trabalhamos",
     appsKicker: "Nossos apps",
@@ -234,7 +234,7 @@ export const pt: Dictionary = {
   privacyPage: {
     title: "Política de privacidade",
     intro:
-      "Quais dados a Imagostack trata, para que os usa e que controle você tem sobre eles.",
+      "Quais dados a ImagoStack trata, para que os usa e que controle você tem sobre eles.",
     highlight:
       "**Resumindo:** este site não usa cookies de rastreamento nem sistemas de analytics. Nossos apps guardam as informações que você insere no seu próprio dispositivo. Não vendemos dados e não compartilhamos informações com terceiros para publicidade.",
     perAppIntro:
@@ -349,7 +349,7 @@ export const pt: Dictionary = {
       },
       { h2: "9. Propriedade intelectual" },
       {
-        p: "O software, os designs, as ilustrações, os textos, a marca Imagostack e os nomes dos nossos aplicativos pertencem à {company} ou aos seus licenciantes, e estão protegidos pelas leis de propriedade intelectual. Google Play e o logo do Google Play são marcas registradas da Google LLC.",
+        p: "O software, os designs, as ilustrações, os textos, a marca ImagoStack e os nomes dos nossos aplicativos pertencem à {company} ou aos seus licenciantes, e estão protegidos pelas leis de propriedade intelectual. Google Play e o logo do Google Play são marcas registradas da Google LLC.",
       },
       { h2: "10. Rescisão" },
       {
@@ -532,32 +532,32 @@ export const pt: Dictionary = {
   },
 
   meta: {
-    homeTitle: "Imagostack — Apps para Android | Full-cycle, full-stack",
+    homeTitle: "ImagoStack — Apps para Android | Full-cycle, full-stack",
     homeDescription:
-      "A Imagostack projeta, desenvolve e publica seus próprios aplicativos para Android de ponta a ponta. Conheça nossos apps na Google Play.",
-    ogHomeTitle: "Imagostack — Apps para Android",
+      "A ImagoStack projeta, desenvolve e publica seus próprios aplicativos para Android de ponta a ponta. Conheça nossos apps na Google Play.",
+    ogHomeTitle: "ImagoStack — Apps para Android",
     appsTitle: "Nossos apps para Android",
-    appsDescription: "Todos os aplicativos da Imagostack para Android: {list}.",
-    appsOgTitle: "Apps da Imagostack para Android",
+    appsDescription: "Todos os aplicativos da ImagoStack para Android: {list}.",
+    appsOgTitle: "Apps da ImagoStack para Android",
     appTitle: "{app} — app de {category} para Android",
     supportTitle: "Suporte e contato",
     supportDescription:
-      "Ajuda para os aplicativos da Imagostack: fale com a gente pelo formulário, veja as perguntas frequentes e conheça nossos prazos de resposta.",
-    supportOgTitle: "Suporte da Imagostack",
+      "Ajuda para os aplicativos da ImagoStack: fale com a gente pelo formulário, veja as perguntas frequentes e conheça nossos prazos de resposta.",
+    supportOgTitle: "Suporte da ImagoStack",
     privacyTitle: "Política de privacidade",
     privacyDescription:
-      "Como a Imagostack trata os dados pessoais no seu site e nos seus aplicativos.",
+      "Como a ImagoStack trata os dados pessoais no seu site e nos seus aplicativos.",
     termsTitle: "Termos de uso",
     termsDescription:
-      "Condições de uso do site e dos aplicativos da Imagostack.",
+      "Condições de uso do site e dos aplicativos da ImagoStack.",
     deleteDataTitle: "Excluir meus dados",
     deleteDataDescription:
-      "Como apagar as informações dos aplicativos da Imagostack pelo seu dispositivo ou solicitando a exclusão.",
+      "Como apagar as informações dos aplicativos da ImagoStack pelo seu dispositivo ou solicitando a exclusão.",
     appPrivacyTitle: "Política de privacidade do {app}",
     appPrivacyDescription:
       "Como o {app} trata seus dados: quais informações mantém, onde ficam guardadas e como você pode apagá-las.",
     keywords: [
-      "Imagostack",
+      "ImagoStack",
       "apps para Android",
       "desenvolvimento de aplicativos",
       "Google Play",
@@ -570,7 +570,7 @@ export const pt: Dictionary = {
   },
 
   og: {
-    kicker: "Imagostack",
+    kicker: "ImagoStack",
     description:
       "Projetamos, desenvolvemos e publicamos nossos próprios aplicativos para Android.",
   },

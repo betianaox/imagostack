@@ -47,7 +47,7 @@ export function SiteHeader({
         >
           <Image
             src="/logo.png"
-            alt="Imagostack"
+            alt="ImagoStack"
             width={660}
             height={175}
             priority

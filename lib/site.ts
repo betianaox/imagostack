@@ -3,8 +3,8 @@
  * Todo lo que se repite en metadatos, footer y páginas legales sale de aquí.
  */
 export const site = {
-  name: "Imagostack",
-  legalName: "Imagostack",
+  name: "ImagoStack",
+  legalName: "ImagoStack",
   domain: "imagostack.com",
   url: "https://imagostack.com",
   /** Slogan de marca */
@@ -12,7 +12,7 @@ export const site = {
   /** Bajada descriptiva, para metadatos y footer */
   pitch: "Apps móviles que se sienten bien de usar",
   description:
-    "Imagostack diseña, desarrolla y publica aplicaciones móviles para Android de punta a punta. Descubre nuestras apps en Google Play.",
+    "ImagoStack diseña, desarrolla y publica aplicaciones móviles para Android de punta a punta. Descubre nuestras apps en Google Play.",
   locale: "es_AR",
   /**
    * Las dos únicas casillas del sitio. Las consultas de privacidad y de

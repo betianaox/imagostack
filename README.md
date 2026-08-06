@@ -1,16 +1,17 @@
 # imagostack.com
 
-Sitio institucional de **Imagostack** — _Full-cycle, full-stack_ — y vidriera de
+Sitio institucional de **ImagoStack** — _Full-cycle, full-stack_ — y vidriera de
 nuestras apps de Android en Google Play.
 
-Next.js 16 (App Router) + Tailwind CSS v4, exportado como sitio estático
-(`output: "export"`) y desplegado en el dominio `imagostack.com`.
+Next.js 16 (App Router) + Tailwind CSS v4, desplegado en Vercel sobre el
+dominio `imagostack.com`. Todas las páginas se prerenderizan como HTML estático
+en el build; la única ruta que corre en el servidor es `/api/contact`.
 
 ## Comandos
 
 ```bash
 npm run dev     # desarrollo en http://localhost:3000
-npm run build   # build + exportación estática a ./out
+npm run build   # build de producción
 npm run lint    # eslint
 ```
 
@@ -125,13 +126,15 @@ con **Resend** desde el servidor. La API key nunca llega al navegador.
 
 ### Variables de entorno
 
-Copiá [`.env.example`](.env.example) a `.env.local` para desarrollo y cargá las
-mismas dos variables en **Vercel → Settings → Environment Variables**:
+Para desarrollo, creá un `.env.local` en la raíz (está en `.gitignore`) con las
+dos variables. Las mismas van en **Vercel → Settings → Environments →
+Production**, ahí sin comillas: las comillas son sintaxis del archivo, no parte
+del valor.
 
 | Variable | Qué es |
 | --- | --- |
 | `RESEND_API_KEY` | La clave de la cuenta, desde [resend.com/api-keys](https://resend.com/api-keys) |
-| `CONTACT_FROM` | Remitente verificado, ej `Imagostack <web@imagostack.com>` |
+| `CONTACT_FROM` | Remitente verificado, ej `ImagoStack <web@imagostack.com>` |
 
 El dominio del remitente tiene que estar **verificado en Resend** (registros SPF
 y DKIM en el DNS). Para probar antes de verificarlo se puede usar

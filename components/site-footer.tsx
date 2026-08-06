@@ -20,7 +20,7 @@ export function SiteFooter({
         <div>
           <Image
             src="/logo.png"
-            alt="Imagostack"
+            alt="ImagoStack"
             width={660}
             height={175}
             className="h-12 w-auto brightness-0 invert md:h-14"

@@ -12,7 +12,7 @@ export const en: Dictionary = {
     closeMenu: "Close menu",
     skipToContent: "Skip to content",
     languageLabel: "Language",
-    homeAria: "Imagostack — home",
+    homeAria: "ImagoStack — home",
   },
 
   footer: {
@@ -33,7 +33,7 @@ export const en: Dictionary = {
   home: {
     badge: "Our own Android apps",
     intro:
-      "We are Imagostack: we think up, design, build, publish and maintain our own Android applications. The whole cycle, the whole stack — no middlemen.",
+      "We are ImagoStack: we think up, design, build, publish and maintain our own Android applications. The whole cycle, the whole stack — no middlemen.",
     seeApps: "See our apps",
     howWeWork: "How we work",
     appsKicker: "Our apps",
@@ -234,7 +234,7 @@ export const en: Dictionary = {
   privacyPage: {
     title: "Privacy policy",
     intro:
-      "What data Imagostack handles, what it uses it for, and what control you have over it.",
+      "What data ImagoStack handles, what it uses it for, and what control you have over it.",
     highlight:
       "**In short:** this site uses no tracking cookies and no analytics systems. Our apps store the information you enter on your own device. We don't sell data and we don't share information with third parties for advertising.",
     perAppIntro:
@@ -349,7 +349,7 @@ export const en: Dictionary = {
       },
       { h2: "9. Intellectual property" },
       {
-        p: "The software, designs, illustrations, texts, the Imagostack brand and the names of our applications belong to {company} or its licensors, and are protected by intellectual property law. Google Play and the Google Play logo are trademarks of Google LLC.",
+        p: "The software, designs, illustrations, texts, the ImagoStack brand and the names of our applications belong to {company} or its licensors, and are protected by intellectual property law. Google Play and the Google Play logo are trademarks of Google LLC.",
       },
       { h2: "10. Termination" },
       {
@@ -529,32 +529,32 @@ export const en: Dictionary = {
   },
 
   meta: {
-    homeTitle: "Imagostack — Android Apps | Full-cycle, full-stack",
+    homeTitle: "ImagoStack — Android Apps | Full-cycle, full-stack",
     homeDescription:
-      "Imagostack designs, develops and publishes its own Android applications end to end. Discover our apps on Google Play.",
-    ogHomeTitle: "Imagostack — Android Apps",
+      "ImagoStack designs, develops and publishes its own Android applications end to end. Discover our apps on Google Play.",
+    ogHomeTitle: "ImagoStack — Android Apps",
     appsTitle: "Our Android apps",
-    appsDescription: "All of Imagostack's Android applications: {list}.",
-    appsOgTitle: "Imagostack apps for Android",
+    appsDescription: "All of ImagoStack's Android applications: {list}.",
+    appsOgTitle: "ImagoStack apps for Android",
     appTitle: "{app} — {category} app for Android",
     supportTitle: "Support and contact",
     supportDescription:
-      "Help for Imagostack applications: write to us through the form, browse the frequently asked questions and see our response times.",
-    supportOgTitle: "Imagostack support",
+      "Help for ImagoStack applications: write to us through the form, browse the frequently asked questions and see our response times.",
+    supportOgTitle: "ImagoStack support",
     privacyTitle: "Privacy policy",
     privacyDescription:
-      "How Imagostack handles personal data on its website and in its applications.",
+      "How ImagoStack handles personal data on its website and in its applications.",
     termsTitle: "Terms of use",
     termsDescription:
-      "Conditions of use of the Imagostack website and applications.",
+      "Conditions of use of the ImagoStack website and applications.",
     deleteDataTitle: "Delete my data",
     deleteDataDescription:
-      "How to delete the information held by Imagostack applications from your device or by requesting its deletion.",
+      "How to delete the information held by ImagoStack applications from your device or by requesting its deletion.",
     appPrivacyTitle: "{app} privacy policy",
     appPrivacyDescription:
       "How {app} handles your data: what information it holds, where it is stored and how you can delete it.",
     keywords: [
-      "Imagostack",
+      "ImagoStack",
       "Android apps",
       "mobile app development",
       "Google Play",
@@ -567,7 +567,7 @@ export const en: Dictionary = {
   },
 
   og: {
-    kicker: "Imagostack",
+    kicker: "ImagoStack",
     description:
       "We design, develop and publish our own applications for Android.",
   },
