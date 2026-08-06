@@ -1,26 +1,201 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Marca — extraídos del logo */
+  --color-brand-50: #eef6fc;
+  --color-brand-100: #d6e9f6;
+  --color-brand-200: #aed2ec;
+  --color-brand-300: #7db4dd;
+  --color-brand-400: #4a90c6;
+  --color-brand-500: #26689b;
+  --color-brand-600: #1f5680;
+  --color-brand-700: #1b4667;
+  --color-brand-800: #163851;
+  --color-brand-900: #112a3d;
+  --color-brand-950: #0a1928;
+
+  --color-coral-50: #fef2f0;
+  --color-coral-100: #fde2dd;
+  --color-coral-200: #fbc7bd;
+  --color-coral-300: #f7a294;
+  --color-coral-400: #f18069;
+  --color-coral-500: #ea6852;
+  --color-coral-600: #d44a32;
+  --color-coral-700: #b13a26;
+  --color-coral-800: #8f3122;
+  --color-coral-900: #762d21;
+
+  --color-ink: #0b1622;
+  --color-ink-soft: #101f30;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+:root {
+  --background: #ffffff;
+  --foreground: var(--color-ink);
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-color: color-mix(in oklab, var(--color-brand-500) 12%, transparent);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-coral-200);
+    color: var(--color-brand-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* Contenedor estándar de todas las secciones */
+  .shell {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Malla de luz del hero y de las secciones oscuras */
+  .aurora {
+    background:
+      radial-gradient(
+        60% 55% at 15% 10%,
+        color-mix(in oklab, var(--color-brand-400) 42%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        50% 50% at 88% 18%,
+        color-mix(in oklab, var(--color-coral-500) 38%, transparent),
+        transparent 68%
+      ),
+      radial-gradient(
+        70% 60% at 55% 100%,
+        color-mix(in oklab, var(--color-brand-600) 55%, transparent),
+        transparent 72%
+      );
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.055) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.055) 1px, transparent 1px);
+    background-size: 3.5rem 3.5rem;
+    mask-image: radial-gradient(70% 60% at 50% 40%, #000 40%, transparent 100%);
+  }
+
+  /* Texto largo de las páginas legales */
+  .prose-legal {
+    max-width: 46rem;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: color-mix(in oklab, var(--color-ink) 78%, white);
+  }
+
+  .prose-legal h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.375rem;
+    font-weight: 650;
+    letter-spacing: -0.015em;
+    color: var(--color-brand-800);
+  }
+
+  .prose-legal h3 {
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.0625rem;
+    font-weight: 620;
+    color: var(--color-brand-700);
+  }
+
+  .prose-legal p,
+  .prose-legal ul,
+  .prose-legal ol {
+    margin-bottom: 1rem;
+  }
+
+  .prose-legal ul {
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
+  .prose-legal ol {
+    list-style: decimal;
+    padding-left: 1.25rem;
+  }
+
+  .prose-legal li {
+    margin-bottom: 0.375rem;
+  }
+
+  .prose-legal a {
+    color: var(--color-brand-600);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-legal strong {
+    color: var(--color-brand-800);
+    font-weight: 620;
+  }
+
+  /* Oculta la barra de scroll de la galería sin perder el scroll */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

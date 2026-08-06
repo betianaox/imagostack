@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# imagostack.com
 
-## Getting Started
+Sitio institucional de **Imagostack** — _Full-cycle, full-stack_ — y vidriera de
+nuestras apps de Android en Google Play.
 
-First, run the development server:
+Next.js 16 (App Router) + Tailwind CSS v4, exportado como sitio estático
+(`output: "export"`) y desplegado en el dominio `imagostack.com`.
+
+## Comandos
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # desarrollo en http://localhost:3000
+npm run build   # build + exportación estática a ./out
+npm run lint    # eslint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cómo agregar una app nueva
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Todo el catálogo sale de un solo archivo: [`lib/apps.ts`](lib/apps.ts). Agregar
+una app son tres pasos:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Assets.** Creá `public/apps/<slug>/` y poné ahí:
+   - `icon.png` — el icono cuadrado de la app.
+   - `01.jpeg`, `02.jpeg`, … — las capturas, en el orden que quieras mostrarlas.
+     No hay límite de cantidad.
+2. **Datos.** Copiá uno de los objetos del array `apps` en `lib/apps.ts`, cambiá
+   el `slug` y completá el resto de los campos. Los tipos están documentados en
+   el mismo archivo.
+3. **Nada más.** Con eso se generan solas:
+   - la tarjeta en el home y en `/apps`;
+   - la ficha `/apps/<slug>` con galería y visor a pantalla completa;
+   - la política de privacidad `/apps/<slug>/privacidad`;
+   - las entradas del `sitemap.xml`.
 
-## Learn More
+`screenshots[0]` es la captura que se usa en las tarjetas y en el hero del home,
+así que conviene que sea la más representativa. Si `screenshots` queda vacío, la
+ficha muestra marcos de teléfono como placeholder en lugar de imágenes roas.
 
-To learn more about Next.js, take a look at the following resources:
+Cuando la app se publique en Google Play, pegá su URL en `playStoreUrl`: el botón
+"Muy pronto en Google Play" pasa a ser un botón de descarga real.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Lo que pide Google Play
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Requisito de Play Console | Dónde está |
+| --- | --- |
+| URL de política de privacidad (por app) | `https://imagostack.com/apps/<slug>/privacidad` |
+| Política de privacidad del desarrollador | `https://imagostack.com/privacidad` |
+| URL de eliminación de datos | `https://imagostack.com/eliminar-datos` |
+| Correo y sitio de soporte | `https://imagostack.com/soporte` |
+| Términos de uso | `https://imagostack.com/terminos` |
 
-## Deploy on Vercel
+Las declaraciones de la sección **Data safety** de Play Console tienen que
+coincidir con lo que dice el bloque `privacy` de cada app en `lib/apps.ts`
+(datos que recolecta, permisos, publicidad, compras integradas). Si cambia el
+comportamiento de una app, hay que actualizar ambos lados y la fecha
+`privacy.updatedAt`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Datos globales del sitio
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[`lib/site.ts`](lib/site.ts) concentra nombre, dominio, slogan, casillas de
+correo y la fecha de vigencia de las páginas legales. Cambiar algo ahí se
+propaga a metadatos, footer y textos legales.
+
+## Estructura
+
+```
+app/
+  page.tsx                        home
+  apps/page.tsx                   catálogo
+  apps/[slug]/page.tsx            ficha de app
+  apps/[slug]/privacidad/page.tsx política por app
+  privacidad, terminos,
+  soporte, eliminar-datos         páginas del sitio
+  sitemap.ts, robots.ts           SEO (force-static por la exportación)
+components/                       header, footer, tarjetas, galería, iconos
+lib/apps.ts                       catálogo de apps  ← lo que se edita seguido
+lib/site.ts                       configuración global
+content/                          fuentes de texto originales (no se publica)
+public/apps/<slug>/               iconos y capturas
+```
+
+## Notas de mantenimiento
+
+- Los iconos del sitio son SVG propios en `components/icons.tsx`: no hay
+  dependencias de librerías de iconos.
+- Las rutas de `public/` se escriben siempre en minúsculas: el hosting distingue
+  mayúsculas de minúsculas aunque Windows no lo haga.
+- El favicon es `public/favicon.png`, declarado en `app/layout.tsx`.
