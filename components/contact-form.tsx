@@ -81,7 +81,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="rounded-3xl border border-brand-500/10 bg-white p-6 shadow-[0_1px_2px_rgba(11,22,34,0.04),0_18px_50px_-30px_rgba(11,22,34,0.35)] md:p-8"
+      className="rounded-3xl border border-brand-500/10 bg-white p-5 shadow-[0_1px_2px_rgba(11,22,34,0.04),0_18px_50px_-30px_rgba(11,22,34,0.35)] sm:p-6 md:p-8"
     >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={form.name} htmlFor="nombre">
