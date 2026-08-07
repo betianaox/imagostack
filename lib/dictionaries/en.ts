@@ -100,6 +100,52 @@ export const en: Dictionary = {
     ],
   },
 
+  services: {
+    kicker: "We also build",
+    title: "End-to-end web development",
+    intro:
+      "The same way of working we apply to our own apps is available for other projects: complete web products, with backend, admin panel, data and an intelligence layer.",
+    cards: [
+      {
+        icon: "code",
+        title: "Custom web applications",
+        description:
+          "Site, admin panel and backend in a single project, with React and TypeScript. Fast, accessible and ready to scale from day one.",
+      },
+      {
+        icon: "database",
+        title: "Data, accounts and files",
+        description:
+          "Real-time databases, sign-up and sign-in, per-user permissions and cloud file storage.",
+      },
+      {
+        icon: "chat",
+        title: "Applied artificial intelligence",
+        description:
+          "Assistants and chatbots connected to your real business information, not generic answers: they resolve queries and automate tasks.",
+      },
+      {
+        icon: "link",
+        title: "Integrations and automation",
+        description:
+          "Payments, messaging, email, third-party APIs and everything else that needs wiring up so the product runs on its own.",
+      },
+    ],
+    stackLabel: "What we work with",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Vercel",
+      "Firebase",
+      "MongoDB",
+      "MySQL",
+      "Generative AI",
+    ],
+    cta: "Tell us about your project",
+  },
+
   appsPage: {
     kicker: "Catalogue",
     title: "Our apps",

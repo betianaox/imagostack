@@ -104,6 +104,52 @@ export const es = {
     ],
   },
 
+  services: {
+    kicker: "También hacemos",
+    title: "Desarrollo web de punta a punta",
+    intro:
+      "La misma forma de trabajar que aplicamos a nuestras apps la ponemos a disposición de otros proyectos: productos web completos, con backend, admin, datos y capa de inteligencia.",
+    cards: [
+      {
+        icon: "code",
+        title: "Aplicaciones web a medida",
+        description:
+          "Sitio, panel de administración y backend en un mismo proyecto, con React y TypeScript. Rápidos, accesibles y listos para escalar desde el primer día.",
+      },
+      {
+        icon: "database",
+        title: "Datos, cuentas y archivos",
+        description:
+          "Bases de datos en tiempo real, registro e inicio de sesión, permisos por usuario y almacenamiento en la nube.",
+      },
+      {
+        icon: "chat",
+        title: "Inteligencia artificial aplicada",
+        description:
+          "Asistentes y chatbots conectados a la información real del negocio, no respuestas genéricas: resuelven consultas y automatizan tareas.",
+      },
+      {
+        icon: "link",
+        title: "Integraciones y automatizaciones",
+        description:
+          "Pagos, mensajería, correo, APIs de terceros y todo lo que haya que conectar para que el producto funcione solo.",
+      },
+    ] as { icon: IconName; title: string; description: string }[],
+    stackLabel: "Con qué trabajamos",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Vercel",
+      "Firebase",
+      "MongoDB",
+      "MySQL",
+      "IA generativa",
+    ],
+    cta: "Cuéntanos tu proyecto",
+  },
+
   appsPage: {
     kicker: "Catálogo",
     title: "Nuestras apps",
@@ -116,11 +162,11 @@ export const es = {
     backToApps: "Todas las apps",
     screenshotsTitle: "Así se ve",
     screenshotsHint:
-      "Elige una miniatura para recorrer las pantallas, o tocá la captura grande para ampliarla.",
+      "Elige una miniatura para recorrer las pantallas, o toca la captura grande para ampliarla.",
     aboutTitle: "Sobre {app}",
     privacyLink: "Política de privacidad",
     helpLink: "Necesito ayuda",
-    downloadTitle: "Descargá {app}",
+    downloadTitle: "Descarga {app}",
     downloadText: "Disponible para Android en Google Play.",
     otherApps: "Otras apps",
     availableIn: "Disponible en",
@@ -146,11 +192,11 @@ export const es = {
     formTips: [
       "Cuéntanos qué esperabas que pasara y qué pasó en su lugar.",
       "Suma el modelo de tu teléfono y la versión de Android.",
-      "Si puedes, adjuntá una captura cuando respondas el correo.",
+      "Si puedes, adjunta una captura cuando respondas el correo.",
     ],
     perAppTitle: "Ayuda por aplicación",
     perAppText:
-      "Cada app tiene su ficha y su política de privacidad propia. Si tu consulta es sobre una en particular, tocá su acceso y el formulario queda listo con esa app elegida.",
+      "Cada app tiene su ficha y su política de privacidad propia. Si tu consulta es sobre una en particular, toca su acceso y el formulario queda listo con esa app elegida.",
     seeApp: "Ver la app",
     privacy: "Privacidad",
     writeAbout: "Escribir sobre {app}",
@@ -222,7 +268,7 @@ export const es = {
   notFound: {
     code: "ERROR 404",
     title: "Esta pantalla no existe",
-    text: "La página que buscabas se movió o nunca estuvo aquí. Prueba desde el inicio o mirá el catálogo de apps.",
+    text: "La página que buscabas se movió o nunca estuvo aquí. Prueba desde el inicio o mira el catálogo de apps.",
     home: "Ir al inicio",
     apps: "Ver las apps",
   },
@@ -264,7 +310,7 @@ export const es = {
       },
       { h2: "3. Datos que tratan nuestras aplicaciones" },
       {
-        p: "Nuestras apps están construidas para funcionar sin necesidad de que tengamos tus datos: no requieren crear una cuenta y la información que cargas se guarda en el almacenamiento privado de tu dispositivo. Para el detalle de cada una, consultá su política específica en la lista de arriba.",
+        p: "Nuestras apps están construidas para funcionar sin necesidad de que tengamos tus datos: no requieren crear una cuenta y la información que cargas se guarda en el almacenamiento privado de tu dispositivo. Para el detalle de cada una, consulta su política específica en la lista de arriba.",
       },
       { h2: "4. Finalidad y base legal" },
       {
@@ -395,7 +441,7 @@ export const es = {
       {
         ol: [
           "Abre _Ajustes_ en tu teléfono.",
-          "Entra a _Aplicaciones_ y elegí la app.",
+          "Entra a _Aplicaciones_ y elige la app.",
           "Toca _Almacenamiento_.",
           "Toca _Borrar datos_ (o _Borrar almacenamiento_) y confirmá.",
         ],
@@ -549,7 +595,7 @@ export const es = {
     appTitle: "{app} — app de {category} para Android",
     supportTitle: "Soporte y contacto",
     supportDescription:
-      "Ayuda para las aplicaciones de ImagoStack: escríbenos por el formulario, mirá las preguntas frecuentes y conocé nuestros tiempos de respuesta.",
+      "Ayuda para las aplicaciones de ImagoStack: escríbenos por el formulario, mira las preguntas frecuentes y conocé nuestros tiempos de respuesta.",
     supportOgTitle: "Soporte de ImagoStack",
     privacyTitle: "Política de privacidad",
     privacyDescription:

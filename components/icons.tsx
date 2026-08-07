@@ -85,6 +85,27 @@ export const icons = {
       <path d="m15 8 5 4-5 4" />
     </svg>
   ),
+  database: (p: Props) => (
+    <svg {...base} {...p}>
+      <ellipse cx="12" cy="6" rx="7.25" ry="3.25" />
+      <path d="M4.75 6v12c0 1.8 3.25 3.25 7.25 3.25s7.25-1.45 7.25-3.25V6" />
+      <path d="M4.75 12c0 1.8 3.25 3.25 7.25 3.25S19.25 13.8 19.25 12" />
+    </svg>
+  ),
+  link: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="M10.5 13.5a3.75 3.75 0 0 0 5.3 0l3-3a3.75 3.75 0 0 0-5.3-5.3l-1.6 1.6" />
+      <path d="M13.5 10.5a3.75 3.75 0 0 0-5.3 0l-3 3a3.75 3.75 0 0 0 5.3 5.3l1.6-1.6" />
+    </svg>
+  ),
+  chat: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="M20 4.75H4A1.75 1.75 0 0 0 2.25 6.5v8.25A1.75 1.75 0 0 0 4 16.5h3.25v3.25l4-3.25H20a1.75 1.75 0 0 0 1.75-1.75V6.5A1.75 1.75 0 0 0 20 4.75Z" />
+      <circle cx="8.5" cy="10.6" r="1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="10.6" r="1" fill="currentColor" stroke="none" />
+      <circle cx="15.5" cy="10.6" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  ),
   users: (p: Props) => (
     <svg {...base} {...p}>
       <circle cx="9.5" cy="8.5" r="3.5" />

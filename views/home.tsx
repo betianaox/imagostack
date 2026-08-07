@@ -193,6 +193,66 @@ export function HomeView({ lang }: { lang: Locale }) {
       </section>
 
       {/* ───────────────────────── Contacto ───────────────────────── */}
+      {/* ───────────────────── Desarrollo web ───────────────────── */}
+      <section id="web" className="shell scroll-mt-24 py-20 md:py-28">
+        <Reveal>
+          <SectionKicker>{dict.services.kicker}</SectionKicker>
+          <h2 className="mt-4 max-w-3xl text-3xl leading-tight font-semibold tracking-tight text-balance md:text-[2.75rem]">
+            {dict.services.title}
+          </h2>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-ink/65">
+            {dict.services.intro}
+          </p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {dict.services.cards.map((card, index) => (
+            <Reveal key={card.title} delay={index * 80} className="h-full">
+              <div className="h-full rounded-2xl border border-brand-500/10 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-coral-300/50 hover:shadow-lg hover:shadow-coral-900/5">
+                <span className="grid size-11 place-items-center rounded-xl bg-linear-to-br from-coral-500 to-coral-600 text-white shadow-sm shadow-coral-900/20">
+                  <Icon name={card.icon} className="size-5.5" />
+                </span>
+                <h3 className="mt-5 font-semibold tracking-tight text-ink">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink/65">
+                  {card.description}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Stack como etiquetas: dice con qué trabajamos sin sonar a currículum */}
+        <Reveal delay={120}>
+          <div className="mt-10 flex flex-col gap-6 border-t border-brand-500/10 pt-8 sm:flex-row sm:items-start sm:justify-between sm:gap-10">
+            <div>
+              <span className="block text-[13px] font-semibold tracking-[0.14em] text-ink/40 uppercase">
+                {dict.services.stackLabel}
+              </span>
+              <div className="mt-3.5 flex flex-wrap gap-2.5">
+                {dict.services.stack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-brand-500/15 bg-brand-50/60 px-3 py-1.5 text-[13px] font-medium text-brand-700"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <Link
+              href="#contacto"
+              className="inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-coral-600 hover:text-coral-700 sm:mt-7"
+            >
+              {dict.services.cta}
+              <Icon name="arrowRight" className="size-4" />
+            </Link>
+          </div>
+        </Reveal>
+      </section>
+
       {/*
         En mobile el bloque va a sangre y pegado al footer —que también es
         oscuro, así que se leen como una sola pieza— para no perder ancho útil

@@ -100,6 +100,52 @@ export const pt: Dictionary = {
     ],
   },
 
+  services: {
+    kicker: "Também fazemos",
+    title: "Desenvolvimento web de ponta a ponta",
+    intro:
+      "O mesmo jeito de trabalhar que aplicamos aos nossos apps fica à disposição de outros projetos: produtos web completos, com backend, painel admin, dados e camada de inteligência.",
+    cards: [
+      {
+        icon: "code",
+        title: "Aplicações web sob medida",
+        description:
+          "Site, painel de administração e backend em um só projeto, com React e TypeScript. Rápidos, acessíveis e prontos para escalar desde o primeiro dia.",
+      },
+      {
+        icon: "database",
+        title: "Dados, contas e arquivos",
+        description:
+          "Bancos de dados em tempo real, cadastro e login, permissões por usuário e armazenamento na nuvem.",
+      },
+      {
+        icon: "chat",
+        title: "Inteligência artificial aplicada",
+        description:
+          "Assistentes e chatbots conectados às informações reais do negócio, não respostas genéricas: resolvem dúvidas e automatizam tarefas.",
+      },
+      {
+        icon: "link",
+        title: "Integrações e automações",
+        description:
+          "Pagamentos, mensageria, e-mail, APIs de terceiros e tudo o que precisar ser conectado para o produto funcionar sozinho.",
+      },
+    ],
+    stackLabel: "Com o que trabalhamos",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Vercel",
+      "Firebase",
+      "MongoDB",
+      "MySQL",
+      "IA generativa",
+    ],
+    cta: "Conte seu projeto",
+  },
+
   appsPage: {
     kicker: "Catálogo",
     title: "Nossos apps",
