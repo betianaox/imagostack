@@ -18,7 +18,7 @@ export function AppCard({
   return (
     <Link
       href={path(`/apps/${app.slug}`, lang)}
-      className="group relative flex flex-col overflow-hidden rounded-3xl border border-brand-500/10 bg-white shadow-[0_1px_2px_rgba(11,22,34,0.04),0_12px_40px_-24px_rgba(11,22,34,0.25)] transition duration-500 hover:-translate-y-1 hover:border-brand-500/25 hover:shadow-[0_1px_2px_rgba(11,22,34,0.04),0_28px_60px_-28px_rgba(11,22,34,0.35)]"
+      className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-brand-500/10 bg-white shadow-[0_1px_2px_rgba(11,22,34,0.04),0_12px_40px_-24px_rgba(11,22,34,0.25)] transition duration-500 hover:-translate-y-1 hover:border-brand-500/25 hover:shadow-[0_1px_2px_rgba(11,22,34,0.04),0_28px_60px_-28px_rgba(11,22,34,0.35)]"
     >
       {/* Cabecera con el degradado propio de la app y una captura asomando */}
       <div

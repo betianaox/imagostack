@@ -109,13 +109,13 @@ export function HomeView({ lang }: { lang: Locale }) {
 
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {apps.map((app, index) => (
-            <Reveal key={app.slug} delay={index * 90}>
+            <Reveal key={app.slug} delay={index * 90} className="h-full">
               <AppCard app={app} lang={lang} dict={dict} />
             </Reveal>
           ))}
 
           {/* Slot abierto: el catálogo crece a medida que se suman apps */}
-          <Reveal delay={apps.length * 90}>
+          <Reveal delay={apps.length * 90} className="h-full">
             <div className="flex h-full min-h-72 flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-brand-500/25 bg-brand-50/40 p-8 text-center">
               <span className="grid size-12 place-items-center rounded-2xl bg-white text-brand-500 shadow-sm">
                 <Icon name="sparkles" className="size-6" />
@@ -154,7 +154,7 @@ export function HomeView({ lang }: { lang: Locale }) {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {dict.home.pillars.map((pillar, index) => (
-              <Reveal key={pillar.title} delay={index * 80}>
+              <Reveal key={pillar.title} delay={index * 80} className="h-full">
                 <div className="h-full rounded-2xl border border-brand-500/10 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-brand-900/5">
                   <span className="grid size-11 place-items-center rounded-xl bg-brand-600 text-white shadow-sm shadow-brand-900/20">
                     <Icon name={pillar.icon} className="size-5.5" />

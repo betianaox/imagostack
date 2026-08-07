@@ -166,7 +166,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
 
           <div className="grid gap-5 sm:grid-cols-2">
             {app.features.map((feature, index) => (
-              <Reveal key={feature.title.es} delay={index * 80}>
+              <Reveal key={feature.title.es} delay={index * 80} className="h-full">
                 <div className="h-full rounded-2xl border border-brand-500/10 bg-white p-6">
                   <span
                     className="grid size-11 place-items-center rounded-xl text-white shadow-sm"
@@ -219,7 +219,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
           </h2>
           <div className="mt-7 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {others.slice(0, 3).map((other, index) => (
-              <Reveal key={other.slug} delay={index * 90}>
+              <Reveal key={other.slug} delay={index * 90} className="h-full">
                 <AppCard app={other} lang={lang} dict={dict} />
               </Reveal>
             ))}

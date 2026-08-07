@@ -105,7 +105,7 @@ export function SupportView({ lang }: { lang: Locale }) {
 
         <div className="mt-9 grid gap-5 md:grid-cols-2">
           {apps.map((app, index) => (
-            <Reveal key={app.slug} delay={index * 90}>
+            <Reveal key={app.slug} delay={index * 90} className="h-full">
               <div className="flex h-full flex-col gap-5 rounded-2xl border border-brand-500/10 bg-white p-6 sm:flex-row sm:items-center">
                 <AppIcon app={app} className="size-14 shrink-0" />
                 <div className="min-w-0 flex-1">

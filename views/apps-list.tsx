@@ -56,7 +56,7 @@ export function AppsListView({ lang }: { lang: Locale }) {
       <section className="shell py-16 md:py-20">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {apps.map((app, index) => (
-            <Reveal key={app.slug} delay={index * 90}>
+            <Reveal key={app.slug} delay={index * 90} className="h-full">
               <AppCard app={app} lang={lang} dict={dict} />
             </Reveal>
           ))}
