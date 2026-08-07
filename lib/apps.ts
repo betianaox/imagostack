@@ -546,9 +546,8 @@ export const apps: App[] = [
       ],
       permissions: [],
       processedOnDevice: true,
-      // TODO: confirmar el proveedor. Si los videos rewarded no se sirven con
-      // Google AdMob, reemplazar por el que corresponda — y que coincida con lo
-      // declarado en la sección Data safety de Google Play Console.
+      // Los videos con recompensa se sirven con AdMob. Esto tiene que seguir
+      // coincidiendo con lo declarado en Data safety de Google Play Console.
       thirdParties: [
         {
           name: "Google AdMob",
