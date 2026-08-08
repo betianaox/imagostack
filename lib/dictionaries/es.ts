@@ -265,6 +265,35 @@ export const es = {
     bodyAbout: "Sobre",
   },
 
+  chat: {
+    /** Etiqueta accesible del botón flotante */
+    open: "Abrir el chat",
+    close: "Cerrar el chat",
+    title: "Asistente de ImagoStack",
+    subtitle: "Responde al instante",
+    greeting:
+      "¡Hola! Puedo contarte sobre nuestras apps o sobre el desarrollo web que hacemos. ¿Qué necesitas?",
+    placeholder: "Escribe tu consulta…",
+    send: "Enviar",
+    thinking: "Escribiendo…",
+    /** Sugerencias iniciales, para que no arranque en blanco */
+    suggestions: [
+      "¿Qué apps tienen?",
+      "¿Hacen sitios a medida?",
+      "¿Qué tecnologías usan?",
+    ],
+    /** Cuando el bot no puede responder: no se explica el motivo real */
+    handoff:
+      "No puedo responderte en este momento. Déjanos tu consulta en el formulario y te contestamos en menos de 48 horas hábiles.",
+    handoffCta: "Ir al formulario",
+    limited:
+      "Demasiadas consultas seguidas. Espera un momento y vuelve a intentar.",
+    /** Una persona tomó la conversación */
+    operator: "A partir de ahora te atiende una persona del equipo.",
+    disclaimer: "Asistente automático. Puede equivocarse.",
+    retry: "Reintentar",
+  },
+
   notFound: {
     code: "ERROR 404",
     title: "Esta pantalla no existe",

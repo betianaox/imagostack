@@ -156,6 +156,78 @@ escribió, así que responder desde el cliente de correo va directo a la persona
   `output: "export"` de `next.config.ts`. Todas las páginas se siguen
   prerenderizando como HTML estático en el build.
 
+## Chatbot
+
+El motor vive en [`lib/chat/`](lib/chat) y **no sabe nada de ImagoStack**: está
+escrito contra cuatro interfaces ([`types.ts`](lib/chat/types.ts)) que cada
+sitio implementa a su manera. Mudarlo a otro proyecto es reescribir un solo
+archivo de configuración.
+
+| Pieza | Qué decide | Hoy en ImagoStack |
+| --- | --- | --- |
+| `LLMProvider` | De dónde salen las respuestas | Gemini por REST, sin SDK |
+| `Retriever` | Qué contexto ve el modelo | Corpus completo |
+| `RateLimiter` | Cuántas consultas se permiten | Memoria (minuto + hora) |
+| `ConversationStore` | Dónde vive la conversación | En ningún lado |
+
+Las cuatro se eligen en [`lib/chat/config.ts`](lib/chat/config.ts), junto con la
+personalidad del bot. Ese archivo es el único con contenido específico del sitio.
+
+### La base de conocimiento se genera sola
+
+[`lib/chat/knowledge.ts`](lib/chat/knowledge.ts) arma el corpus desde
+`lib/apps.ts`, los diccionarios y `lib/site.ts`. **No hay ni un texto duplicado**:
+cuando agregás una app o cambiás una FAQ, el bot se entera en el próximo build.
+Cada fragmento lleva su URL para que el bot enlace de verdad.
+
+Son unos 2.500 tokens contra una ventana de 1M, así que se manda entero. Eso no
+es solo más simple que una búsqueda vectorial: es **mejor**, porque una búsqueda
+puede traer el fragmento equivocado y el contexto completo no puede fallar.
+
+### Costo y límites
+
+Con el nivel gratuito de Google AI Studio **y sin facturación habilitada**, el
+abuso no puede generar una factura: la cuota se agota y el bot deja de
+responder. Por eso los límites protegen la *disponibilidad* —que un visitante no
+consuma la cuota diaria de todos—, no el dinero.
+
+Cuando el proveedor devuelve 429, el motor emite un evento `handoff`: el widget
+muestra un mensaje genérico y ofrece el formulario de contacto. **Al visitante no
+se le explica que se agotó la cuota.**
+
+### Variables de entorno
+
+| Variable | Efecto |
+| --- | --- |
+| `GEMINI_API_KEY` | Sin ella, responde un proveedor simulado y el sitio sigue funcionando |
+| `GEMINI_MODEL` | Opcional; por defecto `gemini-3.1-flash-lite` |
+| `CHAT_SIMULATE_QUOTA=1` | Fuerza el modo respaldo, para probarlo sin agotar la cuota |
+
+**Sobre el modelo:** la familia `gemini-2.5-*` devuelve 404 en proyectos nuevos
+("no longer available to new users"). El sitio usa `gemini-3.1-flash-lite`, que
+es estable —no preview— y sobra para un contexto de 2.000 tokens con respuestas
+cortas. La alternativa `gemini-flash-lite-latest` sigue siempre la versión
+vigente, a cambio de que pueda cambiar sin aviso.
+
+Para ver qué modelos habilita un proyecto:
+
+```bash
+curl -s https://generativelanguage.googleapis.com/v1beta/models \
+  -H "x-goog-api-key: $GEMINI_API_KEY"
+```
+
+### Preparado para la toma manual
+
+La v1 ya nace con lo que hace falta para que una persona pueda responder en
+lugar del bot, aunque todavía no exista el panel: identificador de conversación,
+mensajes como datos con rol y marca de tiempo, campo `mode` y el timeout del
+operador —que se resuelve al recibir un mensaje, sin procesos de fondo ni tareas
+programadas.
+
+El guardia que hace que el bot se calle cuando entra una persona es una sola
+condición en [`engine.ts`](lib/chat/engine.ts). Sumar el panel es implementar
+`ConversationStore` contra Firestore; el motor no se toca.
+
 ## Datos globales del sitio
 
 [`lib/site.ts`](lib/site.ts) concentra nombre, dominio, slogan, casillas de

@@ -1,3 +1,4 @@
+import { ChatWidget } from "@/components/chat/chat-widget";
 import { LocaleRedirect } from "@/components/locale-redirect";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -73,6 +74,7 @@ export function SiteShell({
         {children}
       </main>
       <SiteFooter lang={lang} dict={dict} />
+      <ChatWidget lang={lang} dict={dict} />
       <LocaleRedirect currentLang={lang} />
       <script
         type="application/ld+json"

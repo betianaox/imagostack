@@ -261,6 +261,30 @@ export const pt: Dictionary = {
     bodyAbout: "Sobre",
   },
 
+  chat: {
+    open: "Abrir o chat",
+    close: "Fechar o chat",
+    title: "Assistente da ImagoStack",
+    subtitle: "Responde na hora",
+    greeting:
+      "Olá! Posso falar sobre nossos apps ou sobre o desenvolvimento web que fazemos. Do que você precisa?",
+    placeholder: "Escreva sua dúvida…",
+    send: "Enviar",
+    thinking: "Digitando…",
+    suggestions: [
+      "Quais apps vocês têm?",
+      "Vocês fazem sites sob medida?",
+      "Quais tecnologias vocês usam?",
+    ],
+    handoff:
+      "Não consigo responder agora. Deixe sua dúvida no formulário e respondemos em menos de 48 horas úteis.",
+    handoffCta: "Ir para o formulário",
+    limited: "Muitas mensagens seguidas. Espere um instante e tente de novo.",
+    operator: "A partir de agora você está sendo atendido por uma pessoa.",
+    disclaimer: "Assistente automático. Pode errar.",
+    retry: "Tentar de novo",
+  },
+
   notFound: {
     code: "ERRO 404",
     title: "Esta tela não existe",

@@ -1,0 +1,80 @@
+rules_version = '2';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// REGLAS DE SEGURIDAD DE FIRESTORE
+// ─────────────────────────────────────────────────────────────────────────────
+// Como el navegador escribe directo en Firestore, estas reglas son la única
+// barrera real: no hay servidor propio validando en el medio. Un error acá no
+// es un bug, es una filtración.
+//
+// El modelo es simple:
+//   · Cada visitante entra con auth anónima y solo ve SU conversación.
+//   · El operador (una cuenta de Google en la lista) ve todas y puede tomarlas.
+//   · Nadie puede editar ni borrar mensajes ya escritos.
+//
+// Se despliegan con:  firebase deploy --only firestore:rules
+// ─────────────────────────────────────────────────────────────────────────────
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // El operador se identifica por correo verificado de Google.
+    // Cambiar de operador implica editar esto y volver a desplegar: es a
+    // propósito, para que quede en el historial del repo.
+    function isOperator() {
+      return signedIn()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['imagostack8@gmail.com'];
+    }
+
+    function isOwner(data) {
+      return signedIn() && data.ownerId == request.auth.uid;
+    }
+
+    match /conversations/{conversationId} {
+
+      // Al crear, el visitante solo puede declararse dueño de lo suyo y la
+      // conversación siempre arranca en modo bot.
+      allow create: if signedIn()
+        && request.resource.data.ownerId == request.auth.uid
+        && request.resource.data.mode == 'bot';
+
+      allow read: if isOperator() || isOwner(resource.data);
+
+      // El dueño puede actualizar su conversación pero NO cambiar el modo ni
+      // el dueño: tomar una conversación es potestad exclusiva del operador.
+      allow update: if isOperator()
+        || (isOwner(resource.data)
+            && request.resource.data.ownerId == resource.data.ownerId
+            && request.resource.data.mode == resource.data.mode);
+
+      allow delete: if isOperator();
+
+      match /messages/{messageId} {
+
+        // `ownerId` se repite en cada mensaje a propósito: leer la
+        // conversación padre con get() costaría una lectura extra por cada
+        // mensaje evaluado, y esto se lee en tiempo real.
+        allow read: if isOperator() || isOwner(resource.data);
+
+        allow create: if isOperator()
+          || (isOwner(request.resource.data)
+              && request.resource.data.role in ['user', 'assistant']
+              && request.resource.data.text is string
+              && request.resource.data.text.size() <= 5000);
+
+        // Un mensaje escrito no se toca. Sin excepciones.
+        allow update, delete: if false;
+      }
+    }
+
+    // Todo lo que no esté contemplado arriba queda cerrado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

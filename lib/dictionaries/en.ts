@@ -261,6 +261,30 @@ export const en: Dictionary = {
     bodyAbout: "About",
   },
 
+  chat: {
+    open: "Open chat",
+    close: "Close chat",
+    title: "ImagoStack assistant",
+    subtitle: "Replies instantly",
+    greeting:
+      "Hi! I can tell you about our apps or about the web development we do. What do you need?",
+    placeholder: "Type your question…",
+    send: "Send",
+    thinking: "Typing…",
+    suggestions: [
+      "What apps do you have?",
+      "Do you build custom sites?",
+      "What technologies do you use?",
+    ],
+    handoff:
+      "I can't answer right now. Leave your question in the form and we'll reply within 48 business hours.",
+    handoffCta: "Go to the form",
+    limited: "Too many messages in a row. Wait a moment and try again.",
+    operator: "From now on, someone from the team is looking after you.",
+    disclaimer: "Automated assistant. It can be wrong.",
+    retry: "Retry",
+  },
+
   notFound: {
     code: "ERROR 404",
     title: "This screen doesn't exist",
