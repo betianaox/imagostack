@@ -7,10 +7,13 @@ rules_version = '2';
 // barrera real: no hay servidor propio validando en el medio. Un error acá no
 // es un bug, es una filtración.
 //
-// El modelo es simple:
-//   · Cada visitante entra con auth anónima y solo ve SU conversación.
-//   · El operador (una cuenta de Google en la lista) ve todas y puede tomarlas.
-//   · Nadie puede editar ni borrar mensajes ya escritos.
+// El modelo es el mismo que va a usarse en cualquier proyecto:
+//
+//   users/{uid}        rol de cada persona (visitor | operator | admin)
+//   conversations/{id}    hilo de chat, con su dueño y su modo
+//     messages/{id}       mensajes, inmutables una vez escritos
+//
+// Lo que cambia entre un sitio y otro es quién tiene cada rol, no las reglas.
 //
 // Se despliegan con:  firebase deploy --only firestore:rules
 // ─────────────────────────────────────────────────────────────────────────────
@@ -22,23 +25,74 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // El operador se identifica por correo verificado de Google.
-    // Cambiar de operador implica editar esto y volver a desplegar: es a
-    // propósito, para que quede en el historial del repo.
-    function isOperator() {
+    // Salvavidas: este correo siempre puede operar, aunque la coleccion de
+    // usuarios este vacia o alguien se equivoque asignando roles. Sin esto,
+    // un error de datos deja el panel inaccesible para siempre.
+    function isBootstrapAdmin() {
       return signedIn()
         && request.auth.token.email_verified == true
         && request.auth.token.email in ['imagostack8@gmail.com'];
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function hasProfile() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    // El get() solo se evalua si hace falta: el bootstrap corta antes.
+    function roleIs(role) {
+      return hasProfile() && userDoc().data.role == role;
+    }
+
+    function isAdmin() {
+      return isBootstrapAdmin() || roleIs('admin');
+    }
+
+    // Quien puede atender conversaciones desde el panel.
+    function isOperator() {
+      return isAdmin() || roleIs('operator');
     }
 
     function isOwner(data) {
       return signedIn() && data.ownerId == request.auth.uid;
     }
 
+    // ── Usuarios ────────────────────────────────────────────────────────────
+    // El perfil se crea al iniciar sesión. Los visitantes anónimos no tienen
+    // documento acá: viven solo en su conversación, para no llenar la
+    // colección de registros de gente que no vuelve.
+    match /users/{uid} {
+
+      function validLang(data) {
+        return data.lang in ['es', 'en', 'pt'];
+      }
+
+      allow read: if isAdmin() || (signedIn() && request.auth.uid == uid);
+
+      // Al crear su perfil nadie puede auto-asignarse un rol distinto de
+      // visitante: promover es potestad de un administrador.
+      allow create: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.role == 'visitor'
+        && validLang(request.resource.data);
+
+      // El dueño puede editar sus datos —incluido el idioma— pero nunca su rol.
+      allow update: if validLang(request.resource.data)
+        && (isAdmin()
+            || (signedIn()
+                && request.auth.uid == uid
+                && request.resource.data.role == resource.data.role));
+
+      allow delete: if isAdmin();
+    }
+
+    // ── Conversaciones ──────────────────────────────────────────────────────
     match /conversations/{conversationId} {
 
-      // Al crear, el visitante solo puede declararse dueño de lo suyo y la
-      // conversación siempre arranca en modo bot.
       allow create: if signedIn()
         && request.resource.data.ownerId == request.auth.uid
         && request.resource.data.mode == 'bot';
@@ -46,13 +100,13 @@ service cloud.firestore {
       allow read: if isOperator() || isOwner(resource.data);
 
       // El dueño puede actualizar su conversación pero NO cambiar el modo ni
-      // el dueño: tomar una conversación es potestad exclusiva del operador.
+      // el dueño: tomar una conversación es potestad del operador.
       allow update: if isOperator()
         || (isOwner(resource.data)
             && request.resource.data.ownerId == resource.data.ownerId
             && request.resource.data.mode == resource.data.mode);
 
-      allow delete: if isOperator();
+      allow delete: if isAdmin();
 
       match /messages/{messageId} {
 

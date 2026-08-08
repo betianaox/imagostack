@@ -329,6 +329,65 @@ export const es = {
     retry: "Reintentar",
   },
 
+  panel: {
+    title: "Panel",
+    subtitle: "Conversaciones",
+    signInTitle: "Entrar al panel",
+    signInText: "Inicia sesión con una cuenta autorizada.",
+    signInButton: "Entrar con Google",
+    signingIn: "Entrando…",
+    signOut: "Salir",
+    noAccessTitle: "Sin permisos",
+    noAccessText:
+      "Tu cuenta no tiene acceso al panel. Si crees que es un error, avísale a un administrador.",
+    loading: "Cargando…",
+    listTitle: "Conversaciones",
+    empty: "Todavía no hay conversaciones.",
+    emptyHint: "Van a aparecer acá en cuanto alguien escriba al chat.",
+    selectOne: "Elige una conversación de la lista.",
+    /** Estados de cada conversación */
+    modeBot: "Responde el bot",
+    modeMine: "La estás atendiendo",
+    modeOther: "La atiende otra persona",
+    take: "Tomar la conversación",
+    release: "Devolver al bot",
+    placeholder: "Escribe tu respuesta…",
+    send: "Enviar",
+    takeFirst: "Toma la conversación para poder responder.",
+    visitor: "Visitante",
+    bot: "Bot",
+    you: "Tú",
+    /** Aviso cuando el turno del operador está por expirar */
+    expiring: "Sin actividad: vuelve al bot en breve.",
+    backToList: "Volver",
+    collapse: "Contraer",
+    expand: "Expandir",
+
+    /** Nombres de las secciones del menú lateral */
+    sections: {
+      conversations: "Conversaciones",
+      siteBot: "Asistente del sitio",
+      messages: "Mensajes",
+      users: "Usuarios",
+    },
+
+    /** Sección de usuarios */
+    usersIntro: "Quién entra al panel y con qué permisos.",
+    usersEmpty: "Todavía no hay usuarios registrados.",
+    roleVisitor: "Visitante",
+    roleOperator: "Operador",
+    roleAdmin: "Administrador",
+    roleLabel: "Rol",
+    roleError: "No se pudo cambiar el rol.",
+    itsYou: "Eres tú",
+    lastSeen: "Registrado",
+
+    /** Sección de mensajes, todavía sin construir */
+    messagesIntro: "Consultas recibidas desde los formularios del sitio.",
+    messagesSoon:
+      "Esta sección todavía no está construida: hoy los mensajes llegan solo por correo.",
+  },
+
   notFound: {
     code: "ERROR 404",
     title: "Esta pantalla no existe",

@@ -1,3 +1,4 @@
+import { SessionSync } from "@/components/auth/session-sync";
 import { ChatWidget } from "@/components/chat/chat-widget";
 import { LocaleRedirect } from "@/components/locale-redirect";
 import { ScrollToTop } from "@/components/scroll-to-top";
@@ -76,6 +77,7 @@ export function SiteShell({
       </main>
       <SiteFooter lang={lang} dict={dict} />
       <ChatWidget lang={lang} dict={dict} />
+      <SessionSync lang={lang} />
       <ScrollToTop />
       <LocaleRedirect currentLang={lang} />
       <script

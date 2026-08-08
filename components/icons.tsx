@@ -85,6 +85,19 @@ export const icons = {
       <path d="m15 8 5 4-5 4" />
     </svg>
   ),
+  logout: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="M9.5 4.5H6a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h3.5" />
+      <path d="m15 8.5 3.5 3.5-3.5 3.5" />
+      <path d="M18.5 12H9.5" />
+    </svg>
+  ),
+  sidebar: (p: Props) => (
+    <svg {...base} {...p}>
+      <rect x="3" y="4" width="18" height="16" rx="2.5" />
+      <path d="M9.5 4v16" />
+    </svg>
+  ),
   layout: (p: Props) => (
     <svg {...base} {...p}>
       <rect x="3" y="4" width="18" height="16" rx="2.5" />

@@ -12,6 +12,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
+    // Avatares de las cuentas de Google que entran al panel
+    remotePatterns: [
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
+    ],
   },
 };
 
