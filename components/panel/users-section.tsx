@@ -99,7 +99,7 @@ export function UsersSection({ dict }: { dict: Dictionary }) {
   };
 
   return (
-    <div className="flex h-[calc(100vh-17rem)] min-h-96 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
+    <div className="flex h-[calc(100dvh-13rem)] min-h-96 md:h-[calc(100vh-17rem)] flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
       <div className="shrink-0 border-b border-brand-500/10 px-4 py-3">
         <p className="text-sm font-semibold text-ink">
           {panel.sections.users}
@@ -158,7 +158,9 @@ export function UsersSection({ dict }: { dict: Dictionary }) {
                   onChange={(event) =>
                     void changeRole(item, event.target.value as Role)
                   }
-                  className="rounded-xl border border-brand-500/20 bg-white px-3 py-2 text-sm text-ink/80 transition focus:border-brand-500 focus:outline-none disabled:opacity-50"
+                  /* 16px y 44px de alto: lo mínimo para tocar cómodo y para
+                     que iOS no haga zoom al abrir el selector. */
+                  className="min-h-11 rounded-xl border border-brand-500/20 bg-white px-3 py-2 text-base text-ink/80 transition focus:border-brand-500 focus:outline-none disabled:opacity-50 md:text-sm"
                 >
                   {ROLES.map((role) => (
                     <option key={role} value={role}>

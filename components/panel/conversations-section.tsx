@@ -41,6 +41,25 @@ type Message = {
 const OPERATOR_TIMEOUT_MINUTES = 5;
 
 /**
+ * Minutos sin actividad tras los cuales se da por ida a la visitante.
+ *
+ * El navegador guarda su conversación en `sessionStorage`: al cerrar la
+ * pestaña la pierde. Una respuesta escrita después de eso no le llega a nadie
+ * —el hilo queda en el panel, pero del otro lado ya no hay pantalla—, así que
+ * pasado este rato el botón de tomar se apaga en vez de dejar creer que sí.
+ *
+ * Media hora es deliberadamente holgado: alcanza para ir a buscar un dato y
+ * volver, y no tanto como para responderle a alguien que ya se fue.
+ */
+const VISITOR_GONE_MINUTES = 30;
+
+/** Si la visitante ya no está del otro lado. */
+function isInactive(conversation: PanelConversation, now: number): boolean {
+  if (!now || !conversation.updatedAtMs) return false;
+  return now - conversation.updatedAtMs > VISITOR_GONE_MINUTES * 60_000;
+}
+
+/**
  * Reloj compartido. Los estados dependen del paso del tiempo —"hace 3m", "sin
  * actividad"— y sin un tick quedarían congelados hasta que algo más provocara
  * un re-render. Leer la hora al pintar, además, haría impuro el render.
@@ -95,6 +114,7 @@ export function useConversationsFeed() {
               operatorId: data.operatorId ?? null,
               operatorSeenAt: data.operatorSeenAt ?? null,
               updatedAtMs: data.updatedAt?.toMillis?.() ?? 0,
+              lastMessage: data.lastMessage ? String(data.lastMessage) : "",
             };
           }),
         );
@@ -119,6 +139,8 @@ export function ConversationsNav({ dict }: { dict: Dictionary }) {
   const select = usePanel((state) => state.select);
   const now = useNow();
 
+  const [query, setQuery] = useState("");
+
   if (conversations === null) {
     return <p className="px-3 py-2 text-xs text-ink/45">{panel.loading}</p>;
   }
@@ -132,39 +154,91 @@ export function ConversationsNav({ dict }: { dict: Dictionary }) {
     );
   }
 
+  const visible = conversations.filter((item) => matches(item, query));
+
   return (
-    <ul className="max-h-80 overflow-y-auto">
-      {conversations.map((conversation) => (
-        <li key={conversation.id}>
-          <button
-            type="button"
-            onClick={() => select(conversation.id)}
-            aria-current={conversation.id === selectedId}
-            className={`flex w-full flex-col items-start gap-1 rounded-xl px-2.5 py-2 text-left transition ${
-              conversation.id === selectedId
-                ? "bg-brand-50"
-                : "hover:bg-brand-50/60"
-            }`}
-          >
-            <span className="flex w-full items-center justify-between gap-2">
-              <StateBadge
-                conversation={conversation}
-                uid={uid}
-                panel={panel}
-                now={now}
-              />
-              <span className="shrink-0 text-[10px] text-ink/40 tabular-nums">
-                {formatTime(conversation.updatedAtMs, now)}
-              </span>
-            </span>
-            <span className="truncate font-mono text-[10px] text-ink/45">
-              {conversation.id.slice(0, 10)} · {conversation.lang}
-            </span>
-          </button>
-        </li>
-      ))}
-    </ul>
+    <div className="pt-1">
+      {/*
+        El buscador aparece recién cuando hay lista suficiente: con tres hilos
+        a la vista es un campo que estorba, con treinta es lo único que sirve.
+      */}
+      {conversations.length > 5 && (
+        <div className="relative mb-1.5 pr-1">
+          <Icon
+            name="search"
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2 text-ink/35"
+          />
+          <input
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={panel.search}
+            aria-label={panel.search}
+            /* 16px en el celular: menos que eso hace que iOS haga zoom */
+            className="w-full rounded-xl border border-brand-500/15 py-2 pr-2.5 pl-8 text-base text-ink/80 transition focus:border-brand-500 focus:outline-none md:text-xs"
+          />
+        </div>
+      )}
+
+      {visible.length === 0 ? (
+        <p className="px-2.5 py-2 text-xs text-ink/50">{panel.noMatches}</p>
+      ) : (
+        /*
+          Cinco hilos a la vista y el resto por scroll: con uso real la lista
+          crece sin techo y empujaría el resto del menú fuera de la pantalla.
+        */
+        <ul className="max-h-76 overflow-y-auto overscroll-contain pr-1">
+          {visible.map((conversation) => (
+            <li key={conversation.id}>
+              <button
+                type="button"
+                onClick={() => select(conversation.id)}
+                aria-current={conversation.id === selectedId}
+                className={`flex w-full flex-col items-start gap-1 rounded-xl px-2.5 py-2 text-left transition ${
+                  conversation.id === selectedId
+                    ? "bg-brand-50"
+                    : "hover:bg-brand-50/60"
+                }`}
+              >
+                <span className="flex w-full items-center justify-between gap-2">
+                  <StateBadge
+                    conversation={conversation}
+                    uid={uid}
+                    panel={panel}
+                    now={now}
+                  />
+                  <span className="shrink-0 text-[10px] text-ink/40 tabular-nums">
+                    {formatTime(conversation.updatedAtMs, now)}
+                  </span>
+                </span>
+                <span className="line-clamp-2 w-full text-left text-[11px] leading-snug text-ink/55">
+                  {conversation.lastMessage || conversation.id.slice(0, 10)}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
+}
+
+/**
+ * Filtro de la lista. Busca en el último mensaje, en el idioma y en el id.
+ *
+ * Es búsqueda sobre lo que ya está cargado, no una consulta: alcanza para
+ * encontrar un hilo entre los cincuenta recientes, que es el caso real. Buscar
+ * dentro de todos los mensajes de todas las conversaciones necesitaría un
+ * índice de texto aparte, y eso es otra cosa.
+ */
+function matches(conversation: PanelConversation, query: string): boolean {
+  const term = query.trim().toLowerCase();
+  if (!term) return true;
+
+  return [conversation.lastMessage, conversation.lang, conversation.id]
+    .filter(Boolean)
+    .some((value) => String(value).toLowerCase().includes(term));
 }
 
 // ── Chat, en el área grande ─────────────────────────────────────────────────
@@ -233,6 +307,7 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
 
   const messages = thread.id === selectedId ? thread.messages : [];
   const isMine = Boolean(selected && selected.operatorId === user?.uid);
+  const inactive = Boolean(selected && isInactive(selected, now));
 
   useEffect(() => {
     threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight });
@@ -292,7 +367,11 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
     // Renueva el turno: sin esto la conversación volvería sola al bot.
     await firestore.updateDoc(
       firestore.doc(db, COLLECTIONS.conversations, selected.id),
-      { operatorSeenAt: Date.now(), updatedAt: firestore.serverTimestamp() },
+      {
+        lastMessage: text.slice(0, 160),
+        operatorSeenAt: Date.now(),
+        updatedAt: firestore.serverTimestamp(),
+      },
     );
   }, [draft, selected]);
 
@@ -302,35 +381,41 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
       página entera se estiraría y habría que scrollear el documento para leer
       lo último. Acá el alto es fijo y lo que scrollea es el hilo por dentro.
     */
-    <div className="flex h-[calc(100vh-17rem)] min-h-96 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
+    <div className="flex h-[calc(100dvh-13rem)] min-h-96 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white md:h-[calc(100vh-17rem)]">
       {!selected ? (
-        <div className="grid flex-1 place-items-center p-8 text-sm text-ink/50">
+        <div className="grid flex-1 place-items-center p-8 text-center text-sm text-ink/50">
           {panel.selectOne}
         </div>
       ) : (
         <>
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-brand-500/10 px-4 py-3">
-            <span className="flex items-center gap-2.5">
+          <div className="flex flex-wrap items-center justify-between gap-2.5 border-b border-brand-500/10 px-3 py-2.5 md:px-4 md:py-3">
+            <span className="flex min-w-0 items-center gap-2">
               <StateBadge
                 conversation={selected}
                 uid={user?.uid}
                 panel={panel}
                 now={now}
               />
-              <span className="font-mono text-[11px] text-ink/45">
+              <span className="truncate font-mono text-[11px] text-ink/45">
                 {selected.id.slice(0, 10)} · {selected.lang}
               </span>
             </span>
 
+            {/*
+              Con la conversación fría el botón se apaga: escribir ahí no le
+              llega a nadie y dejarlo habilitado haría creer lo contrario.
+              Devolverla al bot, en cambio, siempre tiene que poder hacerse.
+            */}
             <button
               type="button"
+              disabled={inactive && selected.mode === "bot"}
               onClick={() =>
                 setMode(
                   selected,
                   selected.mode === "operator" ? "bot" : "operator",
                 )
               }
-              className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition ${
+              className={`min-h-11 rounded-xl px-3.5 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-40 ${
                 selected.mode === "operator"
                   ? "border border-brand-500/20 text-brand-700 hover:bg-brand-50"
                   : "bg-coral-500 text-white hover:bg-coral-600"
@@ -339,6 +424,12 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
               {selected.mode === "operator" ? panel.release : panel.take}
             </button>
           </div>
+
+          {inactive && selected.mode === "bot" && (
+            <p className="shrink-0 border-b border-amber-500/20 bg-amber-50 px-4 py-2 text-xs leading-relaxed text-amber-800">
+              {panel.inactiveHint}
+            </p>
+          )}
 
           <div ref={threadRef} className="flex-1 space-y-3 overflow-y-auto p-4">
             {messages.map((message) => (
@@ -367,13 +458,15 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
                   rows={1}
                   maxLength={5000}
                   placeholder={panel.placeholder}
-                  className="max-h-28 flex-1 resize-none rounded-xl border border-brand-500/20 px-3.5 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none"
+                  /* 16px de tipografía: menos que eso hace que iOS haga zoom
+                     al enfocar el campo y descuadre la pantalla entera. */
+                  className="max-h-28 flex-1 resize-none rounded-xl border border-brand-500/20 px-3.5 py-2.5 text-base transition focus:border-brand-500 focus:outline-none md:text-sm"
                 />
                 <button
                   type="submit"
                   disabled={!draft.trim()}
                   aria-label={panel.send}
-                  className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-600 text-white transition hover:bg-brand-700 disabled:opacity-40"
+                  className="grid size-11 shrink-0 place-items-center rounded-xl bg-brand-600 text-white transition hover:bg-brand-700 disabled:opacity-40"
                 >
                   <Icon name="arrowRight" className="size-4.5" />
                 </button>
@@ -410,7 +503,13 @@ function StateBadge({
       OPERATOR_TIMEOUT_MINUTES * 60_000;
 
   if (conversation.mode === "bot") {
-    return <Badge tone="green">{panel.modeBot}</Badge>;
+    // Que se vea desde la lista: sin esto habría que abrir cada hilo para
+    // darse cuenta de que del otro lado ya no hay nadie.
+    return isInactive(conversation, now) ? (
+      <Badge tone="gray">{panel.inactive}</Badge>
+    ) : (
+      <Badge tone="green">{panel.modeBot}</Badge>
+    );
   }
   if (stale) {
     return <Badge tone="amber">{panel.expiring}</Badge>;

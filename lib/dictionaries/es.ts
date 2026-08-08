@@ -344,12 +344,22 @@ export const es = {
     empty: "Todavía no hay conversaciones.",
     emptyHint: "Van a aparecer acá en cuanto alguien escriba al chat.",
     selectOne: "Elige una conversación de la lista.",
+    /** Buscador de la lista */
+    search: "Buscar en las conversaciones…",
+    noMatches: "Ninguna conversación coincide con la búsqueda.",
+    /** Menú lateral en pantallas chicas */
+    menu: "Secciones",
+    close: "Cerrar",
     /** Estados de cada conversación */
     modeBot: "Responde el bot",
     modeMine: "La estás atendiendo",
     modeOther: "La atiende otra persona",
     take: "Tomar la conversación",
     release: "Devolver al bot",
+    /** Cuando el visitante ya cerró el chat y no va a recibir la respuesta */
+    inactive: "Inactiva",
+    inactiveHint:
+      "El visitante cerró el chat: si respondes ahora no lo va a ver. Escríbele por correo si dejó uno.",
     placeholder: "Escribe tu respuesta…",
     send: "Enviar",
     takeFirst: "Toma la conversación para poder responder.",

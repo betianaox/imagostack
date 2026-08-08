@@ -180,6 +180,12 @@ export const icons = {
       <path d="m6 9.5 6 6 6-6" />
     </svg>
   ),
+  search: (p: Props) => (
+    <svg {...base} {...p}>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </svg>
+  ),
   close: (p: Props) => (
     <svg {...base} {...p}>
       <path d="m6 6 12 12M18 6 6 18" />

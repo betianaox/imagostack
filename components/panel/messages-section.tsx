@@ -21,7 +21,7 @@ export function MessagesSection({ dict }: { dict: Dictionary }) {
   const panel = dict.panel;
 
   return (
-    <div className="flex h-[calc(100vh-17rem)] min-h-96 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
+    <div className="flex h-[calc(100dvh-13rem)] min-h-96 md:h-[calc(100vh-17rem)] flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
       <div className="shrink-0 border-b border-brand-500/10 px-4 py-3">
         <p className="text-sm font-semibold text-ink">
           {panel.sections.messages}

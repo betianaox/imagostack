@@ -168,9 +168,15 @@ export function useConversation(lang: Locale, enabled: boolean) {
             at: Date.now(),
           },
         );
+        // El último mensaje viaja también en la conversación: es lo que deja
+        // que el panel muestre de qué se habla —y que se pueda buscar por
+        // contenido— sin leer los mensajes de cada hilo.
         await firestore.updateDoc(
           firestore.doc(db as never, "conversations", id),
-          { updatedAt: firestore.serverTimestamp() },
+          {
+            lastMessage: message.text.slice(0, 160),
+            updatedAt: firestore.serverTimestamp(),
+          },
         );
       } catch (error) {
         console.warn("Chat: no se pudo guardar el mensaje", error);

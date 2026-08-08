@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Icon, type IconName } from "@/components/icons";
 import { signInWithGoogle, signOut } from "@/lib/firebase/session";
 import type { Dictionary } from "@/lib/dictionaries";
+import { usePanel } from "@/lib/store/panel";
 import { useSession, type SessionUser } from "@/lib/store/session";
 import { site } from "@/lib/site";
 
@@ -50,6 +51,13 @@ export function PanelShell({
 
   /** Grupos plegados. Arrancan todos desplegados, como pediste. */
   const [folded, setFolded] = useState<string[]>([]);
+
+  /**
+   * El cajón del menú en el celular. Vive en el store y no acá porque quien
+   * lo cierra al elegir una conversación es la lista, que está adentro.
+   */
+  const navOpen = usePanel((state) => state.navOpen);
+  const setNavOpen = usePanel((state) => state.setNavOpen);
 
   const signedIn = Boolean(user && !user.isAnonymous);
 
@@ -120,11 +128,12 @@ export function PanelShell({
     }
     setActive(id);
     setFolded((folded) => folded.filter((item) => item !== id));
+    setNavOpen(false);
   };
 
   return (
-    <div className="shell py-8 md:py-10">
-      <header className="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div className="shell py-6 md:py-10">
+      <header className="mb-4 flex flex-wrap items-center justify-between gap-3 md:mb-6 md:gap-4">
         <div>
           <p className="text-[13px] font-semibold tracking-[0.14em] text-coral-600 uppercase">
             {site.name}
@@ -143,9 +152,54 @@ export function PanelShell({
         </div>
       </header>
 
+      {/*
+        En el celular el menú no cabe al lado del contenido sin dejar a los dos
+        ilegibles, así que se guarda detrás de este botón y el chat se queda
+        con la pantalla entera. En escritorio es una columna fija.
+      */}
+      <button
+        type="button"
+        onClick={() => setNavOpen(true)}
+        className="mb-3 flex min-h-12 w-full items-center gap-2.5 rounded-2xl border border-brand-500/10 bg-white px-3.5 py-2.5 text-left text-sm font-semibold text-ink/80 md:hidden"
+      >
+        <Icon name="menu" className="size-5 shrink-0 text-brand-600" />
+        <span className="flex-1 truncate">{current?.label}</span>
+        <span className="text-xs font-medium text-ink/40">{panel.menu}</span>
+      </button>
+
       <div className="grid gap-5 md:grid-cols-[15rem_1fr]">
+        {/* Fondo del cajón: tocar afuera lo cierra */}
+        {navOpen && (
+          <button
+            type="button"
+            aria-label={panel.close}
+            onClick={() => setNavOpen(false)}
+            className="fixed inset-0 z-40 bg-ink/40 md:hidden"
+          />
+        )}
+
         {/* Navegación jerárquica */}
-        <aside className="rounded-2xl border border-brand-500/10 bg-white p-2">
+        <aside
+          className={`rounded-2xl border border-brand-500/10 bg-white p-2 ${
+            navOpen
+              ? "fixed inset-x-3 top-3 z-50 max-h-[90dvh] overflow-y-auto shadow-2xl shadow-ink/20 md:static md:inset-auto md:max-h-none md:shadow-none"
+              : "hidden md:block"
+          }`}
+        >
+          <div className="mb-1 flex items-center justify-between pr-1 pl-2 md:hidden">
+            <span className="text-xs font-semibold tracking-wide text-ink/45 uppercase">
+              {panel.menu}
+            </span>
+            <button
+              type="button"
+              onClick={() => setNavOpen(false)}
+              aria-label={panel.close}
+              className="grid size-10 place-items-center rounded-xl text-ink/45 transition hover:bg-brand-50"
+            >
+              <Icon name="close" className="size-5" />
+            </button>
+          </div>
+
           <nav className="flex flex-col gap-0.5">
             {sections.map((section) => {
               const active = section.id === current?.id;
@@ -159,7 +213,7 @@ export function PanelShell({
                     onClick={() => onSelect(section.id)}
                     aria-current={active}
                     aria-expanded={section.nav ? showsChildren : undefined}
-                    className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${
+                    className={`flex min-h-12 w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${
                       active
                         ? "bg-brand-600 text-white shadow-sm shadow-brand-900/20"
                         : "text-ink/70 hover:bg-brand-50 hover:text-brand-700"
