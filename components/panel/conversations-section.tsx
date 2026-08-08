@@ -5,28 +5,29 @@ import { Icon } from "@/components/icons";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import type { Dictionary } from "@/lib/dictionaries";
 import { useSession } from "@/lib/store/session";
+import {
+  selectCurrentConversation,
+  usePanel,
+  type PanelConversation,
+} from "@/lib/store/panel";
 
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- * SECCIÓN: CONVERSACIONES
+ * CONVERSACIONES
  * ─────────────────────────────────────────────────────────────────────────────
- * Es una sección del panel, no el panel: el login, el control de acceso y la
- * navegación viven en `PanelShell`. Así, sumar turnos, productos o usuarios es
- * escribir otra sección como esta.
+ * Este módulo aporta tres piezas al panel:
+ *
+ *   useConversationsFeed   el listener, montado una sola vez
+ *   ConversationsNav       la lista, que va como hijos del menú lateral
+ *   ConversationsSection   el chat, que ocupa el área grande
+ *
+ * Están separadas porque viven en lugares distintos de la pantalla, y juntas
+ * en un archivo porque miran los mismos datos. Lo que las conecta es el store
+ * del panel, no props: el caparazón es genérico y no sabe de conversaciones.
  *
  * Todo es en tiempo real por listeners de Firestore: tomar una conversación se
  * refleja en el navegador del visitante al instante, sin servidor en el medio.
  */
-
-type Conversation = {
-  id: string;
-  ownerId: string;
-  mode: "bot" | "operator";
-  lang: string;
-  operatorId?: string | null;
-  operatorSeenAt?: number | null;
-  updatedAtMs: number;
-};
 
 type Message = {
   id: string;
@@ -39,32 +40,12 @@ type Message = {
 /** Minutos sin escribir tras los cuales la conversación vuelve sola al bot. */
 const OPERATOR_TIMEOUT_MINUTES = 5;
 
-export function ConversationsSection({ dict }: { dict: Dictionary }) {
-  const panel = dict.panel;
-  const user = useSession((state) => state.user);
-  const allowed = useSession((state) => state.canOperate);
-
-  const [conversations, setConversations] = useState<Conversation[] | null>(null);
-  const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [draft, setDraft] = useState("");
-  const threadRef = useRef<HTMLDivElement>(null);
-
-  /**
-   * Los mensajes van atados a su conversación en el mismo estado: al cambiar
-   * de hilo se derivan vacíos, sin limpiarlos desde un efecto y sin que
-   * aparezcan por un instante los del anterior.
-   */
-  const [thread, setThread] = useState<{ id: string; messages: Message[] }>({
-    id: "",
-    messages: [],
-  });
-
-  /**
-   * Reloj compartido. Los estados dependen del paso del tiempo —"hace 3m",
-   * "sin actividad"— y sin un tick quedarían congelados hasta que algo más
-   * provocara un re-render. Leer la hora al pintar, además, haría impuro el
-   * render.
-   */
+/**
+ * Reloj compartido. Los estados dependen del paso del tiempo —"hace 3m", "sin
+ * actividad"— y sin un tick quedarían congelados hasta que algo más provocara
+ * un re-render. Leer la hora al pintar, además, haría impuro el render.
+ */
+function useNow(): number {
   const [now, setNow] = useState(0);
 
   useEffect(() => {
@@ -74,7 +55,18 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
     return () => window.clearInterval(id);
   }, []);
 
-  // ── Lista de conversaciones, en vivo ──────────────────────────────────────
+  return now;
+}
+
+/**
+ * Trae las conversaciones al store. Se monta en la composición del panel, no
+ * en el menú: si viviera en la lista, plegar el grupo cortaría el listener y
+ * el chat abierto se quedaría sin su conversación.
+ */
+export function useConversationsFeed() {
+  const allowed = useSession((state) => state.canOperate);
+  const setConversations = usePanel((state) => state.setConversations);
+
   useEffect(() => {
     if (!allowed) return;
     let stop: (() => void) | undefined;
@@ -110,9 +102,95 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
     })();
 
     return () => stop?.();
-  }, [allowed]);
+  }, [allowed, setConversations]);
+}
 
-  // ── Mensajes de la conversación abierta ───────────────────────────────────
+// ── Lista, dentro del menú lateral ──────────────────────────────────────────
+
+/**
+ * Las conversaciones como hijos del grupo del menú. Se despliegan y se pliegan
+ * con él, así que cuando no hacen falta no ocupan pantalla.
+ */
+export function ConversationsNav({ dict }: { dict: Dictionary }) {
+  const panel = dict.panel;
+  const uid = useSession((state) => state.user?.uid);
+  const conversations = usePanel((state) => state.conversations);
+  const selectedId = usePanel((state) => state.selectedId);
+  const select = usePanel((state) => state.select);
+  const now = useNow();
+
+  if (conversations === null) {
+    return <p className="px-3 py-2 text-xs text-ink/45">{panel.loading}</p>;
+  }
+
+  if (conversations.length === 0) {
+    return (
+      <div className="px-3 py-2">
+        <p className="text-xs text-ink/55">{panel.empty}</p>
+        <p className="mt-1 text-[11px] text-ink/40">{panel.emptyHint}</p>
+      </div>
+    );
+  }
+
+  return (
+    <ul className="max-h-80 overflow-y-auto">
+      {conversations.map((conversation) => (
+        <li key={conversation.id}>
+          <button
+            type="button"
+            onClick={() => select(conversation.id)}
+            aria-current={conversation.id === selectedId}
+            className={`flex w-full flex-col items-start gap-1 rounded-xl px-2.5 py-2 text-left transition ${
+              conversation.id === selectedId
+                ? "bg-brand-50"
+                : "hover:bg-brand-50/60"
+            }`}
+          >
+            <span className="flex w-full items-center justify-between gap-2">
+              <StateBadge
+                conversation={conversation}
+                uid={uid}
+                panel={panel}
+                now={now}
+              />
+              <span className="shrink-0 text-[10px] text-ink/40 tabular-nums">
+                {formatTime(conversation.updatedAtMs, now)}
+              </span>
+            </span>
+            <span className="truncate font-mono text-[10px] text-ink/45">
+              {conversation.id.slice(0, 10)} · {conversation.lang}
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// ── Chat, en el área grande ─────────────────────────────────────────────────
+
+export function ConversationsSection({ dict }: { dict: Dictionary }) {
+  const panel = dict.panel;
+  const user = useSession((state) => state.user);
+  const allowed = useSession((state) => state.canOperate);
+
+  const selectedId = usePanel((state) => state.selectedId);
+  const selected = usePanel(selectCurrentConversation);
+  const now = useNow();
+
+  const [draft, setDraft] = useState("");
+  const threadRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Los mensajes van atados a su conversación en el mismo estado: al cambiar
+   * de hilo se derivan vacíos, sin limpiarlos desde un efecto y sin que
+   * aparezcan por un instante los del anterior.
+   */
+  const [thread, setThread] = useState<{ id: string; messages: Message[] }>({
+    id: "",
+    messages: [],
+  });
+
   useEffect(() => {
     if (!allowed || !selectedId) return;
     let stop: (() => void) | undefined;
@@ -154,7 +232,6 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
   }, [allowed, selectedId]);
 
   const messages = thread.id === selectedId ? thread.messages : [];
-  const selected = conversations?.find((item) => item.id === selectedId) ?? null;
   const isMine = Boolean(selected && selected.operatorId === user?.uid);
 
   useEffect(() => {
@@ -163,7 +240,7 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
 
   // ── Acciones ──────────────────────────────────────────────────────────────
   const setMode = useCallback(
-    async (conversation: Conversation, mode: "bot" | "operator") => {
+    async (conversation: PanelConversation, mode: "bot" | "operator") => {
       const [{ getDb }, firestore] = await Promise.all([
         import("@/lib/firebase/client"),
         import("firebase/firestore"),
@@ -223,150 +300,92 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
     /*
       Altura acotada a propósito: si el bloque creciera con los mensajes, la
       página entera se estiraría y habría que scrollear el documento para leer
-      lo último. Acá el alto es fijo y lo que scrollea es cada panel por dentro.
+      lo último. Acá el alto es fijo y lo que scrollea es el hilo por dentro.
     */
-    <div className="grid h-[calc(100vh-17rem)] min-h-96 gap-5 lg:grid-cols-[20rem_1fr]">
-      {/* Lista */}
-      <div
-        className={`flex flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white ${
-          selectedId ? "hidden lg:flex" : ""
-        }`}
-      >
-        <p className="shrink-0 border-b border-brand-500/10 px-4 py-3 text-sm font-semibold text-ink">
-          {panel.listTitle}
-        </p>
-
-        {conversations === null && (
-          <p className="p-4 text-sm text-ink/50">{panel.loading}</p>
-        )}
-
-        {conversations?.length === 0 && (
-          <div className="p-4">
-            <p className="text-sm text-ink/65">{panel.empty}</p>
-            <p className="mt-1 text-xs text-ink/45">{panel.emptyHint}</p>
-          </div>
-        )}
-
-        <ul className="flex-1 overflow-y-auto">
-          {conversations?.map((conversation) => (
-            <li key={conversation.id}>
-              <button
-                type="button"
-                onClick={() => setSelectedId(conversation.id)}
-                className={`flex w-full flex-col items-start gap-1.5 border-b border-brand-500/5 px-4 py-3 text-left transition hover:bg-brand-50/60 ${
-                  conversation.id === selectedId ? "bg-brand-50" : ""
-                }`}
-              >
-                <span className="flex w-full items-center justify-between gap-2">
-                  <StateBadge
-                    conversation={conversation}
-                    uid={user?.uid}
-                    panel={panel}
-                    now={now}
-                  />
-                  <span className="shrink-0 text-[11px] text-ink/40 tabular-nums">
-                    {formatTime(conversation.updatedAtMs, now)}
-                  </span>
-                </span>
-                <span className="font-mono text-[11px] text-ink/45">
-                  {conversation.id.slice(0, 10)} · {conversation.lang}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Detalle */}
-      <div className="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
-        {!selected ? (
-          <div className="grid flex-1 place-items-center p-8 text-sm text-ink/50">
-            {panel.selectOne}
-          </div>
-        ) : (
-          <>
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-brand-500/10 px-4 py-3">
-              <button
-                type="button"
-                onClick={() => setSelectedId(null)}
-                className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 lg:hidden"
-              >
-                <Icon name="chevronLeft" className="size-4" />
-                {panel.backToList}
-              </button>
-
+    <div className="flex h-[calc(100vh-17rem)] min-h-96 flex-col overflow-hidden rounded-2xl border border-brand-500/10 bg-white">
+      {!selected ? (
+        <div className="grid flex-1 place-items-center p-8 text-sm text-ink/50">
+          {panel.selectOne}
+        </div>
+      ) : (
+        <>
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-brand-500/10 px-4 py-3">
+            <span className="flex items-center gap-2.5">
               <StateBadge
                 conversation={selected}
                 uid={user?.uid}
                 panel={panel}
                 now={now}
               />
+              <span className="font-mono text-[11px] text-ink/45">
+                {selected.id.slice(0, 10)} · {selected.lang}
+              </span>
+            </span>
 
-              <button
-                type="button"
-                onClick={() =>
-                  setMode(
-                    selected,
-                    selected.mode === "operator" ? "bot" : "operator",
-                  )
-                }
-                className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition ${
-                  selected.mode === "operator"
-                    ? "border border-brand-500/20 text-brand-700 hover:bg-brand-50"
-                    : "bg-coral-500 text-white hover:bg-coral-600"
-                }`}
+            <button
+              type="button"
+              onClick={() =>
+                setMode(
+                  selected,
+                  selected.mode === "operator" ? "bot" : "operator",
+                )
+              }
+              className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition ${
+                selected.mode === "operator"
+                  ? "border border-brand-500/20 text-brand-700 hover:bg-brand-50"
+                  : "bg-coral-500 text-white hover:bg-coral-600"
+              }`}
+            >
+              {selected.mode === "operator" ? panel.release : panel.take}
+            </button>
+          </div>
+
+          <div ref={threadRef} className="flex-1 space-y-3 overflow-y-auto p-4">
+            {messages.map((message) => (
+              <PanelMessage key={message.id} message={message} panel={panel} />
+            ))}
+          </div>
+
+          <div className="border-t border-brand-500/10 p-3">
+            {isMine && selected.mode === "operator" ? (
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  void send();
+                }}
+                className="flex items-end gap-2"
               >
-                {selected.mode === "operator" ? panel.release : panel.take}
-              </button>
-            </div>
-
-            <div ref={threadRef} className="flex-1 space-y-3 overflow-y-auto p-4">
-              {messages.map((message) => (
-                <PanelMessage key={message.id} message={message} panel={panel} />
-              ))}
-            </div>
-
-            <div className="border-t border-brand-500/10 p-3">
-              {isMine && selected.mode === "operator" ? (
-                <form
-                  onSubmit={(event) => {
-                    event.preventDefault();
-                    void send();
+                <textarea
+                  value={draft}
+                  onChange={(event) => setDraft(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" && !event.shiftKey) {
+                      event.preventDefault();
+                      void send();
+                    }
                   }}
-                  className="flex items-end gap-2"
+                  rows={1}
+                  maxLength={5000}
+                  placeholder={panel.placeholder}
+                  className="max-h-28 flex-1 resize-none rounded-xl border border-brand-500/20 px-3.5 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  disabled={!draft.trim()}
+                  aria-label={panel.send}
+                  className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-600 text-white transition hover:bg-brand-700 disabled:opacity-40"
                 >
-                  <textarea
-                    value={draft}
-                    onChange={(event) => setDraft(event.target.value)}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" && !event.shiftKey) {
-                        event.preventDefault();
-                        void send();
-                      }
-                    }}
-                    rows={1}
-                    maxLength={5000}
-                    placeholder={panel.placeholder}
-                    className="max-h-28 flex-1 resize-none rounded-xl border border-brand-500/20 px-3.5 py-2.5 text-sm transition focus:border-brand-500 focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    disabled={!draft.trim()}
-                    aria-label={panel.send}
-                    className="grid size-10 shrink-0 place-items-center rounded-xl bg-brand-600 text-white transition hover:bg-brand-700 disabled:opacity-40"
-                  >
-                    <Icon name="arrowRight" className="size-4.5" />
-                  </button>
-                </form>
-              ) : (
-                <p className="px-1 py-1.5 text-center text-xs text-ink/50">
-                  {panel.takeFirst}
-                </p>
-              )}
-            </div>
-          </>
-        )}
-      </div>
+                  <Icon name="arrowRight" className="size-4.5" />
+                </button>
+              </form>
+            ) : (
+              <p className="px-1 py-1.5 text-center text-xs text-ink/50">
+                {panel.takeFirst}
+              </p>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -378,7 +397,7 @@ function StateBadge({
   panel,
   now,
 }: {
-  conversation: Conversation;
+  conversation: PanelConversation;
   uid?: string;
   panel: Dictionary["panel"];
   /** Reloj del componente padre: leer la hora acá haría impuro el render */
@@ -419,7 +438,7 @@ function Badge({
 
   return (
     <span
-      className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${tones[tone]}`}
+      className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${tones[tone]}`}
     >
       {children}
     </span>

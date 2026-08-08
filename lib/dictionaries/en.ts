@@ -326,7 +326,6 @@ export const en: Dictionary = {
     noAccessText:
       "Your account doesn't have access to the panel. If you think this is a mistake, let an administrator know.",
     loading: "Loading…",
-    listTitle: "Conversations",
     empty: "No conversations yet.",
     emptyHint: "They'll show up here as soon as someone writes to the chat.",
     selectOne: "Pick a conversation from the list.",
@@ -348,7 +347,6 @@ export const en: Dictionary = {
 
     sections: {
       conversations: "Conversations",
-      siteBot: "Site assistant",
       messages: "Messages",
       users: "Users",
     },

@@ -341,7 +341,6 @@ export const es = {
     noAccessText:
       "Tu cuenta no tiene acceso al panel. Si crees que es un error, avísale a un administrador.",
     loading: "Cargando…",
-    listTitle: "Conversaciones",
     empty: "Todavía no hay conversaciones.",
     emptyHint: "Van a aparecer acá en cuanto alguien escriba al chat.",
     selectOne: "Elige una conversación de la lista.",
@@ -366,7 +365,6 @@ export const es = {
     /** Nombres de las secciones del menú lateral */
     sections: {
       conversations: "Conversaciones",
-      siteBot: "Asistente del sitio",
       messages: "Mensajes",
       users: "Usuarios",
     },

@@ -1,6 +1,10 @@
 "use client";
 
-import { ConversationsSection } from "@/components/panel/conversations-section";
+import {
+  ConversationsNav,
+  ConversationsSection,
+  useConversationsFeed,
+} from "@/components/panel/conversations-section";
 import { MessagesSection } from "@/components/panel/messages-section";
 import { PanelShell, type PanelSection } from "@/components/panel/panel-shell";
 import { UsersSection } from "@/components/panel/users-section";
@@ -13,27 +17,24 @@ import { useSession } from "@/lib/store/session";
  * Sumar una sección es agregar una entrada a este array: el caparazón se
  * encarga del login, el control de acceso y la navegación.
  *
- * Conversaciones es un grupo: sus hijos son los bots. Hoy hay uno solo —el
- * asistente del sitio— pero cuando cada cliente tenga el suyo, agregarlo es
- * sumar un hijo con su propio origen, no otra pantalla.
+ * Conversaciones cuelga su lista del menú lateral: los hilos se ven debajo del
+ * grupo cuando está desplegado y desaparecen al plegarlo, así el área grande
+ * queda entera para el chat.
  */
 export function PanelView({ dict }: { dict: Dictionary }) {
   const isAdmin = useSession((state) => state.isAdmin);
+
+  // Acá y no en la lista: si el listener viviera en el menú, plegar el grupo
+  // lo cortaría y el chat abierto se quedaría sin su conversación.
+  useConversationsFeed();
 
   const sections: PanelSection[] = [
     {
       id: "conversations",
       label: dict.panel.sections.conversations,
       icon: "chat",
+      nav: <ConversationsNav dict={dict} />,
       content: <ConversationsSection dict={dict} />,
-      children: [
-        {
-          id: "site-bot",
-          label: dict.panel.sections.siteBot,
-          icon: "sparkles",
-          content: <ConversationsSection dict={dict} />,
-        },
-      ],
     },
     {
       id: "messages",

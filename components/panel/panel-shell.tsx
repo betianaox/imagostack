@@ -26,17 +26,12 @@ export type PanelSection = {
   icon: IconName;
   content: React.ReactNode;
   /**
-   * Subsecciones. Conversaciones las usa para listar los bots: cada uno tiene
-   * las suyas. El grupo arranca desplegado y se puede plegar hacia arriba para
-   * ganar espacio cuando la lista crezca.
+   * Hijos del menú. Conversaciones los usa para colgar su lista debajo del
+   * grupo: se despliegan y se pliegan con él, así que cuando no hacen falta no
+   * ocupan pantalla. Quién los dibuja es cada sección, no el caparazón.
    */
-  children?: PanelSection[];
+  nav?: React.ReactNode;
 };
-
-/** Aplana el árbol para poder buscar una sección por id. */
-function flatten(sections: PanelSection[]): PanelSection[] {
-  return sections.flatMap((section) => [section, ...(section.children ?? [])]);
-}
 
 export function PanelShell({
   dict,
@@ -108,15 +103,24 @@ export function PanelShell({
     );
   }
 
-  const all = flatten(sections);
-  const current = all.find((section) => section.id === active) ?? sections[0];
+  const current = sections.find((section) => section.id === active) ?? sections[0];
 
-  const toggleFold = (id: string) =>
-    setFolded((current) =>
-      current.includes(id)
-        ? current.filter((item) => item !== id)
-        : [...current, id],
-    );
+  /**
+   * Un clic en la sección abierta la pliega; en cualquier otra, la abre. Así
+   * el chevron no necesita ser un botón aparte y el bloque queda entero.
+   */
+  const onSelect = (id: string) => {
+    if (id === current?.id) {
+      setFolded((folded) =>
+        folded.includes(id)
+          ? folded.filter((item) => item !== id)
+          : [...folded, id],
+      );
+      return;
+    }
+    setActive(id);
+    setFolded((folded) => folded.filter((item) => item !== id));
+  };
 
   return (
     <div className="shell py-8 md:py-10">
@@ -144,49 +148,42 @@ export function PanelShell({
         <aside className="rounded-2xl border border-brand-500/10 bg-white p-2">
           <nav className="flex flex-col gap-0.5">
             {sections.map((section) => {
-              const hasChildren = (section.children?.length ?? 0) > 0;
+              const active = section.id === current?.id;
               const isFolded = folded.includes(section.id);
+              const showsChildren = Boolean(section.nav) && active && !isFolded;
 
               return (
                 <div key={section.id}>
-                  <div className="flex items-center gap-1">
-                    <NavButton
-                      section={section}
-                      active={section.id === current?.id}
-                      onSelect={() => setActive(section.id)}
-                    />
+                  <button
+                    type="button"
+                    onClick={() => onSelect(section.id)}
+                    aria-current={active}
+                    aria-expanded={section.nav ? showsChildren : undefined}
+                    className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm font-semibold transition ${
+                      active
+                        ? "bg-brand-600 text-white shadow-sm shadow-brand-900/20"
+                        : "text-ink/70 hover:bg-brand-50 hover:text-brand-700"
+                    }`}
+                  >
+                    <Icon name={section.icon} className="size-4.5 shrink-0" />
+                    <span className="flex-1 truncate">{section.label}</span>
 
-                    {hasChildren && (
-                      <button
-                        type="button"
-                        onClick={() => toggleFold(section.id)}
-                        aria-expanded={!isFolded}
-                        aria-label={isFolded ? panel.expand : panel.collapse}
-                        title={isFolded ? panel.expand : panel.collapse}
-                        className="grid size-8 shrink-0 place-items-center rounded-lg text-ink/40 transition hover:bg-brand-50 hover:text-brand-700"
-                      >
-                        <Icon
-                          name="chevronDown"
-                          className={`size-4 transition-transform duration-200 ${
-                            isFolded ? "-rotate-90" : ""
-                          }`}
-                        />
-                      </button>
+                    {/* El chevron va dentro del bloque, no al lado */}
+                    {section.nav && (
+                      <Icon
+                        name="chevronDown"
+                        aria-hidden="true"
+                        className={`size-4 shrink-0 transition-transform duration-200 ${
+                          active ? "opacity-80" : "opacity-45"
+                        } ${showsChildren ? "" : "-rotate-90"}`}
+                      />
                     )}
-                  </div>
+                  </button>
 
                   {/* Los hijos se pliegan hacia arriba, contra su grupo */}
-                  {hasChildren && !isFolded && (
-                    <div className="mt-0.5 ml-4 flex flex-col gap-0.5 border-l border-brand-500/15 pl-2">
-                      {section.children?.map((child) => (
-                        <NavButton
-                          key={child.id}
-                          section={child}
-                          active={child.id === current?.id}
-                          onSelect={() => setActive(child.id)}
-                          nested
-                        />
-                      ))}
+                  {showsChildren && (
+                    <div className="mt-1 ml-4 border-l border-brand-500/15 pl-1.5">
+                      {section.nav}
                     </div>
                   )}
                 </div>
@@ -198,40 +195,6 @@ export function PanelShell({
         {current?.content}
       </div>
     </div>
-  );
-}
-
-/** Entrada del menú. Los hijos van más chicos y sin negrita para jerarquizar. */
-function NavButton({
-  section,
-  active,
-  onSelect,
-  nested = false,
-}: {
-  section: PanelSection;
-  active: boolean;
-  onSelect: () => void;
-  nested?: boolean;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onSelect}
-      aria-current={active}
-      className={`flex flex-1 items-center gap-2.5 rounded-xl px-3 text-left transition ${
-        nested ? "py-2 text-[13px] font-medium" : "py-2.5 text-sm font-semibold"
-      } ${
-        active
-          ? "bg-brand-600 text-white shadow-sm shadow-brand-900/20"
-          : "text-ink/70 hover:bg-brand-50 hover:text-brand-700"
-      }`}
-    >
-      <Icon
-        name={section.icon}
-        className={nested ? "size-4 shrink-0" : "size-4.5 shrink-0"}
-      />
-      <span className="truncate">{section.label}</span>
-    </button>
   );
 }
 
