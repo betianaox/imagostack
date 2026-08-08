@@ -1,5 +1,6 @@
 import { ChatWidget } from "@/components/chat/chat-widget";
 import { LocaleRedirect } from "@/components/locale-redirect";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { getDictionary } from "@/lib/dictionaries";
@@ -75,6 +76,7 @@ export function SiteShell({
       </main>
       <SiteFooter lang={lang} dict={dict} />
       <ChatWidget lang={lang} dict={dict} />
+      <ScrollToTop />
       <LocaleRedirect currentLang={lang} />
       <script
         type="application/ld+json"

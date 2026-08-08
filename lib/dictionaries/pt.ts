@@ -110,37 +110,66 @@ export const pt: Dictionary = {
         icon: "code",
         title: "Aplicações web sob medida",
         description:
-          "Site, painel de administração e backend em um só projeto, com React e TypeScript. Rápidos, acessíveis e prontos para escalar desde o primeiro dia.",
+          "Site e backend em um só projeto, com React e TypeScript. Rápidos, acessíveis e prontos para escalar desde o primeiro dia.",
+      },
+      {
+        icon: "layout",
+        title: "Painel sob medida",
+        description:
+          "Para você administrar seu negócio sem depender de ninguém: produtos, preços, agendamentos ou conteúdo, com permissões por usuário.",
       },
       {
         icon: "database",
         title: "Dados, contas e arquivos",
         description:
-          "Bancos de dados em tempo real, cadastro e login, permissões por usuário e armazenamento na nuvem.",
+          "Bancos de dados em tempo real, cadastro e login, e armazenamento de arquivos na nuvem.",
       },
       {
         icon: "chat",
-        title: "Inteligência artificial aplicada",
+        title: "Chatbot com inteligência artificial",
         description:
-          "Assistentes e chatbots conectados às informações reais do negócio, não respostas genéricas: resolvem dúvidas e automatizam tarefas.",
+          "Conectado às informações reais do seu negócio, não respostas genéricas. Atende a qualquer hora e passa para uma pessoa quando precisa.",
+        action: "chat",
+      },
+      {
+        icon: "card",
+        title: "Integração com Mercado Pago",
+        description:
+          "Receba pagamentos no seu site com a plataforma que seus clientes já usam, com o status de cada pagamento no seu painel.",
+      },
+      {
+        icon: "message",
+        title: "WhatsApp Business API",
+        description:
+          "O canal onde seus clientes já estão: avisos, confirmações e lembretes automáticos direto do seu sistema.",
+      },
+      {
+        icon: "chart",
+        title: "Google Analytics e medição",
+        description:
+          "Saber de onde vêm as pessoas, o que olham e o que faz elas comprarem. Configurado desde o primeiro dia, não depois.",
       },
       {
         icon: "link",
         title: "Integrações e automações",
         description:
-          "Pagamentos, mensageria, e-mail, APIs de terceiros e tudo o que precisar ser conectado para o produto funcionar sozinho.",
+          "E-mail, calendários, APIs de terceiros e tudo o que precisar ser conectado para o produto funcionar sozinho.",
       },
     ],
+    chatCta: "Experimente aqui",
     stackLabel: "Com o que trabalhamos",
     stack: [
       "Next.js",
       "React",
+      "React Native",
       "TypeScript",
       "Node.js",
       "Vercel",
       "Firebase",
       "MongoDB",
       "MySQL",
+      "Redis",
+      "RAG",
       "IA generativa",
     ],
     cta: "Conte seu projeto",

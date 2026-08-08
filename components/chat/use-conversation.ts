@@ -105,8 +105,13 @@ export function useConversation(lang: Locale, enabled: boolean) {
           }));
         });
 
+        // El filtro por `ownerId` no es opcional: las reglas de Firestore no
+        // filtran resultados, validan la consulta. Sin esta condición no puede
+        // probar que solo devolverá documentos permitidos y rechaza todo con
+        // permission-denied, aunque el usuario sea efectivamente el dueño.
         const messagesRef = firestore.query(
           firestore.collection(db, "conversations", id, "messages"),
+          firestore.where("ownerId", "==", user.uid),
           firestore.where("by", "==", "operator"),
           firestore.orderBy("at", "asc"),
         );

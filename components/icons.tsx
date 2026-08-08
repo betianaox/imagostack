@@ -85,6 +85,25 @@ export const icons = {
       <path d="m15 8 5 4-5 4" />
     </svg>
   ),
+  layout: (p: Props) => (
+    <svg {...base} {...p}>
+      <rect x="3" y="4" width="18" height="16" rx="2.5" />
+      <path d="M3 9h18" />
+      <path d="M9.5 9v11" />
+    </svg>
+  ),
+  card: (p: Props) => (
+    <svg {...base} {...p}>
+      <rect x="2.75" y="5.5" width="18.5" height="13" rx="2.5" />
+      <path d="M2.75 10h18.5" />
+      <path d="M6.5 14.5h3" />
+    </svg>
+  ),
+  message: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="M21 11.5a8.2 8.2 0 0 1-8.5 8.1 8.9 8.9 0 0 1-3.9-.9L3 20l1.4-4.4a8 8 0 0 1-1-3.9A8.2 8.2 0 0 1 12 3.5a8.2 8.2 0 0 1 9 8Z" />
+    </svg>
+  ),
   database: (p: Props) => (
     <svg {...base} {...p}>
       <ellipse cx="12" cy="6" rx="7.25" ry="3.25" />

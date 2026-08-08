@@ -110,37 +110,66 @@ export const en: Dictionary = {
         icon: "code",
         title: "Custom web applications",
         description:
-          "Site, admin panel and backend in a single project, with React and TypeScript. Fast, accessible and ready to scale from day one.",
+          "Site and backend in a single project, with React and TypeScript. Fast, accessible and ready to scale from day one.",
+      },
+      {
+        icon: "layout",
+        title: "Custom admin panel",
+        description:
+          "So you run your business without depending on anyone: products, prices, bookings or content, with per-user permissions.",
       },
       {
         icon: "database",
         title: "Data, accounts and files",
         description:
-          "Real-time databases, sign-up and sign-in, per-user permissions and cloud file storage.",
+          "Real-time databases, sign-up and sign-in, and cloud file storage.",
       },
       {
         icon: "chat",
-        title: "Applied artificial intelligence",
+        title: "AI-powered chatbot",
         description:
-          "Assistants and chatbots connected to your real business information, not generic answers: they resolve queries and automate tasks.",
+          "Connected to your real business information, not generic answers. It handles questions around the clock and hands over to a person when needed.",
+        action: "chat",
+      },
+      {
+        icon: "card",
+        title: "Mercado Pago integration",
+        description:
+          "Take payments on your site with the platform your customers already use, with every payment status reflected in your panel.",
+      },
+      {
+        icon: "message",
+        title: "WhatsApp Business API",
+        description:
+          "The channel your customers already live in: notices, confirmations and automatic reminders straight from your system.",
+      },
+      {
+        icon: "chart",
+        title: "Google Analytics and measurement",
+        description:
+          "Knowing where people come from, what they look at and what makes them buy. Set up from day one, not afterwards.",
       },
       {
         icon: "link",
         title: "Integrations and automation",
         description:
-          "Payments, messaging, email, third-party APIs and everything else that needs wiring up so the product runs on its own.",
+          "Email, calendars, third-party APIs and everything else that needs wiring up so the product runs on its own.",
       },
     ],
+    chatCta: "Try it here",
     stackLabel: "What we work with",
     stack: [
       "Next.js",
       "React",
+      "React Native",
       "TypeScript",
       "Node.js",
       "Vercel",
       "Firebase",
       "MongoDB",
       "MySQL",
+      "Redis",
+      "RAG",
       "Generative AI",
     ],
     cta: "Tell us about your project",

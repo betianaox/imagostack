@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { OPEN_CHAT_EVENT } from "@/components/chat/open-chat-link";
 import { useConversation } from "@/components/chat/use-conversation";
 import { Icon } from "@/components/icons";
 import { Inline } from "@/components/rich-text";
@@ -67,6 +68,13 @@ export function ChatWidget({
       behavior: "smooth",
     });
   }, [bubbles, streaming]);
+
+  // Cualquier parte del sitio puede abrir el chat emitiendo este evento
+  useEffect(() => {
+    const openChat = () => setOpen(true);
+    window.addEventListener(OPEN_CHAT_EVENT, openChat);
+    return () => window.removeEventListener(OPEN_CHAT_EVENT, openChat);
+  }, []);
 
   // Cierra con Escape
   useEffect(() => {

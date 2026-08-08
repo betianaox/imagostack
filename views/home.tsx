@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppCard } from "@/components/app-card";
 import { AppIcon } from "@/components/app-visuals";
+import { OpenChatLink } from "@/components/chat/open-chat-link";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
@@ -218,6 +219,10 @@ export function HomeView({ lang }: { lang: Locale }) {
                 <p className="mt-2 text-sm leading-relaxed text-ink/65">
                   {card.description}
                 </p>
+                {/* La ficha del chatbot se prueba en vez de leerse */}
+                {card.action === "chat" && (
+                  <OpenChatLink label={dict.services.chatCta} />
+                )}
               </div>
             </Reveal>
           ))}

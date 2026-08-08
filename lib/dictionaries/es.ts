@@ -114,37 +114,72 @@ export const es = {
         icon: "code",
         title: "Aplicaciones web a medida",
         description:
-          "Sitio, panel de administración y backend en un mismo proyecto, con React y TypeScript. Rápidos, accesibles y listos para escalar desde el primer día.",
+          "Sitio y backend en un mismo proyecto, con React y TypeScript. Rápidos, accesibles y listos para escalar desde el primer día.",
+      },
+      {
+        icon: "layout",
+        title: "Panel a medida",
+        description:
+          "Para que administres tu negocio sin depender de nadie: cargar productos, precios, turnos o contenido, con permisos por usuario.",
       },
       {
         icon: "database",
         title: "Datos, cuentas y archivos",
         description:
-          "Bases de datos en tiempo real, registro e inicio de sesión, permisos por usuario y almacenamiento en la nube.",
+          "Bases de datos en tiempo real, registro e inicio de sesión, y almacenamiento de archivos en la nube.",
       },
       {
         icon: "chat",
-        title: "Inteligencia artificial aplicada",
+        title: "Chatbot con inteligencia artificial",
         description:
-          "Asistentes y chatbots conectados a la información real del negocio, no respuestas genéricas: resuelven consultas y automatizan tareas.",
+          "Conectado a la información real de tu negocio, no respuestas genéricas. Atiende consultas a toda hora y deriva a una persona cuando hace falta.",
+        action: "chat",
+      },
+      {
+        icon: "card",
+        title: "Integración con Mercado Pago",
+        description:
+          "Cobra en tu sitio con la plataforma que tus clientes ya usan, con el estado de cada pago reflejado en tu panel.",
+      },
+      {
+        icon: "message",
+        title: "WhatsApp Business API",
+        description:
+          "El canal donde tus clientes ya están: avisos, confirmaciones y recordatorios automáticos desde tu sistema.",
+      },
+      {
+        icon: "chart",
+        title: "Google Analytics y medición",
+        description:
+          "Saber de dónde llega la gente, qué mira y qué la hace comprar. Configurado desde el primer día, no después.",
       },
       {
         icon: "link",
         title: "Integraciones y automatizaciones",
         description:
-          "Pagos, mensajería, correo, APIs de terceros y todo lo que haya que conectar para que el producto funcione solo.",
+          "Correo, calendarios, APIs de terceros y todo lo que haya que conectar para que el producto funcione solo.",
       },
-    ] as { icon: IconName; title: string; description: string }[],
+    ] as {
+      icon: IconName;
+      title: string;
+      description: string;
+      action?: "chat";
+    }[],
+    /** Enlace especial de la ficha del chatbot: abre el widget */
+    chatCta: "Pruébalo aquí",
     stackLabel: "Con qué trabajamos",
     stack: [
       "Next.js",
       "React",
+      "React Native",
       "TypeScript",
       "Node.js",
       "Vercel",
       "Firebase",
       "MongoDB",
       "MySQL",
+      "Redis",
+      "RAG",
       "IA generativa",
     ],
     cta: "Cuéntanos tu proyecto",
@@ -480,7 +515,7 @@ export const es = {
       },
       { h2: "Opción 3 — Desinstalar la aplicación" },
       {
-        p: "Al desinstalar, Android elimina el almacenamiento privado de la app junto con ella. Tené en cuenta que **esta acción no se puede deshacer**: si quieres conservar tu información, expórtala antes desde la app.",
+        p: "Al desinstalar, Android elimina el almacenamiento privado de la app junto con ella. Ten en cuenta que **esta acción no se puede deshacer**: si quieres conservar tu información, expórtala antes desde la app.",
       },
       { h2: "Copias de seguridad del sistema" },
       {
