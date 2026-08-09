@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { loadOrCreateProfile } from "@/lib/firebase/session";
+import { completeRedirectSignIn, loadOrCreateProfile } from "@/lib/firebase/session";
 import { useSession } from "@/lib/store/session";
 import type { Locale } from "@/lib/i18n";
 
@@ -37,6 +37,16 @@ export function SessionSync({ lang }: { lang: Locale }) {
           setStatus("anonymous");
           return;
         }
+
+        // Si venimos de vuelta de Google por redirección, esto lo cierra. Es
+        // inofensivo cuando no fue el caso: no hay resultado y sigue de largo.
+        try {
+          await completeRedirectSignIn();
+        } catch (error) {
+          console.warn("Sesión: la vuelta desde Google falló", error);
+        }
+
+        if (!active) return;
 
         stop = auth.onAuthStateChanged(getAuthClient(), async (user) => {
           if (!active) return;

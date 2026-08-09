@@ -16,8 +16,33 @@ import type { Locale } from "@/lib/i18n";
  * probablemente no vuelva.
  */
 
-/** Inicia sesión con Google. Devuelve el uid. */
-export async function signInWithGoogle(): Promise<string> {
+/**
+ * Errores del popup que significan "acá no se puede abrir una ventana", no
+ * "el usuario se arrepintió". Solo con estos vale la pena redirigir: si
+ * alguien cerró el popup a propósito, mandarlo a otra página sería peor.
+ */
+const POPUP_UNAVAILABLE = new Set([
+  "auth/popup-blocked",
+  "auth/operation-not-supported-in-this-environment",
+  "auth/web-storage-unsupported",
+]);
+
+function popupUnavailable(error: unknown): boolean {
+  const code = (error as { code?: string })?.code;
+  return Boolean(code && POPUP_UNAVAILABLE.has(code));
+}
+
+/**
+ * Inicia sesión con Google. Devuelve el uid, o `null` si la página se está
+ * yendo a Google por redirección —en ese caso la sesión vuelve resuelta y
+ * quien la recoge es `SessionSync`, no esta llamada—.
+ *
+ * Empieza por el popup porque no saca a nadie de la página. Pero en el
+ * celular no siempre hay popup: los navegadores embebidos —el que abre
+ * WhatsApp o Instagram al tocar un link— los bloquean, y sin este respaldo el
+ * botón no haría nada visible.
+ */
+export async function signInWithGoogle(): Promise<string | null> {
   const [{ getAuthClient }, auth] = await Promise.all([
     import("@/lib/firebase/client"),
     import("firebase/auth"),
@@ -28,8 +53,34 @@ export async function signInWithGoogle(): Promise<string> {
   // conviene elegir a propósito y no que decida el navegador.
   provider.setCustomParameters({ prompt: "select_account" });
 
-  const credential = await auth.signInWithPopup(getAuthClient(), provider);
-  return credential.user.uid;
+  const client = getAuthClient();
+
+  try {
+    const credential = await auth.signInWithPopup(client, provider);
+    return credential.user.uid;
+  } catch (error) {
+    if (!popupUnavailable(error)) throw error;
+
+    // No devuelve: a partir de acá la página se va a Google.
+    await auth.signInWithRedirect(client, provider);
+    return null;
+  }
+}
+
+/**
+ * Cierra el viaje de vuelta desde Google cuando se entró por redirección.
+ *
+ * La sesión se restaura sola, pero pedir el resultado es lo que deja ver el
+ * error si algo falló en el camino: sin esto, un login rechazado se vería como
+ * una pantalla de login que sencillamente no pasa nada.
+ */
+export async function completeRedirectSignIn(): Promise<void> {
+  const [{ getAuthClient }, auth] = await Promise.all([
+    import("@/lib/firebase/client"),
+    import("firebase/auth"),
+  ]);
+
+  await auth.getRedirectResult(getAuthClient());
 }
 
 export async function signOut(): Promise<void> {

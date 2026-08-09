@@ -9,7 +9,35 @@ import type { NextConfig } from "next";
  * HTML estático en el build: lo único que corre en el servidor es
  * `app/api/contact`.
  */
+/**
+ * Proyecto de Firebase, para el proxy del flujo de login por redirección.
+ */
+const firebaseProject = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+
 const nextConfig: NextConfig = {
+  /**
+   * El manejador de autenticación de Firebase, servido desde nuestro dominio.
+   *
+   * Entrar por redirección implica salir a Google y volver. Si el que recibe
+   * la vuelta es `<proyecto>.firebaseapp.com`, para Safari y para el Chrome
+   * nuevo eso es un tercero, y le bloquean el almacenamiento: la sesión se
+   * pierde justo al volver y el login parece no hacer nada.
+   *
+   * Con este proxy el ida y vuelta ocurre dentro de imagostack.com y deja de
+   * haber terceros. Queda inerte hasta que `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+   * apunte al dominio propio en lugar de al de Firebase.
+   */
+  async rewrites() {
+    if (!firebaseProject) return [];
+
+    return [
+      {
+        source: "/__/auth/:path*",
+        destination: `https://${firebaseProject}.firebaseapp.com/__/auth/:path*`,
+      },
+    ];
+  },
+
   images: {
     unoptimized: true,
     // Avatares de las cuentas de Google que entran al panel
