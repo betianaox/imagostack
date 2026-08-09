@@ -36,11 +36,15 @@ async function iniciar() {
   if (promesaAppCheck) return promesaAppCheck;
 
   promesaAppCheck = (async () => {
-    const { initializeAppCheck, ReCaptchaEnterpriseProvider } = await import(
+    const { initializeAppCheck, ReCaptchaV3Provider } = await import(
       "firebase/app-check"
     );
     return initializeAppCheck(getApp(), {
-      provider: new ReCaptchaEnterpriseProvider(claveSitio()!),
+      // v3 y no Enterprise: Enterprise vive en Google Cloud y para habilitar su
+      // API normalmente hace falta facturación. v3 se administra desde
+      // google.com/recaptcha/admin, es gratis y alcanza de sobra para frenar
+      // scripts contra un chat de sitio.
+      provider: new ReCaptchaV3Provider(claveSitio()!),
       // Renueva el token antes de que venza, para que un chat largo no se
       // quede sin credencial a mitad de una conversación.
       isTokenAutoRefreshEnabled: true,
