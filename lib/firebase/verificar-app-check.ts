@@ -51,8 +51,17 @@ function adminApp(): App | null {
     return null;
   }
 
-  const existente = getApps().find((a) => a.name === "app-check");
-  cacheApp = existente ?? initializeApp({ credential: cert(cred) }, "app-check");
+  // `cert()` e `initializeApp()` lanzan si la credencial está mal formada —una
+  // clave privada cortada, por ejemplo—. Sin este catch, un secreto mal pegado
+  // tira TODO el chat con un 500, que es exactamente lo contrario de lo que se
+  // busca acá: la attestación es una mejora, no un requisito para responder.
+  try {
+    const existente = getApps().find((a) => a.name === "app-check");
+    cacheApp = existente ?? initializeApp({ credential: cert(cred) }, "app-check");
+  } catch (error) {
+    console.error("App Check: credencial inválida, se sigue sin verificar", error);
+    cacheApp = null;
+  }
   return cacheApp;
 }
 
@@ -67,7 +76,14 @@ export function appCheckActivo(): boolean {
  * hasta que se termine de configurar, en vez de cerrarse sobre los visitantes.
  */
 export async function verificarAppCheck(request: Request): Promise<boolean> {
-  const app = adminApp();
+  let app: App | null;
+  try {
+    app = adminApp();
+  } catch (error) {
+    // Red final: pase lo que pase acá, el chat responde.
+    console.error("App Check: fallo al inicializar", error);
+    return true;
+  }
   if (!app) return true;
 
   const token = request.headers.get("X-Firebase-AppCheck");
