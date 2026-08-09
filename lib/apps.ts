@@ -58,6 +58,14 @@ export type AppPrivacy = {
   permissions: AppPermission[];
   /** ¿Todo el procesamiento ocurre en el dispositivo? */
   processedOnDevice: boolean;
+  /**
+   * Nota propia de la app para la sección "Dónde se guardan tus datos". El
+   * texto genérico de esa sección habla de infraestructura y no alcanza cuando
+   * hay que explicar qué sale del dispositivo, hacia dónde y por qué. Si está,
+   * se renderiza justo después de ese texto; si no, la sección queda igual que
+   * siempre para el resto de las apps.
+   */
+  processingNote?: L10n<string>;
   thirdParties: { name: string; purpose: L10n<string>; policyUrl: string }[];
   /** ¿Está dirigida a menores de 13 años? (Families Policy de Google Play) */
   directedToChildren: boolean;
@@ -266,14 +274,6 @@ export const apps: App[] = [
         },
       },
       {
-        src: "/apps/vigia/04.jpeg",
-        alt: {
-          es: "Historial de partidos de Vigía con filtros por fecha y opciones de exportar e importar",
-          en: "Vigía match history with date filters and export and import options",
-          pt: "Histórico de partidas do Vigía com filtros por data e opções de exportar e importar",
-        },
-      },
-      {
         src: "/apps/vigia/06.jpeg",
         alt: {
           es: "Listado de jugadores registrados en Vigía con la cantidad de partidos de cada uno",
@@ -339,8 +339,11 @@ export const apps: App[] = [
     },
     description: {
       es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Búzios, con tiradas animadas y lecturas cuidadas.",
-      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes, I Ching and Búzios, with animated readings written with care.",
-      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas, I Ching e Búzios, com tiragens animadas e leituras caprichadas.",
+      // El I Ching solo se ofrece en español: su contenido todavia no esta
+      // traducido, y la app no lo muestra en los otros idiomas. Por eso las
+      // versiones en/pt de esta ficha no lo nombran ni cuentan seis oraculos.
+      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Búzios, with animated readings written with care.",
+      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Búzios, com tiragens animadas e leituras caprichadas.",
     },
     body: {
       es: [
@@ -348,11 +351,11 @@ export const apps: App[] = [
         "No es adivinación de manual: es una experiencia visual, íntima y hermosa, pensada para acompañar la reflexión, el autoconocimiento y esos momentos en que uno necesita frenar y pensar.",
       ],
       en: [
-        "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes, I Ching and Búzios. You ask your question, the cards fall, the coins spin, the shells scatter… and a clear, carefully written reading gives you a fresh look at your moment.",
+        "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Búzios. You ask your question, the cards fall, the shells scatter… and a clear, carefully written reading gives you a fresh look at your moment.",
         "This isn't fortune-telling by the book: it's a visual, intimate and beautiful experience, made to support reflection, self-knowledge and those moments when you need to stop and think.",
       ],
       pt: [
-        "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas, I Ching e Búzios. Você faz a sua pergunta, as cartas caem, as moedas giram, os búzios se espalham… e uma leitura clara e caprichada devolve um novo olhar sobre o seu momento.",
+        "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Búzios. Você faz a sua pergunta, as cartas caem, os búzios se espalham… e uma leitura clara e caprichada devolve um novo olhar sobre o seu momento.",
         "Não é adivinhação de manual: é uma experiência visual, íntima e bonita, pensada para acompanhar a reflexão, o autoconhecimento e aqueles momentos em que a gente precisa parar e pensar.",
       ],
     },
@@ -376,13 +379,13 @@ export const apps: App[] = [
         icon: "sparkles",
         title: {
           es: "Seis oráculos, una sola app",
-          en: "Six oracles, one single app",
-          pt: "Seis oráculos, um só app",
+          en: "Five oracles, one single app",
+          pt: "Cinco oráculos, um só app",
         },
         description: {
           es: "Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Búzios. Cada uno con su propia estética, su propia tirada y su propia voz.",
-          en: "Tarot, Egyptian Tarot, Angels, Runes, I Ching and Búzios. Each with its own look, its own spread and its own voice.",
-          pt: "Tarô, Tarô Egípcio, Anjos, Runas, I Ching e Búzios. Cada um com sua estética, sua tiragem e sua própria voz.",
+          en: "Tarot, Egyptian Tarot, Angels, Runes and Búzios. Each with its own look, its own spread and its own voice.",
+          pt: "Tarô, Tarô Egípcio, Anjos, Runas e Búzios. Cada um com sua estética, sua tiragem e sua própria voz.",
         },
       },
       {
@@ -420,8 +423,8 @@ export const apps: App[] = [
         },
         description: {
           es: "Descubre el significado de cada carta, runa, hexagrama y odu a tu ritmo, sin apuro.",
-          en: "Discover the meaning of every card, rune, hexagram and odu at your own pace, with no rush.",
-          pt: "Descubra o significado de cada carta, runa, hexagrama e odu no seu ritmo, sem pressa.",
+          en: "Discover the meaning of every card, rune and odu at your own pace, with no rush.",
+          pt: "Descubra o significado de cada carta, runa e odu no seu ritmo, sem pressa.",
         },
       },
       {
@@ -432,9 +435,14 @@ export const apps: App[] = [
           pt: "No seu idioma",
         },
         description: {
-          es: "Disponible en varios idiomas, con lecturas traducidas y no automáticas.",
-          en: "Available in several languages, with readings that are properly translated, not machine-generated.",
-          pt: "Disponível em vários idiomas, com leituras traduzidas de verdade, não automáticas.",
+          // Antes prometia traducciones "no automaticas". Se cambio porque no
+          // se puede sostener: el volumen de contenido obliga a traducir con
+          // ayuda de maquina y la revision humana no llega a todos los idiomas.
+          // Lo que si es cierto, y sigue siendo un diferencial, es que los
+          // significados son de redaccion propia y no copiados de un manual.
+          es: "Disponible en varios idiomas, con significados escritos por nosotros y no copiados de un manual.",
+          en: "Available in several languages, with meanings written by us, not lifted from a manual.",
+          pt: "Disponível em vários idiomas, com significados escritos por nós, não copiados de um manual.",
         },
       },
       {
@@ -501,14 +509,6 @@ export const apps: App[] = [
         },
       },
       {
-        src: "/apps/oraculos/04.jpeg",
-        alt: {
-          es: "Biblioteca de los 64 hexagramas del I Ching en Oráculos",
-          en: "Library of the 64 I Ching hexagrams in Oráculos",
-          pt: "Biblioteca dos 64 hexagramas do I Ching em Oráculos",
-        },
-      },
-      {
         src: "/apps/oraculos/06.jpeg",
         alt: {
           es: "Ficha de la carta El Mago en Oráculos, con palabras clave al derecho y al invertido y lectura en audio",
@@ -526,7 +526,7 @@ export const apps: App[] = [
       },
     ],
     privacy: {
-      updatedAt: "2026-08-06",
+      updatedAt: "2026-08-09",
       collects: [
         {
           type: {
@@ -537,17 +537,26 @@ export const apps: App[] = [
             pt: "A pontuação máxima obtida na seção Desafio",
           },
           purpose: {
-            es: "Recordar tu mejor marca entre sesiones. Es el único dato que la app guarda: ni las preguntas que escribes ni las tiradas quedan almacenadas.",
-            en: "To remember your best result between sessions. It is the only data the app stores: neither the questions you type nor the readings are kept.",
-            pt: "Lembrar a sua melhor marca entre sessões. É o único dado que o app guarda: nem as perguntas que você escreve nem as tiragens ficam armazenadas.",
+            es: "Recordar tu mejor marca entre sesiones. Es el único dato que la app guarda: ni las preguntas que escribes ni las tiradas quedan almacenadas. La pregunta se envía a Google únicamente para redactar la lectura, como se explica en las secciones 3 y 5.",
+            en: "To remember your best result between sessions. It is the only data the app stores: neither the questions you type nor the readings are kept. Your question is sent to Google solely to write the reading, as explained in sections 3 and 5.",
+            pt: "Lembrar a sua melhor marca entre sessões. É o único dado que o app guarda: nem as perguntas que você escreve nem as tiragens ficam armazenadas. A pergunta é enviada ao Google apenas para redigir a leitura, como explicado nas seções 3 e 5.",
           },
           storage: "dispositivo",
         },
       ],
       permissions: [],
-      processedOnDevice: true,
-      // Los videos con recompensa se sirven con AdMob. Esto tiene que seguir
-      // coincidiendo con lo declarado en Data safety de Google Play Console.
+      // La lectura la redacta un modelo de lenguaje en la nube, así que la
+      // pregunta sale del dispositivo. No se guarda en ningún lado, pero la
+      // app ya no puede afirmar que todo ocurre localmente.
+      processedOnDevice: false,
+      processingNote: {
+        es: "Cuando haces una consulta, el texto de tu pregunta y las piezas que salieron en la tirada se envían a la API de Gemini, de Google, que redacta la lectura y la devuelve. Ese envío es puntual y ni {company} ni la app conservan una copia de tu pregunta ni de la lectura: no tenemos servidores con tus consultas. Si ese servicio no está disponible, la lectura la genera la propia app dentro de tu dispositivo, sin que nada salga de él.",
+        en: "When you make a consultation, the text of your question and the pieces drawn in the spread are sent to Google's Gemini API, which writes the reading and returns it. That transmission is one-off, and neither {company} nor the app keeps a copy of your question or of the reading: we have no servers holding your consultations. If that service is unavailable, the reading is generated by the app itself on your device, with nothing leaving it.",
+        pt: "Quando você faz uma consulta, o texto da sua pergunta e as peças sorteadas na tiragem são enviados à API Gemini, do Google, que redige a leitura e a devolve. Esse envio é pontual e nem a {company} nem o app guardam cópia da sua pergunta ou da leitura: não temos servidores com as suas consultas. Se esse serviço não estiver disponível, a leitura é gerada pelo próprio app dentro do seu dispositivo, sem que nada saia dele.",
+      },
+      // Los videos con recompensa se sirven con AdMob, y la lectura la redacta
+      // Gemini. Esto tiene que seguir coincidiendo con lo declarado en Data
+      // safety de Google Play Console.
       thirdParties: [
         {
           name: "Google AdMob",
@@ -555,6 +564,15 @@ export const apps: App[] = [
             es: "Servir los videos con recompensa. Puede tratar el identificador de publicidad de tu dispositivo y datos técnicos de la sesión.",
             en: "To serve the rewarded videos. It may process your device's advertising identifier and technical session data.",
             pt: "Exibir os vídeos com recompensa. Pode tratar o identificador de publicidade do seu dispositivo e dados técnicos da sessão.",
+          },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+        {
+          name: "Google Gemini (API)",
+          purpose: {
+            es: "Redactar la lectura a partir de tu pregunta y de las piezas que salieron. Google trata ese texto bajo las condiciones de su propio servicio y, en el plan gratuito que usamos hoy, puede emplear el contenido enviado y la respuesta generada para mejorar sus servicios, lo que incluye la revisión por parte de personas. Por eso te pedimos que no escribas datos que te identifiquen ni información sensible dentro de tu pregunta.",
+            en: "To write the reading from your question and the pieces drawn. Google processes that text under its own service terms and, on the free plan we use today, may use the content sent and the generated response to improve its services, which includes review by people. For that reason we ask you not to type identifying details or sensitive information inside your question.",
+            pt: "Redigir a leitura a partir da sua pergunta e das peças sorteadas. O Google trata esse texto sob as condições do próprio serviço e, no plano gratuito que usamos hoje, pode empregar o conteúdo enviado e a resposta gerada para melhorar seus serviços, o que inclui a revisão por pessoas. Por isso pedimos que você não escreva dados que o identifiquem nem informações sensíveis dentro da sua pergunta.",
           },
           policyUrl: "https://policies.google.com/privacy",
         },

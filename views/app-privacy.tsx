@@ -60,6 +60,11 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
 
     { h2: s.s3 },
     { p: privacy.processedOnDevice ? text(s.s3device) : text(s.s3server) },
+    // Aclaración propia de la app, cuando el texto genérico no alcanza para
+    // explicar qué sale del dispositivo y hacia dónde.
+    ...(privacy.processingNote
+      ? [{ p: text(t(privacy.processingNote, lang)) }]
+      : []),
     { p: text(s.s3backup) },
 
     { h2: s.s4 },
