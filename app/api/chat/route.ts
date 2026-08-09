@@ -1,6 +1,7 @@
 import { getChat } from "@/lib/chat/config";
 import { newId } from "@/lib/chat/engine";
 import type { ChatMessage } from "@/lib/chat/types";
+import { verificarAppCheck } from "@/lib/firebase/verificar-app-check";
 import { isLocale, type Locale } from "@/lib/i18n";
 
 /**
@@ -22,6 +23,14 @@ type Payload = {
 };
 
 export async function POST(request: Request) {
+  // Antes que nada: que el pedido venga de este sitio y no de un script. Este
+  // endpoint recibe texto libre que va al modelo, así que sin esto quien
+  // encuentre la URL tiene un modelo de lenguaje gratis a nuestra cuenta.
+  // Mientras App Check no esté configurado, esto deja pasar todo.
+  if (!(await verificarAppCheck(request))) {
+    return Response.json({ error: "app_check" }, { status: 401 });
+  }
+
   let payload: Payload;
   try {
     payload = await request.json();

@@ -7,6 +7,7 @@ import { useConversation } from "@/components/chat/use-conversation";
 import { Icon } from "@/components/icons";
 import { Inline } from "@/components/rich-text";
 import type { Dictionary } from "@/lib/dictionaries";
+import { tokenAppCheck } from "@/lib/firebase/app-check";
 import { path, type Locale } from "@/lib/i18n";
 
 type Bubble = {
@@ -115,9 +116,17 @@ export function ChatWidget({
       let handoff = false;
 
       try {
+        // Prueba que el pedido sale de este sitio y no de un script. Si App
+        // Check no está configurado devuelve null y el pedido va sin cabecera:
+        // el chat funciona igual, el servidor decide si la exige.
+        const tokenAC = await tokenAppCheck();
+
         const response = await fetch("/api/chat", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            ...(tokenAC ? { "X-Firebase-AppCheck": tokenAC } : {}),
+          },
           body: JSON.stringify({
             message,
             lang,

@@ -37,7 +37,8 @@ export function isFirebaseConfigured(): boolean {
 
 let app: FirebaseApp | undefined;
 
-function getApp(): FirebaseApp {
+/** Exportada para App Check, que necesita esta misma instancia. */
+export function getApp(): FirebaseApp {
   if (app) return app;
   app = getApps()[0] ?? initializeApp(config);
   return app;
