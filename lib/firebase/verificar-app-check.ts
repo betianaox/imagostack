@@ -71,10 +71,28 @@ export async function appCheckActivo(): Promise<boolean> {
 }
 
 /**
+ * Códigos con los que el SDK dice "este token no sirve". Solo estos cierran la
+ * puerta: son los únicos casos en que sabemos que la attestación falló de
+ * verdad. Cualquier otro error significa que no pudimos comprobar nada, que no
+ * es lo mismo que haber comprobado que está mal.
+ */
+const TOKEN_INVALIDO = new Set([
+  "app-check/invalid-argument",
+  "app-check/invalid-credential",
+]);
+
+/**
  * ¿El pedido trae un token válido?
  *
- * Devuelve `true` cuando App Check no está configurado o no se pudo cargar: la
- * puerta queda abierta en vez de cerrarse sobre los visitantes.
+ * Devuelve `true` cuando App Check no está configurado o cuando no se pudo
+ * verificar por un problema nuestro: la puerta queda abierta en vez de cerrarse
+ * sobre los visitantes. Se cierra solo ante un token ausente o rechazado.
+ *
+ * La distinción no es teórica: el SDK estuvo un tiempo sin poder ni cargarse en
+ * producción —`jwks-rsa` es CommonJS y hace `require()` de `jose`, que es ESM,
+ * y eso revienta en Node 20— y el chat contestó el mensaje de respaldo a todo
+ * el mundo sin que nada lo delatara. Un fallo de infraestructura no debe
+ * parecerse a un visitante sospechoso.
  */
 export async function verificarAppCheck(request: Request): Promise<boolean> {
   let app: AppAdmin | null = null;
@@ -89,20 +107,41 @@ export async function verificarAppCheck(request: Request): Promise<boolean> {
   const token = request.headers.get("X-Firebase-AppCheck");
   if (!token) return false;
 
+  // Cargar el SDK y validar el token son dos cosas distintas y se tratan
+  // distinto: que el módulo no cargue es un problema del despliegue, no del
+  // visitante, así que no puede costarle la respuesta.
+  let getAppCheck: (app: never) => {
+    verifyToken: (token: string) => Promise<unknown>;
+  };
   try {
-    const { getAppCheck } = await import("firebase-admin/app-check");
-    // El tipo real lo pone el SDK; acá alcanza con la instancia.
+    ({ getAppCheck } = await import("firebase-admin/app-check"));
+  } catch (error) {
+    console.error(
+      "App Check: no se pudo cargar el SDK, se sigue sin verificar",
+      error,
+    );
+    return true;
+  }
+
+  try {
     await getAppCheck(app as never).verifyToken(token);
     return true;
   } catch (error) {
     // El token NO se loguea: es una credencial. El motivo sí, porque sin él un
-    // rechazo es indistinguible de otro y el chat cae al respaldo en silencio.
-    // El desajuste típico es de proyecto: el token lo emite Firebase para el
-    // proyecto del cliente y se valida contra el de la cuenta de servicio.
-    console.error("App Check: token rechazado", {
-      motivo: (error as { code?: string })?.code ?? (error as Error)?.message,
-      proyectoServidor: credenciales()?.projectId,
-    });
-    return false;
+    // rechazo es indistinguible de otro.
+    const motivo = (error as { code?: string })?.code;
+    const rechazado = motivo !== undefined && TOKEN_INVALIDO.has(motivo);
+
+    console.error(
+      rechazado
+        ? "App Check: token rechazado"
+        : "App Check: no se pudo verificar, se deja pasar",
+      {
+        motivo: motivo ?? (error as Error)?.message,
+        proyectoServidor: credenciales()?.projectId,
+      },
+    );
+
+    return !rechazado;
   }
 }
