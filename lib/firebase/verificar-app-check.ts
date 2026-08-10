@@ -94,8 +94,15 @@ export async function verificarAppCheck(request: Request): Promise<boolean> {
     // El tipo real lo pone el SDK; acá alcanza con la instancia.
     await getAppCheck(app as never).verifyToken(token);
     return true;
-  } catch {
-    // No se loguea el token ni el detalle: es una credencial.
+  } catch (error) {
+    // El token NO se loguea: es una credencial. El motivo sí, porque sin él un
+    // rechazo es indistinguible de otro y el chat cae al respaldo en silencio.
+    // El desajuste típico es de proyecto: el token lo emite Firebase para el
+    // proyecto del cliente y se valida contra el de la cuenta de servicio.
+    console.error("App Check: token rechazado", {
+      motivo: (error as { code?: string })?.code ?? (error as Error)?.message,
+      proyectoServidor: credenciales()?.projectId,
+    });
     return false;
   }
 }
