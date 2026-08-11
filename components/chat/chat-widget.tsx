@@ -213,12 +213,26 @@ export function ChatWidget({
         <Icon name={open ? "close" : "chat"} className="size-6" />
       </button>
 
-      {open && (
-        <div
-          role="dialog"
-          aria-label={chat.title}
-          className="fixed inset-x-3 bottom-22 z-40 flex max-h-[min(34rem,75vh)] flex-col overflow-hidden rounded-3xl border border-brand-500/15 bg-white shadow-2xl shadow-brand-950/25 sm:inset-x-auto sm:right-6 sm:w-96 md:bottom-24"
-        >
+      {/*
+        El panel queda montado y se muestra por clases, no con montaje
+        condicional: es lo que permite animar el cierre, porque un componente
+        desmontado no tiene cómo despedirse. Cerrado va `invisible`, así que
+        tampoco es alcanzable con el tabulador.
+
+        `visibility` va con RETARDO y no con duración: es una propiedad
+        discreta, y con duración salta a oculto en el primer fotograma y corta
+        el desvanecido. Con retardo, el panel sigue visible mientras se va.
+      */}
+      <div
+        role="dialog"
+        aria-label={chat.title}
+        aria-hidden={!open}
+        className={`fixed inset-x-3 bottom-22 z-40 flex max-h-[min(34rem,75vh)] origin-bottom-right flex-col overflow-hidden rounded-3xl border border-brand-500/15 bg-white shadow-2xl shadow-brand-950/25 motion-reduce:translate-y-0 motion-reduce:scale-100 sm:inset-x-auto sm:right-6 sm:w-96 md:bottom-24 ${
+          open
+            ? "visible translate-y-0 scale-100 opacity-100 [transition:opacity_.22s_ease-out,transform_.26s_cubic-bezier(0.2,0.9,0.3,1.1),visibility_0s]"
+            : "invisible translate-y-3.5 scale-[0.96] opacity-0 [transition:opacity_.18s_ease-in,transform_.18s_ease-in,visibility_0s_linear_.18s]"
+        }`}
+      >
           {/* Encabezado: acá va a vivir el indicador de operador */}
           <div className="flex items-center gap-3 border-b border-brand-500/10 bg-brand-50/60 px-4 py-3.5">
             {/*
@@ -342,7 +356,6 @@ export function ChatWidget({
             </p>
           </form>
         </div>
-      )}
     </>
   );
 }
