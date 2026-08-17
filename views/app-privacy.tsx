@@ -66,6 +66,13 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
       ? [{ p: text(t(privacy.processingNote, lang)) }]
       : []),
     { p: text(s.s3backup) },
+    // Por cuanto tiempo se conservan: el RGPD lo exige de forma expresa y el plazo
+    // depende de donde viven los datos, no de que datos son.
+    {
+      p: text(
+        privacy.processedOnDevice ? s.s3retentionDevice : s.s3retentionServer,
+      ),
+    },
 
     { h2: s.s4 },
     ...(privacy.permissions.length === 0
@@ -98,6 +105,11 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
           },
         ]),
     { p: s.s5legal },
+    // Transferencias internacionales: la respuesta cambia segun haya o no terceros
+    // (`shares` cubre publicidad y proveedores), asi que se elige la variante que
+    // no miente en cada caso. El perfilado se niega siempre: nunca lo hacemos.
+    { p: shares ? text(s.s5transfers) : text(s.s5noTransfers) },
+    { p: text(s.s5noAutomated) },
 
     { h2: s.s6 },
     { p: text(s.s6p) },
@@ -131,6 +143,12 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
         privacy.processedOnDevice ? text(s.s9device) : text(s.s9server)
       }`,
     },
+    // Base legal del tratamiento y derecho a reclamar ante la autoridad de control:
+    // los dos huecos formales que le faltaban a esta seccion.
+    {
+      p: text(privacy.processedOnDevice ? s.s9basisDevice : s.s9basisServer),
+    },
+    { p: text(s.s9authority) },
 
     { h2: s.s10 },
     { p: s.s10p },

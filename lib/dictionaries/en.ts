@@ -606,7 +606,7 @@ export const en: Dictionary = {
     iapNo: "It includes no in-app purchases.",
 
     s1: "1. Who we are",
-    s1p: "{app} is an application developed and published by **{company}** (“we”). For any privacy enquiry you can write to us at [{email}](mailto:{email}).",
+    s1p: "{app} is an application developed and published by **{company}** (“we”), operating from {jurisdiction}. For any privacy enquiry you can write to us at [{email}](mailto:{email}).",
 
     s2: "2. What data the application handles",
     s2none:
@@ -628,6 +628,15 @@ export const en: Dictionary = {
       "Some information is processed on our own servers or on those of infrastructure providers contracted by {company}, with security measures appropriate to the type of data.",
     s3backup:
       "If you back up your phone, the operating system may include the app's data in that backup. That backup is managed by Google or by your device manufacturer under their own policies, not by {company}.",
+    /**
+     * Plazo de conservación. Es un dato que el RGPD exige informar de forma expresa
+     * (art. 13.2.a) y que faltaba: la política decía dónde viven los datos y cómo
+     * borrarlos, pero no por cuánto tiempo se guardan.
+     */
+    s3retentionDevice:
+      "**For how long.** The information is kept until you delete it. There is no time limit that erases it automatically, and no copy in our hands that outlives that deletion: once you remove it from your device, it ceases to exist.",
+    s3retentionServer:
+      "**For how long.** We keep the information for as long as it is needed to provide the service. When it is no longer needed, or if you ask us to delete it, we erase it —unless a legal obligation requires us to retain some data for a set period, and only for that period.",
 
     s4: "4. Permissions the app requests",
     s4none:
@@ -646,6 +655,18 @@ export const en: Dictionary = {
     s5item: "**{name}.** {purpose} [See their privacy policy]({url}).",
     s5legal:
       "We may disclose information only where a competent authority requires it through a valid legal order.",
+    /**
+     * Transferencias internacionales (RGPD art. 13.2.f). La afirmación depende de si
+     * hay terceros: sin proveedores no hay nada que transferir y conviene decirlo;
+     * con proveedores, negarlo seria falso, porque tratan datos fuera del pais.
+     */
+    s5noTransfers:
+      "Since we share information with no one, **there are no international transfers of your data**.",
+    s5transfers:
+      "The providers named above may process that information on servers located outside your country, under the safeguards set out in their own policies and in the legal frameworks that apply to them.",
+    /** Decisiones automatizadas y perfilado (RGPD art. 22). Vale para todas las apps. */
+    s5noAutomated:
+      "Under no circumstances do we make automated decisions that affect you, nor do we build user profiles.",
 
     s6: "6. Content you share yourself",
     s6p: "If you use a feature of the app to share content (for example, sending an image or a summary by messaging), that sending is done by you through the application you choose. {company} does not take part in that content and keeps no copy of it.",
@@ -671,10 +692,31 @@ export const en: Dictionary = {
     s8more: "More details on the [data deletion]({deleteDataUrl}) page.",
 
     s9: "9. Your rights",
-    s9p: "Under the regulations that apply to you (among others, Personal Data Protection Law 25.326 of {jurisdiction} and the European GDPR), you have the right to access your data, rectify it, erase it, restrict it or object to its processing.",
+    /**
+     * Los derechos salen de la ley del USUARIO, no de la nuestra: por eso la lista
+     * arranca por el RGPD y la ley argentina aparece como una mas. Donde operamos
+     * nosotros se declara en la seccion 1, que es el lugar que le corresponde.
+     */
+    s9p: "Under the regulations that apply to you —the GDPR if you are in the European Union, the LGPD in Brazil, Personal Data Protection Law 25.326 in Argentina, or whichever governs in your country— you have the right to access your data, rectify it, erase it, restrict it or object to its processing.",
     s9device:
       "Since {app}'s data lives on your device, you exercise those rights directly from the app; even so, we're here to help.",
     s9server: "Write to us to exercise them.",
+    /**
+     * Base legal del tratamiento (RGPD art. 6). Cuando nada sale del dispositivo no hay
+     * tratamiento por nuestra parte y decirlo es mas honesto que invocar una base que no
+     * usamos; lo unico que si tratamos en ese caso es el correo, si la persona escribe.
+     */
+    s9basisDevice:
+      "**Legal basis.** As long as the information does not leave your device, {company} carries out no processing on it: there is no legal basis to invoke because there is nothing we process. If you write to us, that email exchange is processed on the basis of your consent and of our legitimate interest in replying to you.",
+    s9basisServer:
+      "**Legal basis.** We process the information in order to provide the service you request and, depending on the case, on the basis of your consent or of our legitimate interest in keeping the application running and preventing abuse.",
+    /**
+     * Derecho a reclamar ante la autoridad de control (RGPD art. 13.2.d). Se nombran las
+     * autoridades de los mercados donde la ficha esta traducida, mas la de la jurisdiccion
+     * propia, para que la persona sepa a donde ir sin tener que averiguarlo.
+     */
+    s9authority:
+      "If you believe we did not handle a request properly, you have the right to lodge a complaint with **the supervisory authority of your country of residence**: for example, the _Garante per la protezione dei dati personali_ in Italy, the Spanish Data Protection Agency in Spain, the National Data Protection Authority in Brazil, or the Agency for Access to Public Information in {jurisdiction}.",
 
     s10: "10. Security",
     s10p: "We apply reasonable technical measures to protect information, including the use of the operating system's private storage. No method is infallible, but we minimise the risk with the simplest strategy: not accumulating data we don't need.",

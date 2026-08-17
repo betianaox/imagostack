@@ -609,7 +609,7 @@ export const pt: Dictionary = {
     iapNo: "Não inclui compras dentro do aplicativo.",
 
     s1: "1. Quem somos",
-    s1p: "O {app} é um aplicativo desenvolvido e publicado pela **{company}** (“nós”). Para qualquer dúvida sobre privacidade, escreva para [{email}](mailto:{email}).",
+    s1p: "O {app} é um aplicativo desenvolvido e publicado pela **{company}** (“nós”), que opera desde a {jurisdiction}. Para qualquer dúvida sobre privacidade, escreva para [{email}](mailto:{email}).",
 
     s2: "2. Quais dados o aplicativo trata",
     s2none:
@@ -631,6 +631,15 @@ export const pt: Dictionary = {
       "Parte da informação é processada em servidores próprios ou de provedores de infraestrutura contratados pela {company}, com medidas de segurança compatíveis com o tipo de dado.",
     s3backup:
       "Se você fizer backup do celular, o sistema operacional pode incluir os dados do app nesse backup. Esse backup é gerenciado pelo Google ou pelo fabricante do seu dispositivo segundo as políticas deles, não pela {company}.",
+    /**
+     * Plazo de conservación. Es un dato que el RGPD exige informar de forma expresa
+     * (art. 13.2.a) y que faltaba: la política decía dónde viven los datos y cómo
+     * borrarlos, pero no por cuánto tiempo se guardan.
+     */
+    s3retentionDevice:
+      "**Por quanto tempo.** As informações ficam guardadas até você apagá-las. Não há prazo que as elimine automaticamente, nem uma cópia em nosso poder que sobreviva a essa exclusão: quando você as apaga do dispositivo, elas deixam de existir.",
+    s3retentionServer:
+      "**Por quanto tempo.** Guardamos as informações enquanto forem necessárias para prestar o serviço. Quando deixam de ser, ou se você pedir que sejam excluídas, nós as apagamos —salvo se uma obrigação legal exigir a retenção de algum dado por um prazo determinado, e apenas por esse prazo.",
 
     s4: "4. Permissões que o app solicita",
     s4none:
@@ -649,6 +658,18 @@ export const pt: Dictionary = {
     s5item: "**{name}.** {purpose} [Ver a política de privacidade]({url}).",
     s5legal:
       "Podemos divulgar informações apenas se uma autoridade competente exigir por meio de ordem legal válida.",
+    /**
+     * Transferencias internacionales (RGPD art. 13.2.f). La afirmación depende de si
+     * hay terceros: sin proveedores no hay nada que transferir y conviene decirlo;
+     * con proveedores, negarlo seria falso, porque tratan datos fuera del pais.
+     */
+    s5noTransfers:
+      "Como não compartilhamos informações com ninguém, **não existem transferências internacionais dos seus dados**.",
+    s5transfers:
+      "Os provedores mencionados podem tratar essas informações em servidores localizados fora do seu país, sob as garantias previstas nas políticas deles e nos marcos legais que lhes sejam aplicáveis.",
+    /** Decisiones automatizadas y perfilado (RGPD art. 22). Vale para todas las apps. */
+    s5noAutomated:
+      "Em nenhum caso tomamos decisões automatizadas que afetem você, nem elaboramos perfis de usuário.",
 
     s6: "6. Conteúdo que você compartilha",
     s6p: "Se você usar uma função do app para compartilhar conteúdo (por exemplo, enviar uma imagem ou um resumo por mensagem), esse envio é feito por você pelo aplicativo que escolher. A {company} não participa desse conteúdo nem guarda cópia.",
@@ -674,10 +695,31 @@ export const pt: Dictionary = {
     s8more: "Mais detalhes na página de [exclusão de dados]({deleteDataUrl}).",
 
     s9: "9. Seus direitos",
-    s9p: "Conforme a legislação aplicável a você (entre outras, a Lei 25.326 de Proteção de Dados Pessoais de {jurisdiction}, a LGPD brasileira e o RGPD europeu), você tem direito a acessar seus dados, retificá-los, excluí-los, limitá-los ou se opor ao tratamento.",
+    /**
+     * Los derechos salen de la ley del USUARIO, no de la nuestra: por eso la lista
+     * arranca por la LGPD y la ley argentina aparece como una mas. Donde operamos
+     * nosotros se declara en la seccion 1, que es el lugar que le corresponde.
+     */
+    s9p: "Conforme a legislação aplicável a você —a LGPD se você estiver no Brasil, o RGPD na União Europeia, a Lei 25.326 de Proteção de Dados Pessoais na Argentina, ou a que vigorar no seu país— você tem direito a acessar seus dados, retificá-los, excluí-los, limitá-los ou se opor ao tratamento.",
     s9device:
       "Como os dados do {app} ficam no seu dispositivo, esses direitos você exerce diretamente pelo app; de todo modo, estamos à disposição para ajudar.",
     s9server: "Escreva para exercê-los.",
+    /**
+     * Base legal del tratamiento (RGPD art. 6). Cuando nada sale del dispositivo no hay
+     * tratamiento por nuestra parte y decirlo es mas honesto que invocar una base que no
+     * usamos; lo unico que si tratamos en ese caso es el correo, si la persona escribe.
+     */
+    s9basisDevice:
+      "**Base legal.** Enquanto as informações não saem do seu dispositivo, a {company} não realiza nenhum tratamento sobre elas: não há base legal a invocar porque não há nada que tratemos. Se você nos escrever, essa troca de e-mails é tratada com base no seu consentimento e no nosso legítimo interesse em responder.",
+    s9basisServer:
+      "**Base legal.** Tratamos as informações para poder prestar o serviço que você solicita e, conforme o caso, com base no seu consentimento ou no nosso legítimo interesse em manter o aplicativo funcionando e evitar abusos.",
+    /**
+     * Derecho a reclamar ante la autoridad de control (RGPD art. 13.2.d). Se nombran las
+     * autoridades de los mercados donde la ficha esta traducida, mas la de la jurisdiccion
+     * propia, para que la persona sepa a donde ir sin tener que averiguarlo.
+     */
+    s9authority:
+      "Se você considerar que não atendemos bem a um pedido, tem o direito de reclamar à **autoridade de controle do seu país de residência**: por exemplo, a Autoridade Nacional de Proteção de Dados no Brasil, o _Garante per la protezione dei dati personali_ na Itália, a Agência Espanhola de Proteção de Dados na Espanha ou a Agência de Acesso à Informação Pública na {jurisdiction}.",
 
     s10: "10. Segurança",
     s10p: "Aplicamos medidas técnicas razoáveis para proteger as informações, incluindo o uso do armazenamento privado do sistema operacional. Nenhum método é infalível, mas minimizamos o risco com a estratégia mais simples: não acumular dados de que não precisamos.",
