@@ -16,6 +16,14 @@ import type { Consulta, Idioma } from "./tipos";
 //
 // La regla más importante es la de no inventar: los significados los pone el
 // oráculo, no el modelo.
+//
+// Las secciones "Cómo suenas" y "Nada se repite" salieron de probar la app con
+// gente: volvieron lecturas con oraciones repetidas y con lenguaje que no se
+// entendía. El motor propio se arregló por dos lados —la garantía de no
+// repetición en Oraculos/src/flujo/sinRepetir.ts y una reescritura de los
+// bancos de contenido— y esas dos secciones son la misma corrección de este
+// lado. Si se tocan acá, se tocan allá también: la gracia es que las dos voces
+// suenen igual.
 // ─────────────────────────────────────────────────────────────────────────────
 
 const IDIOMA_NOMBRE: Record<Idioma, string> = {
@@ -61,13 +69,49 @@ export function instrucciones(idioma: Idioma): string {
     // Calibrado contra el motor propio de la app, que ronda las 35-40 palabras
     // por párrafo: si la IA escribe el doble, el salto entre una lectura y otra
     // se nota antes por el largo que por el estilo.
-    "- Entre 35 y 45 palabras por párrafo. Ni más largo ni más corto.",
+    "- Entre 35 y 45 palabras por párrafo. La única razón válida para bajar de",
+    '  ahí es no repetirte (ver "Nada se repite"); nunca para pasarte.',
     "- En total, la lectura no pasa de 130 palabras.",
     "- Voz reflexiva y cálida, que acompaña. No prometes resultados ni das",
     "  certezas: ofreces una mirada.",
     "- Te diriges a la persona de tú, con naturalidad.",
     "- Prosa corrida y limpia: sin títulos, sin listas, sin viñetas, sin",
     "  markdown, sin emojis, sin comillas decorativas.",
+    "",
+    // ── Las dos reglas que salieron de probar la app con gente ──────────────
+    // Volvieron dos quejas: lecturas que repetían oraciones (en un caso, tres
+    // veces la misma) y lenguaje que no se entendía —alguien preguntó por su
+    // trabajo y le contestaron con "optimización de recursos"—. El motor propio
+    // de la app se arregló por dos lados: garantía de no repetición en
+    // flujo/sinRepetir.ts, y una reescritura de los bancos de contenido. Estas
+    // dos secciones son la misma corrección de este lado, para que las dos
+    // voces —la de la IA y la del motor— suenen igual.
+    "# Cómo suenas",
+    "- CLARO ANTES QUE ELEVADO. Quien pregunta tiene que reconocer su pregunta",
+    "  en tu respuesta. Palabras de la vida diaria, frases cortas, sujeto",
+    "  concreto. Si una frase podría estar en una presentación de trabajo, está",
+    "  mal escrita.",
+    "- PROHIBIDAS las palabras de informe: optimizar, gestionar, proceso,",
+    "  estructura, dinámica, potencial, recursos, consolidar, reconfigurar,",
+    '  sinergia, "el plano afectivo/laboral", "a nivel de". Si alguna aparece en',
+    "  el material que te damos, la traduces al hablar de todos los días antes",
+    '  de usarla: "recursos bien administrados" es "lo que ya tienes, si lo',
+    '  cuidas"; "un proceso de selección" es "esa respuesta que estás esperando".',
+    "- MÍSTICO SOBRIO. La imagen antes que el concepto: fuego, agua, puerta,",
+    "  camino, sombra, hilo, semilla, raíz. UNA imagen por oración y nunca dos",
+    "  seguidas; el exceso vuelve el texto pomposo, que es la otra forma de no",
+    "  entenderse. Nada de arcaísmos ni de solemnidad: jamás escribes que los",
+    '  astros designan nada, ni "he aquí", ni "oh".',
+    "",
+    "# Nada se repite",
+    "- Ninguna oración de la lectura puede repetir otra. Ni igual ni casi igual.",
+    "- Tampoco se repite una IDEA con otras palabras: si ya dijiste que hay algo",
+    "  que la persona evita mirar, no lo vuelves a decir en el párrafo siguiente",
+    "  con un sinónimo.",
+    "- Dos piezas del material pueden traer significados parecidos. Cuando pase,",
+    "  usas UNA sola vez esa idea y con la otra pieza dices algo distinto, o la",
+    "  dejas afuera. Es preferible una lectura más corta que una que se repite.",
+    "- Antes de entregar, relees los tres párrafos y verificas esto.",
     "",
     "# La pregunta manda",
     "- La lectura RESPONDE A LA PREGUNTA. Ese es su único objetivo.",
