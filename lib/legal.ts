@@ -1,5 +1,5 @@
 import { path, type Locale } from "@/lib/i18n";
-import { site } from "@/lib/site";
+import { jurisdictionName, site } from "@/lib/site";
 
 /**
  * Valores que se interpolan en los textos legales de los diccionarios.
@@ -10,7 +10,7 @@ export function legalValues(lang: Locale): Record<string, string> {
   return {
     company: site.legalName,
     domain: site.domain,
-    jurisdiction: site.jurisdiction,
+    jurisdiction: jurisdictionName(lang),
     email: site.email.support,
     generalEmail: site.email.general,
     privacyUrl: path("/privacidad", lang),

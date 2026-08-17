@@ -60,7 +60,12 @@ function buildProvider(): LLMProvider {
 
 /** Personalidad y reglas. Es la pieza que más define cómo se percibe el bot. */
 function persona(lang: Locale): string {
-  const language = { es: "español", en: "inglés", pt: "portugués" }[lang];
+  const language = {
+    es: "español",
+    en: "inglés",
+    pt: "portugués",
+    it: "italiano",
+  }[lang];
 
   return [
     `Eres el asistente del sitio de ${site.name} (${site.domain}), un estudio que`,

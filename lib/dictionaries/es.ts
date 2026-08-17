@@ -2,7 +2,7 @@ import type { Block } from "@/components/rich-text";
 import type { IconName } from "@/components/icons";
 
 /**
- * Diccionario base. Define la forma que deben cumplir `en.ts` y `pt.ts`:
+ * Diccionario base. Define la forma que deben cumplir `en.ts`, `pt.ts` e `it.ts`:
  * si aquí se agrega una clave, TypeScript va a exigirla en los otros idiomas.
  */
 export const es = {
@@ -252,7 +252,7 @@ export const es = {
       {
         question: "¿Puedo pasar mis datos a otro teléfono?",
         answer:
-          "Depende de la app: las que guardan historial incluyen funciones de exportar e importar. Si no encontrás la opción, escríbenos y te guiamos.",
+          "Depende de la app: las que guardan historial incluyen funciones de exportar e importar. Si no encuentras la opción, escríbenos y te guiamos.",
       },
       {
         question: "¿Cómo borro toda mi información?",
@@ -342,7 +342,7 @@ export const es = {
       "Tu cuenta no tiene acceso al panel. Si crees que es un error, avísale a un administrador.",
     loading: "Cargando…",
     empty: "Todavía no hay conversaciones.",
-    emptyHint: "Van a aparecer acá en cuanto alguien escriba al chat.",
+    emptyHint: "Van a aparecer aquí en cuanto alguien escriba al chat.",
     selectOne: "Elige una conversación de la lista.",
     /** Buscador de la lista */
     search: "Buscar en las conversaciones…",
@@ -433,7 +433,7 @@ export const es = {
       },
       { h3: "Formulario de contacto" },
       {
-        p: "Cuando enviás el formulario, tu nombre, tu correo y tu mensaje viajan a nuestro servidor y se despachan a nuestra casilla a través de **Resend**, el proveedor de envío de correo que utilizamos. **No guardamos ese contenido en ninguna base de datos**: llega a nuestro correo y ahí se trata como cualquier otro mensaje. Lo usamos únicamente para responderte, y puedes ver la [política de privacidad de Resend](https://resend.com/legal/privacy-policy).",
+        p: "Cuando envías el formulario, tu nombre, tu correo y tu mensaje viajan a nuestro servidor y se despachan a nuestra casilla a través de **Resend**, el proveedor de envío de correo que utilizamos. **No guardamos ese contenido en ninguna base de datos**: llega a nuestro correo y ahí se trata como cualquier otro mensaje. Lo usamos únicamente para responderte, y puedes ver la [política de privacidad de Resend](https://resend.com/legal/privacy-policy).",
       },
       { h3: "Correo electrónico" },
       {
@@ -488,11 +488,11 @@ export const es = {
     blocks: [
       { h2: "1. Aceptación" },
       {
-        p: "Al descargar, instalar o usar cualquiera de las aplicaciones de **{company}**, o al utilizar este sitio, aceptás estos términos. Si no estás de acuerdo, no uses el servicio.",
+        p: "Al descargar, instalar o usar cualquiera de las aplicaciones de **{company}**, o al utilizar este sitio, aceptas estos términos. Si no estás de acuerdo, no uses el servicio.",
       },
       { h2: "2. Licencia de uso" },
       {
-        p: "Te otorgamos una licencia personal, limitada, revocable, no exclusiva y no transferible para instalar y usar nuestras aplicaciones en dispositivos que controlés, con fines personales y no comerciales. La licencia no implica transferencia de propiedad.",
+        p: "Te otorgamos una licencia personal, limitada, revocable, no exclusiva y no transferible para instalar y usar nuestras aplicaciones en dispositivos que controles, con fines personales y no comerciales. La licencia no implica transferencia de propiedad.",
       },
       { p: "No está permitido:" },
       {
@@ -510,7 +510,7 @@ export const es = {
       },
       { h2: "4. Contenido y responsabilidad del usuario" },
       {
-        p: "La información que cargas en nuestras apps es tuya y eres responsable de ella, incluido el respaldo. Cuando los datos se almacenan únicamente en tu dispositivo, no tenemos forma de recuperarlos si los borras, si perdés el teléfono o si desinstalas la aplicación.",
+        p: "La información que cargas en nuestras apps es tuya y eres responsable de ella, incluido el respaldo. Cuando los datos se almacenan únicamente en tu dispositivo, no tenemos forma de recuperarlos si los borras, si pierdes el teléfono o si desinstalas la aplicación.",
       },
       { h2: "5. Contenido de entretenimiento" },
       {
@@ -534,7 +534,7 @@ export const es = {
       },
       { h2: "10. Terminación" },
       {
-        p: "Puedes dejar de usar el servicio en cualquier momento desinstalando la aplicación. Podemos suspender la licencia si incumplís estos términos.",
+        p: "Puedes dejar de usar el servicio en cualquier momento desinstalando la aplicación. Podemos suspender la licencia si incumples estos términos.",
       },
       { h2: "11. Ley aplicable y jurisdicción" },
       {
@@ -560,9 +560,9 @@ export const es = {
       },
       {
         ul: [
-          "Abre la app y entrá al listado correspondiente (por ejemplo, el historial o la lista de registros).",
+          "Abre la app y entra al listado correspondiente (por ejemplo, el historial o la lista de registros).",
           "Usa el icono de eliminar de cada elemento para borrarlo individualmente.",
-          "Si quieres empezar de cero, borrá todos los elementos del listado o usá la opción de restablecer, cuando la app la ofrezca.",
+          "Si quieres empezar de cero, borra todos los elementos del listado o usa la opción de restablecer, cuando la app la ofrezca.",
         ],
       },
       { h2: "Opción 2 — Borrar los datos desde Android" },
@@ -574,7 +574,7 @@ export const es = {
           "Abre _Ajustes_ en tu teléfono.",
           "Entra a _Aplicaciones_ y elige la app.",
           "Toca _Almacenamiento_.",
-          "Toca _Borrar datos_ (o _Borrar almacenamiento_) y confirmá.",
+          "Toca _Borrar datos_ (o _Borrar almacenamiento_) y confirma.",
         ],
       },
       {
@@ -633,7 +633,7 @@ export const es = {
     iapNo: "No incluye compras dentro de la aplicación.",
 
     s1: "1. Quiénes somos",
-    s1p: "{app} es una aplicación desarrollada y publicada por **{company}** (“nosotros”). Para cualquier consulta sobre privacidad puedes escribirnos a [{email}](mailto:{email}).",
+    s1p: "{app} es una aplicación desarrollada y publicada por **{company}** (“nosotros”), que opera desde {jurisdiction}. Para cualquier consulta sobre privacidad puedes escribirnos a [{email}](mailto:{email}).",
 
     s2: "2. Qué datos maneja la aplicación",
     s2none:
@@ -656,6 +656,15 @@ export const es = {
       "Parte de la información se procesa en servidores propios o de proveedores de infraestructura contratados por {company}, con medidas de seguridad acordes al tipo de dato.",
     s3backup:
       "Si haces una copia de seguridad de tu teléfono, el sistema operativo puede incluir los datos de la app en ese respaldo. Ese respaldo lo gestiona Google o el fabricante de tu dispositivo según sus propias políticas, no {company}.",
+    /**
+     * Plazo de conservación. Es un dato que el RGPD exige informar de forma expresa
+     * (art. 13.2.a) y que faltaba: la política decía dónde viven los datos y cómo
+     * borrarlos, pero no por cuánto tiempo se guardan.
+     */
+    s3retentionDevice:
+      "**Por cuánto tiempo.** La información se conserva hasta que tú la borres. No hay un plazo que la elimine automáticamente, y tampoco una copia en nuestro poder que sobreviva a ese borrado: cuando la eliminas del dispositivo, deja de existir.",
+    s3retentionServer:
+      "**Por cuánto tiempo.** Conservamos la información mientras sea necesaria para prestar el servicio. Cuando deja de serlo, o si nos pides que la eliminemos, la borramos —salvo que una obligación legal nos exija retener algún dato por un plazo determinado, y solo por ese plazo.",
 
     s4: "4. Permisos que solicita la app",
     s4none:
@@ -675,9 +684,21 @@ export const es = {
     s5item: "**{name}.** {purpose} [Ver su política de privacidad]({url}).",
     s5legal:
       "Podemos divulgar información únicamente si nos lo exige una autoridad competente mediante una orden legal válida.",
+    /**
+     * Transferencias internacionales (RGPD art. 13.2.f). La afirmación depende de si
+     * hay terceros: sin proveedores no hay nada que transferir y conviene decirlo;
+     * con proveedores, negarlo seria falso, porque tratan datos fuera del pais.
+     */
+    s5noTransfers:
+      "Como no compartimos información con nadie, **no existen transferencias internacionales de tus datos**.",
+    s5transfers:
+      "Los proveedores mencionados pueden tratar esa información en servidores ubicados fuera de tu país, bajo las garantías previstas en sus propias políticas y en los marcos legales que les resulten aplicables.",
+    /** Decisiones automatizadas y perfilado (RGPD art. 22). Vale para todas las apps. */
+    s5noAutomated:
+      "En ningún caso tomamos decisiones automatizadas que te afecten ni elaboramos perfiles de usuario.",
 
-    s6: "6. Contenido que compartís tú",
-    s6p: "Si usas una función de la app para compartir contenido (por ejemplo, enviar una imagen o un resumen por mensajería), ese envío lo realizás tú mediante la aplicación que elijas. {company} no interviene en ese contenido ni conserva una copia.",
+    s6: "6. Contenido que compartes tú",
+    s6p: "Si usas una función de la app para compartir contenido (por ejemplo, enviar una imagen o un resumen por mensajería), ese envío lo realizas tú mediante la aplicación que elijas. {company} no interviene en ese contenido ni conserva una copia.",
 
     s7: "7. Menores de edad",
     s7children:
@@ -687,7 +708,7 @@ export const es = {
     s7minAge:
       "Por el tipo de contenido, recomendamos su uso a partir de los {age} años.",
     s7report:
-      "Si creés que un menor nos entregó información, escríbenos a [{email}](mailto:{email}) y la eliminamos.",
+      "Si crees que un menor nos entregó información, escríbenos a [{email}](mailto:{email}) y la eliminamos.",
 
     s8: "8. Cómo borrar tus datos",
     s8device: [
@@ -700,10 +721,31 @@ export const es = {
     s8more: "Más detalles en la página de [eliminación de datos]({deleteDataUrl}).",
 
     s9: "9. Tus derechos",
-    s9p: "Según la normativa que te aplique (entre otras, la Ley 25.326 de Protección de Datos Personales de {jurisdiction} y el RGPD europeo), tienes derecho a acceder a tus datos, rectificarlos, suprimirlos, limitarlos u oponerte a su tratamiento.",
+    /**
+     * Los derechos salen de la ley del USUARIO, no de la nuestra: por eso la lista
+     * arranca por el RGPD y la ley argentina aparece como una mas. Donde operamos
+     * nosotros se declara en la seccion 1, que es el lugar que le corresponde.
+     */
+    s9p: "Según la normativa que te resulte aplicable —el RGPD si estás en la Unión Europea, la LGPD en Brasil, la Ley 25.326 de Protección de Datos Personales en Argentina, o la que rija en tu país— tienes derecho a acceder a tus datos, rectificarlos, suprimirlos, limitarlos u oponerte a su tratamiento.",
     s9device:
       "Como los datos de {app} viven en tu dispositivo, esos derechos los ejerces directamente desde la app; de todos modos, estamos a disposición para ayudarte.",
     s9server: "Escríbenos para ejercerlos.",
+    /**
+     * Base legal del tratamiento (RGPD art. 6). Cuando nada sale del dispositivo no hay
+     * tratamiento por nuestra parte y decirlo es mas honesto que invocar una base que no
+     * usamos; lo unico que si tratamos en ese caso es el correo, si la persona escribe.
+     */
+    s9basisDevice:
+      "**Base legal.** Mientras la información no sale de tu dispositivo, {company} no realiza ningún tratamiento sobre ella: no hay una base legal que invocar porque no hay nada que tratemos. Si nos escribes, el intercambio de correos se trata sobre la base de tu consentimiento y de nuestro interés legítimo en responderte.",
+    s9basisServer:
+      "**Base legal.** Tratamos la información para poder prestarte el servicio que solicitas y, según el caso, sobre la base de tu consentimiento o de nuestro interés legítimo en mantener la aplicación en funcionamiento y prevenir abusos.",
+    /**
+     * Derecho a reclamar ante la autoridad de control (RGPD art. 13.2.d). Se nombran las
+     * autoridades de los mercados donde la ficha esta traducida, mas la de la jurisdiccion
+     * propia, para que la persona sepa a donde ir sin tener que averiguarlo.
+     */
+    s9authority:
+      "Si consideras que no atendimos bien un pedido, tienes derecho a reclamar ante **la autoridad de control de tu país de residencia**: por ejemplo, el _Garante per la protezione dei dati personali_ en Italia, la Agencia Española de Protección de Datos en España, la Autoridad Nacional de Protección de Datos en Brasil o la Agencia de Acceso a la Información Pública en {jurisdiction}.",
 
     s10: "10. Seguridad",
     s10p: "Aplicamos medidas técnicas razonables para proteger la información, incluido el uso del almacenamiento privado del sistema operativo. Ningún método es infalible, pero minimizamos el riesgo con la estrategia más simple: no acumular datos que no necesitamos.",
@@ -726,7 +768,7 @@ export const es = {
     appTitle: "{app} — app de {category} para Android",
     supportTitle: "Soporte y contacto",
     supportDescription:
-      "Ayuda para las aplicaciones de ImagoStack: escríbenos por el formulario, mira las preguntas frecuentes y conocé nuestros tiempos de respuesta.",
+      "Ayuda para las aplicaciones de ImagoStack: escríbenos por el formulario, mira las preguntas frecuentes y conoce nuestros tiempos de respuesta.",
     supportOgTitle: "Soporte de ImagoStack",
     privacyTitle: "Política de privacidad",
     privacyDescription:
