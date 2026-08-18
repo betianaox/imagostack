@@ -404,19 +404,23 @@ export const apps: App[] = [
     body: {
       es: [
         "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Búzios. Haces tu pregunta, las cartas caen, las monedas giran, los caracoles se dispersan… y una lectura clara y cuidada te devuelve una mirada nueva sobre tu momento.",
-        "No es adivinación de manual: es una experiencia visual, íntima y hermosa, pensada para acompañar la reflexión, el autoconocimiento y esos momentos en que uno necesita frenar y pensar.",
+        "Cada lectura se lee en pantalla y también se puede escuchar en voz alta. Y hay un consejo del día, gratis y sin gastar nada, para los días en que no hay una pregunta puntual pero igual dan ganas de mirar.",
+        "No es adivinación de manual: es una experiencia visual, íntima y hermosa, pensada para acompañar la reflexión, el autoconocimiento y esos momentos en que uno necesita frenar y pensar. Es entretenimiento y aprendizaje: no adivina el futuro, no es magia y no responde sobre salud.",
       ],
       en: [
         "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Búzios. You ask your question, the cards fall, the shells scatter… and a clear, carefully written reading gives you a fresh look at your moment.",
-        "This isn't fortune-telling by the book: it's a visual, intimate and beautiful experience, made to support reflection, self-knowledge and those moments when you need to stop and think.",
+        "Every reading is there on screen and can also be listened to out loud. And there is an advice of the day, free and costing nothing, for the days when there is no particular question but you still feel like looking.",
+        "This isn't fortune-telling by the book: it's a visual, intimate and beautiful experience, made to support reflection, self-knowledge and those moments when you need to stop and think. It is entertainment and learning: it does not predict the future, it is not magic and it does not answer questions about health.",
       ],
       pt: [
         "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Búzios. Você faz a sua pergunta, as cartas caem, os búzios se espalham… e uma leitura clara e caprichada devolve um novo olhar sobre o seu momento.",
-        "Não é adivinhação de manual: é uma experiência visual, íntima e bonita, pensada para acompanhar a reflexão, o autoconhecimento e aqueles momentos em que a gente precisa parar e pensar.",
+        "Cada leitura fica na tela e também pode ser ouvida em voz alta. E tem o conselho do dia, de graça e sem gastar nada, para os dias em que não há uma pergunta específica mas ainda assim dá vontade de olhar.",
+        "Não é adivinhação de manual: é uma experiência visual, íntima e bonita, pensada para acompanhar a reflexão, o autoconhecimento e aqueles momentos em que a gente precisa parar e pensar. É entretenimento e aprendizado: não adivinha o futuro, não é magia e não responde sobre saúde.",
       ],
       it: [
         "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Búzios. Fai la tua domanda, le carte cadono, le conchiglie si spargono… e una lettura chiara e curata ti restituisce uno sguardo nuovo sul tuo momento.",
-        "Non è divinazione da manuale: è un'esperienza visiva, intima e bella, pensata per accompagnare la riflessione, la conoscenza di sé e quei momenti in cui si ha bisogno di fermarsi a pensare.",
+        "Ogni lettura si legge sullo schermo e si può anche ascoltare ad alta voce. E c'è il consiglio del giorno, gratis e senza spendere nulla, per i giorni in cui non c'è una domanda precisa ma viene comunque voglia di guardare.",
+        "Non è divinazione da manuale: è un'esperienza visiva, intima e bella, pensata per accompagnare la riflessione, la conoscenza di sé e quei momenti in cui si ha bisogno di fermarsi a pensare. È intrattenimento e apprendimento: non predice il futuro, non è magia e non risponde su questioni di salute.",
       ],
     },
     claim: {
@@ -498,10 +502,40 @@ export const apps: App[] = [
           it: "Una biblioteca per imparare",
         },
         description: {
-          es: "Descubre el significado de cada carta, runa, hexagrama y odu a tu ritmo, sin apuro.",
-          en: "Discover the meaning of every card, rune and odu at your own pace, with no rush.",
-          pt: "Descubra o significado de cada carta, runa e odu no seu ritmo, sem pressa.",
-          it: "Scopri il significato di ogni carta, runa e odu al tuo ritmo, senza fretta.",
+          es: "Qué significa cada carta, runa, hexagrama y odu, de dónde viene y cómo interpretarla. Y un juego corto para ver cuánto vas reconociendo.",
+          en: "What every card, rune and odu means, where it comes from and how to read it. Plus a short game to see how much you are picking up.",
+          pt: "O que cada carta, runa e odu significa, de onde vem e como interpretá-la. E um jogo curto para ver o quanto você vai reconhecendo.",
+          it: "Che cosa significa ogni carta, runa e odu, da dove viene e come si interpreta. E un gioco breve per vedere quanto stai riconoscendo.",
+        },
+      },
+      {
+        icon: "chat",
+        title: {
+          es: "Leer o escuchar",
+          en: "Read or listen",
+          pt: "Ler ou ouvir",
+          it: "Leggere o ascoltare",
+        },
+        description: {
+          es: "Cada lectura está en pantalla y también se puede escuchar en voz alta, para cuando tienes las manos ocupadas o prefieres que te la cuenten.",
+          en: "Every reading is on screen and can also be listened to out loud, for when your hands are busy or you would rather be told.",
+          pt: "Cada leitura fica na tela e também pode ser ouvida em voz alta, para quando você está com as mãos ocupadas ou prefere que contem para você.",
+          it: "Ogni lettura è sullo schermo e si può anche ascoltare ad alta voce, per quando hai le mani occupate o preferisci che te la raccontino.",
+        },
+      },
+      {
+        icon: "shield",
+        title: {
+          es: "Sin suscripción y sin anuncios que interrumpan",
+          en: "No subscription and no ads that interrupt",
+          pt: "Sem assinatura e sem anúncios que interrompem",
+          it: "Senza abbonamento e senza pubblicità che interrompe",
+        },
+        description: {
+          es: "Tienes consultas gratis todos los días. Si se te acaban, sumas una mirando un video corto, y lo miras solo si quieres: no hay banners ni pantallas de publicidad en medio de una lectura.",
+          en: "You get free readings every day. If you run out, you earn one more by watching a short video, and you only watch it if you want to: there are no banners and no ad screens in the middle of a reading.",
+          pt: "Você tem consultas grátis todos os dias. Se acabarem, ganha mais uma assistindo a um vídeo curto, e assiste só se quiser: não há banners nem telas de publicidade no meio de uma leitura.",
+          it: "Hai consultazioni gratuite ogni giorno. Se finiscono, ne guadagni una guardando un video breve, e lo guardi solo se vuoi: non ci sono banner né schermate pubblicitarie nel mezzo di una lettura.",
         },
       },
       {
