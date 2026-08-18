@@ -762,7 +762,7 @@ export const pt: Dictionary = {
       "desenvolvimento de aplicativos",
       "Google Play",
       "estúdio de apps",
-      "Vigía padel",
+      "Vigia padel",
       "estatísticas de padel",
       "app de oráculos",
       "app de tarô",

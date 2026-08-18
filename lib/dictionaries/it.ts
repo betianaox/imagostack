@@ -795,7 +795,7 @@ export const it: Dictionary = {
       "sviluppo di applicazioni mobili",
       "Google Play",
       "studio di app",
-      "Vigía padel",
+      "Vigia padel",
       "statistiche di padel",
       "app di oracoli",
       "app tarocchi",

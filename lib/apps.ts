@@ -104,7 +104,7 @@ export type App = {
 export const apps: App[] = [
   {
     slug: "vigia",
-    name: "Vigía",
+    name: "Vigia",
     tagline: {
       es: "El que ve todo desde afuera de la cancha",
       en: "The one who sees everything from outside the court",
@@ -112,26 +112,26 @@ export const apps: App[] = [
       it: "Chi vede tutto da fuori dal campo",
     },
     description: {
-      es: "Vigía convierte a cualquier persona al borde de la cancha en el estadístico de un partido de pádel profesional: tú marcas qué pasó en cada punto y la app hace el tanteo, los saques, los tie-breaks y las estadísticas de los cuatro jugadores.",
-      en: "Vigía turns anyone standing by the court into the statistician of a professional padel match: you tag what happened on each point and the app handles the score, the serves, the tie-breaks and the stats for all four players.",
-      pt: "Vigía transforma qualquer pessoa à beira da quadra no estatístico de uma partida de padel profissional: você marca o que aconteceu em cada ponto e o app cuida do placar, dos saques, dos tie-breaks e das estatísticas dos quatro jogadores.",
-      it: "Vigía trasforma chiunque si trovi a bordo campo nello statistico di una partita di padel professionale: tu segni che cosa è successo in ogni punto e l'app si occupa del punteggio, dei servizi, dei tie-break e delle statistiche di tutti e quattro i giocatori.",
+      es: "Vigia convierte a cualquier persona al borde de la cancha en el estadístico de un partido de pádel profesional: tú marcas qué pasó en cada punto y la app hace el tanteo, los saques, los tie-breaks y las estadísticas de los cuatro jugadores.",
+      en: "Vigia turns anyone standing by the court into the statistician of a professional padel match: you tag what happened on each point and the app handles the score, the serves, the tie-breaks and the stats for all four players.",
+      pt: "Vigia transforma qualquer pessoa à beira da quadra no estatístico de uma partida de padel profissional: você marca o que aconteceu em cada ponto e o app cuida do placar, dos saques, dos tie-breaks e das estatísticas dos quatro jogadores.",
+      it: "Vigia trasforma chiunque si trovi a bordo campo nello statistico di una partita di padel professionale: tu segni che cosa è successo in ogni punto e l'app si occupa del punteggio, dei servizi, dei tie-break e delle statistiche di tutti e quattro i giocatori.",
     },
     body: {
       es: [
-        "Vigía convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Tú solo marcas qué pasó en cada punto; la app hace el resto: el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.",
+        "Vigia convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Tú solo marcas qué pasó en cada punto; la app hace el resto: el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.",
         "Al terminar, se genera una tarjeta lista para compartir por WhatsApp con el resultado y los números del partido. La misma clase de datos que ves en una transmisión profesional, ahora de tu partido del sábado.",
       ],
       en: [
-        "Vigía turns anyone standing by the court —a coach, someone on the bench, a friend— into the statistician of a professional padel match. You just tag what happened on each point; the app does the rest: the score, who serves, who returns, the tie-breaks and the stats for all four players.",
+        "Vigia turns anyone standing by the court —a coach, someone on the bench, a friend— into the statistician of a professional padel match. You just tag what happened on each point; the app does the rest: the score, who serves, who returns, the tie-breaks and the stats for all four players.",
         "When the match ends, it generates a card ready to share on WhatsApp with the result and the numbers. The same kind of data you see on a professional broadcast, now for your Saturday match.",
       ],
       pt: [
-        "Vigía transforma qualquer pessoa à beira da quadra —um treinador, alguém do banco, um amigo— no estatístico de uma partida de padel profissional. Você só marca o que aconteceu em cada ponto; o app faz o resto: o placar, quem saca, quem devolve, os tie-breaks e as estatísticas dos quatro jogadores.",
+        "Vigia transforma qualquer pessoa à beira da quadra —um treinador, alguém do banco, um amigo— no estatístico de uma partida de padel profissional. Você só marca o que aconteceu em cada ponto; o app faz o resto: o placar, quem saca, quem devolve, os tie-breaks e as estatísticas dos quatro jogadores.",
         "No fim, é gerado um card pronto para compartilhar no WhatsApp com o resultado e os números da partida. O mesmo tipo de dado que você vê em uma transmissão profissional, agora do seu jogo de sábado.",
       ],
       it: [
-        "Vigía trasforma chiunque si trovi a bordo campo —un allenatore, qualcuno in panchina, un amico— nello statistico di una partita di padel professionale. Tu segni soltanto che cosa è successo in ogni punto; l'app fa il resto: il punteggio, chi serve, chi risponde, i tie-break e le statistiche di tutti e quattro i giocatori.",
+        "Vigia trasforma chiunque si trovi a bordo campo —un allenatore, qualcuno in panchina, un amico— nello statistico di una partita di padel professionale. Tu segni soltanto che cosa è successo in ogni punto; l'app fa il resto: il punteggio, chi serve, chi risponde, i tie-break e le statistiche di tutti e quattro i giocatori.",
         "Alla fine viene generata una scheda pronta da condividere su WhatsApp con il risultato e i numeri della partita. Lo stesso tipo di dati che vedi in una trasmissione professionale, ora della tua partita del sabato.",
       ],
     },
@@ -145,7 +145,7 @@ export const apps: App[] = [
     /**
      * VACÍO A PROPÓSITO, aunque la URL ya exista y sea la definitiva.
      *
-     * Vigía está en testing cerrado: esa ficha sólo abre para quien esté en la lista de testers
+     * Vigia está en testing cerrado: esa ficha sólo abre para quien esté en la lista de testers
      * y le devuelve 404 a todos los demás. Un botón "Descargar en Google Play" en un sitio
      * público que no funciona para casi nadie es peor que no tener botón.
      *
@@ -189,10 +189,10 @@ export const apps: App[] = [
           it: "Quello che un sensore non può fare",
         },
         description: {
-          es: "Un reloj o un sensor en la pala adivina tu golpe, pero no sabe si el error del rival fue forzado ni a quién atribuir el punto entre cuatro. Vigía sí: porque lo marca una persona que entiende el juego.",
-          en: "A watch or a sensor on your racket guesses your stroke, but it can't tell whether your rival's error was forced, or which of the four players the point belongs to. Vigía can: because a person who understands the game is the one tagging it.",
-          pt: "Um relógio ou um sensor na raquete adivinha a sua batida, mas não sabe se o erro do rival foi forçado nem a quem atribuir o ponto entre quatro. O Vigía sabe: porque quem marca é uma pessoa que entende do jogo.",
-          it: "Un orologio o un sensore sulla racchetta indovina il tuo colpo, ma non sa se l'errore dell'avversario è stato forzato né a chi attribuire il punto tra quattro. Vigía sì: perché chi segna è una persona che capisce il gioco.",
+          es: "Un reloj o un sensor en la pala adivina tu golpe, pero no sabe si el error del rival fue forzado ni a quién atribuir el punto entre cuatro. Vigia sí: porque lo marca una persona que entiende el juego.",
+          en: "A watch or a sensor on your racket guesses your stroke, but it can't tell whether your rival's error was forced, or which of the four players the point belongs to. Vigia can: because a person who understands the game is the one tagging it.",
+          pt: "Um relógio ou um sensor na raquete adivinha a sua batida, mas não sabe se o erro do rival foi forçado nem a quem atribuir o ponto entre quatro. O Vigia sabe: porque quem marca é uma pessoa que entende do jogo.",
+          it: "Un orologio o un sensore sulla racchetta indovina il tuo colpo, ma non sa se l'errore dell'avversario è stato forzato né a chi attribuire il punto tra quattro. Vigia sì: perché chi segna è una persona che capisce il gioco.",
         },
       },
       {
@@ -260,73 +260,73 @@ export const apps: App[] = [
       {
         src: "/apps/vigia/01.jpeg",
         alt: {
-          es: "Pantalla de inicio de Vigía con los accesos a partido nuevo, historial y jugadores",
-          en: "Vigía home screen with shortcuts to new match, history and players",
-          pt: "Tela inicial do Vigía com os atalhos para nova partida, histórico e jogadores",
-          it: "Schermata iniziale di Vigía con gli accessi a nuova partita, storico e giocatori",
+          es: "Pantalla de inicio de Vigia con los accesos a partido nuevo, historial y jugadores",
+          en: "Vigia home screen with shortcuts to new match, history and players",
+          pt: "Tela inicial do Vigia com os atalhos para nova partida, histórico e jogadores",
+          it: "Schermata iniziale di Vigia con gli accessi a nuova partita, storico e giocatori",
         },
       },
       {
         src: "/apps/vigia/02.jpeg",
         alt: {
-          es: "Alta de un partido nuevo en Vigía: jugadores de drive y revés de cada equipo, sorteo de saque y formato de partido",
-          en: "Setting up a new match in Vigía: forehand and backhand players for each team, serve draw and match format",
-          pt: "Criação de uma nova partida no Vigía: jogadores de drive e esquerda de cada dupla, sorteio de saque e formato da partida",
-          it: "Creazione di una nuova partita in Vigía: giocatori di diritto e di rovescio di ogni coppia, sorteggio del servizio e formato della partita",
+          es: "Alta de un partido nuevo en Vigia: jugadores de drive y revés de cada equipo, sorteo de saque y formato de partido",
+          en: "Setting up a new match in Vigia: forehand and backhand players for each team, serve draw and match format",
+          pt: "Criação de uma nova partida no Vigia: jogadores de drive e esquerda de cada dupla, sorteio de saque e formato da partida",
+          it: "Creazione di una nuova partita in Vigia: giocatori di diritto e di rovescio di ogni coppia, sorteggio del servizio e formato della partita",
         },
       },
       {
         src: "/apps/vigia/03.jpeg",
         alt: {
-          es: "Marcado de puntos en vivo en Vigía, con winner, error forzado y no forzado para cada uno de los cuatro jugadores",
-          en: "Live point tagging in Vigía, with winner, forced and unforced error for each of the four players",
-          pt: "Marcação de pontos ao vivo no Vigía, com winner, erro forçado e não forçado para cada um dos quatro jogadores",
-          it: "Segnalazione dei punti in diretta in Vigía, con winner, errore forzato e non forzato per ognuno dei quattro giocatori",
+          es: "Marcado de puntos en vivo en Vigia, con winner, error forzado y no forzado para cada uno de los cuatro jugadores",
+          en: "Live point tagging in Vigia, with winner, forced and unforced error for each of the four players",
+          pt: "Marcação de pontos ao vivo no Vigia, com winner, erro forçado e não forçado para cada um dos quatro jogadores",
+          it: "Segnalazione dei punti in diretta in Vigia, con winner, errore forzato e non forzato per ognuno dei quattro giocatori",
         },
       },
       {
         src: "/apps/vigia/08.jpeg",
         alt: {
-          es: "Detalle de un error no forzado en Vigía: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
-          en: "Unforced error detail in Vigía: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
-          pt: "Detalhe de um erro não forçado no Vigía: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
-          it: "Dettaglio di un errore non forzato in Vigía: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
+          es: "Detalle de un error no forzado en Vigia: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
+          en: "Unforced error detail in Vigia: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
+          pt: "Detalhe de um erro não forçado no Vigia: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
+          it: "Dettaglio di un errore non forzato in Vigia: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
         },
       },
       {
         src: "/apps/vigia/09.jpeg",
         alt: {
-          es: "Detalle de un error forzado en Vigía: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
-          en: "Forced error detail in Vigía: the app asks who forced it, with which stroke, and which stroke the rival missed with",
-          pt: "Detalhe de um erro forçado no Vigía: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
-          it: "Dettaglio di un errore forzato in Vigía: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
+          es: "Detalle de un error forzado en Vigia: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
+          en: "Forced error detail in Vigia: the app asks who forced it, with which stroke, and which stroke the rival missed with",
+          pt: "Detalhe de um erro forçado no Vigia: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
+          it: "Dettaglio di un errore forzato in Vigia: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
         },
       },
       {
         src: "/apps/vigia/05.jpeg",
         alt: {
-          es: "Estadísticas del partido en Vigía: errores no forzados, winners por error, break points y comparación jugador por jugador",
-          en: "Match statistics in Vigía: unforced errors, winners per error, break points and a player-by-player comparison",
-          pt: "Estatísticas da partida no Vigía: erros não forçados, winners por erro, break points e comparação jogador por jogador",
-          it: "Statistiche della partita in Vigía: errori non forzati, winner per errore, break point e confronto giocatore per giocatore",
+          es: "Estadísticas del partido en Vigia: errores no forzados, winners por error, break points y comparación jugador por jugador",
+          en: "Match statistics in Vigia: unforced errors, winners per error, break points and a player-by-player comparison",
+          pt: "Estatísticas da partida no Vigia: erros não forçados, winners por erro, break points e comparação jogador por jogador",
+          it: "Statistiche della partita in Vigia: errori non forzati, winner per errore, break point e confronto giocatore per giocatore",
         },
       },
       {
         src: "/apps/vigia/06.jpeg",
         alt: {
-          es: "Listado de jugadores registrados en Vigía con la cantidad de partidos de cada uno",
-          en: "List of players registered in Vigía with how many matches each one has",
-          pt: "Lista de jogadores cadastrados no Vigía com a quantidade de partidas de cada um",
-          it: "Elenco dei giocatori registrati in Vigía con il numero di partite di ognuno",
+          es: "Listado de jugadores registrados en Vigia con la cantidad de partidos de cada uno",
+          en: "List of players registered in Vigia with how many matches each one has",
+          pt: "Lista de jogadores cadastrados no Vigia com a quantidade de partidas de cada um",
+          it: "Elenco dei giocatori registrati in Vigia con il numero di partite di ognuno",
         },
       },
       {
         src: "/apps/vigia/07.jpeg",
         alt: {
-          es: "Perfil de un jugador en Vigía con su evolución en winners por error, primer saque y errores no forzados",
-          en: "A player profile in Vigía showing their progress in winners per error, first serve and unforced errors",
-          pt: "Perfil de um jogador no Vigía com sua evolução em winners por erro, primeiro saque e erros não forçados",
-          it: "Profilo di un giocatore in Vigía con la sua evoluzione in winner per errore, primo servizio ed errori non forzati",
+          es: "Perfil de un jugador en Vigia con su evolución en winners por error, primer saque y errores no forzados",
+          en: "A player profile in Vigia showing their progress in winners per error, first serve and unforced errors",
+          pt: "Perfil de um jogador no Vigia com sua evolução em winners por erro, primeiro saque e erros não forçados",
+          it: "Profilo di un giocatore in Vigia con la sua evoluzione in winner per errore, primo servizio ed errori non forzati",
         },
       },
     ],

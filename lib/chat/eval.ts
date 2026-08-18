@@ -27,12 +27,12 @@ export type EvalCase = {
 /** Casos escritos contra los ids que genera `buildKnowledge`. */
 export const CASES: EvalCase[] = [
   { question: "¿qué apps tienen?", expect: "app-vigia" },
-  { question: "para qué sirve Vigía", expect: "app-vigia" },
+  { question: "para qué sirve Vigia", expect: "app-vigia" },
   { question: "cómo funciona lo del pádel", expect: "app-vigia" },
   { question: "qué es Oráculos", expect: "app-oraculos" },
   { question: "el tarot está en español?", expect: "app-oraculos" },
   { question: "qué datos guarda Oráculos", expect: "privacidad-oraculos" },
-  { question: "Vigía recolecta datos personales?", expect: "privacidad-vigia" },
+  { question: "Vigia recolecta datos personales?", expect: "privacidad-vigia" },
   { question: "hacen páginas web a medida", expect: "servicios" },
   { question: "trabajan con MySQL?", expect: "servicios" },
   { question: "usan inteligencia artificial", expect: "servicios" },

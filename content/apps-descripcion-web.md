@@ -23,18 +23,18 @@ No es adivinación de manual: es una experiencia visual, íntima y hermosa, pens
 
 ---
 
-## Vigía
+## Vigia
 
 ### El que ve todo desde afuera de la cancha
 
-Vigía convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Vos solo marcás qué pasó en cada punto; la app hace el resto: **el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.**
+Vigia convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Vos solo marcás qué pasó en cada punto; la app hace el resto: **el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.**
 
 Al terminar, se genera **una tarjeta lista para compartir** por WhatsApp con el resultado y los números del partido. La misma clase de datos que ves en una transmisión profesional, ahora de tu partido del sábado.
 
 **Lo que la hace única**
 
 - **Estadísticas de nivel transmisión.** Winners, errores forzados y no forzados, aces, dobles faltas, break points y mucho más, jugador por jugador.
-- **Lo que un sensor no puede hacer.** Un reloj o un sensor en la pala adivina tu golpe, pero **no sabe si el error del rival fue forzado, ni a quién atribuir el punto entre cuatro**. Vigía sí: porque lo marca una persona que entiende el juego.
+- **Lo que un sensor no puede hacer.** Un reloj o un sensor en la pala adivina tu golpe, pero **no sabe si el error del rival fue forzado, ni a quién atribuir el punto entre cuatro**. Vigia sí: porque lo marca una persona que entiende el juego.
 - **Vos solo tocás; ella deduce todo.** Marcador, saque, cambios de lado, tie-breaks: automático.
 - **Se comparte y se luce.** Una tarjeta prolija que cuenta el partido en una imagen.
 - **Historial y evolución.** Cada jugador acumula sus partidos y ve cómo progresa con el tiempo.

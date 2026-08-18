@@ -788,7 +788,7 @@ export const es = {
       "desarrollo de aplicaciones móviles",
       "Google Play",
       "estudio de apps",
-      "Vigía pádel",
+      "Vigia pádel",
       "estadísticas de pádel",
       "app de oráculos",
       "tarot app",

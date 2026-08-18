@@ -759,7 +759,7 @@ export const en: Dictionary = {
       "mobile app development",
       "Google Play",
       "app studio",
-      "Vigía padel",
+      "Vigia padel",
       "padel statistics",
       "oracle app",
       "tarot app",
