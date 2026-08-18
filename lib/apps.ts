@@ -198,10 +198,10 @@ export const apps: App[] = [
       {
         icon: "bolt",
         title: {
-          es: "Tú solo tocas; ella deduce todo",
-          en: "You just tap; it works out the rest",
-          pt: "Você só toca; ele deduz tudo",
-          it: "Tu tocchi soltanto; lei deduce tutto",
+          es: "Tú solo tocas, ella deduce todo",
+          en: "You just tap, it works out the rest",
+          pt: "Você só toca, ele deduz tudo",
+          it: "Tu tocchi soltanto, lei deduce tutto",
         },
         description: {
           es: "Marcador, saque, cambios de lado y tie-breaks se resuelven automáticamente mientras sigues el partido.",
