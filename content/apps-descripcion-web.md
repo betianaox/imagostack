@@ -34,9 +34,9 @@ Al terminar, se genera **una tarjeta lista para compartir** por WhatsApp con el 
 **Lo que la hace única**
 
 - **Estadísticas de nivel transmisión.** Winners, errores forzados y no forzados, aces, dobles faltas, break points y mucho más, jugador por jugador.
-- **Lo que un sensor no puede hacer.** Un reloj o un sensor en la pala adivina tu golpe, pero **no sabe si el error del rival fue forzado, ni a quién atribuir el punto entre cuatro**. Vigia sí: porque lo marca una persona que entiende el juego.
+- **Datos que se pueden jugar.** Con qué golpe ganás los puntos y con cuál los regalás. A cuál de los dos rivales le estás haciendo daño, y con qué. **Cuántos puntos ganás sin tirar un winner, solo por hacer errar al otro.**
 - **Vos solo tocás; ella deduce todo.** Marcador, saque, cambios de lado, tie-breaks: automático.
-- **Se comparte y se luce.** Una tarjeta prolija que cuenta el partido en una imagen.
+- **Se comparte y se luce.** El resultado, los cuatro nombres, quién ganó y qué hizo cada uno con cada golpe, en una sola imagen. Al grupo de WhatsApp o a tus redes, en dos toques.
 - **Historial y evolución.** Cada jugador acumula sus partidos y ve cómo progresa con el tiempo.
 - **En tu idioma.** Español, inglés, portugués e italiano.
 

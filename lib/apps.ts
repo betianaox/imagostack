@@ -183,16 +183,16 @@ export const apps: App[] = [
       {
         icon: "users",
         title: {
-          es: "Lo que un sensor no puede hacer",
-          en: "What a sensor simply can't do",
-          pt: "O que um sensor não consegue fazer",
-          it: "Quello che un sensore non può fare",
+          es: "Datos que se pueden jugar",
+          en: "Stats you can actually play with",
+          pt: "Dados que você leva para a quadra",
+          it: "Dati che puoi portare in campo",
         },
         description: {
-          es: "Un reloj o un sensor en la pala adivina tu golpe, pero no sabe si el error del rival fue forzado ni a quién atribuir el punto entre cuatro. Vigia sí: porque lo marca una persona que entiende el juego.",
-          en: "A watch or a sensor on your racket guesses your stroke, but it can't tell whether your rival's error was forced, or which of the four players the point belongs to. Vigia can: because a person who understands the game is the one tagging it.",
-          pt: "Um relógio ou um sensor na raquete adivinha a sua batida, mas não sabe se o erro do rival foi forçado nem a quem atribuir o ponto entre quatro. O Vigia sabe: porque quem marca é uma pessoa que entende do jogo.",
-          it: "Un orologio o un sensore sulla racchetta indovina il tuo colpo, ma non sa se l'errore dell'avversario è stato forzato né a chi attribuire il punto tra quattro. Vigia sì: perché chi segna è una persona che capisce il gioco.",
+          es: "Con qué golpe ganas los puntos y con cuál los regalas. A cuál de los dos rivales le estás haciendo daño, y con qué. Cuántos puntos ganas sin tirar un winner, solo por hacer errar al otro.",
+          en: "Which stroke wins you points and which one gives them away. Which of the two rivals you are hurting, and with what. How many points you win without hitting a winner, just by forcing the error.",
+          pt: "Com qual golpe você ganha os pontos e com qual você os entrega. Em qual dos dois rivais você está fazendo estrago, e com o quê. Quantos pontos você ganha sem dar um winner, só forçando o erro do outro.",
+          it: "Con quale colpo vinci i punti e con quale li regali. A quale dei due avversari stai facendo male, e con che colpo. Quanti punti vinci senza tirare un winner, solo forzando l'errore dell'altro.",
         },
       },
       {
@@ -219,10 +219,10 @@ export const apps: App[] = [
           it: "Fatta per essere condivisa",
         },
         description: {
-          es: "Una tarjeta prolija que cuenta el partido entero en una sola imagen, lista para el grupo de WhatsApp.",
-          en: "A neat card that tells the whole match in a single image, ready for the WhatsApp group.",
-          pt: "Um card caprichado que conta a partida inteira em uma única imagem, pronto para o grupo do WhatsApp.",
-          it: "Una scheda curata che racconta l'intera partita in una sola immagine, pronta per il gruppo di WhatsApp.",
+          es: "El resultado, los cuatro nombres, quién ganó y qué hizo cada uno con cada golpe, en una sola imagen. Se comparte en dos toques: al grupo de WhatsApp, a tus redes, a donde sea.",
+          en: "The score, the four names, who won and what each player did with each stroke, in a single image. Two taps to share it: the WhatsApp group, your social feeds, wherever.",
+          pt: "O placar, os quatro nomes, quem ganhou e o que cada um fez com cada golpe, em uma única imagem. Dois toques para compartilhar: no grupo do WhatsApp, nas suas redes, onde você quiser.",
+          it: "Il punteggio, i quattro nomi, chi ha vinto e cosa ha fatto ognuno con ogni colpo, in una sola immagine. Due tocchi per condividerla: nel gruppo di WhatsApp, sui tuoi social, dove vuoi.",
         },
       },
       {
