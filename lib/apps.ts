@@ -142,7 +142,13 @@ export const apps: App[] = [
       it: "Segna il punto. L'app fa la statistica.",
     },
     category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
-    playStoreUrl: "",
+    /**
+     * Es la MISMA URL en testing cerrado que en producción: no hay una versión provisoria que
+     * haya que reemplazar después. Mientras la app esté sólo en testing, la ficha abre para quien
+     * esté en la lista de testers y devuelve 404 al resto; el día que Play apruebe producción
+     * empieza a abrir para todos, sin tocar nada acá.
+     */
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
     icon: "/apps/vigia/icon.png",
     // Negro cancha + lima del logo
     accent: ["#0d1116", "#33451c"],
