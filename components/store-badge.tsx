@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 /**
- * Badge de descarga en Google Play (public/googleplay.png, 840×301).
+ * Badge de descarga en Google Play (public/googleplay.png, 839×258).
  * Si la app todavía no tiene URL cargada, no se renderiza nada: nunca mostramos
  * un link roto ni un cartel de espera.
  */
@@ -29,8 +29,8 @@ export function StoreBadge({
       <Image
         src="/googleplay.png"
         alt="Disponible en Google Play"
-        width={840}
-        height={301}
+        width={839}
+        height={258}
         className={`${height} w-auto`}
       />
     </a>

@@ -143,18 +143,19 @@ export const apps: App[] = [
     },
     category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
     /**
-     * VACÍO A PROPÓSITO, aunque la URL ya exista y sea la definitiva.
+     * VACIO A PROPOSITO, aunque la URL ya exista y sea la definitiva.
      *
-     * Vigia está en testing cerrado: esa ficha sólo abre para quien esté en la lista de testers
-     * y le devuelve 404 a todos los demás. Un botón "Descargar en Google Play" en un sitio
-     * público que no funciona para casi nadie es peor que no tener botón.
+     * Ninguna de las dos apps esta publicada todavia: Vigia esta en testing cerrado —su ficha
+     * solo abre para quien este en la lista de testers— y Oraculos ni siquiera tiene ficha. Un
+     * boton "Descargar en Google Play" en un sitio publico que da 404 es peor que no tener
+     * boton.
      *
-     * Con el campo vacío desaparece todo el llamado a descargar —los dos badges, la sección del
-     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavía no
-     * está publicada. El día que Play apruebe producción se pega acá la URL de la ficha
-     * (`?id=com.imagostack.vigia`) y vuelve solo: no hay nada más que tocar.
+     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion del
+     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavia no
+     * esta publicada. El dia que Play apruebe, se pega aca la URL de la ficha y vuelve solo: no
+     * hay nada mas que tocar.
      */
-    playStoreUrl: "",
+    playStoreUrl: "", // com.imagostack.vigia
     icon: "/apps/vigia/icon.png",
     // Negro cancha + lima del logo
     accent: ["#0d1116", "#33451c"],
@@ -285,21 +286,12 @@ export const apps: App[] = [
         },
       },
       {
-        src: "/apps/vigia/08.jpeg",
+        src: "/apps/vigia/04.jpeg",
         alt: {
-          es: "Detalle de un error no forzado en Vigia: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
-          en: "Unforced error detail in Vigia: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
-          pt: "Detalhe de um erro não forçado no Vigia: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
-          it: "Dettaglio di un errore non forzato in Vigia: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
-        },
-      },
-      {
-        src: "/apps/vigia/09.jpeg",
-        alt: {
-          es: "Detalle de un error forzado en Vigia: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
-          en: "Forced error detail in Vigia: the app asks who forced it, with which stroke, and which stroke the rival missed with",
-          pt: "Detalhe de um erro forçado no Vigia: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
-          it: "Dettaglio di un errore forzato in Vigia: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
+          es: "Hoja de golpes de Vigia para anotar con qué golpe se cometió el error: remate, bandeja, víbora, volea, globo y el resto, separados por revés y derecha",
+          en: "Vigia stroke sheet for recording which stroke the error was made with: smash, bandeja, víbora, volley, lob and the rest, split by backhand and forehand",
+          pt: "Folha de golpes do Vigia para anotar com qual golpe o erro foi cometido: smash, bandeja, víbora, voleio, lob e os demais, separados por revés e direita",
+          it: "Scheda dei colpi di Vigia per annotare con quale colpo è stato commesso l'errore: smash, bandeja, víbora, volée, pallonetto e gli altri, divisi tra rovescio e dritto",
         },
       },
       {
@@ -329,7 +321,25 @@ export const apps: App[] = [
           it: "Profilo di un giocatore in Vigia con la sua evoluzione in winner per errore, primo servizio ed errori non forzati",
         },
       },
-    ],
+      {
+        src: "/apps/vigia/08.jpeg",
+        alt: {
+          es: "Detalle de un error no forzado en Vigia: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
+          en: "Unforced error detail in Vigia: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
+          pt: "Detalhe de um erro não forçado no Vigia: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
+          it: "Dettaglio di un errore non forzato in Vigia: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
+        },
+      },
+      {
+        src: "/apps/vigia/09.jpeg",
+        alt: {
+          es: "Detalle de un error forzado en Vigia: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
+          en: "Forced error detail in Vigia: the app asks who forced it, with which stroke, and which stroke the rival missed with",
+          pt: "Detalhe de um erro forçado no Vigia: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
+          it: "Dettaglio di un errore forzato in Vigia: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
+        },
+      },
+        ],
     privacy: {
       updatedAt: "2026-08-17",
       collects: [
@@ -435,7 +445,20 @@ export const apps: App[] = [
       pt: "Estilo de vida",
       it: "Stile di vita",
     },
-    playStoreUrl: "",
+    /**
+     * VACIO A PROPOSITO, aunque la URL ya exista y sea la definitiva.
+     *
+     * Ninguna de las dos apps esta publicada todavia: Vigia esta en testing cerrado —su ficha
+     * solo abre para quien este en la lista de testers— y Oraculos ni siquiera tiene ficha. Un
+     * boton "Descargar en Google Play" en un sitio publico que da 404 es peor que no tener
+     * boton.
+     *
+     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion del
+     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavia no
+     * esta publicada. El dia que Play apruebe, se pega aca la URL de la ficha y vuelve solo: no
+     * hay nada mas que tocar.
+     */
+    playStoreUrl: "", // com.imagostack.oraculos
     icon: "/apps/oraculos/icon.png",
     // Cielo nocturno violáceo del icono
     accent: ["#1d1637", "#453169"],
@@ -585,6 +608,33 @@ export const apps: App[] = [
         },
       },
       {
+        src: "/apps/oraculos/02.jpeg",
+        alt: {
+          es: "Selector de oráculos de Oráculos mostrando Buzios, el oráculo de los cauríes",
+          en: "Oracle picker in Oráculos showing Buzios, the oracle of the cowrie shells",
+          pt: "Seletor de oráculos de Oráculos mostrando Buzios, o oráculo dos buzios",
+          it: "Selettore di oracoli di Oráculos che mostra i Buzios, l'oracolo delle conchiglie cauri",
+        },
+      },
+      {
+        src: "/apps/oraculos/03.jpeg",
+        alt: {
+          es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu",
+          en: "Angels oracle daily guidance in Oráculos, showing the Karibu Cherub card",
+          pt: "Conselho do dia do oráculo dos Anjos em Oráculos, com a carta do Querubim Karibu",
+          it: "Consiglio del giorno dell'oracolo degli Angeli in Oráculos, con la carta del Cherubino Karibu",
+        },
+      },
+      {
+        src: "/apps/oraculos/04.jpeg",
+        alt: {
+          es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu, ángel guardián",
+          en: "Advice of the day from the Angels oracle in Oráculos, with the card of Karibu the Cherub, guardian angel",
+          pt: "Conselho do dia do oráculo de Anjos em Oráculos, com a carta do Querubim Karibu, anjo da guarda",
+          it: "Consiglio del giorno dell'oracolo degli Angeli in Oráculos, con la carta del Cherubino Karibu, angelo custode",
+        },
+      },
+      {
         src: "/apps/oraculos/05.jpeg",
         alt: {
           es: "Biblioteca de arcanos mayores del Tarot en Oráculos, con El Loco, El Mago, La Sacerdotisa y más",
@@ -594,12 +644,12 @@ export const apps: App[] = [
         },
       },
       {
-        src: "/apps/oraculos/09.jpeg",
+        src: "/apps/oraculos/06.jpeg",
         alt: {
-          es: "Tirada en cruz del Tarot Egipcio en Oráculos, con cartas ilustradas como relieves de piedra",
-          en: "Egyptian Tarot cross spread in Oráculos, with cards illustrated as stone reliefs",
-          pt: "Tiragem em cruz do Tarô Egípcio em Oráculos, com cartas ilustradas como relevos de pedra",
-          it: "Estrazione a croce dei Tarocchi Egizi in Oráculos, con carte illustrate come rilievi di pietra",
+          es: "Ficha de la carta El Mago en Oráculos, con palabras clave al derecho y al invertido y lectura en audio",
+          en: "The Magician card page in Oráculos, with upright and reversed keywords and an audio reading",
+          pt: "Ficha da carta O Mago em Oráculos, com palavras-chave normal e invertida e leitura em áudio",
+          it: "Scheda della carta Il Mago in Oráculos, con parole chiave al diritto e al rovescio e lettura in audio",
         },
       },
       {
@@ -621,33 +671,15 @@ export const apps: App[] = [
         },
       },
       {
-        src: "/apps/oraculos/03.jpeg",
+        src: "/apps/oraculos/09.jpeg",
         alt: {
-          es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu",
-          en: "Angels oracle daily guidance in Oráculos, showing the Karibu Cherub card",
-          pt: "Conselho do dia do oráculo dos Anjos em Oráculos, com a carta do Querubim Karibu",
-          it: "Consiglio del giorno dell'oracolo degli Angeli in Oráculos, con la carta del Cherubino Karibu",
+          es: "Tirada en cruz del Tarot Egipcio en Oráculos, con cartas ilustradas como relieves de piedra",
+          en: "Egyptian Tarot cross spread in Oráculos, with cards illustrated as stone reliefs",
+          pt: "Tiragem em cruz do Tarô Egípcio em Oráculos, com cartas ilustradas como relevos de pedra",
+          it: "Estrazione a croce dei Tarocchi Egizi in Oráculos, con carte illustrate come rilievi di pietra",
         },
       },
-      {
-        src: "/apps/oraculos/06.jpeg",
-        alt: {
-          es: "Ficha de la carta El Mago en Oráculos, con palabras clave al derecho y al invertido y lectura en audio",
-          en: "The Magician card page in Oráculos, with upright and reversed keywords and an audio reading",
-          pt: "Ficha da carta O Mago em Oráculos, com palavras-chave normal e invertida e leitura em áudio",
-          it: "Scheda della carta Il Mago in Oráculos, con parole chiave al diritto e al rovescio e lettura in audio",
-        },
-      },
-      {
-        src: "/apps/oraculos/02.jpeg",
-        alt: {
-          es: "Selector de oráculos de Oráculos mostrando Buzios, el oráculo de los cauríes",
-          en: "Oracle picker in Oráculos showing Buzios, the oracle of the cowrie shells",
-          pt: "Seletor de oráculos de Oráculos mostrando Buzios, o oráculo dos buzios",
-          it: "Selettore di oracoli di Oráculos che mostra i Buzios, l'oracolo delle conchiglie cauri",
-        },
-      },
-    ],
+        ],
     privacy: {
       updatedAt: "2026-08-17",
       collects: [
