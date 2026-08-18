@@ -6,7 +6,7 @@
 
 ### El quiosco de la sabiduría antigua, en tu bolsillo
 
-Un solo lugar para consultar los oráculos más fascinantes de la historia: **Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Búzios**. Hacés tu pregunta, las cartas caen, las monedas giran, los caracoles se dispersan… y una lectura clara y cuidada te devuelve una mirada nueva sobre tu momento.
+Un solo lugar para consultar los oráculos más fascinantes de la historia: **Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios**. Hacés tu pregunta, las cartas caen, las monedas giran, los caracoles se dispersan… y una lectura clara y cuidada te devuelve una mirada nueva sobre tu momento.
 
 No es adivinación de manual: es una experiencia visual, íntima y hermosa, pensada para acompañar la reflexión, el autoconocimiento y esos momentos en que uno necesita frenar y pensar.
 
