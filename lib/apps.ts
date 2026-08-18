@@ -143,12 +143,18 @@ export const apps: App[] = [
     },
     category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
     /**
-     * Es la MISMA URL en testing cerrado que en producción: no hay una versión provisoria que
-     * haya que reemplazar después. Mientras la app esté sólo en testing, la ficha abre para quien
-     * esté en la lista de testers y devuelve 404 al resto; el día que Play apruebe producción
-     * empieza a abrir para todos, sin tocar nada acá.
+     * VACÍO A PROPÓSITO, aunque la URL ya exista y sea la definitiva.
+     *
+     * Vigía está en testing cerrado: esa ficha sólo abre para quien esté en la lista de testers
+     * y le devuelve 404 a todos los demás. Un botón "Descargar en Google Play" en un sitio
+     * público que no funciona para casi nadie es peor que no tener botón.
+     *
+     * Con el campo vacío desaparece todo el llamado a descargar —los dos badges, la sección del
+     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavía no
+     * está publicada. El día que Play apruebe producción se pega acá la URL de la ficha
+     * (`?id=com.imagostack.vigia`) y vuelve solo: no hay nada más que tocar.
      */
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
+    playStoreUrl: "",
     icon: "/apps/vigia/icon.png",
     // Negro cancha + lima del logo
     accent: ["#0d1116", "#33451c"],
