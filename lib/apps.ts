@@ -510,10 +510,10 @@ export const apps: App[] = [
           it: "Letture con l'anima",
         },
         description: {
-          es: "Interpretaciones escritas con dedicación, tratando cada símbolo con el respeto que merece.",
-          en: "Interpretations written with dedication, treating every symbol with the respect it deserves.",
-          pt: "Interpretações escritas com dedicação, tratando cada símbolo com o respeito que ele merece.",
-          it: "Interpretazioni scritte con dedizione, trattando ogni simbolo con il rispetto che merita.",
+          es: "Interpretaciones hechas con dedicación, tratando cada símbolo con el respeto que merece.",
+          en: "Interpretations made with dedication, treating every symbol with the respect it deserves.",
+          pt: "Interpretações feitas com dedicação, tratando cada símbolo com o respeito que ele merece.",
+          it: "Interpretazioni fatte con dedizione, trattando ogni simbolo con il rispetto che merita.",
         },
       },
       {
