@@ -23,7 +23,7 @@ export function SiteFooter({
             alt="ImagoStack"
             width={660}
             height={175}
-            className="h-12 w-auto brightness-0 invert md:h-14"
+            className="h-8 w-auto brightness-0 invert md:h-10"
           />
           <p className="mt-4 text-sm font-medium tracking-wide text-white/90">
             {site.tagline}

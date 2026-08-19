@@ -106,10 +106,10 @@ export const apps: App[] = [
     slug: "vigia",
     name: "Vigia",
     tagline: {
-      es: "El que ve todo desde afuera de la cancha",
-      en: "The one who sees everything from outside the court",
-      pt: "Quem vê tudo de fora da quadra",
-      it: "Chi vede tutto da fuori dal campo",
+      es: "Marcador de pádel y estadísticas por jugador. Sin conexión ni registro.",
+      en: "Padel scoreboard and per-player stats. Works offline, no sign-up.",
+      pt: "Placar de padel e estatísticas por jogador. Offline e sem cadastro.",
+      it: "Segnapunti padel e statistiche per giocatore. Offline, senza account.",
     },
     description: {
       es: "Vigia convierte a cualquier persona al borde de la cancha en el estadístico de un partido de pádel profesional: tú marcas qué pasó en cada punto y la app hace el tanteo, los saques, los tie-breaks y las estadísticas de los cuatro jugadores.",
@@ -397,10 +397,10 @@ export const apps: App[] = [
     slug: "oraculos",
     name: "Oráculos",
     tagline: {
-      es: "El quiosco de la sabiduría antigua, en tu bolsillo",
-      en: "The newsstand of ancient wisdom, in your pocket",
-      pt: "A banca da sabedoria antiga, no seu bolso",
-      it: "L'edicola della sapienza antica, in tasca",
+      es: "Tarot, runas, ángeles y más. Pregunta, escucha la lectura y aprende a leer.",
+      en: "Tarot, runes, angels and more. Ask, listen to the reading and learn to read.",
+      pt: "Tarô, runas, anjos e mais. Pergunte, ouça a leitura e aprenda a ler.",
+      it: "Tarocchi, rune, angeli e altro. Chiedi, ascolta la lettura e impara a leggere.",
     },
     description: {
       es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios, con tiradas animadas y lecturas cuidadas.",
