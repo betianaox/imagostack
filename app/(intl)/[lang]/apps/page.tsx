@@ -18,7 +18,7 @@ export async function generateMetadata({
 
   const dict = getDictionary(lang);
   const list = apps
-    .map((app) => `${app.name} (${t(app.category, lang).toLowerCase()})`)
+    .map((app) => `${t(app.name, lang)} (${t(app.category, lang).toLowerCase()})`)
     .join(", ");
 
   return pageMetadata({

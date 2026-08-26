@@ -24,7 +24,7 @@ export async function GET(
 
   return ogImage({
     kicker: `${t(app.category, "es")} · Android`,
-    title: app.name,
+    title: t(app.name, "es"),
     description: t(app.tagline, "es"),
     // El acento claro de la app + el azul de marca: los dos tonos oscuros de
     // algunas apps dejarían el fondo casi negro.

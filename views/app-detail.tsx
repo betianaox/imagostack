@@ -20,7 +20,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
     "@graph": [
       {
         "@type": "SoftwareApplication",
-        name: app.name,
+        name: t(app.name, lang),
         description: t(app.description, lang),
         applicationCategory: "MobileApplication",
         applicationSubCategory: t(app.category, lang),
@@ -48,7 +48,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
             name: dict.nav.apps,
             item: `${site.url}${path("/apps", lang)}`,
           },
-          { "@type": "ListItem", position: 3, name: app.name, item: appUrl },
+          { "@type": "ListItem", position: 3, name: t(app.name, lang), item: appUrl },
         ],
       },
     ],
@@ -78,13 +78,13 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
 
           <div className="mt-8 flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
             <div className="flex items-start gap-5">
-              <AppIcon app={app} className="size-20 shrink-0 md:size-24" />
+              <AppIcon app={app} lang={lang} className="size-20 shrink-0 md:size-24" />
               <div>
                 <p className="text-[13px] font-semibold tracking-[0.14em] text-white/65 uppercase">
                   {t(app.category, lang)}
                 </p>
                 <h1 className="mt-2 text-4xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance md:text-5xl">
-                  {app.name}
+                  {t(app.name, lang)}
                 </h1>
                 <p className="mt-3 max-w-lg text-lg text-white/80">
                   {t(app.tagline, lang)}
@@ -96,7 +96,11 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
             </div>
 
             <div className="shrink-0">
-              <StoreBadge url={app.playStoreUrl} />
+              <StoreBadge
+                url={app.playStoreUrl}
+                lang={lang}
+                label={fillText(dict.appPage.downloadTitle, { app: t(app.name, lang) })}
+              />
             </div>
           </div>
         </div>
@@ -119,7 +123,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
           <ScreenshotGallery
             shots={app.screenshots}
             accent={app.accent}
-            appName={app.name}
+            appName={t(app.name, lang)}
             lang={lang}
             dict={dict}
           />
@@ -131,7 +135,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
         <div className="shell grid gap-14 lg:grid-cols-[1fr_1.15fr]">
           <Reveal>
             <h2 className="text-2xl font-semibold tracking-[-0.02em] text-balance md:text-3xl">
-              {fillText(dict.appPage.aboutTitle, { app: app.name })}
+              {fillText(dict.appPage.aboutTitle, { app: t(app.name, lang) })}
             </h2>
             <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-ink/70">
               {t(app.body, lang).map((paragraph) => (
@@ -198,13 +202,17 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
               <div className="relative flex flex-col items-start gap-7 md:flex-row md:items-center md:justify-between">
                 <div>
                   <h2 className="text-2xl font-semibold tracking-[-0.02em] text-balance md:text-3xl">
-                    {fillText(dict.appPage.downloadTitle, { app: app.name })}
+                    {fillText(dict.appPage.downloadTitle, { app: t(app.name, lang) })}
                   </h2>
                   <p className="mt-2.5 max-w-lg text-white/70">
                     {dict.appPage.downloadText}
                   </p>
                 </div>
-                <StoreBadge url={app.playStoreUrl} />
+                <StoreBadge
+                url={app.playStoreUrl}
+                lang={lang}
+                label={fillText(dict.appPage.downloadTitle, { app: t(app.name, lang) })}
+              />
               </div>
             </div>
           </Reveal>

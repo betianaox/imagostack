@@ -22,11 +22,11 @@ export async function generateMetadata({
     lang: "es",
     route: `/apps/${app.slug}`,
     title: fillText(dict.meta.appTitle, {
-      app: app.name,
+      app: t(app.name, "es"),
       category: t(app.category, "es").toLowerCase(),
     }),
     description: t(app.description, "es"),
-    ogTitle: `${app.name} — ${t(app.tagline, "es")}`,
+    ogTitle: `${t(app.name, "es")} — ${t(app.tagline, "es")}`,
     ogImage: `/apps/${app.slug}/og.png`,
   });
 }

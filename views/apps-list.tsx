@@ -28,7 +28,7 @@ export function AppsListView({ lang }: { lang: Locale }) {
     itemListElement: apps.map((app, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      name: app.name,
+      name: t(app.name, lang),
       description: t(app.tagline, lang),
       url: `${site.url}${path(`/apps/${app.slug}`, lang)}`,
     })),

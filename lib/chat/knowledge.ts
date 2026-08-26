@@ -66,11 +66,11 @@ export function buildKnowledge(lang: Locale): KnowledgeChunk[] {
   for (const app of apps) {
     chunks.push({
       id: `app-${app.slug}`,
-      title: `${app.name} (${t(app.category, lang)})`,
+      title: `${t(app.name, lang)} (${t(app.category, lang)})`,
       url: path(`/apps/${app.slug}`, lang),
-      tags: [app.name, app.slug, t(app.category, lang), "app", "android"],
+      tags: [t(app.name, lang), app.slug, t(app.category, lang), "app", "android"],
       text: [
-        `${app.name} — ${t(app.tagline, lang)}`,
+        `${t(app.name, lang)} — ${t(app.tagline, lang)}`,
         `Categoría: ${t(app.category, lang)}. Plataforma: Android.`,
         `Idiomas de la app: ${t(app.languages, lang).join(", ")}.`,
         app.playStoreUrl
@@ -91,11 +91,11 @@ export function buildKnowledge(lang: Locale): KnowledgeChunk[] {
     const { privacy } = app;
     chunks.push({
       id: `privacidad-${app.slug}`,
-      title: `Privacidad de ${app.name}`,
+      title: `Privacidad de ${t(app.name, lang)}`,
       url: path(`/apps/${app.slug}/privacidad`, lang),
-      tags: ["privacidad", "datos", app.name, app.slug],
+      tags: ["privacidad", "datos", t(app.name, lang), app.slug],
       text: [
-        `Política de privacidad de ${app.name}.`,
+        `Política de privacidad de ${t(app.name, lang)}.`,
         privacy.collects.length === 0
           ? "No recolecta ningún dato personal."
           : `Datos que maneja: ${privacy.collects

@@ -6,18 +6,22 @@ import { Icon } from "@/components/icons";
 /** Icono de la app: usa el PNG si existe, si no un monograma con su degradado. */
 export function AppIcon({
   app,
+  lang,
   className = "size-14",
   rounded = "rounded-2xl",
 }: {
   app: App;
+  lang: Locale;
   className?: string;
   rounded?: string;
 }) {
+  const nombre = t(app.name, lang);
+
   if (app.icon) {
     return (
       <Image
         src={app.icon}
-        alt={app.name}
+        alt={nombre}
         width={128}
         height={128}
         className={`${className} ${rounded} object-cover shadow-lg shadow-brand-950/20 ring-1 ring-black/5`}
@@ -25,7 +29,7 @@ export function AppIcon({
     );
   }
 
-  const monogram = app.name
+  const monogram = nombre
     .split(/\s+/)
     .slice(0, 2)
     .map((word) => word[0])

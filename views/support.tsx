@@ -87,7 +87,7 @@ export function SupportView({ lang }: { lang: Locale }) {
           </Reveal>
 
           <Reveal delay={90}>
-            <ContactForm dict={dict} />
+            <ContactForm dict={dict} lang={lang} />
           </Reveal>
         </div>
       </section>
@@ -107,10 +107,10 @@ export function SupportView({ lang }: { lang: Locale }) {
           {apps.map((app, index) => (
             <Reveal key={app.slug} delay={index * 90} className="h-full">
               <div className="flex h-full flex-col gap-5 rounded-2xl border border-brand-500/10 bg-white p-6 sm:flex-row sm:items-center">
-                <AppIcon app={app} className="size-14 shrink-0" />
+                <AppIcon app={app} lang={lang} className="size-14 shrink-0" />
                 <div className="min-w-0 flex-1">
                   <h3 className="font-semibold tracking-tight text-ink">
-                    {app.name}
+                    {t(app.name, lang)}
                   </h3>
                   <p className="mt-1 text-sm text-ink/60">
                     {t(app.tagline, lang)}
@@ -129,9 +129,9 @@ export function SupportView({ lang }: { lang: Locale }) {
                       {dict.support.privacy}
                     </Link>
                     <AppFormLink
-                      appName={app.name}
+                      appName={t(app.name, lang)}
                       label={fillText(dict.support.writeAbout, {
-                        app: app.name,
+                        app: t(app.name, lang),
                       })}
                     />
                   </div>

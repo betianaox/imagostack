@@ -77,8 +77,16 @@ export type AppPrivacy = {
 
 export type App = {
   slug: string;
-  /** El nombre no se traduce */
-  name: string;
+  /**
+   * El nombre SE TRADUCE, y la fuente de verdad es la app misma: lo que dice
+   * su `app.nombre` en cada idioma es lo que tiene que decir el sitio. Oraculos
+   * se llama "Oracles" en ingles, y hasta ahora la ficha en ingles decia
+   * "Download Oraculos" — un nombre que quien la busca en Play no encuentra.
+   *
+   * Vigia no se traduce y lleva el mismo texto en los cuatro; eso no lo
+   * convierte en un caso especial, solo en uno donde las cuatro coinciden.
+   */
+  name: L10n<string>;
   tagline: L10n<string>;
   /** Un párrafo; se usa también como meta description de la ficha */
   description: L10n<string>;
@@ -104,7 +112,7 @@ export type App = {
 export const apps: App[] = [
   {
     slug: "vigia",
-    name: "Vigia",
+    name: { es: "Vigia", en: "Vigia", pt: "Vigia", it: "Vigia" },
     tagline: {
       es: "Marcador de pádel y estadísticas por jugador. Sin conexión ni registro.",
       en: "Padel scoreboard and per-player stats. Works offline, no sign-up.",
@@ -395,7 +403,10 @@ export const apps: App[] = [
   },
   {
     slug: "oraculos",
-    name: "Oráculos",
+    // El italiano usa el nombre en ingles a proposito: la app no tiene ficha en
+    // italiano, asi que quien la busque desde Italia va a encontrar la inglesa.
+    // Inventarle un "Oracoli" seria un nombre que no existe en ningun lado.
+    name: { es: "Oráculos", en: "Oracles", pt: "Oráculos", it: "Oracles" },
     tagline: {
       es: "Tarot, runas, ángeles y más. Pregunta, escucha la lectura y aprende a leer.",
       en: "Tarot, runes, angels and more. Ask, listen to the reading and learn to read.",
@@ -602,81 +613,81 @@ export const apps: App[] = [
         src: "/apps/oraculos/01.jpeg",
         alt: {
           es: "Selector de oráculos de la app Oráculos mostrando el Tarot, El espejo de los arcanos",
-          en: "Oracle picker in the Oráculos app showing Tarot, the mirror of the arcana",
+          en: "Oracle picker in the Oracles app showing Tarot, the mirror of the arcana",
           pt: "Seletor de oráculos do app Oráculos mostrando o Tarô, o espelho dos arcanos",
-          it: "Selettore di oracoli dell'app Oráculos che mostra i Tarocchi, lo specchio degli arcani",
+          it: "Selettore di oracoli dell'app Oracles che mostra i Tarocchi, lo specchio degli arcani",
         },
       },
       {
         src: "/apps/oraculos/02.jpeg",
         alt: {
           es: "Selector de oráculos de Oráculos mostrando Buzios, el oráculo de los cauríes",
-          en: "Oracle picker in Oráculos showing Buzios, the oracle of the cowrie shells",
+          en: "Oracle picker in Oracles showing Buzios, the oracle of the cowrie shells",
           pt: "Seletor de oráculos de Oráculos mostrando Buzios, o oráculo dos buzios",
-          it: "Selettore di oracoli di Oráculos che mostra i Buzios, l'oracolo delle conchiglie cauri",
+          it: "Selettore di oracoli di Oracles che mostra i Buzios, l'oracolo delle conchiglie cauri",
         },
       },
       {
         src: "/apps/oraculos/03.jpeg",
         alt: {
           es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu",
-          en: "Angels oracle daily guidance in Oráculos, showing the Karibu Cherub card",
+          en: "Angels oracle daily guidance in Oracles, showing the Karibu Cherub card",
           pt: "Conselho do dia do oráculo dos Anjos em Oráculos, com a carta do Querubim Karibu",
-          it: "Consiglio del giorno dell'oracolo degli Angeli in Oráculos, con la carta del Cherubino Karibu",
+          it: "Consiglio del giorno dell'oracolo degli Angeli in Oracles, con la carta del Cherubino Karibu",
         },
       },
       {
         src: "/apps/oraculos/04.jpeg",
         alt: {
           es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu, ángel guardián",
-          en: "Advice of the day from the Angels oracle in Oráculos, with the card of Karibu the Cherub, guardian angel",
+          en: "Advice of the day from the Angels oracle in Oracles, with the card of Karibu the Cherub, guardian angel",
           pt: "Conselho do dia do oráculo de Anjos em Oráculos, com a carta do Querubim Karibu, anjo da guarda",
-          it: "Consiglio del giorno dell'oracolo degli Angeli in Oráculos, con la carta del Cherubino Karibu, angelo custode",
+          it: "Consiglio del giorno dell'oracolo degli Angeli in Oracles, con la carta del Cherubino Karibu, angelo custode",
         },
       },
       {
         src: "/apps/oraculos/05.jpeg",
         alt: {
           es: "Biblioteca de arcanos mayores del Tarot en Oráculos, con El Loco, El Mago, La Sacerdotisa y más",
-          en: "Library of Tarot major arcana in Oráculos, with The Fool, The Magician, The High Priestess and more",
+          en: "Library of Tarot major arcana in Oracles, with The Fool, The Magician, The High Priestess and more",
           pt: "Biblioteca de arcanos maiores do Tarô em Oráculos, com O Louco, O Mago, A Sacerdotisa e mais",
-          it: "Biblioteca degli arcani maggiori dei Tarocchi in Oráculos, con Il Matto, Il Mago, La Papessa e altri",
+          it: "Biblioteca degli arcani maggiori dei Tarocchi in Oracles, con Il Matto, Il Mago, La Papessa e altri",
         },
       },
       {
         src: "/apps/oraculos/06.jpeg",
         alt: {
           es: "Ficha de la carta El Mago en Oráculos, con palabras clave al derecho y al invertido y lectura en audio",
-          en: "The Magician card page in Oráculos, with upright and reversed keywords and an audio reading",
+          en: "The Magician card page in Oracles, with upright and reversed keywords and an audio reading",
           pt: "Ficha da carta O Mago em Oráculos, com palavras-chave normal e invertida e leitura em áudio",
-          it: "Scheda della carta Il Mago in Oráculos, con parole chiave al diritto e al rovescio e lettura in audio",
+          it: "Scheda della carta Il Mago in Oracles, con parole chiave al diritto e al rovescio e lettura in audio",
         },
       },
       {
         src: "/apps/oraculos/07.jpeg",
         alt: {
           es: "Pantalla de consulta de Runas en Oráculos: elegir tema general, amor, trabajo o dinero y escribir la pregunta",
-          en: "Rune consultation screen in Oráculos: choose a general, love, work or money topic and write your question",
+          en: "Rune consultation screen in Oracles: choose a general, love, work or money topic and write your question",
           pt: "Tela de consulta de Runas em Oráculos: escolher tema geral, amor, trabalho ou dinheiro e escrever a pergunta",
-          it: "Schermata di consultazione delle Rune in Oráculos: scegliere il tema generale, amore, lavoro o denaro e scrivere la domanda",
+          it: "Schermata di consultazione delle Rune in Oracles: scegliere il tema generale, amore, lavoro o denaro e scrivere la domanda",
         },
       },
       {
         src: "/apps/oraculos/08.jpeg",
         alt: {
           es: "Tirada de Buzios en Oráculos con los caracoles cauríes sobre una bandeja de mimbre y el resultado Owani a favor",
-          en: "Buzios reading in Oráculos with the cowrie shells on a wicker tray and the result Owani in favour",
+          en: "Buzios reading in Oracles with the cowrie shells on a wicker tray and the result Owani in favour",
           pt: "Jogo de Buzios em Oráculos com os buzios sobre uma bandeja de palha e o resultado Owani a favor",
-          it: "Lancio dei Buzios in Oráculos con le conchiglie cauri su un vassoio di vimini e il risultato Owani a favore",
+          it: "Lancio dei Buzios in Oracles con le conchiglie cauri su un vassoio di vimini e il risultato Owani a favore",
         },
       },
       {
         src: "/apps/oraculos/09.jpeg",
         alt: {
           es: "Tirada en cruz del Tarot Egipcio en Oráculos, con cartas ilustradas como relieves de piedra",
-          en: "Egyptian Tarot cross spread in Oráculos, with cards illustrated as stone reliefs",
+          en: "Egyptian Tarot cross spread in Oracles, with cards illustrated as stone reliefs",
           pt: "Tiragem em cruz do Tarô Egípcio em Oráculos, com cartas ilustradas como relevos de pedra",
-          it: "Estrazione a croce dei Tarocchi Egizi in Oráculos, con carte illustrate come rilievi di pietra",
+          it: "Estrazione a croce dei Tarocchi Egizi in Oracles, con carte illustrate come rilievi di pietra",
         },
       },
         ],

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/dictionaries";
 import { apps } from "@/lib/apps";
-import { path, type Locale } from "@/lib/i18n";
+import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function SiteFooter({
@@ -36,7 +36,7 @@ export function SiteFooter({
         <FooterColumn title={dict.footer.apps}>
           {apps.map((app) => (
             <FooterLink key={app.slug} href={path(`/apps/${app.slug}`, lang)}>
-              {app.name}
+              {t(app.name, lang)}
             </FooterLink>
           ))}
           <FooterLink href={path("/apps", lang)}>

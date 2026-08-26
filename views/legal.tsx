@@ -3,7 +3,7 @@ import { LegalHighlight, LegalPage } from "@/components/legal-page";
 import { Blocks, Inline, fill } from "@/components/rich-text";
 import { apps } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
-import { path, type Locale } from "@/lib/i18n";
+import { path, t, type Locale } from "@/lib/i18n";
 import { legalValues } from "@/lib/legal";
 import { site } from "@/lib/site";
 
@@ -34,7 +34,7 @@ export function PrivacyView({ lang }: { lang: Locale }) {
         {apps.map((app) => (
           <li key={app.slug}>
             <Link href={path(`/apps/${app.slug}/privacidad`, lang)}>
-              {fillText(dict.privacyPage.perAppLink, { app: app.name })}
+              {fillText(dict.privacyPage.perAppLink, { app: t(app.name, lang) })}
             </Link>
           </li>
         ))}
@@ -90,7 +90,7 @@ export function DeleteDataView({ lang }: { lang: Locale }) {
         {apps.map((app) => (
           <li key={app.slug}>
             <Link href={path(`/apps/${app.slug}/privacidad`, lang)}>
-              {fillText(dict.deleteDataPage.appLink, { app: app.name })}
+              {fillText(dict.deleteDataPage.appLink, { app: t(app.name, lang) })}
             </Link>
           </li>
         ))}

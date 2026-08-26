@@ -34,17 +34,17 @@ export function AppCard({
             shot={app.screenshots[0]}
             lang={lang}
             accent={app.accent}
-            label={app.name}
+            label={t(app.name, lang)}
           />
         </div>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
         <div className="flex items-start gap-3.5">
-          <AppIcon app={app} className="size-12 shrink-0" rounded="rounded-xl" />
+          <AppIcon app={app} lang={lang} className="size-12 shrink-0" rounded="rounded-xl" />
           <div className="min-w-0">
             <h3 className="text-lg leading-tight font-semibold tracking-tight text-ink">
-              {app.name}
+              {t(app.name, lang)}
             </h3>
             <p className="mt-0.5 text-[13px] font-medium text-brand-600">
               {t(app.category, lang)}

@@ -8,7 +8,7 @@ import { AppsListView } from "@/views/apps-list";
 export const metadata: Metadata = (() => {
   const dict = getDictionary("es");
   const list = apps
-    .map((app) => `${app.name} (${t(app.category, "es").toLowerCase()})`)
+    .map((app) => `${t(app.name, "es")} (${t(app.category, "es").toLowerCase()})`)
     .join(", ");
 
   return pageMetadata({

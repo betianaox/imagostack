@@ -15,7 +15,7 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
   const s = dict.appPrivacy;
   const { privacy } = app;
 
-  const base = { ...legalValues(lang), app: app.name };
+  const base = { ...legalValues(lang), app: t(app.name, lang) };
   const text = (template: string, extra: Record<string, string> = {}) =>
     fillText(template, { ...base, ...extra });
 
@@ -163,13 +163,13 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
   return (
     <LegalPage
       lang={lang}
-      kicker={app.name}
+      kicker={t(app.name, lang)}
       title={text(s.title)}
       intro={text(s.intro)}
       updatedAt={privacy.updatedAt}
       updatedAtLabel={dict.legal.updatedAt}
       backHref={path(`/apps/${app.slug}`, lang)}
-      backLabel={fillText(dict.legal.backToApp, { app: app.name })}
+      backLabel={fillText(dict.legal.backToApp, { app: t(app.name, lang) })}
     >
       <LegalHighlight>
         <p>

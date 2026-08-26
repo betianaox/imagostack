@@ -5,6 +5,7 @@ import { Icon } from "@/components/icons";
 import { apps } from "@/lib/apps";
 import type { Dictionary } from "@/lib/dictionaries";
 import { site } from "@/lib/site";
+import { t, type Locale } from "@/lib/i18n";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -15,7 +16,7 @@ type Status = "idle" | "sending" | "sent" | "error";
  * Si el envío falla, en vez de dejar al visitante sin salida se le ofrece el
  * mismo mensaje ya armado en un `mailto:`.
  */
-export function ContactForm({ dict }: { dict: Dictionary }) {
+export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) {
   const [status, setStatus] = useState<Status>("idle");
   const [fallbackHref, setFallbackHref] = useState("");
   const form = dict.form;
@@ -123,8 +124,8 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
             >
               <option value="">{form.general}</option>
               {apps.map((app) => (
-                <option key={app.slug} value={app.name}>
-                  {app.name}
+                <option key={app.slug} value={t(app.name, lang)}>
+                  {t(app.name, lang)}
                 </option>
               ))}
               <option value={form.idea}>{form.idea}</option>

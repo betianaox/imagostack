@@ -67,10 +67,10 @@ export function HomeView({ lang }: { lang: Locale }) {
                 href={path(`/apps/${app.slug}`, lang)}
                 className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur transition duration-300 hover:border-white/25 hover:bg-white/10 sm:p-5"
               >
-                <AppIcon app={app} className="size-12 shrink-0 sm:size-16" />
+                <AppIcon app={app} lang={lang} className="size-12 shrink-0 sm:size-16" />
                 <div className="min-w-0 flex-1">
                   <h2 className="leading-tight font-semibold tracking-tight">
-                    {app.name}
+                    {t(app.name, lang)}
                   </h2>
                   <p className="mt-1 text-[11px] font-medium tracking-widest text-white/40 uppercase">
                     {t(app.category, lang)}
@@ -301,7 +301,7 @@ export function HomeView({ lang }: { lang: Locale }) {
                   </div>
                 </div>
 
-                <ContactForm dict={dict} />
+                <ContactForm dict={dict} lang={lang} />
               </div>
             </div>
           </Reveal>
