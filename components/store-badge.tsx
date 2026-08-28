@@ -37,22 +37,15 @@ export function StoreBadge({
   size?: "sm" | "md";
   className?: string;
 }) {
-  // EN DESARROLLO SE DIBUJA AUNQUE NO HAYA URL, para poder revisarlo.
-  // Las dos apps tienen `playStoreUrl` vacia mientras esten en prueba cerrada,
-  // asi que sin esto el badge no se ve en ningun lado y no hay forma de mirar
-  // como quedo. En produccion NODE_ENV vale "production" y vuelve a devolver
-  // null: nunca se publica un enlace que no lleva a ninguna parte.
-  //
-  // Cuando las dos apps tengan su URL cargada en `lib/apps.ts`, esto se puede
-  // sacar: deja de hacer falta.
-  const enDesarrollo = process.env.NODE_ENV === "development";
-  if (!url && !enDesarrollo) return null;
+  // Sin URL no se dibuja nada: nunca mostramos un enlace que no lleva a ningun
+  // lado. Es el caso de una app que todavia esta en prueba cerrada.
+  if (!url) return null;
 
   const height = size === "sm" ? "h-11" : "h-13 md:h-14";
 
   return (
     <a
-      href={url || "#"}
+      href={url}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
