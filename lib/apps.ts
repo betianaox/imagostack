@@ -112,7 +112,11 @@ export type App = {
 export const apps: App[] = [
   {
     slug: "vigia",
-    name: { es: "Vigia", en: "Vigia", pt: "Vigia", it: "Vigia" },
+    // "Vigia Padel", igual que en Play. En la tienda se llama asi en los cuatro
+    // idiomas, y el sitio decia solo "Vigia": el titulo de la pagina no coincidia
+    // con el de la ficha, y "vigia" a secas devuelve cualquier cosa. Quien la
+    // busca escribe "vigia padel", y esa frase tiene que estar en el titulo.
+    name: { es: "Vigia Padel", en: "Vigia Padel", pt: "Vigia Padel", it: "Vigia Padel" },
     tagline: {
       es: "Marcador de pádel y estadísticas por jugador. Sin conexión ni registro.",
       en: "Padel scoreboard and per-player stats. Works offline, no sign-up.",
