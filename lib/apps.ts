@@ -163,7 +163,7 @@ export const apps: App[] = [
      * esta publicada. El dia que Play apruebe, se pega aca la URL de la ficha y vuelve solo: no
      * hay nada mas que tocar.
      */
-    playStoreUrl: "", // com.imagostack.vigia
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
     icon: "/apps/vigia/icon.png",
     // Negro cancha + lima del logo
     accent: ["#0d1116", "#33451c"],
