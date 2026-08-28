@@ -100,6 +100,17 @@ export type App = {
   playStoreUrl: string;
   /** Icono cuadrado. Vacío = monograma con el degradado. */
   icon: string;
+  /**
+   * El gráfico de funciones de Google Play (1024×500), el banner de la ficha.
+   *
+   * Se usa tambien en la tarjeta de la app del sitio, en lugar de una captura
+   * asomando sobre un degradado. Es la misma pieza que ve quien la encuentra en
+   * Play, asi que el sitio y la tienda muestran lo mismo — y una imagen pensada
+   * para leerse chica siempre le va a ganar a una captura recortada.
+   *
+   * Vacío = la tarjeta cae al degradado con la captura, como era antes.
+   */
+  feature: string;
   /** Par de colores del degradado de la app (hex) */
   accent: [string, string];
   /** Idiomas en los que está disponible la app (no los del sitio) */
@@ -169,6 +180,7 @@ export const apps: App[] = [
      */
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
     icon: "/apps/vigia/icon.png",
+    feature: "/apps/vigia/feature.png",
     // Negro cancha + lima del logo
     accent: ["#0d1116", "#33451c"],
     languages: {
@@ -475,6 +487,7 @@ export const apps: App[] = [
      */
     playStoreUrl: "", // com.imagostack.oraculos
     icon: "/apps/oraculos/icon.png",
+    feature: "/apps/oraculos/feature.png",
     // Cielo nocturno violáceo del icono
     accent: ["#1d1637", "#453169"],
     languages: {
