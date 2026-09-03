@@ -1,22 +1,22 @@
 import { AppCard } from "@/components/app-card";
 import { Reveal } from "@/components/reveal";
-import { apps } from "@/lib/apps";
+import { appsVisibles } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function AppsListView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const categories = [...new Set(apps.map((app) => t(app.category, lang)))];
+  const categories = [...new Set(appsVisibles.map((app) => t(app.category, lang)))];
 
   const subtitle =
     categories.length === 1
       ? fillText(dict.appsPage.subtitleOne, {
-          count: apps.length,
+          count: appsVisibles.length,
           category: categories[0].toLowerCase(),
         })
       : fillText(dict.appsPage.subtitleMany, {
-          count: apps.length,
+          count: appsVisibles.length,
           categories: categories.length,
         });
 
@@ -24,8 +24,8 @@ export function AppsListView({ lang }: { lang: Locale }) {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: dict.meta.appsOgTitle,
-    numberOfItems: apps.length,
-    itemListElement: apps.map((app, index) => ({
+    numberOfItems: appsVisibles.length,
+    itemListElement: appsVisibles.map((app, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: t(app.name, lang),
@@ -55,7 +55,7 @@ export function AppsListView({ lang }: { lang: Locale }) {
 
       <section className="shell py-16 md:py-20">
         <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {apps.map((app, index) => (
+          {appsVisibles.map((app, index) => (
             <Reveal key={app.slug} delay={index * 90} className="h-full">
               <AppCard app={app} lang={lang} dict={dict} />
             </Reveal>

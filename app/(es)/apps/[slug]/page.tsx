@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { apps, getApp } from "@/lib/apps";
+import { appsVisibles, getApp } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { t } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
 import { AppDetailView } from "@/views/app-detail";
 
 export function generateStaticParams() {
-  return apps.map((app) => ({ slug: app.slug }));
+  return appsVisibles.map((app) => ({ slug: app.slug }));
 }
 
 export async function generateMetadata({
@@ -34,7 +34,10 @@ export async function generateMetadata({
 export default async function Page({ params }: PageProps<"/apps/[slug]">) {
   const { slug } = await params;
   const app = getApp(slug);
-  if (!app) notFound();
+  // Las ocultas no tienen ficha: existen solo por su política de privacidad, y
+  // esa vive en otra ruta. Sin esto, entrar a mano a /apps/<slug> mostraría una
+  // ficha vacía de una app que todavía no existe.
+  if (!app || app.oculta) notFound();
 
   return <AppDetailView app={app} lang="es" />;
 }

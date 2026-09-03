@@ -78,6 +78,18 @@ export type AppPrivacy = {
 export type App = {
   slug: string;
   /**
+   * No aparece en el catálogo, pero su política de privacidad SÍ existe.
+   *
+   * Google pide una URL de política por app para poder configurar el mensaje de
+   * consentimiento de anuncios, y esa URL hace falta ANTES de publicar la app —
+   * cuando todavía no hay ficha, ni capturas, ni nada que mostrar.
+   *
+   * Con esto la política vive en /apps/<slug>/privacidad y funciona, mientras la
+   * app no se lista en ningún lado y su ficha devuelve 404. Cuando llegue el
+   * momento se saca la marca y aparece entera.
+   */
+  oculta?: boolean;
+  /**
    * El nombre SE TRADUCE, y la fuente de verdad es la app misma: lo que dice
    * su `app.nombre` en cada idioma es lo que tiene que decir el sitio. Oraculos
    * se llama "Oracles" en ingles, y hasta ahora la ficha en ingles decia
@@ -772,8 +784,107 @@ export const apps: App[] = [
       minAge: 18,
     },
   },
+  {
+    /**
+     * KAURIX ESTÁ OCULTA: existe acá SOLO por su política de privacidad.
+     *
+     * Google pide una URL de política por app para configurar el mensaje de
+     * consentimiento de anuncios, y esa URL hace falta antes de publicar. El
+     * resto de los campos son lo mínimo para que el tipo cierre; los textos son
+     * un borrador y las imágenes todavía no existen. Nada de esto se muestra:
+     * la ficha devuelve 404 mientras `oculta` esté puesta.
+     */
+    oculta: true,
+    slug: "kaurix",
+    name: { es: "Kaurix", en: "Kaurix", pt: "Kaurix", it: "Kaurix" },
+    tagline: {
+      es: "Encuentra criaturas con la cámara, cocina y críalas. Sin conexión ni registro.",
+      en: "Find creatures with your camera, cook and raise them. Offline, no sign-up.",
+      pt: "Encontre criaturas com a câmera, cozinhe e crie-as. Offline e sem cadastro.",
+      it: "Trova creature con la fotocamera, cucina e allevale. Offline, senza account.",
+    },
+    description: {
+      es: "Un juego de criaturas que aparecen mirando alrededor con la cámara. Se juntan ingredientes, se cocinan preparaciones y con eso se cría a cada criatura hasta que crece.",
+      en: "A game of creatures that appear when you look around with the camera. You gather ingredients, cook preparations, and use them to raise each creature until it grows.",
+      pt: "Um jogo de criaturas que aparecem quando você olha ao redor com a câmera. Junte ingredientes, cozinhe preparações e crie cada criatura até ela crescer.",
+      it: "Un gioco di creature che compaiono guardandosi intorno con la fotocamera. Si raccolgono ingredienti, si cucinano preparazioni e con quelle si alleva ogni creatura fino a farla crescere.",
+    },
+    body: {
+      es: ["Borrador: la ficha se escribe cuando la app esté lista para publicarse."],
+      en: ["Draft: the listing gets written when the app is ready to publish."],
+      pt: ["Rascunho: a ficha será escrita quando o app estiver pronto para publicar."],
+      it: ["Bozza: la scheda si scrive quando l'app è pronta per la pubblicazione."],
+    },
+    claim: {
+      es: "Mira alrededor. Algo se mueve.",
+      en: "Look around. Something moves.",
+      pt: "Olhe ao redor. Algo se move.",
+      it: "Guardati intorno. Qualcosa si muove.",
+    },
+    category: { es: "Juegos", en: "Games", pt: "Jogos", it: "Giochi" },
+    playStoreUrl: "",
+    icon: "",
+    feature: "",
+    accent: ["#1E1B2B", "#0B0A12"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués", "Italiano"],
+      en: ["Spanish", "English", "Portuguese", "Italian"],
+      pt: ["Espanhol", "Inglês", "Português", "Italiano"],
+      it: ["Spagnolo", "Inglese", "Portoghese", "Italiano"],
+    },
+    features: [],
+    screenshots: [],
+    privacy: {
+      updatedAt: "2026-09-03",
+      collects: [],
+      permissions: [
+        {
+          name: "Cámara (android.permission.CAMERA)",
+          reason: {
+            es: "Las criaturas y los ingredientes se ven sobre lo que enfoca la cámara, como si estuvieran en el lugar donde estás. La imagen se muestra en vivo y no se guarda ni se envía a ningún lado: la app no saca fotos ni las almacena.",
+            en: "Creatures and ingredients appear over whatever the camera is pointing at, as if they were in the room with you. The image is shown live and never stored or sent anywhere: the app does not take or keep photos.",
+            pt: "As criaturas e os ingredientes aparecem sobre o que a câmera está enquadrando, como se estivessem no lugar onde você está. A imagem é exibida ao vivo e não é guardada nem enviada a lugar nenhum: o app não tira nem armazena fotos.",
+            it: "Le creature e gli ingredienti compaiono su ciò che inquadra la fotocamera, come se fossero nel posto in cui ti trovi. L'immagine viene mostrata dal vivo e non viene salvata né inviata da nessuna parte: l'app non scatta né conserva foto.",
+          },
+        },
+      ],
+      processedOnDevice: true,
+      processingNote: {
+        es: "La partida —las criaturas que criaste, los ingredientes que juntaste y las recetas que armaste— se guarda en el teléfono y no sale de ahí. No hay cuenta, no hay servidor y no hay copia en la nube: si desinstalas la app, esa partida se pierde. Lo único que sale del dispositivo son los pedidos de anuncios, que maneja Google.",
+        en: "Your game —the creatures you raised, the ingredients you gathered and the recipes you made— is stored on your phone and never leaves it. There is no account, no server and no cloud backup: uninstalling the app loses that game. The only thing that leaves the device are ad requests, handled by Google.",
+        pt: "O jogo —as criaturas que você criou, os ingredientes que juntou e as receitas que montou— fica guardado no telefone e não sai dali. Não há conta, nem servidor, nem cópia na nuvem: se você desinstalar o app, esse jogo se perde. A única coisa que sai do dispositivo são os pedidos de anúncios, que o Google administra.",
+        it: "La partita —le creature che hai allevato, gli ingredienti raccolti e le ricette preparate— resta salvata sul telefono e non esce da lì. Non c'è account, né server, né copia nel cloud: disinstallando l'app quella partita si perde. L'unica cosa che esce dal dispositivo sono le richieste di annunci, gestite da Google.",
+      },
+      thirdParties: [
+        {
+          name: "Google AdMob",
+          purpose: {
+            es: "Mostrar los videos con los que se ganan recompensas dentro del juego. Google puede usar identificadores del dispositivo para elegir qué anuncio mostrar. En la Unión Europea, el Reino Unido y Suiza se pide tu consentimiento antes del primer anuncio.",
+            en: "To show the videos that grant rewards inside the game. Google may use device identifiers to decide which ad to show. In the European Union, the United Kingdom and Switzerland your consent is requested before the first ad.",
+            pt: "Exibir os vídeos com os quais se ganham recompensas dentro do jogo. O Google pode usar identificadores do dispositivo para escolher qual anúncio mostrar. Na União Europeia, no Reino Unido e na Suíça, o seu consentimento é solicitado antes do primeiro anúncio.",
+            it: "Mostrare i video con cui si ottengono ricompense nel gioco. Google può usare identificatori del dispositivo per scegliere quale annuncio mostrare. Nell'Unione Europea, nel Regno Unito e in Svizzera il consenso viene richiesto prima del primo annuncio.",
+          },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: true,
+      hasInAppPurchases: false,
+      minAge: null,
+    },
+  },
 ];
 
 export function getApp(slug: string): App | undefined {
   return apps.find((app) => app.slug === slug);
 }
+
+/**
+ * Las apps que se muestran.
+ *
+ * Todo lo que arma un listado usa ESTA y no `apps`: la home, /apps, el pie, el
+ * formulario de contacto, las "otras apps" de cada ficha y lo que sabe el chat.
+ * `apps` queda para lo que tiene que alcanzar también a las ocultas, que hoy es
+ * una sola cosa: su página de privacidad.
+ */
+export const appsVisibles: App[] = apps.filter((app) => !app.oculta);

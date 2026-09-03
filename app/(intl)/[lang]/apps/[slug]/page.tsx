@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { apps, getApp } from "@/lib/apps";
+import { appsVisibles, getApp } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { isLocale, prefixedLocales, t } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/metadata";
@@ -8,7 +8,7 @@ import { AppDetailView } from "@/views/app-detail";
 
 export function generateStaticParams() {
   return prefixedLocales.flatMap((lang) =>
-    apps.map((app) => ({ lang, slug: app.slug })),
+    appsVisibles.map((app) => ({ lang, slug: app.slug })),
   );
 }
 
@@ -38,7 +38,9 @@ export default async function Page({
 }: PageProps<"/[lang]/apps/[slug]">) {
   const { lang, slug } = await params;
   const app = getApp(slug);
-  if (!app || !isLocale(lang)) notFound();
+  // Las ocultas no tienen ficha: existen solo por su política de privacidad,
+  // que vive en otra ruta.
+  if (!app || app.oculta || !isLocale(lang)) notFound();
 
   return <AppDetailView app={app} lang={lang} />;
 }

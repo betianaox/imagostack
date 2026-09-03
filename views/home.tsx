@@ -5,14 +5,14 @@ import { OpenChatLink } from "@/components/chat/open-chat-link";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { apps } from "@/lib/apps";
+import { appsVisibles } from "@/lib/apps";
 import { getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function HomeView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const heroApps = apps.slice(0, 2);
+  const heroApps = appsVisibles.slice(0, 2);
 
   return (
     <>
@@ -109,14 +109,14 @@ export function HomeView({ lang }: { lang: Locale }) {
         </Reveal>
 
         <div className="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {apps.map((app, index) => (
+          {appsVisibles.map((app, index) => (
             <Reveal key={app.slug} delay={index * 90} className="h-full">
               <AppCard app={app} lang={lang} dict={dict} />
             </Reveal>
           ))}
 
-          {/* Slot abierto: el catálogo crece a medida que se suman apps */}
-          <Reveal delay={apps.length * 90} className="h-full">
+          {/* Slot abierto: el catálogo crece a medida que se suman appsVisibles */}
+          <Reveal delay={appsVisibles.length * 90} className="h-full">
             <div className="flex h-full min-h-72 flex-col items-center justify-center gap-4 rounded-3xl border border-dashed border-brand-500/25 bg-brand-50/40 p-8 text-center">
               <span className="grid size-12 place-items-center rounded-2xl bg-white text-brand-500 shadow-sm">
                 <Icon name="sparkles" className="size-6" />

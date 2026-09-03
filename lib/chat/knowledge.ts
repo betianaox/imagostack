@@ -1,4 +1,4 @@
-import { apps } from "@/lib/apps";
+import { appsVisibles } from "@/lib/apps";
 import { getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -63,7 +63,7 @@ export function buildKnowledge(lang: Locale): KnowledgeChunk[] {
   });
 
   // ── Una entrada por app ──────────────────────────────────────────────────
-  for (const app of apps) {
+  for (const app of appsVisibles) {
     chunks.push({
       id: `app-${app.slug}`,
       title: `${t(app.name, lang)} (${t(app.category, lang)})`,

@@ -5,14 +5,14 @@ import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
 import { StoreBadge } from "@/components/store-badge";
-import { apps, type App } from "@/lib/apps";
+import { appsVisibles, type App } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
 export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
   const dict = getDictionary(lang);
-  const others = apps.filter((other) => other.slug !== app.slug);
+  const others = appsVisibles.filter((other) => other.slug !== app.slug);
   const appUrl = `${site.url}${path(`/apps/${app.slug}`, lang)}`;
 
   const jsonLd = {
@@ -219,7 +219,7 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
         </section>
       )}
 
-      {/* ───────────────────────── Otras apps ───────────────────────── */}
+      {/* ───────────────────────── Otras appsVisibles ───────────────────────── */}
       {others.length > 0 && (
         <section className="shell pt-16 pb-20 md:pt-24 md:pb-28">
           <h2 className="text-xl font-semibold tracking-[-0.02em] md:text-2xl">

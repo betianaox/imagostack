@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Dictionary } from "@/lib/dictionaries";
-import { apps } from "@/lib/apps";
+import { appsVisibles } from "@/lib/apps";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 
@@ -34,7 +34,7 @@ export function SiteFooter({
         </div>
 
         <FooterColumn title={dict.footer.apps}>
-          {apps.map((app) => (
+          {appsVisibles.map((app) => (
             <FooterLink key={app.slug} href={path(`/apps/${app.slug}`, lang)}>
               {t(app.name, lang)}
             </FooterLink>

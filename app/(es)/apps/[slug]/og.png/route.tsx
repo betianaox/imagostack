@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
-import { apps, getApp } from "@/lib/apps";
+import { appsVisibles, getApp } from "@/lib/apps";
 import { t } from "@/lib/i18n";
 import { ogImage } from "@/lib/og-image";
 
 export const dynamic = "force-static";
 
 export function generateStaticParams() {
-  return apps.map((app) => ({ slug: app.slug }));
+  return appsVisibles.map((app) => ({ slug: app.slug }));
 }
 
 /**
@@ -27,7 +27,7 @@ export async function GET(
     title: t(app.name, "es"),
     description: t(app.tagline, "es"),
     // El acento claro de la app + el azul de marca: los dos tonos oscuros de
-    // algunas apps dejarían el fondo casi negro.
+    // algunas appsVisibles dejarían el fondo casi negro.
     accent: [app.accent[1], "#26689b"],
   });
 }

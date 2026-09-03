@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Icon } from "@/components/icons";
-import { apps } from "@/lib/apps";
+import { appsVisibles } from "@/lib/apps";
 import type { Dictionary } from "@/lib/dictionaries";
 import { site } from "@/lib/site";
 import { t, type Locale } from "@/lib/i18n";
@@ -123,7 +123,7 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
               className={`${inputClass} cursor-pointer appearance-none pr-12`}
             >
               <option value="">{form.general}</option>
-              {apps.map((app) => (
+              {appsVisibles.map((app) => (
                 <option key={app.slug} value={t(app.name, lang)}>
                   {t(app.name, lang)}
                 </option>
