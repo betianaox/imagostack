@@ -104,6 +104,9 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
             ),
           },
         ]),
+    // El mensaje de consentimiento solo existe si hay anuncios: sin ellos no hay
+    // nada que consentir y el parrafo sobraria.
+    ...(privacy.showsAds ? [{ p: text(s.s5consent) }] : []),
     { p: s.s5legal },
     // Transferencias internacionales: la respuesta cambia segun haya o no terceros
     // (`shares` cubre publicidad y proveedores), asi que se elige la variante que

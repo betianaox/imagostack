@@ -681,6 +681,14 @@ export const es = {
     /** Se antepone a la lista cuando la app muestra publicidad */
     s5ads:
       "{app} se financia con **anuncios en video con recompensa**: son opcionales y se muestran solo si eliges verlos a cambio de un beneficio dentro de la app. Nunca aparecen de forma automática ni interrumpen una lectura. Para servirlos usamos el siguiente proveedor, que puede tratar el identificador de publicidad de tu dispositivo y datos técnicos de la sesión según su propia política:",
+    /**
+     * Consentimiento de anuncios (RGPD art. 7.3 y art. 13.2.c). Google muestra el
+     * mensaje solo donde hace falta y una unica vez; la app no ofrece un boton para
+     * volver a abrirlo, asi que se explica como cambiar la eleccion por fuera en
+     * lugar de prometer una pantalla que no existe.
+     */
+    s5consent:
+      "**Tu consentimiento para los anuncios.** Si estás en el Espacio Económico Europeo, el Reino Unido o Suiza, la primera vez que abres {app} verás un mensaje de Google que te pide permiso para usar tus datos con fines publicitarios. Puedes aceptar o rechazar: si rechazas, la app sigue funcionando igual. Fuera de esas regiones el mensaje no aparece, porque la normativa no lo exige. La app no incluye una pantalla para volver a ese mensaje: si quieres cambiar tu elección más adelante, puedes hacerlo desde los ajustes de anuncios de tu dispositivo Android o reinstalando la aplicación.",
     s5item: "**{name}.** {purpose} [Ver su política de privacidad]({url}).",
     s5legal:
       "Podemos divulgar información únicamente si nos lo exige una autoridad competente mediante una orden legal válida.",

@@ -652,6 +652,8 @@ export const en: Dictionary = {
       "So that some features can exist, the app uses the following third-party services, which may process data under their own policies:",
     s5ads:
       "{app} is funded with **rewarded video ads**: they are optional and are shown only if you choose to watch one in exchange for a benefit inside the app. They never appear automatically and never interrupt a reading. To serve them we use the following provider, which may process your device's advertising identifier and technical session data under its own policy:",
+    s5consent:
+      "**Your consent for ads.** If you are in the European Economic Area, the United Kingdom or Switzerland, the first time you open {app} you will see a message from Google asking permission to use your data for advertising purposes. You can accept or decline: if you decline, the app keeps working just the same. Outside those regions the message does not appear, because the law does not require it. The app has no screen to bring that message back: if you want to change your choice later, you can do so from the ads settings on your Android device or by reinstalling the application.",
     s5item: "**{name}.** {purpose} [See their privacy policy]({url}).",
     s5legal:
       "We may disclose information only where a competent authority requires it through a valid legal order.",

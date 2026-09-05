@@ -686,6 +686,8 @@ export const it: Dictionary = {
     /** Se antepone a la lista cuando la app muestra publicidad */
     s5ads:
       "{app} si finanzia con **annunci video con premio**: sono opzionali e vengono mostrati solo se scegli di guardarli in cambio di un vantaggio dentro l'app. Non compaiono mai automaticamente e non interrompono una lettura. Per mostrarli usiamo il seguente fornitore, che può trattare l'identificatore pubblicitario del tuo dispositivo e dati tecnici della sessione secondo la propria politica:",
+    s5consent:
+      "**Il tuo consenso per gli annunci.** Se ti trovi nello Spazio Economico Europeo, nel Regno Unito o in Svizzera, la prima volta che apri {app} vedrai un messaggio di Google che ti chiede il permesso di usare i tuoi dati a fini pubblicitari. Puoi accettare o rifiutare: se rifiuti, l’app continua a funzionare allo stesso modo. Fuori da quelle regioni il messaggio non compare, perché la normativa non lo richiede. L’app non include una schermata per tornare a quel messaggio: se vuoi cambiare la tua scelta più avanti, puoi farlo dalle impostazioni degli annunci del tuo dispositivo Android o reinstallando l’applicazione.",
     s5item: "**{name}.** {purpose} [Vedi la sua informativa sulla privacy]({url}).",
     s5legal:
       "Possiamo divulgare informazioni unicamente se ce lo impone un'autorità competente tramite un ordine legale valido.",

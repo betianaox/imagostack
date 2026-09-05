@@ -655,6 +655,8 @@ export const pt: Dictionary = {
       "Para que algumas funções existam, o app usa os seguintes serviços de terceiros, que podem tratar dados segundo as suas próprias políticas:",
     s5ads:
       "O {app} é financiado com **anúncios em vídeo com recompensa**: são opcionais e aparecem só se você escolher assistir em troca de um benefício dentro do app. Nunca aparecem automaticamente nem interrompem uma leitura. Para exibi-los usamos o seguinte provedor, que pode tratar o identificador de publicidade do seu dispositivo e dados técnicos da sessão segundo a sua própria política:",
+    s5consent:
+      "**Seu consentimento para os anúncios.** Se você está no Espaço Econômico Europeu, no Reino Unido ou na Suíça, na primeira vez que abrir o {app} verá uma mensagem do Google pedindo permissão para usar seus dados com fins publicitários. Você pode aceitar ou recusar: se recusar, o app continua funcionando igual. Fora dessas regiões a mensagem não aparece, porque a norma não a exige. O app não inclui uma tela para voltar a essa mensagem: se quiser mudar sua escolha mais adiante, pode fazê-lo nas configurações de anúncios do seu dispositivo Android ou reinstalando o aplicativo.",
     s5item: "**{name}.** {purpose} [Ver a política de privacidade]({url}).",
     s5legal:
       "Podemos divulgar informações apenas se uma autoridade competente exigir por meio de ordem legal válida.",
