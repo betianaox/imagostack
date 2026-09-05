@@ -1,0 +1,7 @@
+# app-ads.txt (IAB Tech Lab) — vendedores autorizados a vender el inventario
+# publicitario de las apps de ImagoStack. Lo rastrea AdMob desde la ficha de
+# Google Play, que declara imagostack.com como sitio del desarrollador.
+#
+# El ultimo campo es el identificador de certificacion de Google, igual para
+# todos los editores.
+google.com, pub-5829308591228932, DIRECT, f08c47fec0942fa0
