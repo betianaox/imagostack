@@ -178,17 +178,15 @@ export const apps: App[] = [
     },
     category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
     /**
-     * VACIO A PROPOSITO, aunque la URL ya exista y sea la definitiva.
+     * La URL de la ficha en Google Play, o vacio si todavia no esta publicada.
      *
-     * Ninguna de las dos apps esta publicada todavia: Vigia esta en testing cerrado —su ficha
-     * solo abre para quien este en la lista de testers— y Oraculos ni siquiera tiene ficha. Un
-     * boton "Descargar en Google Play" en un sitio publico que da 404 es peor que no tener
-     * boton.
+     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion
+     * del final y el `installUrl` de los datos estructurados— y el chat pasa a decir que
+     * todavia no esta publicada. Un boton "Descargar en Google Play" en un sitio publico que
+     * da 404 es peor que no tener boton.
      *
-     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion del
-     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavia no
-     * esta publicada. El dia que Play apruebe, se pega aca la URL de la ficha y vuelve solo: no
-     * hay nada mas que tocar.
+     * El dia que Play apruebe una ficha, se pega aca su URL y vuelve solo: no hay nada mas
+     * que tocar.
      */
     playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
     icon: "/apps/vigia/icon.png",
@@ -484,20 +482,7 @@ export const apps: App[] = [
       pt: "Estilo de vida",
       it: "Stile di vita",
     },
-    /**
-     * VACIO A PROPOSITO, aunque la URL ya exista y sea la definitiva.
-     *
-     * Ninguna de las dos apps esta publicada todavia: Vigia esta en testing cerrado —su ficha
-     * solo abre para quien este en la lista de testers— y Oraculos ni siquiera tiene ficha. Un
-     * boton "Descargar en Google Play" en un sitio publico que da 404 es peor que no tener
-     * boton.
-     *
-     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion del
-     * final y el `installUrl` de los datos estructurados— y el chat pasa a decir que todavia no
-     * esta publicada. El dia que Play apruebe, se pega aca la URL de la ficha y vuelve solo: no
-     * hay nada mas que tocar.
-     */
-    playStoreUrl: "", // com.imagostack.oraculos
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.oraculos",
     icon: "/apps/oraculos/icon.png",
     feature: "/apps/oraculos/feature.png",
     // Cielo nocturno violáceo del icono
