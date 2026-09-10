@@ -269,16 +269,16 @@ export const apps: App[] = [
       {
         icon: "chat",
         title: {
-          es: "Leer o escuchar",
-          en: "Read or listen",
-          pt: "Ler ou ouvir",
-          it: "Leggere o ascoltare",
+          es: "Leer, escuchar o compartir",
+          en: "Read, listen or share",
+          pt: "Ler, ouvir ou compartilhar",
+          it: "Leggere, ascoltare o condividere",
         },
         description: {
-          es: "Cada lectura está en pantalla y también se puede escuchar en voz alta, para cuando tienes las manos ocupadas o prefieres que te la cuenten.",
-          en: "Every reading is on screen and can also be listened to out loud, for when your hands are busy or you would rather be told.",
-          pt: "Cada leitura fica na tela e também pode ser ouvida em voz alta, para quando você está com as mãos ocupadas ou prefere que contem para você.",
-          it: "Ogni lettura è sullo schermo e si può anche ascoltare ad alta voce, per quando hai le mani occupate o preferisci che te la raccontino.",
+          es: "Cada lectura está en pantalla y también se puede escuchar en voz alta, para cuando tienes las manos ocupadas o prefieres que te la cuenten. Y se comparte como imagen, para mandarla a quien quieras.",
+          en: "Every reading is on screen and can also be listened to out loud, for when your hands are busy or you would rather be told. And it can be shared as an image, to send to whoever you like.",
+          pt: "Cada leitura fica na tela e também pode ser ouvida em voz alta, para quando você está com as mãos ocupadas ou prefere que contem para você. E dá para compartilhar como imagem, para mandar a quem você quiser.",
+          it: "Ogni lettura è sullo schermo e si può anche ascoltare ad alta voce, per quando hai le mani occupate o preferisci che te la raccontino. E si condivide come immagine, per mandarla a chi vuoi.",
         },
       },
       {
