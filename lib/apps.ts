@@ -770,35 +770,45 @@ export const apps: App[] = [
     },
   },
   {
-    /**
-     * KAURIX ESTÁ OCULTA: existe acá SOLO por su política de privacidad.
-     *
-     * Google pide una URL de política por app para configurar el mensaje de
-     * consentimiento de anuncios, y esa URL hace falta antes de publicar. El
-     * resto de los campos son lo mínimo para que el tipo cierre; los textos son
-     * un borrador y las imágenes todavía no existen. Nada de esto se muestra:
-     * la ficha devuelve 404 mientras `oculta` esté puesta.
-     */
-    oculta: true,
     slug: "kaurix",
     name: { es: "Kaurix", en: "Kaurix", pt: "Kaurix", it: "Kaurix" },
     tagline: {
-      es: "Encuentra criaturas con la cámara, cocina y críalas. Sin conexión ni registro.",
-      en: "Find creatures with your camera, cook and raise them. Offline, no sign-up.",
-      pt: "Encontre criaturas com a câmera, cozinhe e crie-as. Offline e sem cadastro.",
-      it: "Trova creature con la fotocamera, cucina e allevale. Offline, senza account.",
+      es: "Encuentra criaturas con la cámara, cocina y hazlas crecer. Gana cartas y completa el álbum.",
+      en: "Find creatures with your camera, cook, and make them grow. Earn cards and fill the album.",
+      pt: "Encontre criaturas com a câmera, cozinhe e faça-as crescer. Ganhe cartas e complete o álbum.",
+      it: "Trova creature con la fotocamera, cucina e falle crescere. Guadagna carte e completa l'album.",
     },
     description: {
-      es: "Un juego de criaturas que aparecen mirando alrededor con la cámara. Se juntan ingredientes, se cocinan preparaciones y con eso se cría a cada criatura hasta que crece.",
-      en: "A game of creatures that appear when you look around with the camera. You gather ingredients, cook preparations, and use them to raise each creature until it grows.",
-      pt: "Um jogo de criaturas que aparecem quando você olha ao redor com a câmera. Junte ingredientes, cozinhe preparações e crie cada criatura até ela crescer.",
-      it: "Un gioco di creature che compaiono guardandosi intorno con la fotocamera. Si raccolgono ingredienti, si cucinano preparazioni e con quelle si alleva ogni creatura fino a farla crescere.",
+      es: "Un juego de criaturas que aparecen mirando alrededor con la cámara. Junta ingredientes donde estás, cocina comidas y pociones, y con eso cría a cada criatura desde el huevo hasta que crece.",
+      en: "A game of creatures that appear when you look around with the camera. Gather ingredients wherever you are, cook meals and potions, and use them to raise each creature from the egg until it grows up.",
+      pt: "Um jogo de criaturas que aparecem quando você olha ao redor com a câmera. Junte ingredientes onde estiver, cozinhe comidas e poções, e com isso crie cada criatura desde o ovo até ela crescer.",
+      it: "Un gioco di creature che compaiono guardandosi intorno con la fotocamera. Raccogli ingredienti dove ti trovi, cucina cibi e pozioni, e con quelli allevi ogni creatura dall'uovo finché non diventa adulta.",
     },
     body: {
-      es: ["Borrador: la ficha se escribe cuando la app esté lista para publicarse."],
-      en: ["Draft: the listing gets written when the app is ready to publish."],
-      pt: ["Rascunho: a ficha será escrita quando o app estiver pronto para publicar."],
-      it: ["Bozza: la scheda si scrive quando l'app è pronta per la pubblicazione."],
+      es: [
+        "Kaurix empieza con un huevo que no está en la pantalla: está en la habitación. Levantas el teléfono, giras despacio siguiendo las flechas, y en algún punto aparece flotando sobre la mesa, la estantería o el patio. Lo tocas y es tuyo.",
+        "Lo que nace de ese huevo hay que criarlo, y para eso hacen falta ingredientes: albahaca en una maceta, piedras en una pared de ladrillo, fruta en el frutero. Cada uno está donde estaría de verdad, y la app te dice hacia dónde mirar. Con lo que juntas se cocina en el caldero, combinando de a tres, y las recetas se descubren probando: hay comidas que hacen crecer y pociones que abren el salto a la etapa siguiente.",
+        "Cada criatura que llega a adulta deja una carta ilustrada en el álbum, y cada una tiene la suya según cómo la criaste. El resto queda en silueta hasta que la encuentres.",
+        "Funciona en cualquier Android con cámara. No usa realidad aumentada certificada a propósito: eso deja afuera a casi toda la gama media, y este juego tenía que andar en el teléfono que ya tienes. No pide cuenta y la partida vive en tu teléfono, no en un servidor.",
+      ],
+      en: [
+        "Kaurix starts with an egg that isn't on the screen: it's in the room. You raise your phone, turn slowly following the arrows, and at some point it appears floating over the table, the shelf or the yard. You tap it and it's yours.",
+        "Whatever hatches from that egg has to be raised, and that takes ingredients: basil in a flowerpot, stones in a brick wall, fruit in the fruit bowl. Each one is where it would really be, and the app tells you where to look. What you gather goes into the cauldron, three at a time, and recipes are discovered by trying: some meals make a creature grow, and potions unlock the jump to the next stage.",
+        "Every creature that reaches adulthood leaves an illustrated card in the album, and each one has its own depending on how you raised it. The rest stay as silhouettes until you find them.",
+        "It runs on any Android with a camera. It deliberately avoids certified augmented reality: that leaves out almost every mid-range phone, and this game had to work on the phone you already own. No account, no connection needed to play, and your game lives on your phone.",
+      ],
+      pt: [
+        "Kaurix começa com um ovo que não está na tela: está no cômodo. Você levanta o telefone, gira devagar seguindo as setas, e em algum ponto ele aparece flutuando sobre a mesa, a estante ou o quintal. Você toca e ele é seu.",
+        "O que nasce desse ovo precisa ser criado, e para isso são necessários ingredientes: manjericão num vaso, pedras numa parede de tijolos, fruta na fruteira. Cada um está onde estaria de verdade, e o app diz para onde olhar. O que você junta vai para o caldeirão, de três em três, e as receitas se descobrem testando: há comidas que fazem crescer e poções que abrem o salto para a etapa seguinte.",
+        "Cada criatura que chega à idade adulta deixa uma carta ilustrada no álbum, e cada uma tem a sua conforme o jeito que você a criou. As demais ficam em silhueta até você encontrá-las.",
+        "Funciona em qualquer Android com câmera. Não usa realidade aumentada certificada de propósito: isso deixaria de fora quase toda a linha intermediária, e este jogo tinha que rodar no telefone que você já tem. Não pede conta, não precisa de conexão para jogar e o jogo fica no seu telefone.",
+      ],
+      it: [
+        "Kaurix comincia con un uovo che non è sullo schermo: è nella stanza. Alzi il telefono, giri piano seguendo le frecce, e a un certo punto compare sospeso sopra il tavolo, la libreria o il cortile. Lo tocchi ed è tuo.",
+        "Quello che nasce da quell'uovo va allevato, e per farlo servono ingredienti: basilico in un vaso, pietre in un muro di mattoni, frutta nella fruttiera. Ognuno sta dove starebbe davvero, e l'app ti dice dove guardare. Quello che raccogli finisce nel calderone, tre alla volta, e le ricette si scoprono provando: ci sono cibi che fanno crescere e pozioni che aprono il salto alla fase successiva.",
+        "Ogni creatura che diventa adulta lascia una carta illustrata nell'album, e ognuna ha la sua a seconda di come l'hai allevata. Le altre restano in ombra finché non le trovi.",
+        "Funziona su qualsiasi Android con fotocamera. Non usa la realtà aumentata certificata di proposito: taglierebbe fuori quasi tutta la fascia media, e questo gioco doveva girare sul telefono che hai già. Non chiede account, non serve connessione per giocare e la partita resta sul tuo telefono.",
+      ],
     },
     claim: {
       es: "Mira alrededor. Algo se mueve.",
@@ -807,18 +817,227 @@ export const apps: App[] = [
       it: "Guardati intorno. Qualcosa si muove.",
     },
     category: { es: "Juegos", en: "Games", pt: "Jogos", it: "Giochi" },
+    // Todavia sin ficha en Play: con el campo vacio no aparece ningun boton de
+    // descarga, y el resto de la ficha del sitio funciona igual.
     playStoreUrl: "",
-    icon: "",
-    feature: "",
-    accent: ["#1E1B2B", "#0B0A12"],
+    icon: "/apps/kaurix/icon.png",
+    feature: "/apps/kaurix/feature.png",
+    // Verde musgo y turquesa, los dos del grafico de funciones
+    accent: ["#1e3a2a", "#175a5e"],
     languages: {
       es: ["Español", "Inglés", "Portugués", "Italiano"],
       en: ["Spanish", "English", "Portuguese", "Italian"],
       pt: ["Espanhol", "Inglês", "Português", "Italiano"],
       it: ["Spagnolo", "Inglese", "Portoghese", "Italiano"],
     },
-    features: [],
-    screenshots: [],
+    features: [
+      {
+        icon: "search",
+        title: {
+          es: "Aparecen donde estás",
+          en: "They show up where you are",
+          pt: "Aparecem onde você está",
+          it: "Compaiono dove sei",
+        },
+        description: {
+          es: "Las criaturas y los ingredientes se ven sobre lo que enfoca la cámara. La app te dice hacia dónde mirar y giras hasta encontrarlos.",
+          en: "Creatures and ingredients appear over whatever the camera is pointing at. The app tells you where to look and you turn until you find them.",
+          pt: "As criaturas e os ingredientes aparecem sobre o que a câmera enquadra. O app diz para onde olhar e você gira até encontrá-los.",
+          it: "Le creature e gli ingredienti compaiono su ciò che inquadra la fotocamera. L'app ti dice dove guardare e giri finché non li trovi.",
+        },
+      },
+      {
+        icon: "sparkles",
+        title: {
+          es: "Cocinar es medio juego",
+          en: "Cooking is half the game",
+          pt: "Cozinhar é metade do jogo",
+          it: "Cucinare è metà del gioco",
+        },
+        description: {
+          es: "Combinas ingredientes de a tres en el caldero. Salen comidas y pociones por nivel, y las recetas se descubren probando.",
+          en: "You combine ingredients three at a time in the cauldron. Out come meals and potions by level, and recipes are discovered by trying.",
+          pt: "Você combina ingredientes de três em três no caldeirão. Saem comidas e poções por nível, e as receitas se descobrem testando.",
+          it: "Combini gli ingredienti tre alla volta nel calderone. Escono cibi e pozioni per livello, e le ricette si scoprono provando.",
+        },
+      },
+      {
+        icon: "chart",
+        title: {
+          es: "De huevo a adulto",
+          en: "From egg to adult",
+          pt: "De ovo a adulto",
+          it: "Da uovo ad adulto",
+        },
+        description: {
+          es: "Cada criatura crece por tramos con lo que le das de comer. Llenar la barra no alcanza: el salto a la etapa siguiente lo abre una poción.",
+          en: "Each creature grows in stages from what you feed it. Filling the bar isn't enough: a potion is what unlocks the jump to the next stage.",
+          pt: "Cada criatura cresce por etapas com o que você dá de comer. Encher a barra não basta: o salto para a etapa seguinte é aberto por uma poção.",
+          it: "Ogni creatura cresce a tappe con quello che le dai da mangiare. Riempire la barra non basta: il salto alla fase successiva lo apre una pozione.",
+        },
+      },
+      {
+        icon: "card",
+        title: {
+          es: "Un álbum que se llena",
+          en: "An album that fills up",
+          pt: "Um álbum que se enche",
+          it: "Un album che si riempie",
+        },
+        description: {
+          es: "Cada criatura que llega a adulta deja su carta ilustrada. Las que todavía no encontraste quedan en silueta.",
+          en: "Every creature that reaches adulthood leaves its illustrated card behind. The ones you haven't found yet stay as silhouettes.",
+          pt: "Cada criatura que chega à idade adulta deixa a sua carta ilustrada. As que você ainda não encontrou ficam em silhueta.",
+          it: "Ogni creatura che diventa adulta lascia la sua carta illustrata. Quelle che non hai ancora trovato restano in ombra.",
+        },
+      },
+    ],
+    screenshots: [
+      {
+        src: "/apps/kaurix/00.jpg",
+        alt: {
+          es: "Pantalla de bichos de Kaurix: las criaturas del ciclo, las encontradas a color y las que faltan en silueta",
+          en: "Kaurix creatures screen: the cycle's creatures, the ones found in colour and the missing ones as silhouettes",
+          pt: "Tela de bichos do Kaurix: as criaturas do ciclo, as encontradas coloridas e as que faltam em silhueta",
+          it: "Schermata delle creature di Kaurix: quelle del ciclo, le trovate a colori e le mancanti in ombra",
+        },
+      },
+      {
+        src: "/apps/kaurix/01.jpg",
+        alt: {
+          es: "Un huevo con alas flotando sobre una biblioteca, visto a través de la cámara",
+          en: "A winged egg floating above a bookshelf, seen through the camera",
+          pt: "Um ovo com asas flutuando sobre uma estante de livros, visto pela câmera",
+          it: "Un uovo con le ali sospeso sopra una libreria, visto attraverso la fotocamera",
+        },
+      },
+      {
+        src: "/apps/kaurix/02.jpg",
+        alt: {
+          es: "Un dragón bebé turquesa sobre una pila de libros, visto a través de la cámara",
+          en: "A turquoise baby dragon above a stack of books, seen through the camera",
+          pt: "Um dragão bebê turquesa sobre uma pilha de livros, visto pela câmera",
+          it: "Un draghetto turchese sopra una pila di libri, visto attraverso la fotocamera",
+        },
+      },
+      {
+        src: "/apps/kaurix/03.jpg",
+        alt: {
+          es: "Un huevo rosado con alas apareciendo sobre un escritorio",
+          en: "A pink winged egg appearing above a desk",
+          pt: "Um ovo rosado com asas aparecendo sobre uma escrivaninha",
+          it: "Un uovo rosa con le ali che compare sopra una scrivania",
+        },
+      },
+      {
+        src: "/apps/kaurix/04.jpg",
+        alt: {
+          es: "Una criatura bebé color arena junto a un monitor, vista a través de la cámara",
+          en: "A sand-coloured baby creature next to a monitor, seen through the camera",
+          pt: "Uma criatura bebê cor de areia ao lado de um monitor, vista pela câmera",
+          it: "Una piccola creatura color sabbia accanto a un monitor, vista attraverso la fotocamera",
+        },
+      },
+      {
+        src: "/apps/kaurix/05.jpg",
+        alt: {
+          es: "Un choclo, uno de los ingredientes, apareciendo sobre un teclado para recogerlo",
+          en: "An ear of corn, one of the ingredients, appearing over a keyboard to be picked up",
+          pt: "Uma espiga de milho, um dos ingredientes, aparecendo sobre um teclado para ser recolhida",
+          it: "Una pannocchia, uno degli ingredienti, che compare su una tastiera per essere raccolta",
+        },
+      },
+      {
+        src: "/apps/kaurix/06.jpg",
+        alt: {
+          es: "Ficha del Dragón de musgo: la barra de crianza por tramos y la poción que falta para que crezca",
+          en: "Moss Dragon sheet: the raising bar in stages and the potion still needed for it to grow",
+          pt: "Ficha do Dragão de musgo: a barra de criação por etapas e a poção que falta para ele crescer",
+          it: "Scheda del Drago di muschio: la barra di crescita a tappe e la pozione che manca per farlo crescere",
+        },
+      },
+      {
+        src: "/apps/kaurix/07.jpg",
+        alt: {
+          es: "El Gato de bruma ya adulto, con su evolución de huevo a bebé y a adulto",
+          en: "The Mist Cat fully grown, with its evolution from egg to baby to adult",
+          pt: "O Gato de bruma já adulto, com sua evolução de ovo a bebê e a adulto",
+          it: "Il Gatto di bruma ormai adulto, con la sua evoluzione da uovo a cucciolo e ad adulto",
+        },
+      },
+      {
+        src: "/apps/kaurix/08.jpg",
+        alt: {
+          es: "La ruleta de premios, con criaturas e ingredientes en los gajos",
+          en: "The prize wheel, with creatures and ingredients in its segments",
+          pt: "A roleta de prêmios, com criaturas e ingredientes nas fatias",
+          it: "La ruota dei premi, con creature e ingredienti negli spicchi",
+        },
+      },
+      {
+        src: "/apps/kaurix/09.jpg",
+        alt: {
+          es: "El bolso en la pestaña de comidas: platos ordenados por nivel y cuántos tienes de cada uno",
+          en: "The bag on the meals tab: dishes sorted by level and how many of each you have",
+          pt: "A bolsa na aba de comidas: pratos ordenados por nível e quantos você tem de cada um",
+          it: "La borsa nella scheda dei cibi: piatti ordinati per livello e quanti ne hai di ciascuno",
+        },
+      },
+      {
+        src: "/apps/kaurix/10.jpg",
+        alt: {
+          es: "El bolso en la pestaña de pociones: frascos por nivel, apagados los que todavía no preparaste",
+          en: "The bag on the potions tab: flasks by level, dimmed for the ones you haven't brewed yet",
+          pt: "A bolsa na aba de poções: frascos por nível, apagados os que você ainda não preparou",
+          it: "La borsa nella scheda delle pozioni: fiale per livello, spente quelle che non hai ancora preparato",
+        },
+      },
+      {
+        src: "/apps/kaurix/11.jpg",
+        alt: {
+          es: "La cocina: el caldero vacío y la despensa con los ingredientes que juntaste",
+          en: "The kitchen: the empty cauldron and the pantry with the ingredients you gathered",
+          pt: "A cozinha: o caldeirão vazio e a despensa com os ingredientes que você juntou",
+          it: "La cucina: il calderone vuoto e la dispensa con gli ingredienti che hai raccolto",
+        },
+      },
+      {
+        src: "/apps/kaurix/12.jpg",
+        alt: {
+          es: "El álbum del Gato de bruma, con seis de sus nueve cartas conseguidas",
+          en: "The Mist Cat album, with six of its nine cards collected",
+          pt: "O álbum do Gato de bruma, com seis das suas nove cartas conquistadas",
+          it: "L'album del Gatto di bruma, con sei delle sue nove carte ottenute",
+        },
+      },
+      {
+        src: "/apps/kaurix/13.jpg",
+        alt: {
+          es: "El álbum del Dragón de musgo, con seis de sus nueve cartas conseguidas",
+          en: "The Moss Dragon album, with six of its nine cards collected",
+          pt: "O álbum do Dragão de musgo, com seis das suas nove cartas conquistadas",
+          it: "L'album del Drago di muschio, con sei delle sue nove carte ottenute",
+        },
+      },
+      {
+        src: "/apps/kaurix/14.jpg",
+        alt: {
+          es: "El álbum del Dragón de musgo: los huecos vacíos marcan cómo se consigue cada carta que falta",
+          en: "The Moss Dragon album: the empty slots show how each missing card is earned",
+          pt: "O álbum do Dragão de musgo: os espaços vazios mostram como se consegue cada carta que falta",
+          it: "L'album del Drago di muschio: gli spazi vuoti indicano come si ottiene ogni carta mancante",
+        },
+      },
+      {
+        src: "/apps/kaurix/15.jpg",
+        alt: {
+          es: "Una carta ampliada: un dragón bebé dormido en su nido, con el marco dorado del álbum",
+          en: "A card up close: a baby dragon asleep in its nest, in the album's golden frame",
+          pt: "Uma carta ampliada: um dragão bebê dormindo no ninho, com a moldura dourada do álbum",
+          it: "Una carta ingrandita: un draghetto addormentato nel nido, con la cornice dorata dell'album",
+        },
+      },
+    ],
     privacy: {
       updatedAt: "2026-09-03",
       collects: [],
