@@ -12,7 +12,6 @@ import { site } from "@/lib/site";
 
 export function HomeView({ lang }: { lang: Locale }) {
   const dict = getDictionary(lang);
-  const heroApps = appsVisibles.slice(0, 2);
 
   return (
     <>
@@ -59,9 +58,15 @@ export function HomeView({ lang }: { lang: Locale }) {
             </Link>
           </div>
 
-          {/* Accesos directos a cada app, al pie del bloque oscuro */}
-          <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:mt-14 sm:grid-cols-2 sm:gap-4 sm:pt-10 md:mt-16">
-            {heroApps.map((app) => (
+          {/*
+            Accesos directos a cada app, al pie del bloque oscuro.
+
+            Están todas, no un recorte: el bloque crece con el catálogo igual
+            que la grilla de más abajo. En pantallas chicas van de a dos y
+            desde lg entran las tres en una fila.
+          */}
+          <div className="mt-10 grid gap-3 border-t border-white/10 pt-8 sm:mt-14 sm:grid-cols-2 sm:gap-4 sm:pt-10 md:mt-16 lg:grid-cols-3">
+            {appsVisibles.map((app) => (
               <Link
                 key={app.slug}
                 href={path(`/apps/${app.slug}`, lang)}
