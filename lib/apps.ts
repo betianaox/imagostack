@@ -146,33 +146,37 @@ export const apps: App[] = [
       it: "Tarocchi, rune, angeli e altro. Chiedi, ascolta la lettura e impara a leggere.",
     },
     description: {
-      es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios, con mazos de arte propio y de gran calidad, tiradas animadas y lecturas cuidadas.",
+      es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios, con tiradas animadas y lecturas cuidadas.",
       // El I Ching solo se ofrece en español: su contenido todavia no esta
       // traducido, y la app no lo muestra en los otros idiomas. Por eso las
       // versiones en/pt de esta ficha no lo nombran ni cuentan seis oraculos.
-      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Buzios, with high-quality decks of original art, animated spreads and readings written with care.",
-      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Buzios, com baralhos de arte própria e de alta qualidade, tiragens animadas e leituras caprichadas.",
-      it: "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Buzios, con mazzi d'arte propria e di grande qualità, estrazioni animate e letture curate.",
+      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Buzios, with animated readings written with care.",
+      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Buzios, com tiragens animadas e leituras caprichadas.",
+      it: "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Buzios, con estrazioni animate e letture curate.",
     },
     body: {
       es: [
         "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios. Haces tu pregunta, las cartas caen, las monedas giran, los caracoles se dispersan… y una lectura clara y cuidada te devuelve una mirada nueva sobre tu momento.",
         "Cada lectura se lee en pantalla y también se puede escuchar en voz alta. Y hay un consejo del día, gratis y sin gastar nada, para los días en que no hay una pregunta puntual pero igual dan ganas de mirar.",
+        "Los mazos vienen con arte propio de gran calidad: cada carta, cada lámina y cada runa está ilustrada para esta app, y se pueden ampliar para verlas en detalle.",
         "No es adivinación de manual: es una experiencia visual, íntima y hermosa, pensada para acompañar la reflexión, el autoconocimiento y esos momentos en que uno necesita frenar y pensar. Es entretenimiento y aprendizaje: no adivina el futuro, no es magia y no responde sobre salud.",
       ],
       en: [
         "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Buzios. You ask your question, the cards fall, the shells scatter… and a clear, carefully written reading gives you a fresh look at your moment.",
         "Every reading is there on screen and can also be listened to out loud. And there is an advice of the day, free and costing nothing, for the days when there is no particular question but you still feel like looking.",
+        "The decks come with original art of high quality: every card, every tablet and every rune is illustrated for this app, and you can zoom in to see them in detail.",
         "This isn't fortune-telling by the book: it's a visual, intimate and beautiful experience, made to support reflection, self-knowledge and those moments when you need to stop and think. It is entertainment and learning: it does not predict the future, it is not magic and it does not answer questions about health.",
       ],
       pt: [
         "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Buzios. Você faz a sua pergunta, as cartas caem, os buzios se espalham… e uma leitura clara e caprichada devolve um novo olhar sobre o seu momento.",
         "Cada leitura fica na tela e também pode ser ouvida em voz alta. E tem o conselho do dia, de graça e sem gastar nada, para os dias em que não há uma pergunta específica mas ainda assim dá vontade de olhar.",
+        "Os baralhos vêm com arte própria de alta qualidade: cada carta, cada lâmina e cada runa é ilustrada para este app, e podem ser ampliadas para ver em detalhe.",
         "Não é adivinhação de manual: é uma experiência visual, íntima e bonita, pensada para acompanhar a reflexão, o autoconhecimento e aqueles momentos em que a gente precisa parar e pensar. É entretenimento e aprendizado: não adivinha o futuro, não é magia e não responde sobre saúde.",
       ],
       it: [
         "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Buzios. Fai la tua domanda, le carte cadono, le conchiglie si spargono… e una lettura chiara e curata ti restituisce uno sguardo nuovo sul tuo momento.",
         "Ogni lettura si legge sullo schermo e si può anche ascoltare ad alta voce. E c'è il consiglio del giorno, gratis e senza spendere nulla, per i giorni in cui non c'è una domanda precisa ma viene comunque voglia di guardare.",
+        "I mazzi hanno un'arte propria di grande qualità: ogni carta, ogni lastra e ogni runa è illustrata per questa app, e si possono ingrandire per vederle nel dettaglio.",
         "Non è divinazione da manuale: è un'esperienza visiva, intima e bella, pensata per accompagnare la riflessione, la conoscenza di sé e quei momenti in cui si ha bisogno di fermarsi a pensare. È intrattenimento e apprendimento: non predice il futuro, non è magia e non risponde su questioni di salute.",
       ],
     },
