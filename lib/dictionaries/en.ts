@@ -765,6 +765,10 @@ export const en: Dictionary = {
       "padel statistics",
       "oracle app",
       "tarot app",
+      "Kaurix",
+      "augmented reality game",
+      "augmented reality Android",
+      "creature game with the camera",
     ],
   },
 

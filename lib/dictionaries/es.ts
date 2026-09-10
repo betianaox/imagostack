@@ -800,6 +800,10 @@ export const es = {
       "estadísticas de pádel",
       "app de oráculos",
       "tarot app",
+      "Kaurix",
+      "juego de realidad aumentada",
+      "realidad aumentada Android",
+      "juego de criaturas con la cámara",
     ],
   },
 

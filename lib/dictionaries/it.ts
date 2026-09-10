@@ -801,6 +801,10 @@ export const it: Dictionary = {
       "statistiche di padel",
       "app di oracoli",
       "app tarocchi",
+      "Kaurix",
+      "gioco di realtà aumentata",
+      "realtà aumentata Android",
+      "gioco di creature con la fotocamera",
     ],
   },
 
