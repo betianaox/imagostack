@@ -476,6 +476,300 @@ export const apps: App[] = [
     },
   },
   {
+    slug: "vigia",
+    // "Vigia Padel", igual que en Play. En la tienda se llama asi en los cuatro
+    // idiomas, y el sitio decia solo "Vigia": el titulo de la pagina no coincidia
+    // con el de la ficha, y "vigia" a secas devuelve cualquier cosa. Quien la
+    // busca escribe "vigia padel", y esa frase tiene que estar en el titulo.
+    name: { es: "Vigia Padel", en: "Vigia Padel", pt: "Vigia Padel", it: "Vigia Padel" },
+    tagline: {
+      es: "Marcador de pádel y estadísticas por jugador. Sin conexión ni registro.",
+      en: "Padel scoreboard and per-player stats. Works offline, no sign-up.",
+      pt: "Placar de padel e estatísticas por jogador. Offline e sem cadastro.",
+      it: "Segnapunti padel e statistiche per giocatore. Offline, senza account.",
+    },
+    description: {
+      es: "Vigia convierte a cualquier persona al borde de la cancha en el estadístico de un partido de pádel profesional: tú marcas qué pasó en cada punto y la app hace el tanteo, los saques, los tie-breaks y las estadísticas de los cuatro jugadores.",
+      en: "Vigia turns anyone standing by the court into the statistician of a professional padel match: you tag what happened on each point and the app handles the score, the serves, the tie-breaks and the stats for all four players.",
+      pt: "Vigia transforma qualquer pessoa à beira da quadra no estatístico de uma partida de padel profissional: você marca o que aconteceu em cada ponto e o app cuida do placar, dos saques, dos tie-breaks e das estatísticas dos quatro jogadores.",
+      it: "Vigia trasforma chiunque si trovi a bordo campo nello statistico di una partita di padel professionale: tu segni che cosa è successo in ogni punto e l'app si occupa del punteggio, dei servizi, dei tie-break e delle statistiche di tutti e quattro i giocatori.",
+    },
+    body: {
+      es: [
+        "Vigia convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Tú solo marcas qué pasó en cada punto; la app hace el resto: el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.",
+        "Al terminar, se genera una tarjeta lista para compartir por WhatsApp con el resultado y los números del partido. La misma clase de datos que ves en una transmisión profesional, ahora de tu partido del sábado.",
+      ],
+      en: [
+        "Vigia turns anyone standing by the court —a coach, someone on the bench, a friend— into the statistician of a professional padel match. You just tag what happened on each point; the app does the rest: the score, who serves, who returns, the tie-breaks and the stats for all four players.",
+        "When the match ends, it generates a card ready to share on WhatsApp with the result and the numbers. The same kind of data you see on a professional broadcast, now for your Saturday match.",
+      ],
+      pt: [
+        "Vigia transforma qualquer pessoa à beira da quadra —um treinador, alguém do banco, um amigo— no estatístico de uma partida de padel profissional. Você só marca o que aconteceu em cada ponto; o app faz o resto: o placar, quem saca, quem devolve, os tie-breaks e as estatísticas dos quatro jogadores.",
+        "No fim, é gerado um card pronto para compartilhar no WhatsApp com o resultado e os números da partida. O mesmo tipo de dado que você vê em uma transmissão profissional, agora do seu jogo de sábado.",
+      ],
+      it: [
+        "Vigia trasforma chiunque si trovi a bordo campo —un allenatore, qualcuno in panchina, un amico— nello statistico di una partita di padel professionale. Tu segni soltanto che cosa è successo in ogni punto; l'app fa il resto: il punteggio, chi serve, chi risponde, i tie-break e le statistiche di tutti e quattro i giocatori.",
+        "Alla fine viene generata una scheda pronta da condividere su WhatsApp con il risultato e i numeri della partita. Lo stesso tipo di dati che vedi in una trasmissione professionale, ora della tua partita del sabato.",
+      ],
+    },
+    claim: {
+      es: "Marca el punto. La app hace la estadística.",
+      en: "Tag the point. The app does the stats.",
+      pt: "Marque o ponto. O app faz a estatística.",
+      it: "Segna il punto. L'app fa la statistica.",
+    },
+    category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
+    /**
+     * La URL de la ficha en Google Play, o vacio si todavia no esta publicada.
+     *
+     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion
+     * del final y el `installUrl` de los datos estructurados— y el chat pasa a decir que
+     * todavia no esta publicada. Un boton "Descargar en Google Play" en un sitio publico que
+     * da 404 es peor que no tener boton.
+     *
+     * El dia que Play apruebe una ficha, se pega aca su URL y vuelve solo: no hay nada mas
+     * que tocar.
+     */
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
+    icon: "/apps/vigia/icon.png",
+    feature: "/apps/vigia/feature.png",
+    // Negro cancha + lima del logo
+    accent: ["#0d1116", "#33451c"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués", "Italiano"],
+      en: ["Spanish", "English", "Portuguese", "Italian"],
+      pt: ["Espanhol", "Inglês", "Português", "Italiano"],
+      it: ["Spagnolo", "Inglese", "Portoghese", "Italiano"],
+    },
+    features: [
+      {
+        icon: "chart",
+        title: {
+          es: "Estadísticas de nivel transmisión",
+          en: "Broadcast-level statistics",
+          pt: "Estatísticas de nível transmissão",
+          it: "Statistiche da telecronaca",
+        },
+        description: {
+          es: "Winners, errores forzados y no forzados, aces, dobles faltas, break points y mucho más, jugador por jugador.",
+          en: "Winners, forced and unforced errors, aces, double faults, break points and much more, player by player.",
+          pt: "Winners, erros forçados e não forçados, aces, duplas faltas, break points e muito mais, jogador por jogador.",
+          it: "Winner, errori forzati e non forzati, ace, doppi falli, break point e molto altro, giocatore per giocatore.",
+        },
+      },
+      {
+        icon: "users",
+        title: {
+          es: "Datos que se pueden jugar",
+          en: "Stats you can actually play with",
+          pt: "Dados que você leva para a quadra",
+          it: "Dati che puoi portare in campo",
+        },
+        description: {
+          es: "Con qué golpe ganas los puntos y con cuál los regalas. A cuál de los dos rivales le estás haciendo daño, y con qué. Cuántos puntos ganas sin tirar un winner, solo por hacer errar al otro.",
+          en: "Which stroke wins you points and which one gives them away. Which of the two rivals you are hurting, and with what. How many points you win without hitting a winner, just by forcing the error.",
+          pt: "Com qual golpe você ganha os pontos e com qual você os entrega. Em qual dos dois rivais você está fazendo estrago, e com o quê. Quantos pontos você ganha sem dar um winner, só forçando o erro do outro.",
+          it: "Con quale colpo vinci i punti e con quale li regali. A quale dei due avversari stai facendo male, e con che colpo. Quanti punti vinci senza tirare un winner, solo forzando l'errore dell'altro.",
+        },
+      },
+      {
+        icon: "bolt",
+        title: {
+          es: "Tú solo tocas, ella deduce todo",
+          en: "You just tap, it works out the rest",
+          pt: "Você só toca, ele deduz tudo",
+          it: "Tu tocchi soltanto, lei deduce tutto",
+        },
+        description: {
+          es: "Marcador, saque, cambios de lado y tie-breaks se resuelven automáticamente mientras sigues el partido.",
+          en: "Score, serve, side changes and tie-breaks resolve automatically while you follow the match.",
+          pt: "Placar, saque, mudanças de lado e tie-breaks se resolvem automaticamente enquanto você acompanha a partida.",
+          it: "Punteggio, servizio, cambi di campo e tie-break si risolvono automaticamente mentre segui la partita.",
+        },
+      },
+      {
+        icon: "sparkles",
+        title: {
+          es: "Se comparte y se luce",
+          en: "Made to be shared",
+          pt: "Feito para compartilhar",
+          it: "Fatta per essere condivisa",
+        },
+        description: {
+          es: "El resultado, los cuatro nombres, quién ganó y qué hizo cada uno con cada golpe, en una sola imagen. Se comparte en dos toques: al grupo de WhatsApp, a tus redes, a donde sea.",
+          en: "The score, the four names, who won and what each player did with each stroke, in a single image. Two taps to share it: the WhatsApp group, your social feeds, wherever.",
+          pt: "O placar, os quatro nomes, quem ganhou e o que cada um fez com cada golpe, em uma única imagem. Dois toques para compartilhar: no grupo do WhatsApp, nas suas redes, onde você quiser.",
+          it: "Il punteggio, i quattro nomi, chi ha vinto e cosa ha fatto ognuno con ogni colpo, in una sola immagine. Due tocchi per condividerla: nel gruppo di WhatsApp, sui tuoi social, dove vuoi.",
+        },
+      },
+      {
+        icon: "device",
+        title: {
+          es: "Historial y evolución",
+          en: "History and progress",
+          pt: "Histórico e evolução",
+          it: "Storico ed evoluzione",
+        },
+        description: {
+          es: "Cada jugador acumula sus partidos y ve cómo progresa con el tiempo, métrica por métrica.",
+          en: "Every player builds up their matches and sees how they progress over time, metric by metric.",
+          pt: "Cada jogador acumula suas partidas e vê como evolui com o tempo, métrica por métrica.",
+          it: "Ogni giocatore accumula le sue partite e vede come progredisce nel tempo, metrica per metrica.",
+        },
+      },
+      {
+        icon: "download",
+        title: {
+          es: "Exportar e importar",
+          en: "Export and import",
+          pt: "Exporta e importa",
+          it: "Esportare e importare",
+        },
+        description: {
+          es: "Tus partidos son tuyos: lleva el historial de un teléfono a otro cuando quieras.",
+          en: "Your matches are yours: move your history from one phone to another whenever you want.",
+          pt: "Suas partidas são suas: leve o histórico de um celular para outro quando quiser.",
+          it: "Le tue partite sono tue: porta lo storico da un telefono all'altro quando vuoi.",
+        },
+      },
+    ],
+    screenshots: [
+      {
+        src: "/apps/vigia/01.jpeg",
+        alt: {
+          es: "Pantalla de inicio de Vigia con los accesos a partido nuevo, historial y jugadores",
+          en: "Vigia home screen with shortcuts to new match, history and players",
+          pt: "Tela inicial do Vigia com os atalhos para nova partida, histórico e jogadores",
+          it: "Schermata iniziale di Vigia con gli accessi a nuova partita, storico e giocatori",
+        },
+      },
+      {
+        src: "/apps/vigia/02.jpeg",
+        alt: {
+          es: "Alta de un partido nuevo en Vigia: jugadores de drive y revés de cada equipo, sorteo de saque y formato de partido",
+          en: "Setting up a new match in Vigia: forehand and backhand players for each team, serve draw and match format",
+          pt: "Criação de uma nova partida no Vigia: jogadores de drive e esquerda de cada dupla, sorteio de saque e formato da partida",
+          it: "Creazione di una nuova partita in Vigia: giocatori di diritto e di rovescio di ogni coppia, sorteggio del servizio e formato della partita",
+        },
+      },
+      {
+        src: "/apps/vigia/03.jpeg",
+        alt: {
+          es: "Marcado de puntos en vivo en Vigia, con winner, error forzado y no forzado para cada uno de los cuatro jugadores",
+          en: "Live point tagging in Vigia, with winner, forced and unforced error for each of the four players",
+          pt: "Marcação de pontos ao vivo no Vigia, com winner, erro forçado e não forçado para cada um dos quatro jogadores",
+          it: "Segnalazione dei punti in diretta in Vigia, con winner, errore forzato e non forzato per ognuno dei quattro giocatori",
+        },
+      },
+      {
+        src: "/apps/vigia/04.jpeg",
+        alt: {
+          es: "Hoja de golpes de Vigia para anotar con qué golpe se cometió el error: remate, bandeja, víbora, volea, globo y el resto, separados por revés y derecha",
+          en: "Vigia stroke sheet for recording which stroke the error was made with: smash, bandeja, víbora, volley, lob and the rest, split by backhand and forehand",
+          pt: "Folha de golpes do Vigia para anotar com qual golpe o erro foi cometido: smash, bandeja, víbora, voleio, lob e os demais, separados por revés e direita",
+          it: "Scheda dei colpi di Vigia per annotare con quale colpo è stato commesso l'errore: smash, bandeja, víbora, volée, pallonetto e gli altri, divisi tra rovescio e dritto",
+        },
+      },
+      {
+        src: "/apps/vigia/05.jpeg",
+        alt: {
+          es: "Estadísticas del partido en Vigia: errores no forzados, winners por error, break points y comparación jugador por jugador",
+          en: "Match statistics in Vigia: unforced errors, winners per error, break points and a player-by-player comparison",
+          pt: "Estatísticas da partida no Vigia: erros não forçados, winners por erro, break points e comparação jogador por jogador",
+          it: "Statistiche della partita in Vigia: errori non forzati, winner per errore, break point e confronto giocatore per giocatore",
+        },
+      },
+      {
+        src: "/apps/vigia/06.jpeg",
+        alt: {
+          es: "Listado de jugadores registrados en Vigia con la cantidad de partidos de cada uno",
+          en: "List of players registered in Vigia with how many matches each one has",
+          pt: "Lista de jogadores cadastrados no Vigia com a quantidade de partidas de cada um",
+          it: "Elenco dei giocatori registrati in Vigia con il numero di partite di ognuno",
+        },
+      },
+      {
+        src: "/apps/vigia/07.jpeg",
+        alt: {
+          es: "Perfil de un jugador en Vigia con su evolución en winners por error, primer saque y errores no forzados",
+          en: "A player profile in Vigia showing their progress in winners per error, first serve and unforced errors",
+          pt: "Perfil de um jogador no Vigia com sua evolução em winners por erro, primeiro saque e erros não forçados",
+          it: "Profilo di un giocatore in Vigia con la sua evoluzione in winner per errore, primo servizio ed errori non forzati",
+        },
+      },
+      {
+        src: "/apps/vigia/08.jpeg",
+        alt: {
+          es: "Detalle de un error no forzado en Vigia: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
+          en: "Unforced error detail in Vigia: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
+          pt: "Detalhe de um erro não forçado no Vigia: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
+          it: "Dettaglio di un errore non forzato in Vigia: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
+        },
+      },
+      {
+        src: "/apps/vigia/09.jpeg",
+        alt: {
+          es: "Detalle de un error forzado en Vigia: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
+          en: "Forced error detail in Vigia: the app asks who forced it, with which stroke, and which stroke the rival missed with",
+          pt: "Detalhe de um erro forçado no Vigia: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
+          it: "Dettaglio di un errore forzato in Vigia: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
+        },
+      },
+        ],
+    privacy: {
+      updatedAt: "2026-08-17",
+      collects: [
+        {
+          type: {
+            es: "Nombres o apodos de los jugadores que cargas",
+            en: "Names or nicknames of the players you add",
+            pt: "Nomes ou apelidos dos jogadores que você cadastra",
+            it: "Nomi o soprannomi dei giocatori che inserisci",
+          },
+          purpose: {
+            es: "Identificar a cada jugador en el marcador, en las estadísticas y en el historial de partidos.",
+            en: "To identify each player on the scoreboard, in the statistics and in the match history.",
+            pt: "Identificar cada jogador no placar, nas estatísticas e no histórico de partidas.",
+            it: "Identificare ogni giocatore nel punteggio, nelle statistiche e nello storico delle partite.",
+          },
+          storage: "dispositivo",
+        },
+        {
+          type: {
+            es: "Datos de los partidos (puntos, saques, resultados y métricas)",
+            en: "Match data (points, serves, results and metrics)",
+            pt: "Dados das partidas (pontos, saques, resultados e métricas)",
+            it: "Dati delle partite (punti, servizi, risultati e metriche)",
+          },
+          purpose: {
+            es: "Armar el tanteo en vivo, las estadísticas del partido y la evolución histórica de cada jugador.",
+            en: "To build the live score, the match statistics and each player's progress over time.",
+            pt: "Montar o placar ao vivo, as estatísticas da partida e a evolução histórica de cada jogador.",
+            it: "Costruire il punteggio in diretta, le statistiche della partita e l'evoluzione storica di ogni giocatore.",
+          },
+          storage: "dispositivo",
+        },
+      ],
+      permissions: [],
+      processedOnDevice: true,
+      // La exportacion del historial es lo unico que saca datos del sandbox de la app,
+      // y lo hace la persona a mano. El texto generico de la seccion 3 no alcanza para
+      // explicarlo: dice que todo vive en el dispositivo, pero no que hay una funcion
+      // que produce un archivo con ese contenido y lo deja donde el usuario decida.
+      processingNote: {
+        es: "{app} incluye una función para exportar el historial. Al usarla, tus partidos se escriben en un archivo y tú eliges dónde guardarlo o a quién enviarlo: desde ese momento el archivo queda fuera del almacenamiento privado de la app y bajo tu control. {company} no lo recibe ni conserva una copia.",
+        en: "{app} includes a feature to export your history. When you use it, your matches are written to a file and you choose where to save it or who to send it to: from that point on the file lives outside the app's private storage and under your control. {company} neither receives it nor keeps a copy.",
+        pt: "O {app} inclui uma função para exportar o histórico. Ao usá-la, suas partidas são gravadas em um arquivo e você escolhe onde guardá-lo ou para quem enviá-lo: a partir desse momento o arquivo fica fora do armazenamento privado do app e sob seu controle. A {company} não o recebe nem guarda uma cópia.",
+        it: "{app} include una funzione per esportare lo storico. Quando la usi, le tue partite vengono scritte in un file e sei tu a scegliere dove salvarlo o a chi inviarlo: da quel momento il file si trova fuori dall'archivio privato dell'app e sotto il tuo controllo. {company} non lo riceve né ne conserva una copia.",
+      },
+      thirdParties: [],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      minAge: null,
+    },
+  },
+  {
     slug: "kaurix",
     name: { es: "Kaurix", en: "Kaurix", pt: "Kaurix", it: "Kaurix" },
     tagline: {
@@ -779,300 +1073,6 @@ export const apps: App[] = [
       ],
       directedToChildren: false,
       showsAds: true,
-      hasInAppPurchases: false,
-      minAge: null,
-    },
-  },
-  {
-    slug: "vigia",
-    // "Vigia Padel", igual que en Play. En la tienda se llama asi en los cuatro
-    // idiomas, y el sitio decia solo "Vigia": el titulo de la pagina no coincidia
-    // con el de la ficha, y "vigia" a secas devuelve cualquier cosa. Quien la
-    // busca escribe "vigia padel", y esa frase tiene que estar en el titulo.
-    name: { es: "Vigia Padel", en: "Vigia Padel", pt: "Vigia Padel", it: "Vigia Padel" },
-    tagline: {
-      es: "Marcador de pádel y estadísticas por jugador. Sin conexión ni registro.",
-      en: "Padel scoreboard and per-player stats. Works offline, no sign-up.",
-      pt: "Placar de padel e estatísticas por jogador. Offline e sem cadastro.",
-      it: "Segnapunti padel e statistiche per giocatore. Offline, senza account.",
-    },
-    description: {
-      es: "Vigia convierte a cualquier persona al borde de la cancha en el estadístico de un partido de pádel profesional: tú marcas qué pasó en cada punto y la app hace el tanteo, los saques, los tie-breaks y las estadísticas de los cuatro jugadores.",
-      en: "Vigia turns anyone standing by the court into the statistician of a professional padel match: you tag what happened on each point and the app handles the score, the serves, the tie-breaks and the stats for all four players.",
-      pt: "Vigia transforma qualquer pessoa à beira da quadra no estatístico de uma partida de padel profissional: você marca o que aconteceu em cada ponto e o app cuida do placar, dos saques, dos tie-breaks e das estatísticas dos quatro jogadores.",
-      it: "Vigia trasforma chiunque si trovi a bordo campo nello statistico di una partita di padel professionale: tu segni che cosa è successo in ogni punto e l'app si occupa del punteggio, dei servizi, dei tie-break e delle statistiche di tutti e quattro i giocatori.",
-    },
-    body: {
-      es: [
-        "Vigia convierte a cualquier persona al borde de la cancha —un entrenador, alguien del banco, un amigo— en el estadístico de un partido de pádel profesional. Tú solo marcas qué pasó en cada punto; la app hace el resto: el tanteo, quién saca, quién resta, los tie-breaks y las estadísticas de los cuatro jugadores.",
-        "Al terminar, se genera una tarjeta lista para compartir por WhatsApp con el resultado y los números del partido. La misma clase de datos que ves en una transmisión profesional, ahora de tu partido del sábado.",
-      ],
-      en: [
-        "Vigia turns anyone standing by the court —a coach, someone on the bench, a friend— into the statistician of a professional padel match. You just tag what happened on each point; the app does the rest: the score, who serves, who returns, the tie-breaks and the stats for all four players.",
-        "When the match ends, it generates a card ready to share on WhatsApp with the result and the numbers. The same kind of data you see on a professional broadcast, now for your Saturday match.",
-      ],
-      pt: [
-        "Vigia transforma qualquer pessoa à beira da quadra —um treinador, alguém do banco, um amigo— no estatístico de uma partida de padel profissional. Você só marca o que aconteceu em cada ponto; o app faz o resto: o placar, quem saca, quem devolve, os tie-breaks e as estatísticas dos quatro jogadores.",
-        "No fim, é gerado um card pronto para compartilhar no WhatsApp com o resultado e os números da partida. O mesmo tipo de dado que você vê em uma transmissão profissional, agora do seu jogo de sábado.",
-      ],
-      it: [
-        "Vigia trasforma chiunque si trovi a bordo campo —un allenatore, qualcuno in panchina, un amico— nello statistico di una partita di padel professionale. Tu segni soltanto che cosa è successo in ogni punto; l'app fa il resto: il punteggio, chi serve, chi risponde, i tie-break e le statistiche di tutti e quattro i giocatori.",
-        "Alla fine viene generata una scheda pronta da condividere su WhatsApp con il risultato e i numeri della partita. Lo stesso tipo di dati che vedi in una trasmissione professionale, ora della tua partita del sabato.",
-      ],
-    },
-    claim: {
-      es: "Marca el punto. La app hace la estadística.",
-      en: "Tag the point. The app does the stats.",
-      pt: "Marque o ponto. O app faz a estatística.",
-      it: "Segna il punto. L'app fa la statistica.",
-    },
-    category: { es: "Deportes", en: "Sports", pt: "Esportes", it: "Sport" },
-    /**
-     * La URL de la ficha en Google Play, o vacio si todavia no esta publicada.
-     *
-     * Con el campo vacio desaparece todo el llamado a descargar —los dos badges, la seccion
-     * del final y el `installUrl` de los datos estructurados— y el chat pasa a decir que
-     * todavia no esta publicada. Un boton "Descargar en Google Play" en un sitio publico que
-     * da 404 es peor que no tener boton.
-     *
-     * El dia que Play apruebe una ficha, se pega aca su URL y vuelve solo: no hay nada mas
-     * que tocar.
-     */
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.vigia",
-    icon: "/apps/vigia/icon.png",
-    feature: "/apps/vigia/feature.png",
-    // Negro cancha + lima del logo
-    accent: ["#0d1116", "#33451c"],
-    languages: {
-      es: ["Español", "Inglés", "Portugués", "Italiano"],
-      en: ["Spanish", "English", "Portuguese", "Italian"],
-      pt: ["Espanhol", "Inglês", "Português", "Italiano"],
-      it: ["Spagnolo", "Inglese", "Portoghese", "Italiano"],
-    },
-    features: [
-      {
-        icon: "chart",
-        title: {
-          es: "Estadísticas de nivel transmisión",
-          en: "Broadcast-level statistics",
-          pt: "Estatísticas de nível transmissão",
-          it: "Statistiche da telecronaca",
-        },
-        description: {
-          es: "Winners, errores forzados y no forzados, aces, dobles faltas, break points y mucho más, jugador por jugador.",
-          en: "Winners, forced and unforced errors, aces, double faults, break points and much more, player by player.",
-          pt: "Winners, erros forçados e não forçados, aces, duplas faltas, break points e muito mais, jogador por jogador.",
-          it: "Winner, errori forzati e non forzati, ace, doppi falli, break point e molto altro, giocatore per giocatore.",
-        },
-      },
-      {
-        icon: "users",
-        title: {
-          es: "Datos que se pueden jugar",
-          en: "Stats you can actually play with",
-          pt: "Dados que você leva para a quadra",
-          it: "Dati che puoi portare in campo",
-        },
-        description: {
-          es: "Con qué golpe ganas los puntos y con cuál los regalas. A cuál de los dos rivales le estás haciendo daño, y con qué. Cuántos puntos ganas sin tirar un winner, solo por hacer errar al otro.",
-          en: "Which stroke wins you points and which one gives them away. Which of the two rivals you are hurting, and with what. How many points you win without hitting a winner, just by forcing the error.",
-          pt: "Com qual golpe você ganha os pontos e com qual você os entrega. Em qual dos dois rivais você está fazendo estrago, e com o quê. Quantos pontos você ganha sem dar um winner, só forçando o erro do outro.",
-          it: "Con quale colpo vinci i punti e con quale li regali. A quale dei due avversari stai facendo male, e con che colpo. Quanti punti vinci senza tirare un winner, solo forzando l'errore dell'altro.",
-        },
-      },
-      {
-        icon: "bolt",
-        title: {
-          es: "Tú solo tocas, ella deduce todo",
-          en: "You just tap, it works out the rest",
-          pt: "Você só toca, ele deduz tudo",
-          it: "Tu tocchi soltanto, lei deduce tutto",
-        },
-        description: {
-          es: "Marcador, saque, cambios de lado y tie-breaks se resuelven automáticamente mientras sigues el partido.",
-          en: "Score, serve, side changes and tie-breaks resolve automatically while you follow the match.",
-          pt: "Placar, saque, mudanças de lado e tie-breaks se resolvem automaticamente enquanto você acompanha a partida.",
-          it: "Punteggio, servizio, cambi di campo e tie-break si risolvono automaticamente mentre segui la partita.",
-        },
-      },
-      {
-        icon: "sparkles",
-        title: {
-          es: "Se comparte y se luce",
-          en: "Made to be shared",
-          pt: "Feito para compartilhar",
-          it: "Fatta per essere condivisa",
-        },
-        description: {
-          es: "El resultado, los cuatro nombres, quién ganó y qué hizo cada uno con cada golpe, en una sola imagen. Se comparte en dos toques: al grupo de WhatsApp, a tus redes, a donde sea.",
-          en: "The score, the four names, who won and what each player did with each stroke, in a single image. Two taps to share it: the WhatsApp group, your social feeds, wherever.",
-          pt: "O placar, os quatro nomes, quem ganhou e o que cada um fez com cada golpe, em uma única imagem. Dois toques para compartilhar: no grupo do WhatsApp, nas suas redes, onde você quiser.",
-          it: "Il punteggio, i quattro nomi, chi ha vinto e cosa ha fatto ognuno con ogni colpo, in una sola immagine. Due tocchi per condividerla: nel gruppo di WhatsApp, sui tuoi social, dove vuoi.",
-        },
-      },
-      {
-        icon: "device",
-        title: {
-          es: "Historial y evolución",
-          en: "History and progress",
-          pt: "Histórico e evolução",
-          it: "Storico ed evoluzione",
-        },
-        description: {
-          es: "Cada jugador acumula sus partidos y ve cómo progresa con el tiempo, métrica por métrica.",
-          en: "Every player builds up their matches and sees how they progress over time, metric by metric.",
-          pt: "Cada jogador acumula suas partidas e vê como evolui com o tempo, métrica por métrica.",
-          it: "Ogni giocatore accumula le sue partite e vede come progredisce nel tempo, metrica per metrica.",
-        },
-      },
-      {
-        icon: "download",
-        title: {
-          es: "Exportar e importar",
-          en: "Export and import",
-          pt: "Exporta e importa",
-          it: "Esportare e importare",
-        },
-        description: {
-          es: "Tus partidos son tuyos: lleva el historial de un teléfono a otro cuando quieras.",
-          en: "Your matches are yours: move your history from one phone to another whenever you want.",
-          pt: "Suas partidas são suas: leve o histórico de um celular para outro quando quiser.",
-          it: "Le tue partite sono tue: porta lo storico da un telefono all'altro quando vuoi.",
-        },
-      },
-    ],
-    screenshots: [
-      {
-        src: "/apps/vigia/01.jpeg",
-        alt: {
-          es: "Pantalla de inicio de Vigia con los accesos a partido nuevo, historial y jugadores",
-          en: "Vigia home screen with shortcuts to new match, history and players",
-          pt: "Tela inicial do Vigia com os atalhos para nova partida, histórico e jogadores",
-          it: "Schermata iniziale di Vigia con gli accessi a nuova partita, storico e giocatori",
-        },
-      },
-      {
-        src: "/apps/vigia/02.jpeg",
-        alt: {
-          es: "Alta de un partido nuevo en Vigia: jugadores de drive y revés de cada equipo, sorteo de saque y formato de partido",
-          en: "Setting up a new match in Vigia: forehand and backhand players for each team, serve draw and match format",
-          pt: "Criação de uma nova partida no Vigia: jogadores de drive e esquerda de cada dupla, sorteio de saque e formato da partida",
-          it: "Creazione di una nuova partita in Vigia: giocatori di diritto e di rovescio di ogni coppia, sorteggio del servizio e formato della partita",
-        },
-      },
-      {
-        src: "/apps/vigia/03.jpeg",
-        alt: {
-          es: "Marcado de puntos en vivo en Vigia, con winner, error forzado y no forzado para cada uno de los cuatro jugadores",
-          en: "Live point tagging in Vigia, with winner, forced and unforced error for each of the four players",
-          pt: "Marcação de pontos ao vivo no Vigia, com winner, erro forçado e não forçado para cada um dos quatro jogadores",
-          it: "Segnalazione dei punti in diretta in Vigia, con winner, errore forzato e non forzato per ognuno dei quattro giocatori",
-        },
-      },
-      {
-        src: "/apps/vigia/04.jpeg",
-        alt: {
-          es: "Hoja de golpes de Vigia para anotar con qué golpe se cometió el error: remate, bandeja, víbora, volea, globo y el resto, separados por revés y derecha",
-          en: "Vigia stroke sheet for recording which stroke the error was made with: smash, bandeja, víbora, volley, lob and the rest, split by backhand and forehand",
-          pt: "Folha de golpes do Vigia para anotar com qual golpe o erro foi cometido: smash, bandeja, víbora, voleio, lob e os demais, separados por revés e direita",
-          it: "Scheda dei colpi di Vigia per annotare con quale colpo è stato commesso l'errore: smash, bandeja, víbora, volée, pallonetto e gli altri, divisi tra rovescio e dritto",
-        },
-      },
-      {
-        src: "/apps/vigia/05.jpeg",
-        alt: {
-          es: "Estadísticas del partido en Vigia: errores no forzados, winners por error, break points y comparación jugador por jugador",
-          en: "Match statistics in Vigia: unforced errors, winners per error, break points and a player-by-player comparison",
-          pt: "Estatísticas da partida no Vigia: erros não forçados, winners por erro, break points e comparação jogador por jogador",
-          it: "Statistiche della partita in Vigia: errori non forzati, winner per errore, break point e confronto giocatore per giocatore",
-        },
-      },
-      {
-        src: "/apps/vigia/06.jpeg",
-        alt: {
-          es: "Listado de jugadores registrados en Vigia con la cantidad de partidos de cada uno",
-          en: "List of players registered in Vigia with how many matches each one has",
-          pt: "Lista de jogadores cadastrados no Vigia com a quantidade de partidas de cada um",
-          it: "Elenco dei giocatori registrati in Vigia con il numero di partite di ognuno",
-        },
-      },
-      {
-        src: "/apps/vigia/07.jpeg",
-        alt: {
-          es: "Perfil de un jugador en Vigia con su evolución en winners por error, primer saque y errores no forzados",
-          en: "A player profile in Vigia showing their progress in winners per error, first serve and unforced errors",
-          pt: "Perfil de um jogador no Vigia com sua evolução em winners por erro, primeiro saque e erros não forçados",
-          it: "Profilo di un giocatore in Vigia con la sua evoluzione in winner per errore, primo servizio ed errori non forzati",
-        },
-      },
-      {
-        src: "/apps/vigia/08.jpeg",
-        alt: {
-          es: "Detalle de un error no forzado en Vigia: se elige el golpe con el que se erró —remate, bandeja, víbora, volea, globo, salida de pared— y si fue de derecha o de revés",
-          en: "Unforced error detail in Vigia: pick the stroke that missed —smash, bandeja, víbora, volley, lob, wall exit— and whether it was forehand or backhand",
-          pt: "Detalhe de um erro não forçado no Vigia: escolha a batida errada —smash, bandeja, víbora, voleio, lob, saída de parede— e se foi de direita ou de esquerda",
-          it: "Dettaglio di un errore non forzato in Vigia: si sceglie il colpo sbagliato —smash, bandeja, víbora, volée, pallonetto, uscita dal muro— e se è stato di diritto o di rovescio",
-        },
-      },
-      {
-        src: "/apps/vigia/09.jpeg",
-        alt: {
-          es: "Detalle de un error forzado en Vigia: la app pregunta quién lo forzó, con qué golpe lo hizo y con qué golpe erró el rival",
-          en: "Forced error detail in Vigia: the app asks who forced it, with which stroke, and which stroke the rival missed with",
-          pt: "Detalhe de um erro forçado no Vigia: o app pergunta quem forçou, com qual batida e com qual batida o rival errou",
-          it: "Dettaglio di un errore forzato in Vigia: l'app chiede chi lo ha forzato, con quale colpo e con quale colpo ha sbagliato l'avversario",
-        },
-      },
-        ],
-    privacy: {
-      updatedAt: "2026-08-17",
-      collects: [
-        {
-          type: {
-            es: "Nombres o apodos de los jugadores que cargas",
-            en: "Names or nicknames of the players you add",
-            pt: "Nomes ou apelidos dos jogadores que você cadastra",
-            it: "Nomi o soprannomi dei giocatori che inserisci",
-          },
-          purpose: {
-            es: "Identificar a cada jugador en el marcador, en las estadísticas y en el historial de partidos.",
-            en: "To identify each player on the scoreboard, in the statistics and in the match history.",
-            pt: "Identificar cada jogador no placar, nas estatísticas e no histórico de partidas.",
-            it: "Identificare ogni giocatore nel punteggio, nelle statistiche e nello storico delle partite.",
-          },
-          storage: "dispositivo",
-        },
-        {
-          type: {
-            es: "Datos de los partidos (puntos, saques, resultados y métricas)",
-            en: "Match data (points, serves, results and metrics)",
-            pt: "Dados das partidas (pontos, saques, resultados e métricas)",
-            it: "Dati delle partite (punti, servizi, risultati e metriche)",
-          },
-          purpose: {
-            es: "Armar el tanteo en vivo, las estadísticas del partido y la evolución histórica de cada jugador.",
-            en: "To build the live score, the match statistics and each player's progress over time.",
-            pt: "Montar o placar ao vivo, as estatísticas da partida e a evolução histórica de cada jogador.",
-            it: "Costruire il punteggio in diretta, le statistiche della partita e l'evoluzione storica di ogni giocatore.",
-          },
-          storage: "dispositivo",
-        },
-      ],
-      permissions: [],
-      processedOnDevice: true,
-      // La exportacion del historial es lo unico que saca datos del sandbox de la app,
-      // y lo hace la persona a mano. El texto generico de la seccion 3 no alcanza para
-      // explicarlo: dice que todo vive en el dispositivo, pero no que hay una funcion
-      // que produce un archivo con ese contenido y lo deja donde el usuario decida.
-      processingNote: {
-        es: "{app} incluye una función para exportar el historial. Al usarla, tus partidos se escriben en un archivo y tú eliges dónde guardarlo o a quién enviarlo: desde ese momento el archivo queda fuera del almacenamiento privado de la app y bajo tu control. {company} no lo recibe ni conserva una copia.",
-        en: "{app} includes a feature to export your history. When you use it, your matches are written to a file and you choose where to save it or who to send it to: from that point on the file lives outside the app's private storage and under your control. {company} neither receives it nor keeps a copy.",
-        pt: "O {app} inclui uma função para exportar o histórico. Ao usá-la, suas partidas são gravadas em um arquivo e você escolhe onde guardá-lo ou para quem enviá-lo: a partir desse momento o arquivo fica fora do armazenamento privado do app e sob seu controle. A {company} não o recebe nem guarda uma cópia.",
-        it: "{app} include una funzione per esportare lo storico. Quando la usi, le tue partite vengono scritte in un file e sei tu a scegliere dove salvarlo o a chi inviarlo: da quel momento il file si trova fuori dall'archivio privato dell'app e sotto il tuo controllo. {company} non lo riceve né ne conserva una copia.",
-      },
-      thirdParties: [],
-      directedToChildren: false,
-      showsAds: false,
       hasInAppPurchases: false,
       minAge: null,
     },
