@@ -332,19 +332,19 @@ export const apps: App[] = [
       {
         src: "/apps/oraculos/01.jpeg",
         alt: {
-          es: "Selector de oráculos de la app Oráculos mostrando el Tarot, El espejo de los arcanos",
-          en: "Oracle picker in the Oracles app showing Tarot, the mirror of the arcana",
-          pt: "Seletor de oráculos do app Oráculos mostrando o Tarô, o espelho dos arcanos",
-          it: "Selettore di oracoli dell'app Oracles che mostra i Tarocchi, lo specchio degli arcani",
+          es: "Selector de oráculos mostrando el Tarot, El espejo de los arcanos",
+          en: "Oracle picker showing Tarot, the mirror of the arcana",
+          pt: "Seletor de oráculos mostrando o Tarô, o espelho dos arcanos",
+          it: "Selettore di oracoli che mostra i Tarocchi, lo specchio degli arcani",
         },
       },
       {
         src: "/apps/oraculos/02.jpeg",
         alt: {
-          es: "Selector de oráculos de Oráculos mostrando Buzios, el oráculo de los cauríes",
-          en: "Oracle picker in Oracles showing Buzios, the oracle of the cowrie shells",
-          pt: "Seletor de oráculos de Oráculos mostrando Buzios, o oráculo dos buzios",
-          it: "Selettore di oracoli di Oracles che mostra i Buzios, l'oracolo delle conchiglie cauri",
+          es: "Selector de oráculos mostrando Buzios, el oráculo de los cauríes",
+          en: "Oracle picker showing Buzios, the oracle of the cowrie shells",
+          pt: "Seletor de oráculos mostrando Buzios, o oráculo dos buzios",
+          it: "Selettore di oracoli che mostra i Buzios, l'oracolo delle conchiglie cauri",
         },
       },
       {
