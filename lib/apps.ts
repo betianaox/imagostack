@@ -146,13 +146,13 @@ export const apps: App[] = [
       it: "Tarocchi, rune, angeli e altro. Chiedi, ascolta la lettura e impara a leggere.",
     },
     description: {
-      es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios, con tiradas animadas y lecturas cuidadas.",
+      es: "Un solo lugar para consultar los oráculos más fascinantes de la historia: Tarot, Tarot Egipcio, Ángeles, Runas, I Ching y Buzios, con mazos de arte propio y de gran calidad, tiradas animadas y lecturas cuidadas.",
       // El I Ching solo se ofrece en español: su contenido todavia no esta
       // traducido, y la app no lo muestra en los otros idiomas. Por eso las
       // versiones en/pt de esta ficha no lo nombran ni cuentan seis oraculos.
-      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Buzios, with animated readings written with care.",
-      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Buzios, com tiragens animadas e leituras caprichadas.",
-      it: "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Buzios, con estrazioni animate e letture curate.",
+      en: "A single place to consult the most fascinating oracles in history: Tarot, Egyptian Tarot, Angels, Runes and Buzios, with high-quality decks of original art, animated spreads and readings written with care.",
+      pt: "Um só lugar para consultar os oráculos mais fascinantes da história: Tarô, Tarô Egípcio, Anjos, Runas e Buzios, com baralhos de arte própria e de alta qualidade, tiragens animadas e leituras caprichadas.",
+      it: "Un solo posto per consultare gli oracoli più affascinanti della storia: Tarocchi, Tarocchi Egizi, Angeli, Rune e Buzios, con mazzi d'arte propria e di grande qualità, estrazioni animate e letture curate.",
     },
     body: {
       es: [
@@ -330,87 +330,240 @@ export const apps: App[] = [
     ],
     screenshots: [
       {
-        src: "/apps/oraculos/01.jpeg",
+        src: "/apps/oraculos/01.jpg",
         alt: {
-          es: "Selector de oráculos mostrando el Tarot, El espejo de los arcanos",
+          es: "Selector de oráculos mostrando el Tarot, el espejo de los arcanos",
           en: "Oracle picker showing Tarot, the mirror of the arcana",
           pt: "Seletor de oráculos mostrando o Tarô, o espelho dos arcanos",
           it: "Selettore di oracoli che mostra i Tarocchi, lo specchio degli arcani",
         },
       },
       {
-        src: "/apps/oraculos/02.jpeg",
+        src: "/apps/oraculos/02.jpg",
+        alt: {
+          es: "Selector de oráculos mostrando Ángeles, mensajes de lo alto",
+          en: "Oracle picker showing Angels, messages from above",
+          pt: "Seletor de oráculos mostrando Anjos, mensagens do alto",
+          it: "Selettore di oracoli che mostra gli Angeli, messaggi dall'alto",
+        },
+      },
+      {
+        src: "/apps/oraculos/03.jpg",
+        alt: {
+          es: "Selector de oráculos mostrando el Egipcio, el oráculo del Nilo",
+          en: "Oracle picker showing the Egyptian oracle, the oracle of the Nile",
+          pt: "Seletor de oráculos mostrando o Egípcio, o oráculo do Nilo",
+          it: "Selettore di oracoli che mostra l'Egizio, l'oracolo del Nilo",
+        },
+      },
+      {
+        src: "/apps/oraculos/04.jpg",
+        alt: {
+          es: "Selector de oráculos mostrando el I Ching, el libro de los cambios",
+          en: "Oracle picker showing the I Ching, the book of changes",
+          pt: "Seletor de oráculos mostrando o I Ching, o livro das mutações",
+          it: "Selettore di oracoli che mostra l'I Ching, il libro dei mutamenti",
+        },
+      },
+      {
+        src: "/apps/oraculos/05.jpg",
+        alt: {
+          es: "Selector de oráculos mostrando las Runas, la voz del norte antiguo",
+          en: "Oracle picker showing the Runes, the voice of the ancient north",
+          pt: "Seletor de oráculos mostrando as Runas, a voz do norte antigo",
+          it: "Selettore di oracoli che mostra le Rune, la voce dell'antico nord",
+        },
+      },
+      {
+        src: "/apps/oraculos/06.jpg",
         alt: {
           es: "Selector de oráculos mostrando Buzios, el oráculo de los cauríes",
           en: "Oracle picker showing Buzios, the oracle of the cowrie shells",
-          pt: "Seletor de oráculos mostrando Buzios, o oráculo dos buzios",
+          pt: "Seletor de oráculos mostrando Buzios, o oráculo dos búzios",
           it: "Selettore di oracoli che mostra i Buzios, l'oracolo delle conchiglie cauri",
         },
       },
       {
-        src: "/apps/oraculos/03.jpeg",
+        src: "/apps/oraculos/07.jpg",
         alt: {
-          es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu",
-          en: "Angels oracle daily guidance in Oracles, showing the Karibu Cherub card",
-          pt: "Conselho do dia do oráculo dos Anjos em Oráculos, com a carta do Querubim Karibu",
-          it: "Consiglio del giorno dell'oracolo degli Angeli in Oracles, con la carta del Cherubino Karibu",
+          es: "Consulta a las Runas: se elige el tema —general, amor, trabajo o dinero— y se escribe la pregunta",
+          en: "Consulting the Runes: pick a topic —general, love, work or money— and type your question",
+          pt: "Consulta às Runas: escolha o tema —geral, amor, trabalho ou dinheiro— e escreva a pergunta",
+          it: "Consultazione delle Rune: si scegle il tema —generale, amore, lavoro o denaro— e si scrive la domanda",
         },
       },
       {
-        src: "/apps/oraculos/04.jpeg",
+        src: "/apps/oraculos/08.jpg",
         alt: {
-          es: "Consejo del día del oráculo de Ángeles en Oráculos, con la carta del Querubín Karibu, ángel guardián",
-          en: "Advice of the day from the Angels oracle in Oracles, with the card of Karibu the Cherub, guardian angel",
-          pt: "Conselho do dia do oráculo de Anjos em Oráculos, com a carta do Querubim Karibu, anjo da guarda",
-          it: "Consiglio del giorno dell'oracolo degli Angeli in Oracles, con la carta del Cherubino Karibu, angelo custode",
+          es: "Tirada en cruz del oráculo Egipcio, con cinco láminas de piedra y la lectura en audio",
+          en: "Cross spread in the Egyptian oracle, with five stone tablets and the reading in audio",
+          pt: "Tiragem em cruz do oráculo Egípcio, com cinco lâminas de pedra e a leitura em áudio",
+          it: "Estrazione a croce dell'oracolo Egizio, con cinque lastre di pietra e la lettura in audio",
         },
       },
       {
-        src: "/apps/oraculos/05.jpeg",
+        src: "/apps/oraculos/09.jpg",
         alt: {
-          es: "Biblioteca de arcanos mayores del Tarot en Oráculos, con El Loco, El Mago, La Sacerdotisa y más",
-          en: "Library of Tarot major arcana in Oracles, with The Fool, The Magician, The High Priestess and more",
-          pt: "Biblioteca de arcanos maiores do Tarô em Oráculos, com O Louco, O Mago, A Sacerdotisa e mais",
-          it: "Biblioteca degli arcani maggiori dei Tarocchi in Oracles, con Il Matto, Il Mago, La Papessa e altri",
+          es: "Tirada de Buzios: los cauríes caídos en la bandeja de mimbre, con la respuesta Owani a favor",
+          en: "Buzios throw: the cowrie shells fallen on the wicker tray, with the answer Owani in favour",
+          pt: "Tiragem de Buzios: os búzios caídos na bandeja de vime, com a resposta Owani a favor",
+          it: "Lancio dei Buzios: le conchiglie cadute sul vassoio di vimini, con la risposta Owani a favore",
         },
       },
       {
-        src: "/apps/oraculos/06.jpeg",
+        src: "/apps/oraculos/10.jpg",
         alt: {
-          es: "Ficha de la carta El Mago en Oráculos, con palabras clave al derecho y al invertido y lectura en audio",
-          en: "The Magician card page in Oracles, with upright and reversed keywords and an audio reading",
-          pt: "Ficha da carta O Mago em Oráculos, com palavras-chave normal e invertida e leitura em áudio",
-          it: "Scheda della carta Il Mago in Oracles, con parole chiave al diritto e al rovescio e lettura in audio",
+          es: "Biblioteca de arcanos mayores del Tarot, con El Loco, El Mago, La Sacerdotisa y el resto",
+          en: "Library of Tarot major arcana, with The Fool, The Magician, The High Priestess and the rest",
+          pt: "Biblioteca dos arcanos maiores do Tarô, com O Louco, O Mago, A Sacerdotisa e os demais",
+          it: "Biblioteca degli arcani maggiori dei Tarocchi, con Il Matto, Il Mago, La Papessa e gli altri",
         },
       },
       {
-        src: "/apps/oraculos/07.jpeg",
+        src: "/apps/oraculos/11.jpg",
         alt: {
-          es: "Pantalla de consulta de Runas en Oráculos: elegir tema general, amor, trabajo o dinero y escribir la pregunta",
-          en: "Rune consultation screen in Oracles: choose a general, love, work or money topic and write your question",
-          pt: "Tela de consulta de Runas em Oráculos: escolher tema geral, amor, trabalho ou dinheiro e escrever a pergunta",
-          it: "Schermata di consultazione delle Rune in Oracles: scegliere il tema generale, amore, lavoro o denaro e scrivere la domanda",
+          es: "Consejo del día de Ángeles: la carta del Querubín Karibu, ángel guardián",
+          en: "Angels advice of the day: the card of Karibu the Cherub, guardian angel",
+          pt: "Conselho do dia dos Anjos: a carta do Querubim Karibu, anjo da guarda",
+          it: "Consiglio del giorno degli Angeli: la carta del Cherubino Karibu, angelo custode",
         },
       },
       {
-        src: "/apps/oraculos/08.jpeg",
+        src: "/apps/oraculos/12.jpg",
         alt: {
-          es: "Tirada de Buzios en Oráculos con los caracoles cauríes sobre una bandeja de mimbre y el resultado Owani a favor",
-          en: "Buzios reading in Oracles with the cowrie shells on a wicker tray and the result Owani in favour",
-          pt: "Jogo de Buzios em Oráculos com os buzios sobre uma bandeja de palha e o resultado Owani a favor",
-          it: "Lancio dei Buzios in Oracles con le conchiglie cauri su un vassoio di vimini e il risultato Owani a favore",
+          es: "Ficha de El Mago en el Tarot, con su número, las palabras clave al derecho e invertido y la lectura en voz alta",
+          en: "The Magician sheet in the Tarot, with its number, upright and reversed keywords and the reading out loud",
+          pt: "Ficha de O Mago no Tarô, com o seu número, as palavras-chave ao direito e invertido e a leitura em voz alta",
+          it: "Scheda de Il Mago nei Tarocchi, con il suo numero, le parole chiave al diritto e al rovescio e la lettura ad alta voce",
         },
       },
       {
-        src: "/apps/oraculos/09.jpeg",
+        src: "/apps/oraculos/13.jpg",
         alt: {
-          es: "Tirada en cruz del Tarot Egipcio en Oráculos, con cartas ilustradas como relieves de piedra",
-          en: "Egyptian Tarot cross spread in Oracles, with cards illustrated as stone reliefs",
-          pt: "Tiragem em cruz do Tarô Egípcio em Oráculos, com cartas ilustradas como relevos de pedra",
-          it: "Estrazione a croce dei Tarocchi Egizi in Oracles, con carte illustrate come rilievi di pietra",
+          es: "Consejo del día del Tarot: tres cartas boca abajo para elegir una",
+          en: "Tarot advice of the day: three face-down cards to pick one from",
+          pt: "Conselho do dia do Tarô: três cartas viradas para baixo para escolher uma",
+          it: "Consiglio del giorno dei Tarocchi: tre carte coperte tra cui scegliere",
         },
       },
-        ],
+      {
+        src: "/apps/oraculos/14.jpg",
+        alt: {
+          es: "Consejo del día de Ángeles: tres cartas boca abajo con el dorso de alas",
+          en: "Angels advice of the day: three face-down cards with the winged back",
+          pt: "Conselho do dia dos Anjos: três cartas viradas para baixo com o dorso de asas",
+          it: "Consiglio del giorno degli Angeli: tre carte coperte con il dorso di ali",
+        },
+      },
+      {
+        src: "/apps/oraculos/15.jpg",
+        alt: {
+          es: "Biblioteca de hexagramas del I Ching, con Lo Creativo, Lo Receptivo, La Espera y el resto",
+          en: "Library of I Ching hexagrams, with The Creative, The Receptive, Waiting and the rest",
+          pt: "Biblioteca de hexagramas do I Ching, com O Criativo, O Receptivo, A Espera e os demais",
+          it: "Biblioteca degli esagrammi dell'I Ching, con Il Creativo, Il Ricettivo, L'Attesa e gli altri",
+        },
+      },
+      {
+        src: "/apps/oraculos/16.jpg",
+        alt: {
+          es: "Biblioteca de runas talladas en piedra, con Fehu, Uruz, Thurisaz y el resto",
+          en: "Library of runes carved in stone, with Fehu, Uruz, Thurisaz and the rest",
+          pt: "Biblioteca de runas talhadas em pedra, com Fehu, Uruz, Thurisaz e as demais",
+          it: "Biblioteca di rune incise nella pietra, con Fehu, Uruz, Thurisaz e le altre",
+        },
+      },
+      {
+        src: "/apps/oraculos/17.jpg",
+        alt: {
+          es: "La carta de El Mago ampliada: el mago con la vara en alto y los cuatro palos sobre la mesa",
+          en: "The Magician card up close: the magician with his wand raised and the four suits on the table",
+          pt: "A carta de O Mago ampliada: o mago com a varinha erguida e os quatro naipes sobre a mesa",
+          it: "La carta de Il Mago ingrandita: il mago con la bacchetta alzata e i quattro semi sul tavolo",
+        },
+      },
+      {
+        src: "/apps/oraculos/18.jpg",
+        alt: {
+          es: "La carta del As de bastos ampliada: una mano sostiene una rama encendida sobre el valle",
+          en: "The Ace of Wands card up close: a hand holding a burning branch above the valley",
+          pt: "A carta do Ás de paus ampliada: uma mão segura um ramo em chamas sobre o vale",
+          it: "La carta dell'Asso di bastoni ingrandita: una mano regge un ramo acceso sopra la valle",
+        },
+      },
+      {
+        src: "/apps/oraculos/19.jpg",
+        alt: {
+          es: "La carta del As de copas ampliada: una paloma sobre el cáliz del que brota el agua",
+          en: "The Ace of Cups card up close: a dove above the chalice from which water pours",
+          pt: "A carta do Ás de copas ampliada: uma pomba sobre o cálice de onde brota a água",
+          it: "La carta dell'Asso di coppe ingrandita: una colomba sopra il calice da cui sgorga l'acqua",
+        },
+      },
+      {
+        src: "/apps/oraculos/20.jpg",
+        alt: {
+          es: "Carta de Ángeles ampliada: un ángel de seis alas entre nubes rosadas, con la luz en la mano",
+          en: "Angels card up close: a six-winged angel among pink clouds, holding the light in his hand",
+          pt: "Carta dos Anjos ampliada: um anjo de seis asas entre nuvens rosadas, com a luz na mão",
+          it: "Carta degli Angeli ingrandita: un angelo dalle sei ali tra nuvole rosa, con la luce in mano",
+        },
+      },
+      {
+        src: "/apps/oraculos/21.jpg",
+        alt: {
+          es: "Carta de Ángeles ampliada: el arcángel Miguel con la lanza, de pie sobre el dragón",
+          en: "Angels card up close: the archangel Michael with his spear, standing over the dragon",
+          pt: "Carta dos Anjos ampliada: o arcanjo Miguel com a lança, de pé sobre o dragão",
+          it: "Carta degli Angeli ingrandita: l'arcangelo Michele con la lancia, in piedi sul drago",
+        },
+      },
+      {
+        src: "/apps/oraculos/22.jpg",
+        alt: {
+          es: "Carta de Ángeles ampliada: un ángel caído con alas violetas y un tridente, entre nubes encendidas",
+          en: "Angels card up close: a fallen angel with violet wings and a trident, among burning clouds",
+          pt: "Carta dos Anjos ampliada: um anjo caído com asas violetas e um tridente, entre nuvens em brasa",
+          it: "Carta degli Angeli ingrandita: un angelo caduto con ali viola e un tridente, tra nuvole infuocate",
+        },
+      },
+      {
+        src: "/apps/oraculos/23.jpg",
+        alt: {
+          es: "Lámina egipcia ampliada: Thot, con cabeza de ibis, sostiene el cayado ante una mesa de ofrendas",
+          en: "Egyptian tablet up close: Thoth, ibis-headed, holding the crook before an offering table",
+          pt: "Lâmina egípcia ampliada: Tot, com cabeça de íbis, segura o cajado diante de uma mesa de oferendas",
+          it: "Lastra egizia ingrandita: Thot, con testa di ibis, regge il pastorale davanti a un tavolo di offerte",
+        },
+      },
+      {
+        src: "/apps/oraculos/24.jpg",
+        alt: {
+          es: "Lámina egipcia ampliada: una diosa sentada entre columnas de loto, leyendo con el anj en la mano",
+          en: "Egyptian tablet up close: a goddess seated among lotus columns, reading with the ankh in her hand",
+          pt: "Lâmina egípcia ampliada: uma deusa sentada entre colunas de lótus, lendo com o anh na mão",
+          it: "Lastra egizia ingrandita: una dea seduta tra colonne di loto, che legge con l'ankh in mano",
+        },
+      },
+      {
+        src: "/apps/oraculos/25.jpg",
+        alt: {
+          es: "Lámina egipcia ampliada: una diosa de pie con el cetro de papiro y el anj",
+          en: "Egyptian tablet up close: a standing goddess with the papyrus sceptre and the ankh",
+          pt: "Lâmina egípcia ampliada: uma deusa de pé com o cetro de papiro e o anh",
+          it: "Lastra egizia ingrandita: una dea in piedi con lo scettro di papiro e l'ankh",
+        },
+      },
+      {
+        src: "/apps/oraculos/26.jpg",
+        alt: {
+          es: "Pantalla de ayuda: los seis oráculos y qué se puede hacer en cada uno",
+          en: "Help screen: the six oracles and what you can do in each of them",
+          pt: "Tela de ajuda: os seis oráculos e o que se pode fazer em cada um",
+          it: "Schermata di aiuto: i sei oracoli e cosa si può fare in ognuno",
+        },
+      },
+    ],
     privacy: {
       updatedAt: "2026-08-17",
       collects: [
