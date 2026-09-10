@@ -1022,10 +1022,10 @@ export const apps: App[] = [
       {
         src: "/apps/kaurix/14.jpg",
         alt: {
-          es: "El álbum del Dragón de musgo: los huecos vacíos marcan cómo se consigue cada carta que falta",
-          en: "The Moss Dragon album: the empty slots show how each missing card is earned",
-          pt: "O álbum do Dragão de musgo: os espaços vazios mostram como se consegue cada carta que falta",
-          it: "L'album del Drago di muschio: gli spazi vuoti indicano come si ottiene ogni carta mancante",
+          es: "Una carta ampliada: un fénix bebé al pie de un árbol, con un castillo al fondo y el marco dorado del álbum",
+          en: "A card up close: a baby phoenix at the foot of a tree, with a castle behind it and the album's golden frame",
+          pt: "Uma carta ampliada: uma fênix bebê ao pé de uma árvore, com um castelo ao fundo e a moldura dourada do álbum",
+          it: "Una carta ingrandita: una piccola fenice ai piedi di un albero, con un castello sullo sfondo e la cornice dorata dell'album",
         },
       },
       {
