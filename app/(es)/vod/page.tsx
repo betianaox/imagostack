@@ -24,6 +24,10 @@
   Para probar contra el monorepo local, cambiar SRC por
   `http://localhost:4012/vod/widget.v1.js` y levantar `pnpm dev` en `apps/vod`.
 
+  El fragmento es exactamente el que genera el panel de Froneus, con todos los
+  atributos escritos aunque coincidan con el default: así es como le llega a un
+  cliente, y así se documenta solo qué puede cambiar sin pedirnos nada.
+
   Cuando ande de verdad, el envío registra una llamada telefónica real.
 */
 import type { Metadata } from "next";
@@ -59,7 +63,18 @@ export default function Page() {
 
       {/* Froneus Voice On Demand — inicio */}
       <div id={`vod-${VOD}`} />
-      <script src={SRC} data-vod={VOD} async />
+      <script
+        src={SRC}
+        data-vod={VOD}
+        data-color-primary="#2f5c9e"
+        data-color-base="#ffffff"
+        data-width="100%"
+        data-columns="auto"
+        data-caption="Quiero que me llamen"
+        data-error="Dato obligatorio"
+        data-format="Formato incorrecto"
+        async
+      />
       {/* Froneus Voice On Demand — fin */}
     </main>
   );
