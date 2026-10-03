@@ -12,6 +12,7 @@ rules_version = '2';
 //   users/{uid}        rol de cada persona (visitor | operator | admin)
 //   conversations/{id}    hilo de chat, con su dueño y su modo
 //     messages/{id}       mensajes, inmutables una vez escritos
+//   inquiries/{id}     formulario de contacto; lo escribe solo el servidor
 //
 // Lo que cambia entre un sitio y otro es quién tiene cada rol, no las reglas.
 //
@@ -124,6 +125,24 @@ service cloud.firestore {
         // Un mensaje escrito no se toca. Sin excepciones.
         allow update, delete: if false;
       }
+    }
+
+    // ── Mensajes del formulario de contacto ─────────────────────────────────
+    // Los crea solo el servidor, con la cuenta de servicio, que no pasa por
+    // estas reglas: desde el navegador nadie puede escribir uno, así el
+    // formulario no se convierte en una puerta para llenar la colección.
+    match /inquiries/{inquiryId} {
+      allow read: if isOperator();
+
+      // Lo único que se toca desde el panel es el estado de lectura. El
+      // contenido es lo que mandó la persona y queda tal cual.
+      allow update: if isOperator()
+        && request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['read', 'readBy', 'readAt'])
+        && request.resource.data.read is bool;
+
+      allow create: if false;
+      allow delete: if isAdmin();
     }
 
     // Todo lo que no esté contemplado arriba queda cerrado.

@@ -1,14 +1,19 @@
 import { Resend } from "resend";
+import { adminDb } from "@/lib/firebase/admin";
+import { COLLECTIONS } from "@/lib/firebase/collections";
 import { site } from "@/lib/site";
 
 /**
  * Endpoint del formulario de contacto.
  *
- * Corre solo en el servidor: la API key de Resend nunca llega al navegador.
- * Requiere dos variables de entorno en Vercel (ver .env.example):
+ * Cada envío se manda por correo y además se guarda en Firestore, para que
+ * aparezca en la sección Mensajes del panel. Corre solo en el servidor: ni la
+ * API key de Resend ni la cuenta de servicio llegan al navegador.
+ * Variables de entorno en Vercel (ver .env.example):
  *
- *   RESEND_API_KEY   — la clave de la cuenta de Resend
- *   CONTACT_FROM     — remitente verificado, ej "ImagoStack <web@imagostack.com>"
+ *   RESEND_API_KEY            — la clave de la cuenta de Resend
+ *   CONTACT_FROM              — remitente verificado, ej "ImagoStack <web@imagostack.com>"
+ *   FIREBASE_SERVICE_ACCOUNT  — cuenta de servicio, para guardar el mensaje
  */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -51,12 +56,63 @@ export async function POST(request: Request) {
     return Response.json({ error: "invalid_email" }, { status: 400 });
   }
 
+  const fields = { name, email, about, message };
+
+  // Las dos vías corren a la vez y son independientes: si el correo falla el
+  // mensaje igual queda en el panel, y al revés. Recién cuando no llegó por
+  // ninguna se le dice a la persona que use el correo directo.
+  const [saved, mailed] = await Promise.all([
+    saveInquiry(fields),
+    sendEmail(fields),
+  ]);
+
+  if (saved === "ok" || mailed === "ok") {
+    return Response.json({ ok: true });
+  }
+
+  if (saved === "off" && mailed === "off") {
+    return Response.json({ error: "not_configured" }, { status: 500 });
+  }
+
+  return Response.json({ error: "send_failed" }, { status: 502 });
+}
+
+type Fields = { name: string; email: string; about: string; message: string };
+
+/** `off` es que la vía no está configurada, que no es lo mismo que fallar. */
+type Outcome = "ok" | "failed" | "off";
+
+/** Guarda el envío para que aparezca en la sección Mensajes del panel. */
+async function saveInquiry(fields: Fields): Promise<Outcome> {
+  const db = await adminDb();
+  if (!db) {
+    console.error("Falta FIREBASE_SERVICE_ACCOUNT: el mensaje no se guarda");
+    return "off";
+  }
+
+  try {
+    const { FieldValue } = await import("firebase-admin/firestore");
+    await db.collection(COLLECTIONS.inquiries).add({
+      ...fields,
+      read: false,
+      readBy: null,
+      readAt: null,
+      createdAt: FieldValue.serverTimestamp(),
+    });
+    return "ok";
+  } catch (error) {
+    console.error("No se pudo guardar el contacto en Firestore:", error);
+    return "failed";
+  }
+}
+
+async function sendEmail({ name, email, about, message }: Fields): Promise<Outcome> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.CONTACT_FROM;
 
   if (!apiKey || !from) {
     console.error("Falta RESEND_API_KEY o CONTACT_FROM en el entorno");
-    return Response.json({ error: "not_configured" }, { status: 500 });
+    return "off";
   }
 
   const subject = about
@@ -85,13 +141,13 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Resend rechazó el envío:", error);
-      return Response.json({ error: "send_failed" }, { status: 502 });
+      return "failed";
     }
 
-    return Response.json({ ok: true });
+    return "ok";
   } catch (error) {
     console.error("Error inesperado enviando el contacto:", error);
-    return Response.json({ error: "send_failed" }, { status: 502 });
+    return "failed";
   }
 }
 

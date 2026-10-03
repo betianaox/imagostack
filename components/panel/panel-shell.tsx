@@ -32,6 +32,11 @@ export type PanelSection = {
    * ocupan pantalla. Quién los dibuja es cada sección, no el caparazón.
    */
   nav?: React.ReactNode;
+  /**
+   * Número al lado del nombre: cosas pendientes, como mensajes sin leer. Cero
+   * o ausente no dibuja nada; un contador en cero es ruido.
+   */
+  badge?: number;
 };
 
 export function PanelShell({
@@ -114,6 +119,14 @@ export function PanelShell({
   const current = sections.find((section) => section.id === active) ?? sections[0];
 
   /**
+   * Pendientes de las secciones que no están a la vista. En el celular el menú
+   * vive guardado, y sin esto un mensaje nuevo no se notaría hasta abrirlo.
+   */
+  const pendingElsewhere = sections
+    .filter((section) => section.id !== current?.id)
+    .reduce((sum, section) => sum + (section.badge ?? 0), 0);
+
+  /**
    * Un clic en la sección abierta la pliega; en cualquier otra, la abre. Así
    * el chevron no necesita ser un botón aparte y el bloque queda entero.
    */
@@ -164,6 +177,7 @@ export function PanelShell({
       >
         <Icon name="menu" className="size-5 shrink-0 text-brand-600" />
         <span className="flex-1 truncate">{current?.label}</span>
+        {pendingElsewhere > 0 && <CountBadge count={pendingElsewhere} />}
         <span className="text-xs font-medium text-ink/40">{panel.menu}</span>
       </button>
 
@@ -222,6 +236,10 @@ export function PanelShell({
                     <Icon name={section.icon} className="size-4.5 shrink-0" />
                     <span className="flex-1 truncate">{section.label}</span>
 
+                    {Boolean(section.badge) && (
+                      <CountBadge count={section.badge ?? 0} inverted={active} />
+                    )}
+
                     {/* El chevron va dentro del bloque, no al lado */}
                     {section.nav && (
                       <Icon
@@ -249,6 +267,28 @@ export function PanelShell({
         {current?.content}
       </div>
     </div>
+  );
+}
+
+/**
+ * Contador de pendientes. Pasados los 99 deja de importar el número exacto y
+ * sí que no rompa el ancho del menú.
+ */
+function CountBadge({
+  count,
+  inverted = false,
+}: {
+  count: number;
+  inverted?: boolean;
+}) {
+  return (
+    <span
+      className={`min-w-5 shrink-0 rounded-full px-1.5 py-0.5 text-center text-[11px] leading-4 font-semibold tabular-nums ${
+        inverted ? "bg-white text-brand-700" : "bg-coral-500 text-white"
+      }`}
+    >
+      {count > 99 ? "99+" : count}
+    </span>
   );
 }
 

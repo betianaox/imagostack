@@ -6,6 +6,7 @@ import { COLLECTIONS } from "@/lib/firebase/collections";
 import type { Dictionary } from "@/lib/dictionaries";
 import { useSession } from "@/lib/store/session";
 import {
+  isConversationUnopened,
   selectCurrentConversation,
   usePanel,
   type PanelConversation,
@@ -105,7 +106,10 @@ export function useConversationsFeed() {
       stop = firestore.onSnapshot(ref, (snapshot) => {
         setConversations(
           snapshot.docs.map((docSnap) => {
-            const data = docSnap.data();
+            // Con la estimación, una escritura propia todavía en vuelo no
+            // deja las fechas en null: sin esto el hilo parpadearía como sin
+            // abrir justo al abrirlo.
+            const data = docSnap.data({ serverTimestamps: "estimate" });
             return {
               id: docSnap.id,
               ownerId: String(data.ownerId ?? ""),
@@ -115,6 +119,7 @@ export function useConversationsFeed() {
               operatorSeenAt: data.operatorSeenAt ?? null,
               updatedAtMs: data.updatedAt?.toMillis?.() ?? 0,
               lastMessage: data.lastMessage ? String(data.lastMessage) : "",
+              panelOpenedAtMs: data.panelOpenedAt?.toMillis?.() ?? 0,
             };
           }),
         );
@@ -202,6 +207,12 @@ export function ConversationsNav({ dict }: { dict: Dictionary }) {
                 }`}
               >
                 <span className="flex w-full items-center justify-between gap-2">
+                  {isConversationUnopened(conversation) && (
+                    <span
+                      aria-label={panel.unopened}
+                      className="size-2 shrink-0 rounded-full bg-coral-500"
+                    />
+                  )}
                   <StateBadge
                     conversation={conversation}
                     uid={uid}
@@ -312,6 +323,36 @@ export function ConversationsSection({ dict }: { dict: Dictionary }) {
   useEffect(() => {
     threadRef.current?.scrollTo({ top: threadRef.current.scrollHeight });
   }, [thread]);
+
+  /**
+   * La primera vez que alguien la abre queda registrado, y deja de contar en
+   * el menú. Con la pestaña en segundo plano no cuenta como vista: se marca
+   * al volver.
+   */
+  const unopened = Boolean(selected && isConversationUnopened(selected));
+  useEffect(() => {
+    if (!allowed || !selectedId || !unopened) return;
+
+    const markRead = async () => {
+      if (document.visibilityState !== "visible") return;
+      try {
+        const [{ getDb }, firestore] = await Promise.all([
+          import("@/lib/firebase/client"),
+          import("firebase/firestore"),
+        ]);
+        await firestore.updateDoc(
+          firestore.doc(getDb(), COLLECTIONS.conversations, selectedId),
+          { panelOpenedAt: firestore.serverTimestamp() },
+        );
+      } catch (error) {
+        console.warn("Panel: no se pudo marcar la conversación como abierta", error);
+      }
+    };
+
+    void markRead();
+    document.addEventListener("visibilitychange", markRead);
+    return () => document.removeEventListener("visibilitychange", markRead);
+  }, [allowed, selectedId, unopened]);
 
   // ── Acciones ──────────────────────────────────────────────────────────────
   const setMode = useCallback(

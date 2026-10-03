@@ -17,34 +17,15 @@
  * Check no está configurado.
  */
 
+import { serviceAccount } from "@/lib/firebase/admin";
+
 /** Tipo mínimo: no se importa el del SDK para no arrastrarlo al bundle. */
 type AppAdmin = { name: string };
 
 let cacheApp: AppAdmin | null | undefined;
 
-/**
- * La cuenta de servicio, como JSON en una sola variable. Se guarda así y no
- * como archivo porque en Vercel no hay disco donde dejarlo.
- */
-function credenciales(): { projectId: string; clientEmail: string; privateKey: string } | null {
-  const crudo = process.env.FIREBASE_SERVICE_ACCOUNT;
-  if (!crudo) return null;
-
-  try {
-    const json = JSON.parse(crudo);
-    if (!json.project_id || !json.client_email || !json.private_key) return null;
-    return {
-      projectId: json.project_id,
-      clientEmail: json.client_email,
-      // Al pasar por una variable de entorno los saltos de línea de la clave
-      // quedan escapados. Sin esto la firma no valida y el error es opaco.
-      privateKey: String(json.private_key).replace(/\\n/g, "\n"),
-    };
-  } catch {
-    console.error("App Check: FIREBASE_SERVICE_ACCOUNT no es un JSON válido");
-    return null;
-  }
-}
+/** La misma cuenta de servicio que usa el resto del servidor. */
+const credenciales = serviceAccount;
 
 async function adminApp(): Promise<AppAdmin | null> {
   if (cacheApp !== undefined) return cacheApp;

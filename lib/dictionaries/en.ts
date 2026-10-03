@@ -368,9 +368,22 @@ export const en: Dictionary = {
     itsYou: "That's you",
     lastSeen: "Registered",
 
+    /** Messages section: the contact form */
     messagesIntro: "Enquiries received through the site forms.",
-    messagesSoon:
-      "This section isn't built yet: for now messages only arrive by email.",
+    messagesEmpty: "No messages yet.",
+    messagesEmptyHint:
+      "They will show up here as soon as someone uses the contact form.",
+    messagesSelect: "Pick a message from the list.",
+    /** Conversación que nadie del equipo abrió todavía */
+    unopened: "Not opened yet",
+    unread: "Unread",
+    unreadCount: "{count} unread",
+    markUnread: "Mark as unread",
+    reply: "Reply by email",
+    /** Asunto de la respuesta cuando el mensaje no dijo sobre qué era */
+    replySubject: "your enquiry",
+    messageAbout: "About",
+    messageError: "Couldn't update the message.",
   },
 
   notFound: {
@@ -410,7 +423,7 @@ export const en: Dictionary = {
       },
       { h3: "Contact form" },
       {
-        p: "When you submit the form, your name, your email and your message travel to our server and are dispatched to our inbox through **Resend**, the email delivery provider we use. **We do not store that content in any database**: it arrives in our mailbox and is handled there like any other message. We use it solely to reply to you, and you can read [Resend's privacy policy](https://resend.com/legal/privacy-policy).",
+        p: "When you submit the form, your name, your email and your message travel to our server and are dispatched to our inbox through **Resend**, the email delivery provider we use. We also keep a copy in our database on **Google Firebase**, which only our team can access through a private dashboard, so no enquiry gets lost and we know which ones we have answered. We use it solely to reply to you and delete it once it is no longer needed to follow up on your enquiry, and you can read [Resend's privacy policy](https://resend.com/legal/privacy-policy).",
       },
       { h3: "Email" },
       {
@@ -426,7 +439,7 @@ export const en: Dictionary = {
       },
       { h2: "5. Third parties and transfers" },
       {
-        p: "We do not sell, rent or transfer personal data. We use infrastructure providers to host this site, **Resend** to dispatch contact form messages, and an email provider to manage our mailboxes. They all act as processors and may operate servers outside {jurisdiction}. The apps are distributed through Google Play: downloads, payment (where applicable) and the store's aggregated metrics are handled by Google LLC under its own privacy policy.",
+        p: "We do not sell, rent or transfer personal data. We use infrastructure providers to host this site, **Resend** to dispatch contact form messages, **Google Firebase** to store them, and an email provider to manage our mailboxes. They all act as processors and may operate servers outside {jurisdiction}. The apps are distributed through Google Play: downloads, payment (where applicable) and the store's aggregated metrics are handled by Google LLC under its own privacy policy.",
       },
       { h2: "6. Retention" },
       {

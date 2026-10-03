@@ -30,7 +30,7 @@ export const site = {
   /** Ubicación declarada en las políticas (jurisdicción aplicable) */
   jurisdiction: "República Argentina",
   /** Última actualización de las políticas legales del sitio (ISO) */
-  legalUpdatedAt: "2026-08-06",
+  legalUpdatedAt: "2026-10-03",
   /** Perfil de desarrollador en Google Play. Dejar vacío si todavía no existe. */
   playStoreDeveloperUrl: "",
   social: {

@@ -5,10 +5,14 @@ import {
   ConversationsSection,
   useConversationsFeed,
 } from "@/components/panel/conversations-section";
-import { MessagesSection } from "@/components/panel/messages-section";
+import {
+  MessagesSection,
+  useInquiriesFeed,
+} from "@/components/panel/messages-section";
 import { PanelShell, type PanelSection } from "@/components/panel/panel-shell";
 import { UsersSection } from "@/components/panel/users-section";
 import type { Dictionary } from "@/lib/dictionaries";
+import { isConversationUnopened, usePanel } from "@/lib/store/panel";
 import { useSession } from "@/lib/store/session";
 
 /**
@@ -28,11 +32,19 @@ export function PanelView({ dict }: { dict: Dictionary }) {
   // lo cortaría y el chat abierto se quedaría sin su conversación.
   useConversationsFeed();
 
+  // Mismo motivo: el contador del menú se mueve aunque Mensajes esté cerrada.
+  useInquiriesFeed();
+  const unreadInquiries = usePanel((state) => state.unreadInquiries);
+  const unopenedConversations = usePanel(
+    (state) => state.conversations?.filter(isConversationUnopened).length ?? 0,
+  );
+
   const sections: PanelSection[] = [
     {
       id: "conversations",
       label: dict.panel.sections.conversations,
       icon: "chat",
+      badge: unopenedConversations,
       nav: <ConversationsNav dict={dict} />,
       content: <ConversationsSection dict={dict} />,
     },
@@ -40,6 +52,7 @@ export function PanelView({ dict }: { dict: Dictionary }) {
       id: "messages",
       label: dict.panel.sections.messages,
       icon: "mail",
+      badge: unreadInquiries,
       content: <MessagesSection dict={dict} />,
     },
   ];

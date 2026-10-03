@@ -392,10 +392,22 @@ export const it: Dictionary = {
     itsYou: "Sei tu",
     lastSeen: "Registrato",
 
-    /** Sección de mensajes, todavía sin construir */
+    /** Sezione messaggi: il modulo di contatto */
     messagesIntro: "Richieste ricevute dai moduli del sito.",
-    messagesSoon:
-      "Questa sezione non è ancora costruita: oggi i messaggi arrivano solo per mail.",
+    messagesEmpty: "Ancora nessun messaggio.",
+    messagesEmptyHint:
+      "Compariranno qui appena qualcuno usa il modulo di contatto.",
+    messagesSelect: "Scegli un messaggio dalla lista.",
+    /** Conversación que nadie del equipo abrió todavía */
+    unopened: "Non aperta",
+    unread: "Non letto",
+    unreadCount: "{count} non letti",
+    markUnread: "Segna come non letto",
+    reply: "Rispondi via mail",
+    /** Asunto de la respuesta cuando el mensaje no dijo sobre qué era */
+    replySubject: "la tua richiesta",
+    messageAbout: "Argomento",
+    messageError: "Impossibile aggiornare il messaggio.",
   },
 
   notFound: {
@@ -435,7 +447,7 @@ export const it: Dictionary = {
       },
       { h3: "Modulo di contatto" },
       {
-        p: "Quando invii il modulo, il tuo nome, la tua mail e il tuo messaggio viaggiano verso il nostro server e vengono inoltrati alla nostra casella tramite **Resend**, il fornitore di invio mail che utilizziamo. **Non conserviamo quel contenuto in nessuna banca dati**: arriva alla nostra posta e lì viene trattato come qualsiasi altro messaggio. Lo usiamo soltanto per risponderti, e puoi consultare l'[informativa sulla privacy di Resend](https://resend.com/legal/privacy-policy).",
+        p: "Quando invii il modulo, il tuo nome, la tua mail e il tuo messaggio viaggiano verso il nostro server e vengono inoltrati alla nostra casella tramite **Resend**, il fornitore di invio mail che utilizziamo. Ne conserviamo inoltre una copia nella nostra banca dati su **Google Firebase**, a cui accede solo il nostro team da un pannello privato, per non perdere nessuna richiesta e sapere a quali abbiamo già risposto. Lo usiamo soltanto per risponderti e lo eliminiamo quando non serve più per dare seguito alla tua richiesta, e puoi consultare l'[informativa sulla privacy di Resend](https://resend.com/legal/privacy-policy).",
       },
       { h3: "Posta elettronica" },
       {
@@ -451,7 +463,7 @@ export const it: Dictionary = {
       },
       { h2: "5. Terze parti e trasferimenti" },
       {
-        p: "Non vendiamo, non affittiamo e non cediamo dati personali. Utilizziamo fornitori di infrastruttura per ospitare questo sito, **Resend** per inoltrare i messaggi del modulo di contatto e un fornitore di posta per gestire le nostre caselle. Tutti agiscono come responsabili del trattamento e possono operare server fuori dalla {jurisdiction}. Le app sono distribuite tramite Google Play: il download, il pagamento (quando previsto) e le metriche aggregate dello store sono gestiti da Google LLC secondo la propria informativa sulla privacy.",
+        p: "Non vendiamo, non affittiamo e non cediamo dati personali. Utilizziamo fornitori di infrastruttura per ospitare questo sito, **Resend** per inoltrare i messaggi del modulo di contatto, **Google Firebase** per conservarli e un fornitore di posta per gestire le nostre caselle. Tutti agiscono come responsabili del trattamento e possono operare server fuori dalla {jurisdiction}. Le app sono distribuite tramite Google Play: il download, il pagamento (quando previsto) e le metriche aggregate dello store sono gestiti da Google LLC secondo la propria informativa sulla privacy.",
       },
       { h2: "6. Conservazione" },
       {
