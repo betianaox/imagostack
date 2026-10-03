@@ -1079,37 +1079,19 @@ export const apps: App[] = [
       {
         src: "/apps/kaurix/02.jpg",
         alt: {
-          es: "Un dragón bebé turquesa sobre una pila de libros, visto a través de la cámara",
-          en: "A turquoise baby dragon above a stack of books, seen through the camera",
-          pt: "Um dragão bebê turquesa sobre uma pilha de livros, visto pela câmera",
-          it: "Un draghetto turchese sopra una pila di libri, visto attraverso la fotocamera",
+          es: "Un dragón bebé turquesa flotando en el pasillo de una casa, visto a través de la cámara",
+          en: "A turquoise baby dragon floating in the hallway of a house, seen through the camera",
+          pt: "Um dragão bebê turquesa flutuando no corredor de uma casa, visto pela câmera",
+          it: "Un draghetto turchese sospeso nel corridoio di una casa, visto attraverso la fotocamera",
         },
       },
       {
         src: "/apps/kaurix/03.jpg",
         alt: {
-          es: "Un huevo rosado con alas apareciendo sobre un escritorio",
-          en: "A pink winged egg appearing above a desk",
-          pt: "Um ovo rosado com asas aparecendo sobre uma escrivaninha",
-          it: "Un uovo rosa con le ali che compare sopra una scrivania",
-        },
-      },
-      {
-        src: "/apps/kaurix/04.jpg",
-        alt: {
-          es: "Una criatura bebé color arena junto a un monitor, vista a través de la cámara",
-          en: "A sand-coloured baby creature next to a monitor, seen through the camera",
-          pt: "Uma criatura bebê cor de areia ao lado de um monitor, vista pela câmera",
-          it: "Una piccola creatura color sabbia accanto a un monitor, vista attraverso la fotocamera",
-        },
-      },
-      {
-        src: "/apps/kaurix/05.jpg",
-        alt: {
-          es: "Un choclo, uno de los ingredientes, apareciendo sobre un teclado para recogerlo",
-          en: "An ear of corn, one of the ingredients, appearing over a keyboard to be picked up",
-          pt: "Uma espiga de milho, um dos ingredientes, aparecendo sobre um teclado para ser recolhida",
-          it: "Una pannocchia, uno degli ingredienti, che compare su una tastiera per essere raccolta",
+          es: "Una cabeza de ajo, uno de los ingredientes, apareciendo en un estante de libros para recogerla",
+          en: "A head of garlic, one of the ingredients, appearing on a bookshelf to be picked up",
+          pt: "Uma cabeça de alho, um dos ingredientes, aparecendo em uma estante de livros para ser recolhida",
+          it: "Una testa d'aglio, uno degli ingredienti, che compare su uno scaffale di libri per essere raccolta",
         },
       },
       {
