@@ -31,7 +31,7 @@ service cloud.firestore {
     function isBootstrapAdmin() {
       return signedIn()
         && request.auth.token.email_verified == true
-        && request.auth.token.email in ['imagostack8@gmail.com'];
+        && request.auth.token.email in ['imagostack8@gmail.com', 'betianare@gmail.com'];
     }
 
     function userDoc() {

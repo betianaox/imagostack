@@ -68,8 +68,13 @@ const empty = {
  * panel es justamente donde se arreglan los roles.
  */
 function isBootstrapOperator(email: string | null | undefined): boolean {
-  const bootstrap = process.env.NEXT_PUBLIC_OPERATOR_EMAIL;
-  return Boolean(bootstrap && email && email === bootstrap);
+  if (!email) return false;
+  // Lista separada por comas, igual que la de las reglas.
+  const bootstrap = (process.env.NEXT_PUBLIC_OPERATOR_EMAIL ?? "")
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+  return bootstrap.includes(email);
 }
 
 function resolveIsAdmin(
