@@ -982,9 +982,7 @@ export const apps: App[] = [
       it: "Guardati intorno. Qualcosa si muove.",
     },
     category: { es: "Juegos", en: "Games", pt: "Jogos", it: "Giochi" },
-    // Todavia sin ficha en Play: con el campo vacio no aparece ningun boton de
-    // descarga, y el resto de la ficha del sitio funciona igual.
-    playStoreUrl: "",
+    playStoreUrl: "https://play.google.com/store/apps/details?id=com.imagostack.kaurix",
     icon: "/apps/kaurix/icon.png",
     feature: "/apps/kaurix/feature.png",
     // Verde musgo y turquesa, los dos del grafico de funciones
