@@ -206,6 +206,26 @@ export const it: Dictionary = {
     downloadText: "Disponibile per Android su Google Play.",
     otherApps: "Altre app",
     availableIn: "Disponibile in",
+    comingSoon: "Presto su Google Play",
+    productKicker: "Un prodotto, due app",
+    screenshotsOf: "Così è {app}",
+    howItWorksTitle: "Come funziona",
+    techTitle: "Scheda tecnica",
+    techStack: "Stack",
+    techAreas: {
+      app: "App",
+      arquitectura: "Architettura",
+      nativo: "Nativo e dispositivo",
+      ia: "IA e machine learning",
+      backend: "Backend",
+      datos: "Dati",
+      auth: "Autenticazione e sicurezza",
+      integraciones: "Integrazioni",
+      monetizacion: "Monetizzazione",
+      entrega: "Strumenti e rilascio",
+    },
+    faqTitle: "Domande frequenti",
+    privacyOf: "Privacy di {app}",
   },
 
   gallery: {
@@ -455,7 +475,7 @@ export const it: Dictionary = {
       },
       { h2: "3. Dati che trattano le nostre applicazioni" },
       {
-        p: "Le nostre app sono costruite per funzionare senza che noi abbiamo i tuoi dati: non richiedono la creazione di un account e le informazioni che inserisci vengono salvate nell'archivio privato del tuo dispositivo. Per il dettaglio di ciascuna, consulta la sua informativa specifica nell'elenco qui sopra.",
+        p: "La maggior parte delle nostre app funziona senza che abbiamo bisogno dei tuoi dati: non richiedono di creare un account e le informazioni che inserisci restano nella memoria privata del tuo dispositivo. Le eccezioni sono i nostri strumenti di lavoro per attività, che richiedono un account: **Bumko**, che salva i dati del bar su **Google Firebase** perché più persone possano usarlo contemporaneamente, e **Mallnest Business**, che salva l'account del negozio e la configurazione del suo spazio su **Amazon Web Services**. Per il dettaglio di ciascuna, consulta la sua informativa specifica nell'elenco qui sopra.",
       },
       { h2: "4. Finalità e base giuridica" },
       {
@@ -566,7 +586,7 @@ export const it: Dictionary = {
     intro:
       "Questa pagina spiega come cancellare le informazioni associate alle nostre applicazioni, come richiesto dalla politica sui dati utente di Google Play.",
     highlight:
-      "**La cosa più importante:** le nostre applicazioni non richiedono la creazione di un account e salvano le informazioni sul tuo dispositivo. Questo significa che **la cancellazione la controlli tu**: non esiste un account sui nostri server da chiudere.",
+      "**La cosa più importante:** quasi tutte le nostre applicazioni non richiedono di creare un account e salvano le informazioni sul tuo dispositivo, quindi **sei tu a controllare la cancellazione**: non c'è un account sui nostri server da chiudere. Le eccezioni sono **Bumko** e **Mallnest Business**, che usano un account e salvano dati sui nostri server: per quelle app, consulta la sezione _App con account_ più in basso.",
     blocks: [
       { h2: "Opzione 1 — Cancellare dall'applicazione" },
       {
@@ -612,9 +632,20 @@ export const it: Dictionary = {
       {
         p: "Confermiamo la ricezione e risolviamo la richiesta entro un termine massimo di 30 giorni di calendario. Non chiediamo nulla per questa pratica.",
       },
+      { h2: "App con account" },
+      { p: "Bumko richiede l'accesso con Google e salva su **Google Firebase** il tuo profilo (il nome, l'email e la foto forniti da Google), la tua appartenenza alla squadra di un bar e i dati dell'attività inseriti nell'app." },
+      {
+        ul: [
+          "**Eliminare il tuo account:** dall'app, in _Impostazioni → Elimina il mio account_, oppure scrivendoci a [{email}](mailto:{email}) dall'indirizzo con cui accedi a Bumko. Cancelliamo il tuo profilo e il tuo accesso a qualsiasi bar.",
+          "**Se fai parte dello staff:** le vendite che hai registrato sono registri del bar e restano lì, perché fanno parte della sua contabilità. Se lo chiedi, le scolleghiamo dal tuo nome e dalla tua email.",
+          "**Se sei il titolare del bar:** eliminando il tuo account si cancella l'intero bar, con prodotti, vendite, eventi e squadra. Questa azione non si può annullare.",
+        ],
+      },
+      { p: "**Mallnest Business** salva il tuo account (email e nome), il collegamento al tuo negozio Shopify e la configurazione del tuo spazio. Per eliminare tutto, scrivici a [{email}](mailto:{email}) dall'email del tuo account: cancelliamo l'account, scolleghiamo il negozio e il tuo spazio non compare più su Mallnest. L'app Mallnest, per chi compra, non usa account." },
+      { p: "Gestiamo le richieste via email entro un massimo di 30 giorni di calendario, senza costi." },
       { h2: "Cosa conserviamo e per quanto tempo" },
       {
-        p: "Non manteniamo banche dati degli utenti delle nostre applicazioni. Quando ci scrivi, conserviamo lo scambio di mail soltanto per il tempo utile a dare seguito alla tua richiesta, e poi lo eliminiamo. Se un obbligo di legge, contabile o di difesa dei diritti ci impone di conservare qualche dato, lo conserviamo unicamente per il termine che quell'obbligo impone.",
+        p: "Salvo che nelle app con account, non manteniamo database di utenti delle nostre applicazioni. In Bumko e Mallnest Business conserviamo i dati finché il tuo account, il tuo bar o il tuo negozio restano attivi, e li cancelliamo quando lo chiedi, come spiegato nella sezione precedente. Quando ci scrivi, conserviamo lo scambio di mail soltanto per il tempo utile a dare seguito alla tua richiesta, e poi lo eliminiamo. Se un obbligo di legge, contabile o di difesa dei diritti ci impone di conservare qualche dato, lo conserviamo unicamente per il termine che quell'obbligo impone.",
       },
       { h2: "Dettaglio per applicazione" },
       {
@@ -665,6 +696,9 @@ export const it: Dictionary = {
     /** Variante cuando la app muestra publicidad */
     s2closingAds:
       "Non raccogliamo il tuo nome, la tua mail, la tua posizione né la tua rubrica, e non creiamo profili utente con quei dati. Gli identificatori pubblicitari sono trattati dal fornitore di annunci, non da noi: il dettaglio è nella sezione 5.",
+    /** Variante para apps con cuenta y datos en el servidor */
+    s2closingServer:
+      "Non usiamo questi dati per mostrare pubblicità, non li vendiamo né li condividiamo con terzi oltre ai fornitori indicati nella sezione 5, e non creiamo profili utente né facciamo tracciamento tra app.",
 
     s3: "3. Dove vengono salvati i tuoi dati",
     s3device:

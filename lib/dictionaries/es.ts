@@ -205,6 +205,26 @@ export const es = {
     downloadText: "Disponible para Android en Google Play.",
     otherApps: "Otras apps",
     availableIn: "Disponible en",
+    comingSoon: "Muy pronto en Google Play",
+    productKicker: "Un producto, dos apps",
+    screenshotsOf: "Así se ve {app}",
+    howItWorksTitle: "Cómo funciona",
+    techTitle: "Ficha técnica",
+    techStack: "Stack",
+    techAreas: {
+      app: "App",
+      arquitectura: "Arquitectura",
+      nativo: "Nativo y dispositivo",
+      ia: "IA y machine learning",
+      backend: "Backend",
+      datos: "Datos",
+      auth: "Autenticación y seguridad",
+      integraciones: "Integraciones",
+      monetizacion: "Monetización",
+      entrega: "Herramientas y entrega",
+    },
+    faqTitle: "Preguntas frecuentes",
+    privacyOf: "Privacidad de {app}",
   },
 
   gallery: {
@@ -453,7 +473,7 @@ export const es = {
       },
       { h2: "3. Datos que tratan nuestras aplicaciones" },
       {
-        p: "Nuestras apps están construidas para funcionar sin necesidad de que tengamos tus datos: no requieren crear una cuenta y la información que cargas se guarda en el almacenamiento privado de tu dispositivo. Para el detalle de cada una, consulta su política específica en la lista de arriba.",
+        p: "La mayoría de nuestras apps funcionan sin necesidad de que tengamos tus datos: no requieren crear una cuenta y la información que cargas se guarda en el almacenamiento privado de tu dispositivo. Las excepciones son las herramientas de trabajo para negocios, que requieren una cuenta: **Bumko**, que guarda los datos del bar en **Google Firebase** para que varias personas puedan usarla a la vez, y **Mallnest Business**, que guarda la cuenta del comercio y la configuración de su tienda en **Amazon Web Services**. Para el detalle de cada una, consulta su política específica en la lista de arriba.",
       },
       { h2: "4. Finalidad y base legal" },
       {
@@ -564,7 +584,7 @@ export const es = {
     intro:
       "Esta página explica cómo borrar la información asociada a nuestras aplicaciones, tal como lo requiere la política de datos de usuario de Google Play.",
     highlight:
-      "**Lo más importante:** nuestras aplicaciones no requieren crear una cuenta y guardan la información en tu propio dispositivo. Eso significa que **tú controlas el borrado**: no hay una cuenta en nuestros servidores que haya que dar de baja.",
+      "**Lo más importante:** casi todas nuestras aplicaciones no requieren crear una cuenta y guardan la información en tu propio dispositivo, así que **tú controlas el borrado**: no hay una cuenta en nuestros servidores que haya que dar de baja. Las excepciones son **Bumko** y **Mallnest Business**, que usan una cuenta y guardan datos en nuestros servidores: para esas apps, mira la sección _Apps con cuenta_ más abajo.",
     blocks: [
       { h2: "Opción 1 — Borrar desde la aplicación" },
       {
@@ -613,9 +633,20 @@ export const es = {
       {
         p: "Confirmamos la recepción y resolvemos el pedido en un plazo máximo de 30 días corridos. No cobramos por este trámite.",
       },
+      { h2: "Apps con cuenta" },
+      { p: "Bumko requiere iniciar sesión con Google y guarda en **Google Firebase** tu perfil (el nombre, el correo y la foto que provee Google), tu pertenencia al equipo de un bar y los datos del negocio que se cargan en la app." },
+      {
+        ul: [
+          "**Eliminar tu cuenta:** desde la app, en _Ajustes → Eliminar mi cuenta_, o escribiéndonos a [{email}](mailto:{email}) desde el correo con el que entras a Bumko. Borramos tu perfil y tu acceso a cualquier bar.",
+          "**Si eres parte del personal:** las ventas que registraste son registros del bar y quedan en él, porque forman parte de su contabilidad. Si lo pides, las desvinculamos de tu nombre y tu correo.",
+          "**Si eres el dueño del bar:** al eliminar tu cuenta se borra el bar completo, con sus productos, ventas, eventos y equipo. Esta acción no se puede deshacer.",
+        ],
+      },
+      { p: "**Mallnest Business** guarda tu cuenta (correo y nombre), la conexión con tu tienda Shopify y la configuración de tu local. Para eliminar todo, escríbenos a [{email}](mailto:{email}) desde el correo de tu cuenta: borramos la cuenta, desconectamos tu tienda y tu local deja de aparecer en Mallnest. La app Mallnest, para compradores, no usa cuenta." },
+      { p: "Resolvemos los pedidos por correo en un plazo máximo de 30 días corridos, sin costo." },
       { h2: "Qué conservamos y por cuánto tiempo" },
       {
-        p: "No mantenemos bases de datos de usuarios de nuestras aplicaciones. Cuando nos escribes, conservamos el intercambio de correos solo mientras sea útil para dar seguimiento a tu consulta, y luego lo eliminamos. Si una obligación legal, contable o de defensa de derechos nos exige retener algún dato, lo conservamos únicamente por el plazo que esa obligación imponga.",
+        p: "Salvo en las apps con cuenta, no mantenemos bases de datos de usuarios de nuestras aplicaciones. En Bumko y Mallnest Business conservamos los datos mientras tu cuenta, tu bar o tu tienda sigan activos, y los eliminamos cuando lo pides, como se explica en la sección anterior. Cuando nos escribes, conservamos el intercambio de correos solo mientras sea útil para dar seguimiento a tu consulta, y luego lo eliminamos. Si una obligación legal, contable o de defensa de derechos nos exige retener algún dato, lo conservamos únicamente por el plazo que esa obligación imponga.",
       },
       { h2: "Detalle por aplicación" },
       {
@@ -660,6 +691,9 @@ export const es = {
     /** Variante cuando la app muestra publicidad */
     s2closingAds:
       "No recolectamos tu nombre, tu correo, tu ubicación ni tu agenda de contactos, y no creamos perfiles de usuario con esos datos. Los identificadores publicitarios los trata el proveedor de anuncios, no nosotros: el detalle está en la sección 5.",
+    /** Variante para apps con cuenta y datos en el servidor */
+    s2closingServer:
+      "No usamos esos datos para mostrar publicidad, no los vendemos ni los compartimos con terceros fuera de los proveedores indicados en la sección 5, y no creamos perfiles de usuario ni hacemos seguimiento entre aplicaciones.",
 
     s3: "3. Dónde se guardan tus datos",
     s3device:

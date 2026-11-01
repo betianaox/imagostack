@@ -22,13 +22,18 @@ const staticRoutes: Route[] = [
   { route: "/eliminar-datos", lastModified: site.legalUpdatedAt, changeFrequency: "yearly", priority: 0.4 },
 ];
 
+// Una app oculta no tiene ficha (devuelve 404), pero sí política de privacidad.
 const appRoutes: Route[] = apps.flatMap((app) => [
-  {
-    route: `/apps/${app.slug}`,
-    lastModified: app.privacy.updatedAt,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  },
+  ...(app.oculta
+    ? []
+    : [
+        {
+          route: `/apps/${app.slug}`,
+          lastModified: app.privacy.updatedAt,
+          changeFrequency: "monthly" as const,
+          priority: 0.8,
+        },
+      ]),
   {
     route: `/apps/${app.slug}/privacidad`,
     lastModified: app.privacy.updatedAt,

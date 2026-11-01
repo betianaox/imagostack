@@ -196,6 +196,26 @@ export const pt: Dictionary = {
     downloadText: "Disponível para Android na Google Play.",
     otherApps: "Outros apps",
     availableIn: "Disponível em",
+    comingSoon: "Em breve no Google Play",
+    productKicker: "Um produto, dois apps",
+    screenshotsOf: "Assim é o {app}",
+    howItWorksTitle: "Como funciona",
+    techTitle: "Ficha técnica",
+    techStack: "Stack",
+    techAreas: {
+      app: "App",
+      arquitectura: "Arquitetura",
+      nativo: "Nativo e dispositivo",
+      ia: "IA e machine learning",
+      backend: "Backend",
+      datos: "Dados",
+      auth: "Autenticação e segurança",
+      integraciones: "Integrações",
+      monetizacion: "Monetização",
+      entrega: "Ferramentas e entrega",
+    },
+    faqTitle: "Perguntas frequentes",
+    privacyOf: "Privacidade do {app}",
   },
 
   gallery: {
@@ -431,7 +451,7 @@ export const pt: Dictionary = {
       },
       { h2: "3. Dados tratados pelos nossos aplicativos" },
       {
-        p: "Nossos apps são feitos para funcionar sem que precisemos dos seus dados: não exigem criar conta e as informações que você insere ficam no armazenamento privado do seu dispositivo. Para o detalhe de cada um, consulte a política específica na lista acima.",
+        p: "A maioria dos nossos apps funciona sem que precisemos dos seus dados: não exigem criar uma conta e as informações que você cadastra ficam no armazenamento privado do seu dispositivo. As exceções são as ferramentas de trabalho para negócios, que exigem uma conta: o **Bumko**, que guarda os dados do bar no **Google Firebase** para que várias pessoas possam usá-lo ao mesmo tempo, e o **Mallnest Business**, que guarda a conta do comércio e a configuração da sua loja na **Amazon Web Services**. Para o detalhe de cada um, consulte a política específica na lista acima.",
       },
       { h2: "4. Finalidade e base legal" },
       {
@@ -542,7 +562,7 @@ export const pt: Dictionary = {
     intro:
       "Esta página explica como apagar as informações associadas aos nossos aplicativos, conforme exige a política de dados do usuário da Google Play.",
     highlight:
-      "**O mais importante:** nossos aplicativos não exigem criar conta e guardam as informações no seu próprio dispositivo. Isso significa que **você controla a exclusão**: não há uma conta nos nossos servidores para encerrar.",
+      "**O mais importante:** quase todos os nossos aplicativos não exigem criar uma conta e guardam as informações no seu próprio dispositivo, então **você controla a exclusão**: não há uma conta nos nossos servidores para encerrar. As exceções são o **Bumko** e o **Mallnest Business**, que usam uma conta e guardam dados nos nossos servidores: para esses apps, veja a seção _Apps com conta_ mais abaixo.",
     blocks: [
       { h2: "Opção 1 — Apagar pelo aplicativo" },
       {
@@ -591,9 +611,20 @@ export const pt: Dictionary = {
       {
         p: "Confirmamos o recebimento e resolvemos o pedido em no máximo 30 dias corridos. Não cobramos por isso.",
       },
+      { h2: "Apps com conta" },
+      { p: "O Bumko exige login com o Google e guarda no **Google Firebase** o seu perfil (o nome, o e-mail e a foto fornecidos pelo Google), a sua participação na equipe de um bar e os dados do negócio cadastrados no app." },
+      {
+        ul: [
+          "**Excluir a sua conta:** pelo app, em _Ajustes → Excluir minha conta_, ou escrevendo para [{email}](mailto:{email}) a partir do e-mail com que você entra no Bumko. Excluímos o seu perfil e o seu acesso a qualquer bar.",
+          "**Se você faz parte da equipe:** as vendas que você registrou são registros do bar e ficam nele, porque fazem parte da sua contabilidade. Se você pedir, nós as desvinculamos do seu nome e do seu e-mail.",
+          "**Se você é o dono do bar:** ao excluir a sua conta, o bar inteiro é apagado, com seus produtos, vendas, eventos e equipe. Esta ação não pode ser desfeita.",
+        ],
+      },
+      { p: "O **Mallnest Business** guarda a sua conta (e-mail e nome), a conexão com a sua loja Shopify e a configuração do seu espaço. Para excluir tudo, escreva para [{email}](mailto:{email}) a partir do e-mail da sua conta: excluímos a conta, desconectamos a sua loja e o seu espaço deixa de aparecer no Mallnest. O app Mallnest, para compradores, não usa conta." },
+      { p: "Resolvemos os pedidos por e-mail em um prazo máximo de 30 dias corridos, sem custo." },
       { h2: "O que guardamos e por quanto tempo" },
       {
-        p: "Não mantemos bancos de dados de usuários dos nossos aplicativos. Quando você nos escreve, guardamos a troca de e-mails só enquanto for útil para acompanhar a sua solicitação, e depois a excluímos. Se uma obrigação legal, contábil ou de defesa de direitos exigir que retenhamos algum dado, o guardamos apenas pelo prazo que essa obrigação impuser.",
+        p: "Exceto nos apps com conta, não mantemos bancos de dados de usuários dos nossos aplicativos. No Bumko e no Mallnest Business, guardamos os dados enquanto a sua conta, o seu bar ou a sua loja estiverem ativos, e os excluímos quando você pedir, como explicado na seção anterior. Quando você nos escreve, guardamos a troca de e-mails só enquanto for útil para acompanhar a sua solicitação, e depois a excluímos. Se uma obrigação legal, contábil ou de defesa de direitos exigir que retenhamos algum dado, o guardamos apenas pelo prazo que essa obrigação impuser.",
       },
       { h2: "Detalhe por aplicativo" },
       {
@@ -636,6 +667,9 @@ export const pt: Dictionary = {
       "Não coletamos seu nome, seu e-mail, sua localização, sua agenda de contatos nem identificadores publicitários. Também não criamos perfis de usuário nem fazemos rastreamento entre aplicativos.",
     s2closingAds:
       "Não coletamos seu nome, seu e-mail, sua localização nem sua agenda de contatos, e não criamos perfis de usuário com esses dados. Os identificadores publicitários são tratados pelo provedor de anúncios, não por nós: o detalhe está na seção 5.",
+    /** Variante para apps con cuenta y datos en el servidor */
+    s2closingServer:
+      "Não usamos esses dados para exibir publicidade, não os vendemos nem os compartilhamos com terceiros além dos fornecedores indicados na seção 5, e não criamos perfis de usuário nem fazemos rastreamento entre aplicativos.",
 
     s3: "3. Onde seus dados ficam guardados",
     s3device:

@@ -196,6 +196,26 @@ export const en: Dictionary = {
     downloadText: "Available for Android on Google Play.",
     otherApps: "Other apps",
     availableIn: "Available in",
+    comingSoon: "Coming soon to Google Play",
+    productKicker: "One product, two apps",
+    screenshotsOf: "{app} in screens",
+    howItWorksTitle: "How it works",
+    techTitle: "Tech specs",
+    techStack: "Stack",
+    techAreas: {
+      app: "App",
+      arquitectura: "Architecture",
+      nativo: "Native & device",
+      ia: "AI & machine learning",
+      backend: "Backend",
+      datos: "Data",
+      auth: "Auth & security",
+      integraciones: "Integrations",
+      monetizacion: "Monetization",
+      entrega: "Tooling & delivery",
+    },
+    faqTitle: "Frequently asked questions",
+    privacyOf: "{app} privacy",
   },
 
   gallery: {
@@ -431,7 +451,7 @@ export const en: Dictionary = {
       },
       { h2: "3. Data handled by our applications" },
       {
-        p: "Our apps are built to work without us needing your data: they require no account and the information you enter is stored in your device's private storage. For the details of each one, see its specific policy in the list above.",
+        p: "Most of our apps work without us needing your data: they require no account and the information you enter is stored in your device's private storage. The exceptions are our business tools, which require an account: **Bumko**, which stores the bar's data in **Google Firebase** so several people can use it at the same time, and **Mallnest Business**, which stores the business's account and store configuration in **Amazon Web Services**. For the details of each one, see its specific policy in the list above.",
       },
       { h2: "4. Purpose and legal basis" },
       {
@@ -542,7 +562,7 @@ export const en: Dictionary = {
     intro:
       "This page explains how to delete the information associated with our applications, as required by the Google Play user data policy.",
     highlight:
-      "**The important part:** our applications require no account and store information on your own device. That means **you control the deletion**: there is no account on our servers to close.",
+      "**The important part:** almost all of our applications require no account and store information on your own device, so **you control the deletion**: there is no account on our servers to close. The exceptions are **Bumko** and **Mallnest Business**, which use an account and store data on our servers: for those apps, see the _Apps with an account_ section below.",
     blocks: [
       { h2: "Option 1 — Delete from within the app" },
       {
@@ -588,9 +608,20 @@ export const en: Dictionary = {
       {
         p: "We confirm receipt and resolve the request within a maximum of 30 calendar days. There is no charge for this.",
       },
+      { h2: "Apps with an account" },
+      { p: "Bumko requires signing in with Google and stores in **Google Firebase** your profile (the name, email and photo provided by Google), your membership in a bar's team and the business data entered in the app." },
+      {
+        ul: [
+          "**Delete your account:** from the app, in _Settings → Delete my account_, or by writing to [{email}](mailto:{email}) from the email you use to sign in to Bumko. We delete your profile and your access to any bar.",
+          "**If you are staff:** the sales you recorded are the bar's records and stay with it, because they are part of its accounting. If you ask, we unlink them from your name and email.",
+          "**If you are the bar's owner:** deleting your account deletes the whole bar, with its products, sales, events and team. This cannot be undone.",
+        ],
+      },
+      { p: "**Mallnest Business** stores your account (email and name), the connection to your Shopify store and your shop's configuration. To delete everything, write to [{email}](mailto:{email}) from your account's email: we delete the account, disconnect your store and your shop stops appearing in Mallnest. The Mallnest app for shoppers uses no account." },
+      { p: "We handle requests by email within 30 calendar days at most, free of charge." },
       { h2: "What we keep and for how long" },
       {
-        p: "We keep no user databases for our applications. When you write to us, we keep the email exchange only for as long as it is useful to follow up on your enquiry, and then we delete it. If a legal, accounting or rights-defence obligation requires us to retain any data, we keep it only for the period that obligation imposes.",
+        p: "Except for apps with an account, we do not keep user databases for our applications. For Bumko and Mallnest Business, we keep the data while your account, your bar or your store remains active, and delete it when you ask, as explained in the previous section. When you write to us, we keep the email exchange only for as long as it is useful to follow up on your enquiry, and then we delete it. If a legal, accounting or rights-defence obligation requires us to retain any data, we keep it only for the period that obligation imposes.",
       },
       { h2: "Details by application" },
       {
@@ -633,6 +664,9 @@ export const en: Dictionary = {
       "We do not collect your name, your email, your location, your contact list or advertising identifiers. Nor do we build user profiles or track you across applications.",
     s2closingAds:
       "We do not collect your name, your email, your location or your contact list, and we do not build user profiles from that data. Advertising identifiers are processed by the ad provider, not by us: the details are in section 5.",
+    /** Variante para apps con cuenta y datos en el servidor */
+    s2closingServer:
+      "We do not use that data to show advertising, we do not sell it or share it with third parties beyond the providers listed in section 5, and we do not build user profiles or track you across apps.",
 
     s3: "3. Where your data is stored",
     s3device:

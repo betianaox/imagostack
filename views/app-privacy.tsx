@@ -55,7 +55,15 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
               }),
             ),
           },
-          { p: privacy.showsAds ? s.s2closingAds : s.s2closing },
+          // El cierre de la lista niega lo que la app no hace. Con cuenta y datos en
+          // el servidor no se puede decir que no recolectamos nombre ni correo.
+          {
+            p: privacy.showsAds
+              ? s.s2closingAds
+              : privacy.processedOnDevice
+                ? s.s2closing
+                : s.s2closingServer,
+          },
         ]),
 
     { h2: s.s3 },

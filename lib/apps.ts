@@ -75,7 +75,80 @@ export type AppPrivacy = {
   minAge: number | null;
 };
 
-export type App = {
+/** Un paso del recorrido de "Cómo funciona". */
+export type AppStep = {
+  title: L10n<string>;
+  description: L10n<string>;
+};
+
+/**
+ * Áreas de la ficha técnica, en el orden en que se muestran. Los nombres de
+ * cada área se traducen en `appPage.techAreas` de los diccionarios.
+ */
+export const TECH_AREAS = [
+  "app",
+  "arquitectura",
+  "nativo",
+  "ia",
+  "backend",
+  "datos",
+  "auth",
+  "integraciones",
+  "monetizacion",
+  "entrega",
+] as const;
+
+export type TechArea = (typeof TECH_AREAS)[number];
+
+/** Una pieza de la ficha técnica. */
+export type AppTechItem = {
+  /** Dónde se agrupa en la ficha. */
+  area: TechArea;
+  /**
+   * Nombre de la pieza. Un nombre propio ("Firebase") va como texto y no se
+   * traduce; uno descriptivo ("Realidad aumentada sin ARCore") va traducido.
+   */
+  name: string | L10n<string>;
+  /** Qué hace en esta app. */
+  role: L10n<string>;
+};
+
+export type AppFaq = {
+  q: L10n<string>;
+  a: L10n<string>;
+};
+
+/**
+ * Secciones extra de la ficha, para productos que necesitan contarse más que
+ * una app suelta (por ejemplo, para portfolio). Todas son opcionales: una app
+ * que no las declara se ve exactamente igual que siempre.
+ */
+export type AppExtended = {
+  /**
+   * Para quién es esta app, cuando el producto tiene más de una cara. Se usa
+   * como título de su bloque y de su botón de descarga: "Para comprar".
+   */
+  audience?: L10n<string>;
+  /**
+   * Slug de la app compañera: otra app del mismo producto (la versión para
+   * comercios, por ejemplo). Se muestra DENTRO de esta ficha, con su propio
+   * texto, funciones, capturas, descarga y política de privacidad. Lo normal es
+   * que la compañera esté `oculta`, para no tener dos fichas del mismo producto.
+   */
+  companion?: string;
+  /** Recorrido del producto en pasos. */
+  howItWorks?: { intro?: L10n<string>; steps: AppStep[] };
+  /**
+   * Ficha técnica: qué tecnologías usa la app y para qué. Suma como portfolio,
+   * así que conviene que TODAS las apps la tengan y que no quede nada afuera
+   * (auth, backend, IA, servicios), siempre con lo que la app usa de verdad.
+   */
+  tech?: { intro: L10n<string>; items: AppTechItem[] };
+  /** Preguntas frecuentes de la app. También se publican como FAQPage. */
+  faq?: AppFaq[];
+};
+
+export type App = AppExtended & {
   slug: string;
   /**
    * No aparece en el catálogo, pero su política de privacidad SÍ existe.
@@ -133,6 +206,411 @@ export type App = {
 };
 
 export const apps: App[] = [
+  {
+    slug: "mallnest",
+    audience: { es: "Para comprar", en: "For shoppers", pt: "Para comprar", it: "Per chi compra" },
+    companion: "mallnest-business",
+    howItWorks: {
+      intro: { es: "Dos apps que se hablan entre sí: el comercio arma su local en Mallnest Business y el cliente lo ve y compra en Mallnest. Shopify sigue haciendo lo que mejor sabe hacer: productos, stock, pagos y pedidos.", en: "Two apps that talk to each other: the business sets up its shop in Mallnest Business and the customer sees it and buys in Mallnest. Shopify keeps doing what it does best: products, stock, payments and orders.", pt: "Dois apps que conversam entre si: o comércio monta o seu espaço no Mallnest Business e o cliente vê e compra no Mallnest. A Shopify continua fazendo o que faz de melhor: produtos, estoque, pagamentos e pedidos.", it: "Due app che si parlano: il negozio allestisce il suo spazio in Mallnest Business e il cliente lo vede e compra in Mallnest. Shopify continua a fare ciò che sa fare meglio: prodotti, giacenze, pagamenti e ordini." },
+      steps: [
+        { title: { es: "El comercio conecta su Shopify", en: "The business connects its Shopify", pt: "O comércio conecta a sua Shopify", it: "Il negozio collega il suo Shopify" }, description: { es: "Desde Mallnest Business autoriza el acceso a su tienda. Sus productos, precios y stock quedan sincronizados sin cargar nada a mano.", en: "From Mallnest Business it authorizes access to its store. Products, prices and stock stay in sync without entering anything by hand.", pt: "Pelo Mallnest Business autoriza o acesso à sua loja. Produtos, preços e estoque ficam sincronizados sem cadastrar nada à mão.", it: "Da Mallnest Business autorizza l'accesso al suo negozio. Prodotti, prezzi e giacenze restano sincronizzati senza inserire nulla a mano." } },
+        { title: { es: "Arma su local", en: "Sets up its shop", pt: "Monta o seu espaço", it: "Allestisce il suo spazio" }, description: { es: "Elige logo, colores, banners y colecciones destacadas, con sugerencias de textos hechas con IA, y lo envía a revisión.", en: "It picks its logo, colors, banners and featured collections, with AI-made text suggestions, and sends it for review.", pt: "Escolhe logo, cores, banners e coleções em destaque, com sugestões de textos feitas com IA, e envia para revisão.", it: "Sceglie logo, colori, banner e collezioni in evidenza, con suggerimenti di testo fatti con l'IA, e lo invia in revisione." } },
+        { title: { es: "Aparece en el shopping", en: "It appears in the mall", pt: "Aparece no shopping", it: "Compare nel centro commerciale" }, description: { es: "Una vez aprobado, el local se suma al listado de Mallnest y se puede compartir con un link o un QR.", en: "Once approved, the shop joins the Mallnest list and can be shared with a link or a QR code.", pt: "Depois de aprovado, o espaço entra na lista do Mallnest e pode ser compartilhado com um link ou um QR.", it: "Una volta approvato, lo spazio entra nell'elenco di Mallnest e si può condividere con un link o un QR." } },
+        { title: { es: "El cliente compra", en: "The customer buys", pt: "O cliente compra", it: "Il cliente compra" }, description: { es: "Elige la tienda, que queda como predeterminada, o le pide al personal shopper lo que busca. Paga en el checkout de Shopify de esa tienda.", en: "They pick the store, which becomes their default, or ask the personal shopper for what they want. They pay in that store's Shopify checkout.", pt: "Escolhe a loja, que fica como padrão, ou pede ao personal shopper o que procura. Paga no checkout da Shopify daquela loja.", it: "Sceglie il negozio, che diventa il predefinito, o chiede al personal shopper quello che cerca. Paga nel checkout Shopify di quel negozio." } },
+      ],
+    },
+    tech: {
+      intro: { es: "Mallnest es un proyecto de ImagoStack pensado de punta a punta: dos apps nativas que comparten código, un backend serverless propio y la integración con Shopify y con un modelo de IA. Estas son las piezas de su arquitectura y el rol de cada una.", en: "Mallnest is an ImagoStack project designed end to end: two native apps sharing code, our own serverless backend and the integration with Shopify and an AI model. These are the pieces of its architecture and the role of each one.", pt: "Mallnest é um projeto da ImagoStack pensado de ponta a ponta: dois apps nativos que compartilham código, um backend serverless próprio e a integração com a Shopify e com um modelo de IA. Estas são as peças da sua arquitetura e o papel de cada uma.", it: "Mallnest è un progetto di ImagoStack pensato da cima a fondo: due app native che condividono codice, un backend serverless proprio e l'integrazione con Shopify e con un modello di IA. Questi sono i pezzi della sua architettura e il ruolo di ciascuno." },
+      items: [
+        { area: "app", name: "React Native + Expo", role: { es: "Las dos apps, Mallnest y Mallnest Business, para Android.", en: "Both apps, Mallnest and Mallnest Business, for Android.", pt: "Os dois apps, Mallnest e Mallnest Business, para Android.", it: "Le due app, Mallnest e Mallnest Business, per Android." } },
+        { area: "arquitectura", name: "TypeScript (monorepo)", role: { es: "Un solo repositorio con las dos apps y los paquetes compartidos: componentes, sistema de temas y clientes de API.", en: "A single repository with both apps and the shared packages: components, theming system and API clients.", pt: "Um só repositório com os dois apps e os pacotes compartilhados: componentes, sistema de temas e clientes de API.", it: "Un solo repository con le due app e i pacchetti condivisi: componenti, sistema di temi e client API." } },
+        { area: "integraciones", name: "Shopify Storefront API", role: { es: "Catálogo, carrito y checkout de cada tienda, con GraphQL.", en: "Each store's catalog, cart and checkout, over GraphQL.", pt: "Catálogo, carrinho e checkout de cada loja, com GraphQL.", it: "Catalogo, carrello e checkout di ogni negozio, con GraphQL." } },
+        { area: "integraciones", name: "Shopify Admin API (OAuth)", role: { es: "La conexión de cada comercio con su tienda, con el permiso guardado solo en el servidor.", en: "Each business's connection to its store, with the permission kept only on the server.", pt: "A conexão de cada comércio com a sua loja, com a permissão guardada só no servidor.", it: "Il collegamento di ogni negozio al suo store, con il permesso conservato solo sul server." } },
+        { area: "backend", name: "AWS Lambda", role: { es: "El backend: listado de tiendas, configuración, aprobación y el paso hacia la IA.", en: "The backend: store list, configuration, approval and the bridge to the AI.", pt: "O backend: lista de lojas, configuração, aprovação e a ponte para a IA.", it: "Il backend: elenco dei negozi, configurazione, approvazione e il ponte verso l'IA." } },
+        { area: "datos", name: { es: "Amazon DynamoDB y S3", en: "Amazon DynamoDB and S3", pt: "Amazon DynamoDB e S3", it: "Amazon DynamoDB e S3" }, role: { es: "Datos de cada tienda, con un orden de listado flexible, e imágenes de marca.", en: "Each store's data, with a flexible list order, and brand images.", pt: "Dados de cada loja, com uma ordem de lista flexível, e imagens de marca.", it: "Dati di ogni negozio, con un ordine dell'elenco flessibile, e immagini del marchio." } },
+        { area: "auth", name: "Amazon Cognito", role: { es: "Inicio de sesión de los comercios, con correo o Google.", en: "Sign-in for businesses, with email or Google.", pt: "Login dos comércios, com e-mail ou Google.", it: "Accesso dei negozi, con email o Google." } },
+        { area: "ia", name: "Google Gemini", role: { es: "El personal shopper y las sugerencias de textos, con una cadena de modelos de respaldo y la app funcionando igual si la IA no está disponible.", en: "The personal shopper and text suggestions, with a chain of fallback models and the app still working if the AI is unavailable.", pt: "O personal shopper e as sugestões de textos, com uma cadeia de modelos de reserva e o app funcionando igual se a IA não estiver disponível.", it: "Il personal shopper e i suggerimenti di testo, con una catena di modelli di riserva e l'app che funziona comunque se l'IA non è disponibile." } },
+        { area: "nativo", name: "Android App Links + Play Install Referrer", role: { es: "El link o QR de cada tienda abre la app directo en esa tienda; si no está instalada, pasa por Google Play y llega igual a la tienda después de instalar.", en: "Each store's link or QR opens the app straight into that store; if it isn't installed, it goes through Google Play and still lands on the store after installing.", pt: "O link ou QR de cada loja abre o app direto naquela loja; se não estiver instalado, passa pelo Google Play e chega à loja depois de instalar.", it: "Il link o QR di ogni negozio apre l'app direttamente in quel negozio; se non è installata, passa da Google Play e arriva comunque al negozio dopo l'installazione." } },
+        { area: "integraciones", name: "Shopify Checkout Kit", role: { es: "El pago se hace en el checkout de Shopify de cada tienda, dentro de la app.", en: "Payment happens in each store's Shopify checkout, inside the app.", pt: "O pagamento é feito no checkout da Shopify de cada loja, dentro do app.", it: "Il pagamento avviene nel checkout Shopify di ogni negozio, dentro l'app." } },
+      ],
+    },
+    faq: [
+      { q: { es: "¿Cuánto cuesta usar Mallnest?", en: "How much does Mallnest cost?", pt: "Quanto custa usar o Mallnest?", it: "Quanto costa usare Mallnest?" }, a: { es: "Para comprar, nada: la app es gratis y no pide cuenta. Para los comercios, sumarse y armar su local también es gratis; solo necesitan su propia tienda en Shopify.", en: "For shoppers, nothing: the app is free and needs no account. For businesses, joining and setting up their shop is free too; they only need their own Shopify store.", pt: "Para comprar, nada: o app é grátis e não pede conta. Para os comércios, entrar e montar o espaço também é grátis; só precisam da sua própria loja na Shopify.", it: "Per chi compra, niente: l'app è gratuita e non chiede account. Per i negozi, entrare e allestire lo spazio è gratis; serve solo il proprio negozio su Shopify." } },
+      { q: { es: "¿Quién me vende y quién cobra?", en: "Who sells to me and who charges?", pt: "Quem vende e quem cobra?", it: "Chi vende e chi incassa?" }, a: { es: "Cada tienda. Mallnest es la vidriera; la compra se hace en el checkout de Shopify de la tienda elegida, que es la vendedora y se encarga del pago, el envío y la factura.", en: "Each store. Mallnest is the shop window; you buy in the chosen store's Shopify checkout, and that store is the seller, handling payment, shipping and invoicing.", pt: "Cada loja. O Mallnest é a vitrine; a compra é feita no checkout da Shopify da loja escolhida, que é a vendedora e cuida do pagamento, do envio e da nota.", it: "Ogni negozio. Mallnest è la vetrina; si compra nel checkout Shopify del negozio scelto, che è il venditore e si occupa di pagamento, spedizione e fattura." } },
+      { q: { es: "¿Mallnest ve los datos de mi tarjeta?", en: "Does Mallnest see my card details?", pt: "O Mallnest vê os dados do meu cartão?", it: "Mallnest vede i dati della mia carta?" }, a: { es: "No. El pago lo procesa la pasarela que cada tienda tiene configurada en Shopify. Mallnest nunca recibe ni guarda los datos de tu tarjeta.", en: "No. Payment is processed by the provider each store has set up in Shopify. Mallnest never receives or stores your card details.", pt: "Não. O pagamento é processado pelo meio de pagamento que cada loja configurou na Shopify. O Mallnest nunca recebe nem guarda os dados do seu cartão.", it: "No. Il pagamento lo gestisce il sistema che ogni negozio ha configurato su Shopify. Mallnest non riceve né conserva mai i dati della tua carta." } },
+      { q: { es: "¿Cómo funciona el personal shopper?", en: "How does the personal shopper work?", pt: "Como funciona o personal shopper?", it: "Come funziona il personal shopper?" }, a: { es: "Le escribes lo que buscas con tus palabras y una IA lo busca entre los productos reales de las tiendas, en una o en todas. Si la IA no está disponible, la app usa la búsqueda común.", en: "You type what you want in your own words and an AI looks for it among the stores' real products, in one or in all of them. If the AI is unavailable, the app falls back to the regular search.", pt: "Você escreve o que procura com as suas palavras e uma IA busca entre os produtos reais das lojas, em uma ou em todas. Se a IA não estiver disponível, o app usa a busca comum.", it: "Scrivi quello che cerchi con parole tue e un'IA lo cerca tra i prodotti reali dei negozi, in uno o in tutti. Se l'IA non è disponibile, l'app usa la ricerca normale." } },
+      { q: { es: "Tengo una tienda en Shopify, ¿cómo me sumo?", en: "I have a Shopify store, how do I join?", pt: "Tenho uma loja na Shopify, como entro?", it: "Ho un negozio su Shopify, come mi unisco?" }, a: { es: "Descarga Mallnest Business, conecta tu tienda, personaliza tu local y envíalo a revisión. Tu tienda Shopify sigue funcionando igual: Mallnest es un canal más.", en: "Download Mallnest Business, connect your store, customize your shop and send it for review. Your Shopify store keeps working the same: Mallnest is one more channel.", pt: "Baixe o Mallnest Business, conecte a sua loja, personalize o seu espaço e envie para revisão. A sua loja Shopify continua funcionando igual: o Mallnest é mais um canal.", it: "Scarica Mallnest Business, collega il tuo negozio, personalizza il tuo spazio e invialo in revisione. Il tuo negozio Shopify continua a funzionare uguale: Mallnest è un canale in più." } },
+      { q: { es: "¿Por qué revisan cada tienda?", en: "Why is every store reviewed?", pt: "Por que cada loja é revisada?", it: "Perché ogni negozio viene revisionato?" }, a: { es: "Porque todas las tiendas conviven en la misma app. Revisar cada local antes de publicarlo mantiene el shopping confiable para quienes compran.", en: "Because every store lives in the same app. Reviewing each shop before publishing it keeps the mall trustworthy for shoppers.", pt: "Porque todas as lojas convivem no mesmo app. Revisar cada espaço antes de publicá-lo mantém o shopping confiável para quem compra.", it: "Perché tutti i negozi convivono nella stessa app. Revisionare ogni spazio prima di pubblicarlo mantiene il centro commerciale affidabile per chi compra." } },
+    ],
+    name: { es: "Mallnest", en: "Mallnest", pt: "Mallnest", it: "Mallnest" },
+    tagline: {
+      es: "Un shopping de tiendas en tu teléfono. Elige tu tienda, compra fácil y deja que la IA busque por ti.",
+      en: "A mall of stores on your phone. Pick your store, shop easily and let AI search for you.",
+      pt: "Um shopping de lojas no seu telefone. Escolha a sua loja, compre fácil e deixe a IA procurar por você.",
+      it: "Un centro commerciale di negozi sul tuo telefono. Scegli il tuo negozio, compra facilmente e lascia che l'IA cerchi per te.",
+    },
+    description: {
+      es: "Mallnest reúne tiendas independientes en una sola app. Cada tienda conserva su marca, sus colores y sus productos, y la compra se hace con el checkout seguro de Shopify. Un personal shopper con IA te ayuda a encontrar lo que buscas, en una tienda o en todas.",
+      en: "Mallnest brings independent stores together in a single app. Each store keeps its brand, its colors and its products, and you pay through Shopify's secure checkout. An AI personal shopper helps you find what you're looking for, in one store or across all of them.",
+      pt: "Mallnest reúne lojas independentes em um só app. Cada loja mantém a sua marca, as suas cores e os seus produtos, e a compra é feita pelo checkout seguro da Shopify. Um personal shopper com IA ajuda você a encontrar o que procura, em uma loja ou em todas.",
+      it: "Mallnest riunisce negozi indipendenti in un'unica app. Ogni negozio mantiene il suo marchio, i suoi colori e i suoi prodotti, e si paga con il checkout sicuro di Shopify. Un personal shopper con IA ti aiuta a trovare quello che cerchi, in un negozio o in tutti.",
+    },
+    body: {
+      es: [
+        "Mallnest es como un shopping, pero en el teléfono: cada tienda es un local con su propia marca, sus colores y sus productos. Entras, eliges la que te interesa y desde ese momento la app se abre directamente ahí, como si fuera la app de esa tienda. Si quieres ver otras, siempre puedes volver al listado.",
+        "Cada tienda funciona con Shopify, así que los productos, el stock y los precios están siempre al día, y el pago se hace con el checkout de Shopify: los datos de tu tarjeta los maneja la pasarela de pago de la tienda, nunca Mallnest.",
+        "Si no sabes bien qué buscar, puedes pedírselo con tus palabras al personal shopper: \"algo para regalar hasta 20.000\" o \"café para filtro\". La IA busca entre los productos reales de las tiendas y te muestra las opciones que coinciden, en una tienda o en todas a la vez.",
+        "Para los comercios, Mallnest es un canal más: mantienen su tienda Shopify como siempre y suman un local móvil dentro de un shopping compartido, que se configura desde la app Mallnest Business.",
+      ],
+      en: [
+        "Mallnest is like a mall, but on your phone: each store is a shop with its own brand, colors and products. You browse, pick the one you like and from then on the app opens straight into it, as if it were that store's own app. If you want to see others, you can always go back to the list.",
+        "Every store runs on Shopify, so products, stock and prices are always up to date, and you pay through Shopify's checkout: your card details are handled by the store's payment provider, never by Mallnest.",
+        "If you're not sure what you're after, just tell the personal shopper in your own words: \"a gift under $20\" or \"coffee for filter brewing\". The AI searches the stores' real products and shows you the matching options, in one store or in all of them at once.",
+        "For businesses, Mallnest is one more sales channel: they keep their Shopify store as always and add a mobile shop inside a shared mall, set up from the Mallnest Business app.",
+      ],
+      pt: [
+        "Mallnest é como um shopping, mas no telefone: cada loja é um espaço com a sua própria marca, cores e produtos. Você entra, escolhe a que interessa e a partir daí o app abre direto nela, como se fosse o app daquela loja. Se quiser ver outras, sempre pode voltar à lista.",
+        "Cada loja funciona com a Shopify, então os produtos, o estoque e os preços estão sempre atualizados, e o pagamento é feito pelo checkout da Shopify: os dados do seu cartão são tratados pelo meio de pagamento da loja, nunca pelo Mallnest.",
+        "Se não sabe bem o que procurar, peça com as suas palavras ao personal shopper: \"algo para presentear até 100 reais\" ou \"café para coar\". A IA procura entre os produtos reais das lojas e mostra as opções que combinam, em uma loja ou em todas ao mesmo tempo.",
+        "Para os comércios, Mallnest é mais um canal: mantêm a sua loja Shopify como sempre e somam um espaço móvel dentro de um shopping compartilhado, configurado pelo app Mallnest Business.",
+      ],
+      it: [
+        "Mallnest è come un centro commerciale, ma sul telefono: ogni negozio è uno spazio con il suo marchio, i suoi colori e i suoi prodotti. Entri, scegli quello che ti interessa e da quel momento l'app si apre direttamente lì, come se fosse l'app di quel negozio. Se vuoi vederne altri, puoi sempre tornare all'elenco.",
+        "Ogni negozio funziona con Shopify, quindi prodotti, giacenze e prezzi sono sempre aggiornati, e si paga con il checkout di Shopify: i dati della tua carta li gestisce il sistema di pagamento del negozio, mai Mallnest.",
+        "Se non sai bene cosa cercare, chiedilo con parole tue al personal shopper: \"un regalo sotto i 20 euro\" o \"caffè per filtro\". L'IA cerca tra i prodotti reali dei negozi e ti mostra le opzioni che corrispondono, in un negozio o in tutti insieme.",
+        "Per i negozi, Mallnest è un canale in più: mantengono il loro negozio Shopify come sempre e aggiungono uno spazio mobile in un centro commerciale condiviso, configurato dall'app Mallnest Business.",
+      ],
+    },
+    claim: {
+      es: "Muchas tiendas. Un solo lugar.",
+      en: "Many stores. One place.",
+      pt: "Muitas lojas. Um só lugar.",
+      it: "Tanti negozi. Un solo posto.",
+    },
+    category: { es: "Compras", en: "Shopping", pt: "Compras", it: "Shopping" },
+    // Todavía no está publicada: el botón muestra "Muy pronto en Google Play".
+    playStoreUrl: "",
+    // Icono provisorio: el nido con la bolsa, en blanco sobre el azul de la marca.
+    icon: "/apps/mallnest/icon.png",
+    // El gráfico de la carpeta de Business, elegido para la tarjeta de Mallnest.
+    feature: "/apps/mallnest-business/feature.png",
+    // El azul marino del logo de Mallnest
+    accent: ["#0a264c", "#2a5fa8"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués"],
+      en: ["Spanish", "English", "Portuguese"],
+      pt: ["Espanhol", "Inglês", "Português"],
+      it: ["Spagnolo", "Inglese", "Portoghese"],
+    },
+    features: [
+      {
+        icon: "layout",
+        title: {
+          es: "Un shopping de tiendas",
+          en: "A mall of stores",
+          pt: "Um shopping de lojas",
+          it: "Un centro commerciale di negozi",
+        },
+        description: {
+          es: "Todas las tiendas en un listado con buscador. La que eliges queda como predeterminada y la app se abre directamente en ella.",
+          en: "Every store in one list with search. The one you pick becomes your default and the app opens straight into it.",
+          pt: "Todas as lojas em uma lista com busca. A que você escolhe fica como padrão e o app abre direto nela.",
+          it: "Tutti i negozi in un elenco con ricerca. Quello che scegli diventa il predefinito e l'app si apre direttamente lì.",
+        },
+      },
+      {
+        icon: "palette",
+        title: {
+          es: "Cada tienda con su marca",
+          en: "Every store with its brand",
+          pt: "Cada loja com a sua marca",
+          it: "Ogni negozio con il suo marchio",
+        },
+        description: {
+          es: "Logo, colores, banners y colecciones propias: entrar a una tienda se siente como usar su propia app.",
+          en: "Its own logo, colors, banners and collections: walking into a store feels like using its own app.",
+          pt: "Logo, cores, banners e coleções próprias: entrar em uma loja parece usar o app dela.",
+          it: "Logo, colori, banner e collezioni propri: entrare in un negozio è come usare la sua app.",
+        },
+      },
+      {
+        icon: "sparkles",
+        title: {
+          es: "Personal shopper con IA",
+          en: "AI personal shopper",
+          pt: "Personal shopper com IA",
+          it: "Personal shopper con IA",
+        },
+        description: {
+          es: "Pide lo que buscas con tus palabras y la IA lo encuentra entre los productos reales, en una tienda o en todas.",
+          en: "Ask for what you want in your own words and the AI finds it among real products, in one store or in all of them.",
+          pt: "Peça o que procura com as suas palavras e a IA encontra entre os produtos reais, em uma loja ou em todas.",
+          it: "Chiedi quello che cerchi con parole tue e l'IA lo trova tra i prodotti reali, in un negozio o in tutti.",
+        },
+      },
+      {
+        icon: "shield",
+        title: {
+          es: "Checkout seguro de Shopify",
+          en: "Secure Shopify checkout",
+          pt: "Checkout seguro da Shopify",
+          it: "Checkout sicuro di Shopify",
+        },
+        description: {
+          es: "El pago, el envío y los mails de confirmación los resuelve el checkout de Shopify de cada tienda. Mallnest no ve los datos de tu tarjeta.",
+          en: "Payment, shipping and confirmation emails are handled by each store's Shopify checkout. Mallnest never sees your card details.",
+          pt: "O pagamento, o envio e os e-mails de confirmação são resolvidos pelo checkout da Shopify de cada loja. O Mallnest não vê os dados do seu cartão.",
+          it: "Pagamento, spedizione ed email di conferma li gestisce il checkout Shopify di ogni negozio. Mallnest non vede i dati della tua carta.",
+        },
+      },
+    ],
+    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
+    screenshots: [],
+    privacy: {
+      updatedAt: "2026-11-01",
+      collects: [
+        {
+          type: {
+            es: "Tienda predeterminada y carrito",
+            en: "Default store and cart",
+            pt: "Loja padrão e carrinho",
+            it: "Negozio predefinito e carrello",
+          },
+          purpose: {
+            es: "Recordar qué tienda elegiste para abrir la app directamente en ella, y los productos que agregaste al carrito de cada tienda mientras compras.",
+            en: "To remember which store you picked so the app opens straight into it, and the products you added to each store's cart while shopping.",
+            pt: "Lembrar qual loja você escolheu para abrir o app direto nela, e os produtos que você adicionou ao carrinho de cada loja enquanto compra.",
+            it: "Ricordare quale negozio hai scelto per aprire l'app direttamente lì, e i prodotti che hai aggiunto al carrello di ogni negozio mentre compri.",
+          },
+          storage: "dispositivo",
+        },
+      ],
+      permissions: [],
+      // Las búsquedas del personal shopper salen del dispositivo hacia Gemini, y
+      // la compra se completa en el checkout de Shopify de cada tienda.
+      processedOnDevice: false,
+      processingNote: {
+        es: "Mallnest no pide cuenta para comprar. Cuando usas el personal shopper, el texto de tu búsqueda y la lista de productos disponibles se envían a la API de Gemini, de Google, a través de nuestro servidor, para encontrar los productos que coinciden; ni {company} ni la app conservan una copia de tus búsquedas. Si ese servicio no está disponible, la app usa la búsqueda común. Al pagar, completas la compra en el checkout de Shopify de la tienda elegida: tus datos de envío y de pago los recibe esa tienda, como vendedora, según su propia política de privacidad. Mallnest no ve ni guarda los datos de tu tarjeta.",
+        en: "Mallnest requires no account to shop. When you use the personal shopper, the text of your search and the list of available products are sent to Google's Gemini API through our server to find the matching products; neither {company} nor the app keeps a copy of your searches. If that service is unavailable, the app falls back to the regular search. When you pay, you complete the purchase in the chosen store's Shopify checkout: your shipping and payment details go to that store, as the seller, under its own privacy policy. Mallnest never sees or stores your card details.",
+        pt: "Mallnest não pede conta para comprar. Quando você usa o personal shopper, o texto da sua busca e a lista de produtos disponíveis são enviados à API Gemini, do Google, por meio do nosso servidor, para encontrar os produtos que combinam; nem a {company} nem o app guardam cópia das suas buscas. Se esse serviço não estiver disponível, o app usa a busca comum. Ao pagar, você conclui a compra no checkout da Shopify da loja escolhida: os seus dados de envio e de pagamento vão para essa loja, como vendedora, segundo a sua própria política de privacidade. O Mallnest não vê nem guarda os dados do seu cartão.",
+        it: "Mallnest non chiede un account per comprare. Quando usi il personal shopper, il testo della tua ricerca e l'elenco dei prodotti disponibili vengono inviati all'API Gemini di Google tramite il nostro server, per trovare i prodotti che corrispondono; né {company} né l'app conservano una copia delle tue ricerche. Se quel servizio non è disponibile, l'app usa la ricerca normale. Al pagamento, completi l'acquisto nel checkout Shopify del negozio scelto: i tuoi dati di spedizione e pagamento li riceve quel negozio, come venditore, secondo la sua informativa. Mallnest non vede né conserva i dati della tua carta.",
+      },
+      thirdParties: [
+        {
+          name: "Shopify",
+          purpose: {
+            es: "Mostrar los productos de cada tienda y procesar la compra en su checkout. Cada tienda es la vendedora y responsable de los datos de tu pedido.",
+            en: "To show each store's products and process the purchase in its checkout. Each store is the seller and responsible for your order data.",
+            pt: "Mostrar os produtos de cada loja e processar a compra no checkout. Cada loja é a vendedora e responsável pelos dados do seu pedido.",
+            it: "Mostrare i prodotti di ogni negozio e gestire l'acquisto nel suo checkout. Ogni negozio è il venditore e responsabile dei dati del tuo ordine.",
+          },
+          policyUrl: "https://www.shopify.com/legal/privacy",
+        },
+        {
+          name: "Google Gemini (API)",
+          purpose: {
+            es: "Interpretar lo que pides al personal shopper y elegir los productos que coinciden. Google trata ese texto bajo las condiciones de su propio servicio. Te pedimos que no escribas datos que te identifiquen ni información sensible en tus búsquedas.",
+            en: "To interpret what you ask the personal shopper and pick the matching products. Google processes that text under its own service terms. We ask you not to type identifying details or sensitive information in your searches.",
+            pt: "Interpretar o que você pede ao personal shopper e escolher os produtos que combinam. O Google trata esse texto sob as condições do próprio serviço. Pedimos que você não escreva dados que o identifiquem nem informações sensíveis nas suas buscas.",
+            it: "Interpretare quello che chiedi al personal shopper e scegliere i prodotti che corrispondono. Google tratta quel testo secondo le condizioni del proprio servizio. Ti chiediamo di non scrivere dati che ti identifichino né informazioni sensibili nelle tue ricerche.",
+          },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+        {
+          name: "Amazon Web Services",
+          purpose: {
+            es: "Alojar el servidor de Mallnest: el listado de tiendas, su configuración y el paso de las búsquedas hacia Gemini.",
+            en: "To host Mallnest's server: the store list, its configuration and passing searches on to Gemini.",
+            pt: "Hospedar o servidor do Mallnest: a lista de lojas, a sua configuração e o envio das buscas ao Gemini.",
+            it: "Ospitare il server di Mallnest: l'elenco dei negozi, la loro configurazione e l'inoltro delle ricerche a Gemini.",
+          },
+          policyUrl: "https://aws.amazon.com/privacy/",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      minAge: null,
+    },
+  },
+  {
+    slug: "mallnest-business",
+    audience: { es: "Para tu comercio", en: "For your business", pt: "Para o seu comércio", it: "Per il tuo negozio" },
+    // Oculta: existe su política de privacidad (la pide Google Play antes de
+    // publicar), pero no aparece en el catálogo. Mallnest es la cara pública.
+    oculta: true,
+    name: {
+      es: "Mallnest Business",
+      en: "Mallnest Business",
+      pt: "Mallnest Business",
+      it: "Mallnest Business",
+    },
+    tagline: {
+      es: "Tu tienda Shopify, también en Mallnest. Configúrala desde el celular.",
+      en: "Your Shopify store, in Mallnest too. Set it up from your phone.",
+      pt: "A sua loja Shopify, também no Mallnest. Configure pelo celular.",
+      it: "Il tuo negozio Shopify, anche su Mallnest. Configuralo dal telefono.",
+    },
+    description: {
+      es: "La app para comercios de Mallnest: conecta tu tienda Shopify, personaliza tu local con tu logo, tus colores y tus banners, y compártelo con un link y un QR. Gratis y desde el celular.",
+      en: "Mallnest's app for businesses: connect your Shopify store, customize your shop with your logo, colors and banners, and share it with a link and a QR code. Free and from your phone.",
+      pt: "O app para comércios do Mallnest: conecte a sua loja Shopify, personalize o seu espaço com o seu logo, as suas cores e os seus banners, e compartilhe com um link e um QR. Grátis e pelo celular.",
+      it: "L'app per negozi di Mallnest: collega il tuo negozio Shopify, personalizza il tuo spazio con logo, colori e banner, e condividilo con un link e un QR. Gratis e dal telefono.",
+    },
+    body: {
+      es: [
+        "Mallnest Business es donde los comercios arman su local dentro de Mallnest. Conectas tu tienda Shopify, eliges tu logo, tus colores, tus banners y las colecciones que se ven primero, y lo envías a revisión. Cuando se aprueba, tu tienda aparece en Mallnest.",
+        "Los productos, los precios, el stock y los pedidos los sigues manejando en Shopify, como siempre. Mallnest Business se ocupa de cómo se ve tu tienda y de ayudarte a difundirla, con sugerencias de textos hechas con IA.",
+      ],
+      en: [
+        "Mallnest Business is where businesses set up their shop inside Mallnest. You connect your Shopify store, choose your logo, colors, banners and the collections shown first, and send it for review. Once approved, your store appears in Mallnest.",
+        "You keep managing products, prices, stock and orders in Shopify, as always. Mallnest Business takes care of how your store looks and helps you promote it, with AI-made text suggestions.",
+      ],
+      pt: [
+        "Mallnest Business é onde os comércios montam o seu espaço dentro do Mallnest. Você conecta a sua loja Shopify, escolhe o seu logo, as suas cores, os seus banners e as coleções que aparecem primeiro, e envia para revisão. Quando é aprovada, a sua loja aparece no Mallnest.",
+        "Os produtos, os preços, o estoque e os pedidos você continua gerenciando na Shopify, como sempre. O Mallnest Business cuida de como a sua loja aparece e ajuda a divulgá-la, com sugestões de textos feitas com IA.",
+      ],
+      it: [
+        "Mallnest Business è dove i negozi allestiscono il loro spazio dentro Mallnest. Colleghi il tuo negozio Shopify, scegli logo, colori, banner e le collezioni da mostrare per prime, e lo invii in revisione. Una volta approvato, il tuo negozio compare su Mallnest.",
+        "Prodotti, prezzi, giacenze e ordini continui a gestirli su Shopify, come sempre. Mallnest Business si occupa di come appare il tuo negozio e ti aiuta a farlo conoscere, con suggerimenti di testo fatti con l'IA.",
+      ],
+    },
+    claim: {
+      es: "Tu tienda, un local más.",
+      en: "Your store, one more shop.",
+      pt: "A sua loja, mais um espaço.",
+      it: "Il tuo negozio, uno spazio in più.",
+    },
+    category: { es: "Empresa", en: "Business", pt: "Empresa", it: "Affari" },
+    playStoreUrl: "",
+    // Icono provisorio: el mismo logo invertido, azul sobre blanco.
+    icon: "/apps/mallnest-business/icon.png",
+    feature: "/apps/mallnest-business/feature.png",
+    accent: ["#081a33", "#1c4680"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués"],
+      en: ["Spanish", "English", "Portuguese"],
+      pt: ["Espanhol", "Inglês", "Português"],
+      it: ["Spagnolo", "Inglese", "Portoghese"],
+    },
+    features: [
+      {
+        icon: "link",
+        title: { es: "Conecta tu Shopify", en: "Connect your Shopify", pt: "Conecte a sua Shopify", it: "Collega il tuo Shopify" },
+        description: { es: "Autorizas el acceso una vez y tus productos, precios y stock aparecen en Mallnest, siempre al día.", en: "You authorize access once and your products, prices and stock show up in Mallnest, always up to date.", pt: "Você autoriza o acesso uma vez e os seus produtos, preços e estoque aparecem no Mallnest, sempre atualizados.", it: "Autorizzi l'accesso una volta e prodotti, prezzi e giacenze compaiono su Mallnest, sempre aggiornati." },
+      },
+      {
+        icon: "palette",
+        title: { es: "Tu marca, tu local", en: "Your brand, your shop", pt: "A sua marca, o seu espaço", it: "Il tuo marchio, il tuo spazio" },
+        description: { es: "Logo, colores, banners y colecciones destacadas, con vista previa de cómo lo ven tus clientes.", en: "Logo, colors, banners and featured collections, with a preview of how your customers see it.", pt: "Logo, cores, banners e coleções em destaque, com prévia de como os seus clientes veem.", it: "Logo, colori, banner e collezioni in evidenza, con anteprima di come lo vedono i tuoi clienti." },
+      },
+      {
+        icon: "sparkles",
+        title: { es: "Textos con IA", en: "AI-written texts", pt: "Textos com IA", it: "Testi con l'IA" },
+        description: { es: "Sugerencias para la frase de tu tienda y los banners, para elegir o editar. Si la IA no está disponible, escribes a mano.", en: "Suggestions for your store's tagline and banners, to pick or edit. If the AI is unavailable, you write them yourself.", pt: "Sugestões para a frase da sua loja e os banners, para escolher ou editar. Se a IA não estiver disponível, você escreve à mão.", it: "Suggerimenti per la frase del negozio e i banner, da scegliere o modificare. Se l'IA non è disponibile, scrivi a mano." },
+      },
+      {
+        icon: "device",
+        title: { es: "Link y QR para compartir", en: "A link and QR code to share", pt: "Link e QR para compartilhar", it: "Link e QR da condividere" },
+        description: { es: "Lleva a tus clientes directo a tu local en Mallnest, desde Instagram, WhatsApp o el mostrador.", en: "Take your customers straight to your shop in Mallnest, from Instagram, WhatsApp or the counter.", pt: "Leve os seus clientes direto para o seu espaço no Mallnest, pelo Instagram, WhatsApp ou balcão.", it: "Porta i tuoi clienti direttamente al tuo spazio su Mallnest, da Instagram, WhatsApp o dal bancone." },
+      },
+    ],
+    screenshots: [],
+    privacy: {
+      updatedAt: "2026-11-01",
+      collects: [
+        {
+          type: {
+            es: "Datos de la cuenta",
+            en: "Account data",
+            pt: "Dados da conta",
+            it: "Dati dell'account",
+          },
+          purpose: {
+            es: "Tu correo electrónico y tu nombre, para crear tu cuenta e iniciar sesión, con correo o con Google.",
+            en: "Your email address and name, to create your account and sign in, with email or with Google.",
+            pt: "O seu e-mail e o seu nome, para criar a sua conta e fazer login, com e-mail ou com o Google.",
+            it: "La tua email e il tuo nome, per creare il tuo account e accedere, con email o con Google.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: {
+            es: "Conexión con tu tienda Shopify",
+            en: "Connection to your Shopify store",
+            pt: "Conexão com a sua loja Shopify",
+            it: "Collegamento al tuo negozio Shopify",
+          },
+          purpose: {
+            es: "La dirección de tu tienda y el permiso de acceso que otorgas al conectarla, para mostrar tus productos en Mallnest. El permiso se guarda solo en nuestro servidor, nunca en el teléfono.",
+            en: "Your store's address and the access permission you grant when connecting it, to show your products in Mallnest. The permission is stored only on our server, never on the phone.",
+            pt: "O endereço da sua loja e a permissão de acesso que você concede ao conectá-la, para mostrar os seus produtos no Mallnest. A permissão fica guardada só no nosso servidor, nunca no telefone.",
+            it: "L'indirizzo del tuo negozio e il permesso di accesso che concedi collegandolo, per mostrare i tuoi prodotti su Mallnest. Il permesso resta solo sul nostro server, mai sul telefono.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: {
+            es: "Configuración de tu local",
+            en: "Your shop's configuration",
+            pt: "Configuração do seu espaço",
+            it: "Configurazione del tuo spazio",
+          },
+          purpose: {
+            es: "Nombre, frase, rubro, logo, colores, banners y colecciones destacadas, que se muestran públicamente en Mallnest una vez aprobada tu tienda.",
+            en: "Name, tagline, category, logo, colors, banners and featured collections, shown publicly in Mallnest once your store is approved.",
+            pt: "Nome, frase, segmento, logo, cores, banners e coleções em destaque, exibidos publicamente no Mallnest depois que a sua loja é aprovada.",
+            it: "Nome, frase, categoria, logo, colori, banner e collezioni in evidenza, mostrati pubblicamente su Mallnest una volta approvato il negozio.",
+          },
+          storage: "servidor",
+        },
+      ],
+      permissions: [],
+      processedOnDevice: false,
+      processingNote: {
+        es: "Cuando pides sugerencias de textos con IA, el nombre, el rubro y los textos de tu tienda se envían a la API de Gemini, de Google, a través de nuestro servidor; ni {company} ni la app conservan una copia de ese pedido. Si ese servicio no está disponible, escribes los textos a mano. Para eliminar tu cuenta y la configuración de tu local, escríbenos a [{email}](mailto:{email}) desde el correo de tu cuenta.",
+        en: "When you ask for AI text suggestions, your store's name, category and texts are sent to Google's Gemini API through our server; neither {company} nor the app keeps a copy of that request. If that service is unavailable, you write the texts yourself. To delete your account and your shop's configuration, write to [{email}](mailto:{email}) from your account's email.",
+        pt: "Quando você pede sugestões de textos com IA, o nome, o segmento e os textos da sua loja são enviados à API Gemini, do Google, por meio do nosso servidor; nem a {company} nem o app guardam cópia desse pedido. Se esse serviço não estiver disponível, você escreve os textos à mão. Para excluir a sua conta e a configuração do seu espaço, escreva para [{email}](mailto:{email}) a partir do e-mail da sua conta.",
+        it: "Quando chiedi suggerimenti di testo con l'IA, il nome, la categoria e i testi del tuo negozio vengono inviati all'API Gemini di Google tramite il nostro server; né {company} né l'app conservano una copia di quella richiesta. Se quel servizio non è disponibile, scrivi i testi a mano. Per eliminare il tuo account e la configurazione del tuo spazio, scrivici a [{email}](mailto:{email}) dall'email del tuo account.",
+      },
+      thirdParties: [
+        {
+          name: "Amazon Web Services (Cognito, Lambda, DynamoDB, S3)",
+          purpose: {
+            es: "Iniciar sesión y guardar tu cuenta, la conexión con tu tienda y la configuración de tu local.",
+            en: "To sign in and store your account, your store connection and your shop's configuration.",
+            pt: "Fazer login e guardar a sua conta, a conexão com a sua loja e a configuração do seu espaço.",
+            it: "Accedere e salvare il tuo account, il collegamento al negozio e la configurazione del tuo spazio.",
+          },
+          policyUrl: "https://aws.amazon.com/privacy/",
+        },
+        {
+          name: "Shopify",
+          purpose: {
+            es: "Conectar tu tienda y leer tus productos y colecciones con el permiso que otorgas.",
+            en: "To connect your store and read your products and collections with the permission you grant.",
+            pt: "Conectar a sua loja e ler os seus produtos e coleções com a permissão que você concede.",
+            it: "Collegare il tuo negozio e leggere prodotti e collezioni con il permesso che concedi.",
+          },
+          policyUrl: "https://www.shopify.com/legal/privacy",
+        },
+        {
+          name: "Google Gemini (API)",
+          purpose: {
+            es: "Generar sugerencias de textos para tu local. Google trata ese texto bajo las condiciones de su propio servicio.",
+            en: "To generate text suggestions for your shop. Google processes that text under its own service terms.",
+            pt: "Gerar sugestões de textos para o seu espaço. O Google trata esse texto sob as condições do próprio serviço.",
+            it: "Generare suggerimenti di testo per il tuo spazio. Google tratta quel testo secondo le condizioni del proprio servizio.",
+          },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      minAge: 18,
+    },
+  },
   {
     slug: "oraculos",
     // El italiano usa el nombre en ingles a proposito: la app no tiene ficha en
@@ -568,6 +1046,21 @@ export const apps: App[] = [
         },
       },
     ],
+    tech: {
+      intro: { es: "Oráculos combina una app nativa con IA generativa en la nube y un plan B que corre en el teléfono. La lectura la redacta Gemini a través de un servidor propio; si no llega a tiempo, la arma un motor local, y la persona nunca ve un error.", en: "Oracles combines a native app with generative AI in the cloud and a plan B that runs on the phone. Gemini writes the reading through our own server; if it doesn't arrive in time, a local engine builds it, and the user never sees an error.", pt: "Oráculos combina um app nativo com IA generativa na nuvem e um plano B que roda no celular. O Gemini redige a leitura através de um servidor próprio; se ela não chega a tempo, um motor local a monta, e a pessoa nunca vê um erro.", it: "Oracles unisce un'app nativa con l'IA generativa nel cloud e un piano B che gira sul telefono. Gemini scrive la lettura attraverso un server proprio; se non arriva in tempo, la compone un motore locale, e l'utente non vede mai un errore." },
+      items: [
+        { area: "app", name: "React Native + Expo + TypeScript", role: { es: "App Android con React Navigation y estado global con Zustand.", en: "Android app with React Navigation and global state with Zustand.", pt: "App Android com React Navigation e estado global com Zustand.", it: "App Android con React Navigation e stato globale con Zustand." } },
+        { area: "ia", name: "Google Gemini API", role: { es: "Redacta cada lectura a partir de la pregunta y de las piezas de la tirada. El prompt y la validación de la respuesta (formato completo, sin cortes) viven en el servidor.", en: "Writes each reading from the question and the pieces drawn. The prompt and the response validation (complete format, no truncation) live on the server.", pt: "Redige cada leitura a partir da pergunta e das peças da tiragem. O prompt e a validação da resposta (formato completo, sem cortes) ficam no servidor.", it: "Scrive ogni lettura a partire dalla domanda e dai pezzi estratti. Il prompt e la validazione della risposta (formato completo, senza tagli) vivono sul server." } },
+        { area: "ia", name: { es: "Fallback local en el dispositivo", en: "On-device local fallback", pt: "Fallback local no dispositivo", it: "Fallback locale sul dispositivo" }, role: { es: "Si Gemini se queda sin cuota, no hay red o tarda más que la animación de la tirada, la lectura la arma un motor propio de la app, sin conexión y al instante. Un interruptor permite apagar la IA entera sin cambiar nada más.", en: "If Gemini runs out of quota, there's no network or it takes longer than the spread animation, the app's own engine builds the reading, offline and instantly. A switch can turn the whole AI off without changing anything else.", pt: "Se o Gemini fica sem cota, não há rede ou demora mais que a animação da tiragem, a leitura é montada por um motor próprio do app, sem conexão e na hora. Um interruptor permite desligar a IA inteira sem mudar mais nada.", it: "Se Gemini esaurisce la quota, non c'è rete o ci mette più dell'animazione dell'estrazione, la lettura la compone un motore proprio dell'app, offline e all'istante. Un interruttore permette di spegnere tutta l'IA senza cambiare nient'altro." } },
+        { area: "backend", name: { es: "Next.js API Route en Vercel", en: "Next.js API Route on Vercel", pt: "Next.js API Route na Vercel", it: "Next.js API Route su Vercel" }, role: { es: "Endpoint serverless que guarda la clave de Gemini fuera del APK, con límites de uso por visitante, un techo diario global y un proyecto de Google Cloud con cuota propia.", en: "Serverless endpoint that keeps the Gemini key out of the APK, with per-visitor rate limits, a global daily cap and a Google Cloud project with its own quota.", pt: "Endpoint serverless que guarda a chave do Gemini fora do APK, com limites de uso por visitante, um teto diário global e um projeto do Google Cloud com cota própria.", it: "Endpoint serverless che tiene la chiave di Gemini fuori dall'APK, con limiti d'uso per visitatore, un tetto giornaliero globale e un progetto Google Cloud con quota propria." } },
+        { area: "nativo", name: "expo-speech", role: { es: "Lectura en voz alta (text-to-speech) en el idioma de la app.", en: "Reading out loud (text-to-speech) in the app's language.", pt: "Leitura em voz alta (text-to-speech) no idioma do app.", it: "Lettura ad alta voce (text-to-speech) nella lingua dell'app." } },
+        { area: "nativo", name: "react-native-view-shot + expo-sharing", role: { es: "La lectura se convierte en una imagen para compartir.", en: "The reading becomes an image to share.", pt: "A leitura vira uma imagem para compartilhar.", it: "La lettura diventa un'immagine da condividere." } },
+        { area: "app", name: { es: "Animaciones y arte propio", en: "Animations and original art", pt: "Animações e arte própria", it: "Animazioni e grafica originale" }, role: { es: "Tiradas animadas con react-native-svg y máscaras, y mazos ilustrados para la app.", en: "Animated spreads with react-native-svg and masks, and decks illustrated for the app.", pt: "Tiragens animadas com react-native-svg e máscaras, e baralhos ilustrados para o app.", it: "Estrazioni animate con react-native-svg e maschere, e mazzi illustrati per l'app." } },
+        { area: "app", name: "i18n", role: { es: "Español, inglés y portugués, con detección del idioma del teléfono (expo-localization).", en: "Spanish, English and Portuguese, detecting the phone's language (expo-localization).", pt: "Espanhol, inglês e português, com detecção do idioma do celular (expo-localization).", it: "Spagnolo, inglese e portoghese, con rilevamento della lingua del telefono (expo-localization)." } },
+        { area: "monetizacion", name: "Google AdMob + UMP", role: { es: "Videos con recompensa y el mensaje de consentimiento de Google para la Unión Europea, el Reino Unido y Suiza.", en: "Rewarded videos and Google's consent message for the European Union, the United Kingdom and Switzerland.", pt: "Vídeos com recompensa e a mensagem de consentimento do Google para a União Europeia, o Reino Unido e a Suíça.", it: "Video con ricompensa e il messaggio di consenso di Google per l'Unione Europea, il Regno Unito e la Svizzera." } },
+        { area: "entrega", name: "EAS Build", role: { es: "Builds de producción para Google Play, con variables por entorno.", en: "Production builds for Google Play, with per-environment variables.", pt: "Builds de produção para o Google Play, com variáveis por ambiente.", it: "Build di produzione per Google Play, con variabili per ambiente." } },
+      ],
+    },
     privacy: {
       updatedAt: "2026-08-17",
       collects: [
@@ -873,6 +1366,20 @@ export const apps: App[] = [
         },
       },
         ],
+    tech: {
+      intro: { es: "Vigia es una app offline-first con un motor de reglas desacoplado de la interfaz: todo el pádel —tanteo, saques, lados y tie-breaks— se deriva de un registro de eventos con funciones puras, cubiertas por tests.", en: "Vigia is an offline-first app with a rules engine decoupled from the UI: all of padel —score, serves, sides and tie-breaks— is derived from an event log with pure functions, covered by tests.", pt: "Vigia é um app offline-first com um motor de regras desacoplado da interface: todo o padel —placar, saques, lados e tie-breaks— é derivado de um registro de eventos com funções puras, cobertas por testes.", it: "Vigia è un'app offline-first con un motore di regole separato dall'interfaccia: tutto il padel —punteggio, servizi, lati e tie-break— deriva da un registro di eventi con funzioni pure, coperte da test." },
+      items: [
+        { area: "app", name: "React Native + Expo + TypeScript", role: { es: "App Android con un sistema de escala propio: ningún tamaño de la interfaz está escrito a mano.", en: "Android app with its own scaling system: no UI size is hard-coded.", pt: "App Android com um sistema de escala próprio: nenhum tamanho da interface é escrito à mão.", it: "App Android con un sistema di scala proprio: nessuna misura dell'interfaccia è scritta a mano." } },
+        { area: "arquitectura", name: { es: "Motor de reglas con event sourcing", en: "Rules engine with event sourcing", pt: "Motor de regras com event sourcing", it: "Motore di regole con event sourcing" }, role: { es: "El partido es un log de eventos; marcador, saque, resto, cambios de lado y estadísticas por jugador salen de funciones puras que no conocen React. Deshacer un punto es quitar un evento.", en: "The match is an event log; score, server, receiver, side changes and per-player stats come from pure functions that know nothing about React. Undoing a point means removing an event.", pt: "A partida é um log de eventos; placar, saque, devolução, trocas de lado e estatísticas por jogador saem de funções puras que não conhecem o React. Desfazer um ponto é tirar um evento.", it: "La partita è un log di eventi; punteggio, servizio, risposta, cambi di lato e statistiche per giocatore escono da funzioni pure che non conoscono React. Annullare un punto significa togliere un evento." } },
+        { area: "datos", name: { es: "Offline-first, sin servidor", en: "Offline-first, no server", pt: "Offline-first, sem servidor", it: "Offline-first, senza server" }, role: { es: "Partidos en archivos (expo-file-system) y plantel y preferencias en AsyncStorage. Sin cuenta ni conexión.", en: "Matches in files (expo-file-system), roster and preferences in AsyncStorage. No account or connection.", pt: "Partidas em arquivos (expo-file-system), elenco e preferências no AsyncStorage. Sem conta nem conexão.", it: "Partite in file (expo-file-system), rosa e preferenze in AsyncStorage. Senza account né connessione." } },
+        { area: "datos", name: { es: "Backup e importación", en: "Backup and import", pt: "Backup e importação", it: "Backup e importazione" }, role: { es: "Exportar e importar el historial completo con expo-sharing y expo-document-picker, con validación del archivo.", en: "Export and import the full history with expo-sharing and expo-document-picker, with file validation.", pt: "Exportar e importar o histórico completo com expo-sharing e expo-document-picker, com validação do arquivo.", it: "Esportare e importare lo storico completo con expo-sharing ed expo-document-picker, con validazione del file." } },
+        { area: "nativo", name: "react-native-view-shot", role: { es: "Tarjeta del partido como imagen, lista para mandar por WhatsApp.", en: "Match card as an image, ready to send on WhatsApp.", pt: "Cartão da partida como imagem, pronto para mandar pelo WhatsApp.", it: "Scheda della partita come immagine, pronta da mandare su WhatsApp." } },
+        { area: "nativo", name: "expo-keep-awake + expo-haptics", role: { es: "La pantalla no se apaga durante el partido y cada toque responde con vibración.", en: "The screen stays on during the match and every tap gives haptic feedback.", pt: "A tela não apaga durante a partida e cada toque responde com vibração.", it: "Lo schermo resta acceso durante la partita e ogni tocco risponde con una vibrazione." } },
+        { area: "app", name: "i18n", role: { es: "Español, inglés, portugués e italiano, con tests que verifican que los cuatro tengan las mismas claves.", en: "Spanish, English, Portuguese and Italian, with tests checking all four have the same keys.", pt: "Espanhol, inglês, português e italiano, com testes que verificam que os quatro tenham as mesmas chaves.", it: "Spagnolo, inglese, portoghese e italiano, con test che verificano che i quattro abbiano le stesse chiavi." } },
+        { area: "entrega", name: "Vitest", role: { es: "Más de 170 tests sobre el motor, las estadísticas, el guardado y el backup, y un simulador que juega temporadas enteras para diseñar con datos reales.", en: "Over 170 tests on the engine, stats, storage and backup, plus a simulator that plays whole seasons to design against real data.", pt: "Mais de 170 testes sobre o motor, as estatísticas, o salvamento e o backup, e um simulador que joga temporadas inteiras para projetar com dados reais.", it: "Oltre 170 test sul motore, le statistiche, il salvataggio e il backup, e un simulatore che gioca stagioni intere per progettare con dati reali." } },
+        { area: "entrega", name: "EAS Build", role: { es: "APK de prueba y .aab de producción para Google Play.", en: "Test APK and production .aab for Google Play.", pt: "APK de teste e .aab de produção para o Google Play.", it: "APK di prova e .aab di produzione per Google Play." } },
+      ],
+    },
     privacy: {
       updatedAt: "2026-08-17",
       collects: [
@@ -1183,6 +1690,21 @@ export const apps: App[] = [
         },
       },
     ],
+    tech: {
+      intro: { es: "Kaurix junta realidad aumentada y visión por computadora en el teléfono: un modelo de reconocimiento de imágenes entrenado para este juego, corriendo sin conexión, y una realidad aumentada pensada para funcionar en cualquier Android con cámara, no solo en la gama alta.", en: "Kaurix brings augmented reality and computer vision together on the phone: an image recognition model trained for this game, running offline, and augmented reality designed to work on any Android with a camera, not just high-end devices.", pt: "Kaurix junta realidade aumentada e visão computacional no celular: um modelo de reconhecimento de imagens treinado para este jogo, rodando sem conexão, e uma realidade aumentada pensada para funcionar em qualquer Android com câmera, não só nos topo de linha.", it: "Kaurix unisce realtà aumentata e visione artificiale sul telefono: un modello di riconoscimento di immagini addestrato per questo gioco, che gira offline, e una realtà aumentata pensata per funzionare su qualsiasi Android con fotocamera, non solo di fascia alta." },
+      items: [
+        { area: "app", name: "React Native + Expo + TypeScript", role: { es: "Juego Android con React Navigation y estado con Zustand.", en: "Android game with React Navigation and state with Zustand.", pt: "Jogo Android com React Navigation e estado com Zustand.", it: "Gioco Android con React Navigation e stato con Zustand." } },
+        { area: "ia", name: { es: "Modelo propio de reconocimiento de imágenes", en: "Custom image recognition model", pt: "Modelo próprio de reconhecimento de imagens", it: "Modello proprio di riconoscimento delle immagini" }, role: { es: "Clasificador MobileNetV3 entrenado con TensorFlow/Keras por transfer learning y fine-tuning: 48 clases de ingredientes, exportado a TensorFlow Lite (3,3 MB) y ejecutado en el teléfono, sin enviar imágenes a ningún servidor.", en: "MobileNetV3 classifier trained with TensorFlow/Keras through transfer learning and fine-tuning: 48 ingredient classes, exported to TensorFlow Lite (3.3 MB) and run on the phone, with no images sent to any server.", pt: "Classificador MobileNetV3 treinado com TensorFlow/Keras por transfer learning e fine-tuning: 48 classes de ingredientes, exportado para TensorFlow Lite (3,3 MB) e executado no celular, sem enviar imagens a nenhum servidor.", it: "Classificatore MobileNetV3 addestrato con TensorFlow/Keras tramite transfer learning e fine-tuning: 48 classi di ingredienti, esportato in TensorFlow Lite (3,3 MB) ed eseguito sul telefono, senza inviare immagini a nessun server." } },
+        { area: "ia", name: { es: "Dataset curado con CLIP", en: "Dataset curated with CLIP", pt: "Dataset curado com CLIP", it: "Dataset curato con CLIP" }, role: { es: "Pipeline propio en Python: fotos de Open Images v7 e iNaturalist (con licencia y autor registrados), filtradas con CLIP sobre PyTorch para quedarse solo con las que muestran la clase, y evaluación aparte con fotos reales tomadas con el teléfono.", en: "Own Python pipeline: photos from Open Images v7 and iNaturalist (with license and author recorded), filtered with CLIP on PyTorch to keep only those showing the class, and a separate evaluation with real photos taken with the phone.", pt: "Pipeline próprio em Python: fotos do Open Images v7 e do iNaturalist (com licença e autor registrados), filtradas com CLIP sobre PyTorch para ficar só com as que mostram a classe, e avaliação à parte com fotos reais tiradas com o celular.", it: "Pipeline proprio in Python: foto da Open Images v7 e iNaturalist (con licenza e autore registrati), filtrate con CLIP su PyTorch per tenere solo quelle che mostrano la classe, e una valutazione a parte con foto reali scattate con il telefono." } },
+        { area: "nativo", name: { es: "Módulo nativo en Kotlin + ML Kit", en: "Native Kotlin module + ML Kit", pt: "Módulo nativo em Kotlin + ML Kit", it: "Modulo nativo in Kotlin + ML Kit" }, role: { es: "Módulo propio con la Expo Modules API que carga el modelo .tflite con ML Kit Image Labeling y, si falta, cae al modelo base de ML Kit. Se complementa con un análisis del color de la escena.", en: "Own module built with the Expo Modules API that loads the .tflite model with ML Kit Image Labeling and, if it's missing, falls back to ML Kit's base model. It's complemented by an analysis of the scene's color.", pt: "Módulo próprio com a Expo Modules API que carrega o modelo .tflite com o ML Kit Image Labeling e, se faltar, cai no modelo base do ML Kit. É complementado por uma análise da cor da cena.", it: "Modulo proprio con la Expo Modules API che carica il modello .tflite con ML Kit Image Labeling e, se manca, ripiega sul modello base di ML Kit. È completato da un'analisi del colore della scena." } },
+        { area: "nativo", name: { es: "Realidad aumentada sin ARCore", en: "Augmented reality without ARCore", pt: "Realidade aumentada sem ARCore", it: "Realtà aumentata senza ARCore" }, role: { es: "Las criaturas se anclan a una dirección del mundo usando el giroscopio (expo-sensors) sobre la cámara en vivo (expo-camera). En equipos sin giroscopio la app elige sola otro motor. Se descartó ARCore a propósito porque deja afuera casi toda la gama media y baja.", en: "Creatures are anchored to a direction in the world using the gyroscope (expo-sensors) over the live camera (expo-camera). On devices without a gyroscope the app picks another engine by itself. ARCore was ruled out on purpose because it leaves out most mid- and low-end phones.", pt: "As criaturas se ancoram numa direção do mundo usando o giroscópio (expo-sensors) sobre a câmera ao vivo (expo-camera). Em aparelhos sem giroscópio o app escolhe sozinho outro motor. O ARCore foi descartado de propósito porque deixa de fora quase toda a linha média e básica.", it: "Le creature sono ancorate a una direzione del mondo usando il giroscopio (expo-sensors) sopra la fotocamera dal vivo (expo-camera). Sui dispositivi senza giroscopio l'app sceglie da sola un altro motore. ARCore è stato scartato di proposito perché esclude quasi tutta la fascia media e bassa." } },
+        { area: "arquitectura", name: { es: "Arte 3D exportado a WebP animado", en: "3D art exported to animated WebP", pt: "Arte 3D exportada para WebP animado", it: "Grafica 3D esportata in WebP animato" }, role: { es: "El 3D se usa para producir el arte, no en tiempo de ejecución: herramientas propias en Node (ffmpeg, sharp) lo convierten en WebP animados y hojas de sprites, y un config plugin habilita el WebP animado en Android.", en: "3D is used to produce the art, not at runtime: own Node tools (ffmpeg, sharp) turn it into animated WebP and sprite sheets, and a config plugin enables animated WebP on Android.", pt: "O 3D é usado para produzir a arte, não em tempo de execução: ferramentas próprias em Node (ffmpeg, sharp) o convertem em WebP animados e folhas de sprites, e um config plugin habilita o WebP animado no Android.", it: "Il 3D serve a produrre la grafica, non in esecuzione: strumenti propri in Node (ffmpeg, sharp) lo convertono in WebP animati e fogli di sprite, e un config plugin abilita il WebP animato su Android." } },
+        { area: "datos", name: { es: "Partida local", en: "Local save", pt: "Progresso local", it: "Salvataggio locale" }, role: { es: "Todo el progreso vive en el teléfono (AsyncStorage y expo-file-system), sin cuenta ni servidor.", en: "All progress lives on the phone (AsyncStorage and expo-file-system), with no account or server.", pt: "Todo o progresso fica no celular (AsyncStorage e expo-file-system), sem conta nem servidor.", it: "Tutti i progressi restano sul telefono (AsyncStorage ed expo-file-system), senza account né server." } },
+        { area: "app", name: "i18n", role: { es: "Español, inglés, italiano y portugués.", en: "Spanish, English, Italian and Portuguese.", pt: "Espanhol, inglês, italiano e português.", it: "Spagnolo, inglese, italiano e portoghese." } },
+        { area: "monetizacion", name: "Google AdMob + UMP", role: { es: "Videos con recompensa dentro del juego y consentimiento para la Unión Europea, el Reino Unido y Suiza.", en: "Rewarded videos inside the game and consent for the European Union, the United Kingdom and Switzerland.", pt: "Vídeos com recompensa dentro do jogo e consentimento para a União Europeia, o Reino Unido e a Suíça.", it: "Video con ricompensa nel gioco e consenso per l'Unione Europea, il Regno Unito e la Svizzera." } },
+        { area: "entrega", name: "EAS Build", role: { es: "Builds de producción para Google Play, con variables por entorno.", en: "Production builds for Google Play, with per-environment variables.", pt: "Builds de produção para o Google Play, com variáveis por ambiente.", it: "Build di produzione per Google Play, con variabili per ambiente." } },
+      ],
+    },
     privacy: {
       updatedAt: "2026-09-03",
       collects: [],
@@ -1220,6 +1742,239 @@ export const apps: App[] = [
       showsAds: true,
       hasInAppPurchases: false,
       minAge: null,
+    },
+  },
+  {
+    slug: "bumko",
+    name: { es: "Bumko", en: "Bumko", pt: "Bumko", it: "Bumko" },
+    tagline: {
+      es: "Stock y ventas para tu bar, pensado para la noche: un toque, una venta.",
+      en: "Stock and sales for your bar, built for the night: one tap, one sale.",
+      pt: "Estoque e vendas para o seu bar, pensado para a noite: um toque, uma venda.",
+      it: "Magazzino e vendite per il tuo bar, pensato per la notte: un tocco, una vendita.",
+    },
+    description: {
+      es: "Bumko lleva el stock y las ventas de un bar durante una fiesta. Cada producto es un botón grande: un toque registra la venta y descuenta el stock. Varias personas venden a la vez desde sus teléfonos, y al cerrar la noche la caja y los reportes ya están hechos.",
+      en: "Bumko keeps track of a bar's stock and sales during a party. Every product is a big button: one tap records the sale and takes it off the stock. Several people sell at the same time from their phones, and when the night ends the till count and the reports are already done.",
+      pt: "Bumko controla o estoque e as vendas de um bar durante uma festa. Cada produto é um botão grande: um toque registra a venda e desconta do estoque. Várias pessoas vendem ao mesmo tempo pelos seus telefones, e ao fechar a noite o caixa e os relatórios já estão prontos.",
+      it: "Bumko tiene il conto del magazzino e delle vendite di un bar durante una festa. Ogni prodotto è un pulsante grande: un tocco registra la vendita e la scala dal magazzino. Più persone vendono insieme dai loro telefoni, e a fine serata la cassa e i report sono già pronti.",
+    },
+    body: {
+      es: [
+        "Bumko nació para un momento concreto: la barra de una fiesta, con poca luz, música alta y una fila que no para. Ahí no hay tiempo para menús ni confirmaciones, así que cada producto es un botón grande y de color. Un toque registra la venta al precio de lista y descuenta una unidad del stock. Nada más.",
+        "Lo que no es una venta común también entra rápido. Manteniendo presionado un producto se elige otro precio o se registra un regalo, con su motivo y, si se quiere, a quién. Si el producto tiene un 2x1 cargado, aparece un botón aparte que descuenta dos unidades y cobra la promo. Y cada venta queda unos segundos a la vista para deshacerla si hubo un error.",
+        "Cada noche es un evento: se abre con la caja inicial y, al cerrarlo, se cuenta la plata y Bumko muestra cuánto tendría que haber según lo registrado, cuánto sobró o cuánto faltó. Los reportes muestran lo vendido, el costo y el resultado por día, por mes o por evento, los productos más vendidos y quién registró cada venta.",
+        "Está hecho para un equipo. Quien crea el bar queda como administrador y suma a su gente: el personal solo vende, y el administrador carga productos, maneja el stock, abre y cierra eventos y ve los reportes. Todos trabajan sobre los mismos datos al mismo tiempo, desde sus propios teléfonos.",
+      ],
+      en: [
+        "Bumko was made for one specific moment: the bar at a party, with low light, loud music and a line that never stops. There's no time for menus or confirmations there, so every product is a big, colored button. One tap records the sale at list price and takes one unit off the stock. That's it.",
+        "What isn't a regular sale is quick too. Pressing and holding a product lets you charge a different price or record a giveaway, with its reason and, if you want, who it went to. If the product has a 2-for-1 set, a separate button takes two units off and charges the deal. And every sale stays on screen for a few seconds so you can undo it if something went wrong.",
+        "Every night is an event: it opens with the starting cash and, when you close it, you count the money and Bumko shows how much there should be according to what was recorded, and how much was over or short. The reports show sales, cost and result by day, month or event, the best-selling products and who recorded each sale.",
+        "It's built for a team. Whoever creates the bar becomes its administrator and adds their people: staff can only sell, while the administrator loads products, manages stock, opens and closes events and sees the reports. Everyone works on the same data at the same time, from their own phones.",
+      ],
+      pt: [
+        "Bumko nasceu para um momento concreto: o balcão de uma festa, com pouca luz, música alta e uma fila que não para. Ali não há tempo para menus nem confirmações, então cada produto é um botão grande e colorido. Um toque registra a venda pelo preço de tabela e desconta uma unidade do estoque. Nada mais.",
+        "O que não é uma venda comum também entra rápido. Segurando um produto pressionado, você escolhe outro preço ou registra uma cortesia, com o motivo e, se quiser, para quem. Se o produto tem um 2x1 cadastrado, aparece um botão separado que desconta duas unidades e cobra a promoção. E cada venda fica alguns segundos à vista para desfazê-la se houve um erro.",
+        "Cada noite é um evento: abre com o caixa inicial e, ao fechar, você conta o dinheiro e o Bumko mostra quanto deveria haver segundo o registrado, quanto sobrou ou quanto faltou. Os relatórios mostram o vendido, o custo e o resultado por dia, por mês ou por evento, os produtos mais vendidos e quem registrou cada venda.",
+        "É feito para uma equipe. Quem cria o bar fica como administrador e adiciona a sua gente: a equipe só vende, e o administrador cadastra produtos, cuida do estoque, abre e fecha eventos e vê os relatórios. Todos trabalham sobre os mesmos dados ao mesmo tempo, cada um no seu telefone.",
+      ],
+      it: [
+        "Bumko è nato per un momento preciso: il bancone di una festa, con poca luce, musica alta e una fila che non si ferma. Lì non c'è tempo per menu o conferme, quindi ogni prodotto è un pulsante grande e colorato. Un tocco registra la vendita al prezzo di listino e scala un'unità dal magazzino. Nient'altro.",
+        "Anche quello che non è una vendita normale si registra in fretta. Tenendo premuto un prodotto si sceglie un altro prezzo o si registra un omaggio, con il motivo e, se si vuole, a chi. Se il prodotto ha un 2x1 impostato, compare un pulsante a parte che scala due unità e applica la promo. E ogni vendita resta visibile per qualche secondo per annullarla in caso di errore.",
+        "Ogni serata è un evento: si apre con il fondo cassa e, alla chiusura, si contano i soldi e Bumko mostra quanto dovrebbe esserci secondo quanto registrato, quanto è avanzato o quanto manca. I report mostrano il venduto, il costo e il risultato per giorno, per mese o per evento, i prodotti più venduti e chi ha registrato ogni vendita.",
+        "È pensato per una squadra. Chi crea il bar diventa amministratore e aggiunge la sua gente: lo staff può solo vendere, mentre l'amministratore carica i prodotti, gestisce il magazzino, apre e chiude gli eventi e vede i report. Tutti lavorano sugli stessi dati nello stesso momento, ognuno dal proprio telefono.",
+      ],
+    },
+    claim: {
+      es: "Un toque. Una venta.",
+      en: "One tap. One sale.",
+      pt: "Um toque. Uma venda.",
+      it: "Un tocco. Una vendita.",
+    },
+    category: { es: "Empresa", en: "Business", pt: "Empresa", it: "Affari" },
+    // Todavía no está publicada: el botón muestra "Muy pronto en Google Play".
+    playStoreUrl: "",
+    icon: "/apps/bumko/icon.png",
+    feature: "/apps/bumko/feature.png",
+    // El negro de la interfaz y el magenta de acento de la app
+    accent: ["#16161f", "#a3154a"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués"],
+      en: ["Spanish", "English", "Portuguese"],
+      pt: ["Espanhol", "Inglês", "Português"],
+      it: ["Spagnolo", "Inglese", "Portoghese"],
+    },
+    features: [
+      {
+        icon: "bolt",
+        title: {
+          es: "Un toque, una venta",
+          en: "One tap, one sale",
+          pt: "Um toque, uma venda",
+          it: "Un tocco, una vendita",
+        },
+        description: {
+          es: "Botones grandes, mucho contraste y nada que confirmar: se usa de noche, apurado y con una mano. El stock baja solo con cada venta.",
+          en: "Big buttons, high contrast and nothing to confirm: it's used at night, in a hurry and with one hand. Stock goes down by itself with every sale.",
+          pt: "Botões grandes, muito contraste e nada para confirmar: é usado à noite, com pressa e com uma mão. O estoque baixa sozinho a cada venda.",
+          it: "Pulsanti grandi, molto contrasto e niente da confermare: si usa di notte, di corsa e con una mano. Il magazzino scende da solo a ogni vendita.",
+        },
+      },
+      {
+        icon: "card",
+        title: {
+          es: "Otro precio, regalos y 2x1",
+          en: "Other prices, giveaways and 2-for-1",
+          pt: "Outro preço, cortesias e 2x1",
+          it: "Altri prezzi, omaggi e 2x1",
+        },
+        description: {
+          es: "Manteniendo presionado un producto se cobra otro precio o se registra un regalo con su motivo. El 2x1 tiene su propio botón y se cuenta aparte en los reportes.",
+          en: "Press and hold a product to charge another price or record a giveaway with its reason. The 2-for-1 has its own button and is counted separately in the reports.",
+          pt: "Segurando um produto pressionado, você cobra outro preço ou registra uma cortesia com o motivo. O 2x1 tem o seu próprio botão e é contado à parte nos relatórios.",
+          it: "Tenendo premuto un prodotto si applica un altro prezzo o si registra un omaggio con il motivo. Il 2x1 ha il suo pulsante e nei report si conta a parte.",
+        },
+      },
+      {
+        icon: "chart",
+        title: {
+          es: "Eventos, caja y reportes",
+          en: "Events, cash and reports",
+          pt: "Eventos, caixa e relatórios",
+          it: "Eventi, cassa e report",
+        },
+        description: {
+          es: "Cada noche se abre con su caja inicial y se cierra con el arqueo. Los reportes muestran lo vendido, el costo y el resultado por día, mes o evento.",
+          en: "Each night opens with its starting cash and closes with the till count. Reports show sales, cost and result by day, month or event.",
+          pt: "Cada noite abre com o caixa inicial e fecha com a contagem. Os relatórios mostram o vendido, o custo e o resultado por dia, mês ou evento.",
+          it: "Ogni serata si apre con il fondo cassa e si chiude con la conta. I report mostrano venduto, costo e risultato per giorno, mese o evento.",
+        },
+      },
+      {
+        icon: "users",
+        title: {
+          es: "Todo el equipo a la vez",
+          en: "The whole team at once",
+          pt: "A equipe toda ao mesmo tempo",
+          it: "Tutta la squadra insieme",
+        },
+        description: {
+          es: "Quien crea el bar es el administrador y suma a su gente. El personal solo vende; el administrador maneja el stock, los eventos y los reportes.",
+          en: "Whoever creates the bar is its administrator and adds their people. Staff only sell; the administrator handles stock, events and reports.",
+          pt: "Quem cria o bar é o administrador e adiciona a sua gente. A equipe só vende; o administrador cuida do estoque, dos eventos e dos relatórios.",
+          it: "Chi crea il bar ne è l'amministratore e aggiunge la sua gente. Lo staff vende soltanto; l'amministratore gestisce magazzino, eventi e report.",
+        },
+      },
+    ],
+    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
+    screenshots: [],
+    tech: {
+      intro: { es: "Bumko es una app colaborativa en tiempo real: varias personas venden a la vez sobre el mismo stock desde distintos teléfonos, con roles, seguridad del lado del servidor y una versión web que comparte la misma base.", en: "Bumko is a real-time collaborative app: several people sell at the same time from the same stock on different phones, with roles, server-side security and a web version sharing the same database.", pt: "Bumko é um app colaborativo em tempo real: várias pessoas vendem ao mesmo tempo sobre o mesmo estoque em celulares diferentes, com papéis, segurança no lado do servidor e uma versão web que compartilha a mesma base.", it: "Bumko è un'app collaborativa in tempo reale: più persone vendono allo stesso tempo sullo stesso magazzino da telefoni diversi, con ruoli, sicurezza lato server e una versione web che condivide lo stesso database." },
+      items: [
+        { area: "app", name: "React Native + Expo + Expo Router", role: { es: "App Android con navegación por archivos, estado con Zustand y animaciones con Reanimated.", en: "Android app with file-based routing, state with Zustand and animations with Reanimated.", pt: "App Android com navegação por arquivos, estado com Zustand e animações com Reanimated.", it: "App Android con navigazione basata su file, stato con Zustand e animazioni con Reanimated." } },
+        { area: "app", name: { es: "Versión web (Vite + React)", en: "Web version (Vite + React)", pt: "Versão web (Vite + React)", it: "Versione web (Vite + React)" }, role: { es: "Desplegada en Vercel sobre el mismo proyecto de Firebase: se puede vender desde el teléfono mientras otra persona mira los reportes en la computadora.", en: "Deployed on Vercel on the same Firebase project: you can sell from the phone while someone else looks at the reports on a computer.", pt: "Publicada na Vercel sobre o mesmo projeto do Firebase: dá para vender pelo celular enquanto outra pessoa olha os relatórios no computador.", it: "Pubblicata su Vercel sullo stesso progetto Firebase: si può vendere dal telefono mentre un'altra persona guarda i report sul computer." } },
+        { area: "datos", name: { es: "Cloud Firestore en tiempo real", en: "Real-time Cloud Firestore", pt: "Cloud Firestore em tempo real", it: "Cloud Firestore in tempo reale" }, role: { es: "Productos, ventas, noches con arqueo de caja y equipo por bar, sincronizados en vivo entre todos los dispositivos.", en: "Products, sales, nights with cash count and team per bar, synced live across every device.", pt: "Produtos, vendas, noites com fechamento de caixa e equipe por bar, sincronizados ao vivo entre todos os aparelhos.", it: "Prodotti, vendite, serate con chiusura di cassa e squadra per locale, sincronizzati dal vivo tra tutti i dispositivi." } },
+        { area: "auth", name: "Firebase Authentication + Google Sign-In", role: { es: "Inicio de sesión nativo con la cuenta de Google.", en: "Native sign-in with a Google account.", pt: "Login nativo com a conta do Google.", it: "Accesso nativo con l'account Google." } },
+        { area: "auth", name: "Firestore Security Rules", role: { es: "Cada bar es una cuenta cerrada: las reglas validan en el servidor quién es dueño y quién es personal, y nadie de otro bar puede leer ni escribir.", en: "Each bar is a closed account: the rules check on the server who is the owner and who is staff, and nobody from another bar can read or write.", pt: "Cada bar é uma conta fechada: as regras validam no servidor quem é dono e quem é equipe, e ninguém de outro bar pode ler nem escrever.", it: "Ogni locale è un account chiuso: le regole verificano sul server chi è il titolare e chi il personale, e nessuno di un altro locale può leggere o scrivere." } },
+        { area: "auth", name: { es: "Eliminación de cuenta en la app", en: "In-app account deletion", pt: "Exclusão de conta no app", it: "Eliminazione dell'account nell'app" }, role: { es: "Borra la cuenta y sus datos desde la app, como pide Google Play: si es el dueño, borra el bar entero en lotes, con reautenticación cuando hace falta.", en: "Deletes the account and its data from the app, as Google Play requires: for the owner it deletes the whole bar in batches, re-authenticating when needed.", pt: "Apaga a conta e seus dados pelo app, como o Google Play exige: se for o dono, apaga o bar inteiro em lotes, com reautenticação quando precisa.", it: "Elimina l'account e i suoi dati dall'app, come richiede Google Play: per il titolare elimina l'intero locale a blocchi, con nuova autenticazione quando serve." } },
+        { area: "nativo", name: "QR + deep links", role: { es: "El dueño comparte el QR del bar por WhatsApp como imagen (react-native-qrcode-svg, view-shot, expo-sharing); el personal lo escanea con expo-camera o lo abre como link para pedir entrar.", en: "The owner shares the bar's QR on WhatsApp as an image (react-native-qrcode-svg, view-shot, expo-sharing); staff scan it with expo-camera or open it as a link to ask to join.", pt: "O dono compartilha o QR do bar pelo WhatsApp como imagem (react-native-qrcode-svg, view-shot, expo-sharing); a equipe o escaneia com expo-camera ou abre como link para pedir para entrar.", it: "Il titolare condivide il QR del locale su WhatsApp come immagine (react-native-qrcode-svg, view-shot, expo-sharing); il personale lo scansiona con expo-camera o lo apre come link per chiedere di entrare." } },
+        { area: "app", name: "i18n", role: { es: "Español, inglés y portugués.", en: "Spanish, English and Portuguese.", pt: "Espanhol, inglês e português.", it: "Spagnolo, inglese e portoghese." } },
+      ],
+    },
+    privacy: {
+      updatedAt: "2026-11-01",
+      collects: [
+        {
+          type: {
+            es: "Nombre, correo electrónico y foto de perfil",
+            en: "Name, email address and profile photo",
+            pt: "Nome, e-mail e foto de perfil",
+            it: "Nome, indirizzo email e foto del profilo",
+          },
+          purpose: {
+            es: "Los provee Google al iniciar sesión. Sirven para identificar a cada persona dentro del equipo de su bar y para registrar quién hizo cada venta.",
+            en: "Provided by Google when you sign in. They identify each person within their bar's team and record who made each sale.",
+            pt: "São fornecidos pelo Google ao fazer login. Servem para identificar cada pessoa dentro da equipe do seu bar e para registrar quem fez cada venda.",
+            it: "Li fornisce Google all'accesso. Servono a identificare ogni persona all'interno della squadra del suo bar e a registrare chi ha fatto ogni vendita.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: {
+            es: "Datos del negocio",
+            en: "Business data",
+            pt: "Dados do negócio",
+            it: "Dati dell'attività",
+          },
+          purpose: {
+            es: "Los productos con su costo, precio y stock; las ventas con su fecha, el precio cobrado y, en los regalos, el motivo y a quién (si se indica); y los eventos con su caja inicial y su arqueo. Los carga el equipo del bar para que la app funcione.",
+            en: "Products with their cost, price and stock; sales with their date, the price charged and, for giveaways, the reason and who it went to (if given); and events with their starting cash and till count. The bar's team enters them so the app can work.",
+            pt: "Os produtos com custo, preço e estoque; as vendas com data, preço cobrado e, nas cortesias, o motivo e para quem (se informado); e os eventos com o caixa inicial e a contagem. A equipe do bar os cadastra para que o app funcione.",
+            it: "I prodotti con costo, prezzo e giacenza; le vendite con data, prezzo applicato e, per gli omaggi, il motivo e a chi (se indicato); e gli eventi con fondo cassa e conta. Li inserisce la squadra del bar perché l'app funzioni.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: {
+            es: "Equipo y permisos",
+            en: "Team and permissions",
+            pt: "Equipe e permissões",
+            it: "Squadra e permessi",
+          },
+          purpose: {
+            es: "A qué bar pertenece cada persona, su rol (administrador o personal), si está habilitada y los pedidos para entrar a un bar.",
+            en: "Which bar each person belongs to, their role (administrator or staff), whether they are enabled and the requests to join a bar.",
+            pt: "A qual bar cada pessoa pertence, o seu papel (administrador ou equipe), se está habilitada e os pedidos para entrar em um bar.",
+            it: "A quale bar appartiene ogni persona, il suo ruolo (amministratore o staff), se è abilitata e le richieste per entrare in un bar.",
+          },
+          storage: "servidor",
+        },
+      ],
+      permissions: [
+        {
+          name: "Cámara (android.permission.CAMERA)",
+          reason: {
+            es: "Solo se usa para leer el código QR que muestra el administrador de un bar cuando quieres pedir entrar a su equipo. La imagen no se guarda ni se envía a ningún lado.",
+            en: "It is only used to read the QR code a bar's administrator shows you when you want to ask to join their team. The image is never stored or sent anywhere.",
+            pt: "É usada apenas para ler o código QR que o administrador de um bar mostra quando você quer pedir para entrar na equipe. A imagem não é guardada nem enviada a lugar nenhum.",
+            it: "Si usa solo per leggere il codice QR che ti mostra l'amministratore di un bar quando vuoi chiedere di entrare nella sua squadra. L'immagine non viene salvata né inviata da nessuna parte.",
+          },
+        },
+      ],
+      processedOnDevice: false,
+      processingNote: {
+        es: "Bumko es una herramienta de trabajo en equipo: para que varias personas vendan a la vez sobre el mismo stock, los datos del bar se guardan en **Google Firebase** y no en el teléfono. Cada bar es una cuenta cerrada: sus datos los ven solo las personas de su equipo, según su rol —el personal registra ventas y el administrador ve todo, incluidos los reportes y quién registró cada venta—, y nadie de otro bar puede verlos.",
+        en: "Bumko is a teamwork tool: so that several people can sell at the same time from the same stock, the bar's data is stored in **Google Firebase** rather than on the phone. Each bar is a closed account: only the people on its team can see its data, according to their role —staff record sales and the administrator sees everything, including the reports and who recorded each sale— and nobody from another bar can see it.",
+        pt: "Bumko é uma ferramenta de trabalho em equipe: para que várias pessoas vendam ao mesmo tempo sobre o mesmo estoque, os dados do bar ficam guardados no **Google Firebase** e não no telefone. Cada bar é uma conta fechada: os seus dados só são vistos pelas pessoas da sua equipe, conforme o papel de cada uma —a equipe registra vendas e o administrador vê tudo, inclusive os relatórios e quem registrou cada venda—, e ninguém de outro bar pode vê-los.",
+        it: "Bumko è uno strumento di lavoro di squadra: perché più persone possano vendere insieme sullo stesso magazzino, i dati del bar sono salvati su **Google Firebase** e non sul telefono. Ogni bar è un account chiuso: i suoi dati li vedono solo le persone della sua squadra, secondo il ruolo —lo staff registra le vendite e l'amministratore vede tutto, compresi i report e chi ha registrato ogni vendita— e nessuno di un altro bar può vederli.",
+      },
+      thirdParties: [
+        {
+          name: "Google Firebase (Authentication y Cloud Firestore)",
+          purpose: {
+            es: "Iniciar sesión y guardar los datos del bar para que el equipo los comparta en tiempo real.",
+            en: "To sign in and store the bar's data so the team can share it in real time.",
+            pt: "Fazer login e guardar os dados do bar para que a equipe os compartilhe em tempo real.",
+            it: "Accedere e salvare i dati del bar perché la squadra li condivida in tempo reale.",
+          },
+          policyUrl: "https://firebase.google.com/support/privacy",
+        },
+        {
+          name: "Google Sign-In",
+          purpose: {
+            es: "Iniciar sesión con tu cuenta de Google. Google nos comparte tu nombre, tu correo y tu foto de perfil, y nada más.",
+            en: "To sign in with your Google account. Google shares your name, email and profile photo with us, and nothing else.",
+            pt: "Fazer login com a sua conta do Google. O Google compartilha conosco o seu nome, o seu e-mail e a sua foto de perfil, e nada mais.",
+            it: "Accedere con il tuo account Google. Google ci condivide il tuo nome, la tua email e la tua foto del profilo, e nient'altro.",
+          },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      // Herramienta de trabajo para bares
+      minAge: 18,
     },
   },
 ];
