@@ -612,6 +612,203 @@ export const apps: App[] = [
     },
   },
   {
+    slug: "cryptaura",
+    name: {
+      es: "Cryptaura",
+      en: "Cryptaura",
+      pt: "Cryptaura",
+      it: "Cryptaura",
+    },
+    tagline: {
+      es: "El mercado cripto en tiempo real: precios, libro de órdenes y comparación entre exchanges.",
+      en: "The crypto market in real time: prices, order book and cross-exchange comparison.",
+      pt: "O mercado cripto em tempo real: preços, livro de ofertas e comparação entre exchanges.",
+      it: "Il mercato cripto in tempo reale: prezzi, book degli ordini e confronto tra exchange.",
+    },
+    description: {
+      es: "Cryptaura muestra el mercado cripto en vivo, como lo ve un trader: precios, velas, el libro de órdenes con su profundidad, las últimas operaciones y el mismo par comparado entre Kraken, Coinbase y Binance. Es solo información: no compra, no vende y no guarda fondos.",
+      en: "Cryptaura shows the crypto market live, the way a trader sees it: prices, candles, the order book with its depth, the latest trades and the same pair compared across Kraken, Coinbase and Binance. Information only: it doesn't buy, sell or hold funds.",
+      pt: "Cryptaura mostra o mercado cripto ao vivo, como um trader o vê: preços, velas, o livro de ofertas com a sua profundidade, as últimas operações e o mesmo par comparado entre Kraken, Coinbase e Binance. É só informação: não compra, não vende e não guarda fundos.",
+      it: "Cryptaura mostra il mercato cripto dal vivo, come lo vede un trader: prezzi, candele, il book degli ordini con la sua profondità, gli ultimi scambi e la stessa coppia confrontata tra Kraken, Coinbase e Binance. Solo informazione: non compra, non vende e non custodisce fondi.",
+    },
+    body: {
+      es: [
+        "Cryptaura es una ventana al mercado cripto en tiempo real. La lista de mercados se actualiza en vivo con el precio, la variación del día y el volumen de cada par, y se puede ordenar por volumen, por las mayores subas o por las mayores bajas.",
+        "Al entrar a un par aparece todo lo que mira un trader: el gráfico de velas en varios intervalos, el libro de órdenes con barras de profundidad y el spread, y la cinta de las últimas operaciones. El libro se verifica mensaje a mensaje con el checksum que publica el exchange, así que lo que se ve es exactamente el estado del mercado.",
+        "El mismo par se compara entre Kraken, Coinbase y Binance: dónde está la mejor compra, dónde la mejor venta y cuánta diferencia hay entre ellos.",
+        "Vienen en camino las alertas con notificación, un panorama del mercado con el índice de miedo y codicia y los titulares del día, y resúmenes hechos con IA que explican qué está pasando sin recomendar nunca qué hacer. Cryptaura es solo información: no es asesoramiento financiero.",
+      ],
+      en: [
+        "Cryptaura is a window into the crypto market in real time. The market list updates live with each pair's price, daily change and volume, and can be sorted by volume, top gainers or top losers.",
+        "Open a pair and you get everything a trader looks at: a candlestick chart in several intervals, the order book with depth bars and the spread, and the tape of the latest trades. The book is verified message by message with the checksum the exchange publishes, so what you see is exactly the state of the market.",
+        "The same pair is compared across Kraken, Coinbase and Binance: where the best bid is, where the best ask is and how far apart they are.",
+        "Coming next: alerts with notifications, a market overview with the Fear & Greed index and the day's headlines, and AI briefs that explain what is happening without ever recommending what to do. Cryptaura is information only: it is not financial advice.",
+      ],
+      pt: [
+        "Cryptaura é uma janela para o mercado cripto em tempo real. A lista de mercados se atualiza ao vivo com o preço, a variação do dia e o volume de cada par, e pode ser ordenada por volume, pelas maiores altas ou pelas maiores baixas.",
+        "Ao abrir um par aparece tudo o que um trader olha: o gráfico de velas em vários intervalos, o livro de ofertas com barras de profundidade e o spread, e a fita das últimas operações. O livro é verificado mensagem a mensagem com o checksum que a exchange publica, então o que se vê é exatamente o estado do mercado.",
+        "O mesmo par é comparado entre Kraken, Coinbase e Binance: onde está a melhor compra, onde está a melhor venda e quanta diferença há entre elas.",
+        "Estão a caminho os alertas com notificação, um panorama do mercado com o índice de medo e ganância e as manchetes do dia, e resumos feitos com IA que explicam o que está acontecendo sem nunca recomendar o que fazer. Cryptaura é só informação: não é assessoria financeira.",
+      ],
+      it: [
+        "Cryptaura è una finestra sul mercato cripto in tempo reale. L'elenco dei mercati si aggiorna dal vivo con prezzo, variazione del giorno e volume di ogni coppia, e si può ordinare per volume, per i maggiori rialzi o per i maggiori ribassi.",
+        "Aprendo una coppia compare tutto quello che guarda un trader: il grafico a candele in vari intervalli, il book degli ordini con le barre di profondità e lo spread, e il nastro degli ultimi scambi. Il book viene verificato messaggio per messaggio con il checksum pubblicato dall'exchange, quindi ciò che si vede è esattamente lo stato del mercato.",
+        "La stessa coppia viene confrontata tra Kraken, Coinbase e Binance: dov'è il miglior prezzo in acquisto, dove quello in vendita e quanta differenza c'è tra loro.",
+        "In arrivo: avvisi con notifica, una panoramica del mercato con l'indice di paura e avidità e i titoli del giorno, e riassunti fatti con l'IA che spiegano cosa sta succedendo senza mai raccomandare cosa fare. Cryptaura è solo informazione: non è consulenza finanziaria.",
+      ],
+    },
+    claim: {
+      es: "El mercado, en vivo.",
+      en: "The market, live.",
+      pt: "O mercado, ao vivo.",
+      it: "Il mercato, dal vivo.",
+    },
+    category: { es: "Finanzas", en: "Finance", pt: "Finanças", it: "Finanza" },
+    // Todavía no está publicada: el botón muestra "Muy pronto en Google Play".
+    playStoreUrl: "",
+    // Icono provisorio: el símbolo del logo, sin el texto, sobre el fondo de la app.
+    icon: "/apps/cryptaura/icon.png",
+    feature: "/apps/cryptaura/feature.png",
+    // El fondo oscuro de la app y el dorado del logo
+    accent: ["#0b0e14", "#8a5e00"],
+    languages: {
+      es: ["Inglés", "Español", "Portugués"],
+      en: ["English", "Spanish", "Portuguese"],
+      pt: ["Inglês", "Espanhol", "Português"],
+      it: ["Inglese", "Spagnolo", "Portoghese"],
+    },
+    features: [
+      {
+        icon: "bolt",
+        title: {
+          es: "Mercados en vivo",
+          en: "Live markets",
+          pt: "Mercados ao vivo",
+          it: "Mercati dal vivo",
+        },
+        description: {
+          es: "Precio, variación y volumen de cada par, actualizados en tiempo real, con buscador y orden por volumen, subas o bajas.",
+          en: "Price, change and volume for every pair, updated in real time, with search and sorting by volume, gainers or losers.",
+          pt: "Preço, variação e volume de cada par, atualizados em tempo real, com busca e ordem por volume, altas ou baixas.",
+          it: "Prezzo, variazione e volume di ogni coppia, aggiornati in tempo reale, con ricerca e ordinamento per volume, rialzi o ribassi.",
+        },
+      },
+      {
+        icon: "chart",
+        title: {
+          es: "Libro de órdenes y velas",
+          en: "Order book and candles",
+          pt: "Livro de ofertas e velas",
+          it: "Book degli ordini e candele",
+        },
+        description: {
+          es: "El libro con su profundidad y el spread, verificado con el checksum del exchange, el gráfico de velas y la cinta de operaciones.",
+          en: "The book with its depth and spread, verified with the exchange's checksum, plus the candlestick chart and the trade tape.",
+          pt: "O livro com a sua profundidade e o spread, verificado com o checksum da exchange, o gráfico de velas e a fita de operações.",
+          it: "Il book con la sua profondità e lo spread, verificato con il checksum dell'exchange, il grafico a candele e il nastro degli scambi.",
+        },
+      },
+      {
+        icon: "search",
+        title: {
+          es: "Comparación entre exchanges",
+          en: "Cross-exchange comparison",
+          pt: "Comparação entre exchanges",
+          it: "Confronto tra exchange",
+        },
+        description: {
+          es: "El mismo par en Kraken, Coinbase y Binance: la mejor compra, la mejor venta y la diferencia entre ellos.",
+          en: "The same pair on Kraken, Coinbase and Binance: the best bid, the best ask and the gap between them.",
+          pt: "O mesmo par na Kraken, Coinbase e Binance: a melhor compra, a melhor venda e a diferença entre elas.",
+          it: "La stessa coppia su Kraken, Coinbase e Binance: il miglior acquisto, la miglior vendita e la differenza tra loro.",
+        },
+      },
+      {
+        icon: "shield",
+        title: {
+          es: "Solo información",
+          en: "Information only",
+          pt: "Só informação",
+          it: "Solo informazione",
+        },
+        description: {
+          es: "Sin cuenta y sin conectar exchanges: no compra, no vende ni guarda fondos, y nunca recomienda qué hacer.",
+          en: "No account and no exchange connection: it doesn't buy, sell or hold funds, and never recommends what to do.",
+          pt: "Sem conta e sem conectar exchanges: não compra, não vende nem guarda fundos, e nunca recomenda o que fazer.",
+          it: "Nessun account e nessun collegamento agli exchange: non compra, non vende né custodisce fondi, e non raccomanda mai cosa fare.",
+        },
+      },
+    ],
+    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
+    screenshots: [],
+    tech: {
+      intro: { es: "Cryptaura es un proyecto de datos en tiempo real: la app consume las WebSocket públicas de los exchanges y mantiene un libro de órdenes verificado mensaje a mensaje. La lógica de mercado vive en paquetes sin React y con tests, pensados para compartirse con el backend serverless, que es la fase siguiente.", en: "Cryptaura is a real-time data project: the app consumes the exchanges' public WebSockets and keeps an order book verified message by message. The market logic lives in React-free, tested packages, designed to be shared with the serverless backend, which is the next phase.", pt: "Cryptaura é um projeto de dados em tempo real: o app consome as WebSockets públicas das exchanges e mantém um livro de ofertas verificado mensagem a mensagem. A lógica de mercado fica em pacotes sem React e com testes, pensados para serem compartilhados com o backend serverless, que é a próxima fase.", it: "Cryptaura è un progetto di dati in tempo reale: l'app consuma le WebSocket pubbliche degli exchange e mantiene un book degli ordini verificato messaggio per messaggio. La logica di mercato vive in pacchetti senza React e con test, pensati per essere condivisi con il backend serverless, che è la fase successiva." },
+      items: [
+        { area: "app", name: "React Native + Expo + TypeScript", role: { es: "App Android con Expo Router, en un monorepo con npm workspaces y TypeScript estricto.", en: "Android app with Expo Router, in an npm workspaces monorepo with strict TypeScript.", pt: "App Android com Expo Router, em um monorepo com npm workspaces e TypeScript estrito.", it: "App Android con Expo Router, in un monorepo con npm workspaces e TypeScript rigoroso." } },
+        { area: "datos", name: "Kraken WebSocket API v2", role: { es: "Fuente principal: ticker, libro de órdenes, operaciones, velas e instrumentos en tiempo real.", en: "Main source: ticker, order book, trades, candles and instruments in real time.", pt: "Fonte principal: ticker, livro de ofertas, operações, velas e instrumentos em tempo real.", it: "Fonte principale: ticker, book degli ordini, scambi, candele e strumenti in tempo reale." } },
+        { area: "datos", name: "Coinbase + Binance", role: { es: "Datos de mercado públicos para comparar el mismo par entre exchanges, con cada fuente que falla aislada sin cortar la comparación.", en: "Public market data to compare the same pair across exchanges, with any failing source isolated without breaking the comparison.", pt: "Dados de mercado públicos para comparar o mesmo par entre exchanges, com cada fonte que falha isolada sem interromper a comparação.", it: "Dati di mercato pubblici per confrontare la stessa coppia tra exchange, isolando ogni fonte che non risponde senza interrompere il confronto." } },
+        { area: "arquitectura", name: { es: "Libro de órdenes verificado por checksum", en: "Checksum-verified order book", pt: "Livro de ofertas verificado por checksum", it: "Book degli ordini verificato con checksum" }, role: { es: "Snapshot más actualizaciones, recorte a la profundidad suscrita y verificación CRC32 en cada mensaje; si no coincide, pide un snapshot nuevo solo.", en: "Snapshot plus updates, truncation to the subscribed depth and CRC32 verification on every message; on a mismatch it requests a fresh snapshot by itself.", pt: "Snapshot mais atualizações, corte na profundidade assinada e verificação CRC32 em cada mensagem; se não bate, pede um snapshot novo sozinho.", it: "Snapshot più aggiornamenti, taglio alla profondità sottoscritta e verifica CRC32 a ogni messaggio; se non coincide, richiede da solo un nuovo snapshot." } },
+        { area: "arquitectura", name: { es: "Modelo de mercado normalizado", en: "Normalized market model", pt: "Modelo de mercado normalizado", it: "Modello di mercato normalizzato" }, role: { es: "Cada exchange tiene un adaptador hacia un modelo común; las pantallas no conocen los mensajes de ningún exchange y sumar uno es escribir un adaptador.", en: "Each exchange has an adapter to a common model; screens never see any exchange's messages, and adding one means writing an adapter.", pt: "Cada exchange tem um adaptador para um modelo comum; as telas não conhecem as mensagens de nenhuma exchange e somar uma é escrever um adaptador.", it: "Ogni exchange ha un adattatore verso un modello comune; le schermate non conoscono i messaggi di nessun exchange e aggiungerne uno significa scrivere un adattatore." } },
+        { area: "arquitectura", name: { es: "Conexión resistente", en: "Resilient connection", pt: "Conexão resiliente", it: "Connessione resiliente" }, role: { es: "Reconexión con espera exponencial y variación aleatoria, detección de conexión muerta, reenvío de suscripciones y una sola conexión compartida con conteo de referencias.", en: "Reconnection with exponential backoff and jitter, stale-connection detection, resubscription, and a single shared connection with reference counting.", pt: "Reconexão com espera exponencial e variação aleatória, detecção de conexão morta, reenvio de assinaturas e uma só conexão compartilhada com contagem de referências.", it: "Riconnessione con attesa esponenziale e variazione casuale, rilevamento della connessione morta, nuove sottoscrizioni e un'unica connessione condivisa con conteggio dei riferimenti." } },
+        { area: "nativo", name: { es: "Redibujado controlado", en: "Throttled rendering", pt: "Redesenho controlado", it: "Ridisegno controllato" }, role: { es: "Los datos llegan cientos de veces por segundo y la interfaz se redibuja entre 2 y 8 veces por segundo, con filas memorizadas y gráficos en react-native-svg.", en: "Data arrives hundreds of times per second and the UI redraws 2 to 8 times per second, with memoized rows and charts in react-native-svg.", pt: "Os dados chegam centenas de vezes por segundo e a interface se redesenha entre 2 e 8 vezes por segundo, com linhas memorizadas e gráficos em react-native-svg.", it: "I dati arrivano centinaia di volte al secondo e l'interfaccia si ridisegna tra 2 e 8 volte al secondo, con righe memorizzate e grafici in react-native-svg." } },
+        { area: "backend", name: { es: "AWS serverless (en desarrollo)", en: "AWS serverless (in progress)", pt: "AWS serverless (em desenvolvimento)", it: "AWS serverless (in sviluppo)" }, role: { es: "Lambda, DynamoDB, EventBridge y CDK para las alertas con notificación push, la ingesta de metadatos y noticias, y la caché.", en: "Lambda, DynamoDB, EventBridge and CDK for push-notification alerts, metadata and news ingestion, and caching.", pt: "Lambda, DynamoDB, EventBridge e CDK para os alertas com notificação push, a ingestão de metadados e notícias, e o cache.", it: "Lambda, DynamoDB, EventBridge e CDK per gli avvisi con notifica push, l'acquisizione di metadati e notizie, e la cache." } },
+        { area: "ia", name: { es: "Google Gemini (en desarrollo)", en: "Google Gemini (in progress)", pt: "Google Gemini (em desenvolvimento)", it: "Google Gemini (in sviluppo)" }, role: { es: "Resúmenes del mercado a partir de datos calculados, con cadena de modelos de respaldo y reglas que impiden recomendar operaciones.", en: "Market briefs built from computed data, with a chain of fallback models and rules that prevent recommending trades.", pt: "Resumos do mercado a partir de dados calculados, com cadeia de modelos de reserva e regras que impedem recomendar operações.", it: "Riassunti del mercato a partire da dati calcolati, con una catena di modelli di riserva e regole che impediscono di raccomandare operazioni." } },
+        { area: "entrega", name: "Vitest", role: { es: "Tests del libro de órdenes, el checksum, la reconexión y los adaptadores, con un WebSocket simulado.", en: "Tests for the order book, checksum, reconnection and adapters, using a fake WebSocket.", pt: "Testes do livro de ofertas, do checksum, da reconexão e dos adaptadores, com um WebSocket simulado.", it: "Test del book degli ordini, del checksum, della riconnessione e degli adattatori, con un WebSocket simulato." } },
+      ],
+    },
+    privacy: {
+      updatedAt: "2026-11-02",
+      // Sin cuenta y sin servidor propio por ahora: no se recolectan datos.
+      collects: [],
+      permissions: [],
+      // Los datos de mercado vienen de los exchanges; nada tuyo sale del teléfono.
+      processedOnDevice: true,
+      processingNote: {
+        es: "Cryptaura no tiene cuenta ni guarda datos tuyos: los pares favoritos y las preferencias quedan en el teléfono. Para mostrar el mercado, la app pide datos públicos directamente a Kraken, Coinbase y Binance; como cualquier conexión a internet, esos servicios ven la dirección IP desde la que se hace el pedido, pero no reciben ningún dato que te identifique. Ni {company} ni la app tienen servidores con información tuya.",
+        en: "Cryptaura has no account and stores none of your data: favorite pairs and preferences stay on your phone. To show the market, the app requests public data directly from Kraken, Coinbase and Binance; like any internet connection, those services see the IP address the request comes from, but they receive no data that identifies you. Neither {company} nor the app has servers holding your information.",
+        pt: "Cryptaura não tem conta nem guarda dados seus: os pares favoritos e as preferências ficam no telefone. Para mostrar o mercado, o app pede dados públicos diretamente à Kraken, à Coinbase e à Binance; como qualquer conexão à internet, esses serviços veem o endereço IP de onde vem o pedido, mas não recebem nenhum dado que identifique você. Nem {company} nem o app têm servidores com informações suas.",
+        it: "Cryptaura non ha account e non conserva tuoi dati: le coppie preferite e le preferenze restano sul telefono. Per mostrare il mercato, l'app richiede dati pubblici direttamente a Kraken, Coinbase e Binance; come ogni connessione a internet, questi servizi vedono l'indirizzo IP da cui parte la richiesta, ma non ricevono alcun dato che ti identifichi. Né {company} né l'app hanno server con tue informazioni.",
+      },
+      thirdParties: [
+        {
+          name: "Kraken",
+          purpose: {
+            es: "Proveer los precios, el libro de órdenes, las operaciones y las velas en tiempo real. Solo se piden datos públicos de mercado.",
+            en: "To provide real-time prices, order book, trades and candles. Only public market data is requested.",
+            pt: "Fornecer os preços, o livro de ofertas, as operações e as velas em tempo real. Só são pedidos dados públicos de mercado.",
+            it: "Fornire prezzi, book degli ordini, scambi e candele in tempo reale. Si richiedono solo dati pubblici di mercato.",
+          },
+          policyUrl: "https://www.kraken.com/legal/privacy",
+        },
+        {
+          name: "Coinbase",
+          purpose: {
+            es: "Proveer precios públicos para comparar el mismo par entre exchanges.",
+            en: "To provide public prices to compare the same pair across exchanges.",
+            pt: "Fornecer preços públicos para comparar o mesmo par entre exchanges.",
+            it: "Fornire prezzi pubblici per confrontare la stessa coppia tra exchange.",
+          },
+          policyUrl: "https://www.coinbase.com/legal/privacy",
+        },
+        {
+          name: "Binance",
+          purpose: {
+            es: "Proveer precios públicos para comparar el mismo par entre exchanges.",
+            en: "To provide public prices to compare the same pair across exchanges.",
+            pt: "Fornecer preços públicos para comparar o mesmo par entre exchanges.",
+            it: "Fornire prezzi pubblici per confrontare la stessa coppia tra exchange.",
+          },
+          policyUrl: "https://www.binance.com/en/privacy",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      // Contenido sobre mercados cripto
+      minAge: 18,
+    },
+  },
+  {
     slug: "oraculos",
     // El italiano usa el nombre en ingles a proposito: la app no tiene ficha en
     // italiano, asi que quien la busque desde Italia va a encontrar la inglesa.
