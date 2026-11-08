@@ -364,8 +364,38 @@ export const apps: App[] = [
         },
       },
     ],
-    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
-    screenshots: [],
+    // Capturas provisorias del prototipo (datos de ejemplo). Se reemplazan por
+    // capturas reales del teléfono antes de publicar.
+    screenshots: [
+      {
+        src: "/apps/mallnest/01.jpg",
+        alt: { es: "Listado de tiendas con el personal shopper arriba", en: "Store list with the personal shopper at the top", pt: "Lista de lojas com o personal shopper no topo", it: "Elenco dei negozi con il personal shopper in alto" },
+      },
+      {
+        src: "/apps/mallnest/02.jpg",
+        alt: { es: "Personal shopper: se pide algo con palabras y busca en todas las tiendas", en: "Personal shopper: ask for something in your own words and it searches every store", pt: "Personal shopper: você pede algo com palavras e ele busca em todas as lojas", it: "Personal shopper: chiedi qualcosa a parole e cerca in tutti i negozi" },
+      },
+      {
+        src: "/apps/mallnest/03.jpg",
+        alt: { es: "Inicio de una tienda de moda con su marca, banners y colecciones", en: "A fashion store's home with its own brand, banners and collections", pt: "Início de uma loja de moda com a sua marca, banners e coleções", it: "Home di un negozio di moda con il suo marchio, banner e collezioni" },
+      },
+      {
+        src: "/apps/mallnest/04.jpg",
+        alt: { es: "Inicio de una cafetería: cada tienda tiene sus propios colores", en: "A coffee shop's home: every store has its own colors", pt: "Início de uma cafeteria: cada loja tem as suas próprias cores", it: "Home di una caffetteria: ogni negozio ha i suoi colori" },
+      },
+      {
+        src: "/apps/mallnest/05.jpg",
+        alt: { es: "Catálogo de una tienda filtrado por colección", en: "A store's catalog filtered by collection", pt: "Catálogo de uma loja filtrado por coleção", it: "Catalogo di un negozio filtrato per collezione" },
+      },
+      {
+        src: "/apps/mallnest/06.jpg",
+        alt: { es: "Ficha de un producto con sus variantes", en: "Product page with its variants", pt: "Página de um produto com as suas variantes", it: "Scheda di un prodotto con le sue varianti" },
+      },
+      {
+        src: "/apps/mallnest/07.jpg",
+        alt: { es: "Carrito antes de pagar en el checkout de Shopify", en: "Cart before paying in the Shopify checkout", pt: "Carrinho antes de pagar no checkout da Shopify", it: "Carrello prima di pagare nel checkout Shopify" },
+      },
+    ],
     privacy: {
       updatedAt: "2026-11-01",
       collects: [
@@ -515,7 +545,34 @@ export const apps: App[] = [
         description: { es: "Lleva a tus clientes directo a tu local en Mallnest, desde Instagram, WhatsApp o el mostrador.", en: "Take your customers straight to your shop in Mallnest, from Instagram, WhatsApp or the counter.", pt: "Leve os seus clientes direto para o seu espaço no Mallnest, pelo Instagram, WhatsApp ou balcão.", it: "Porta i tuoi clienti direttamente al tuo spazio su Mallnest, da Instagram, WhatsApp o dal bancone." },
       },
     ],
-    screenshots: [],
+    // Capturas provisorias del prototipo (datos de ejemplo). Se reemplazan por
+    // capturas reales del teléfono antes de publicar.
+    screenshots: [
+      {
+        src: "/apps/mallnest-business/01.jpg",
+        alt: { es: "Inicio de sesión del comercio", en: "Business sign-in", pt: "Login do comércio", it: "Accesso del negozio" },
+      },
+      {
+        src: "/apps/mallnest-business/02.jpg",
+        alt: { es: "Personalizar el local con sugerencias de textos hechas con IA", en: "Customizing the shop with AI text suggestions", pt: "Personalizar o espaço com sugestões de textos feitas com IA", it: "Personalizzare lo spazio con suggerimenti di testo fatti con l'IA" },
+      },
+      {
+        src: "/apps/mallnest-business/03.jpg",
+        alt: { es: "Panel del local con su estado de aprobación", en: "The shop's dashboard with its approval status", pt: "Painel do espaço com o status de aprovação", it: "Pannello dello spazio con lo stato di approvazione" },
+      },
+      {
+        src: "/apps/mallnest-business/04.jpg",
+        alt: { es: "Vitrina: banners y colecciones del inicio", en: "Showcase: home banners and collections", pt: "Vitrine: banners e coleções do início", it: "Vetrina: banner e collezioni della home" },
+      },
+      {
+        src: "/apps/mallnest-business/05.jpg",
+        alt: { es: "Vista previa de la tienda tal como la ven los clientes", en: "Store preview as customers see it", pt: "Prévia da loja como os clientes a veem", it: "Anteprima del negozio come la vedono i clienti" },
+      },
+      {
+        src: "/apps/mallnest-business/06.jpg",
+        alt: { es: "Link y QR para compartir la tienda", en: "Link and QR code to share the store", pt: "Link e QR para compartilhar a loja", it: "Link e QR per condividere il negozio" },
+      },
+    ],
     privacy: {
       updatedAt: "2026-11-01",
       collects: [
