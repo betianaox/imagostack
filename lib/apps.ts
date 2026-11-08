@@ -377,11 +377,11 @@ export const apps: App[] = [
       },
       {
         src: "/apps/mallnest/03.jpg",
-        alt: { es: "Inicio de una tienda de moda con su marca, banners y colecciones", en: "A fashion store's home with its own brand, banners and collections", pt: "Início de uma loja de moda com a sua marca, banners e coleções", it: "Home di un negozio di moda con il suo marchio, banner e collezioni" },
+        alt: { es: "Inicio de una pastelería con su marca, banners y colecciones", en: "A bakery's home with its own brand, banners and collections", pt: "Início de uma confeitaria com a sua marca, banners e coleções", it: "Home di una pasticceria con il suo marchio, banner e collezioni" },
       },
       {
         src: "/apps/mallnest/04.jpg",
-        alt: { es: "Inicio de una cafetería: cada tienda tiene sus propios colores", en: "A coffee shop's home: every store has its own colors", pt: "Início de uma cafeteria: cada loja tem as suas próprias cores", it: "Home di una caffetteria: ogni negozio ha i suoi colori" },
+        alt: { es: "Inicio de un pet shop: cada tienda tiene sus propios colores", en: "A pet shop's home: every store has its own colors", pt: "Início de um pet shop: cada loja tem as suas próprias cores", it: "Home di un pet shop: ogni negozio ha i suoi colori" },
       },
       {
         src: "/apps/mallnest/05.jpg",
@@ -394,6 +394,10 @@ export const apps: App[] = [
       {
         src: "/apps/mallnest/07.jpg",
         alt: { es: "Carrito antes de pagar en el checkout de Shopify", en: "Cart before paying in the Shopify checkout", pt: "Carrinho antes de pagar no checkout da Shopify", it: "Carrello prima di pagare nel checkout Shopify" },
+      },
+      {
+        src: "/apps/mallnest/08.jpg",
+        alt: { es: "Inicio de una tienda de moda", en: "A fashion store's home", pt: "Início de uma loja de moda", it: "Home di un negozio di moda" },
       },
     ],
     privacy: {
