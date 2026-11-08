@@ -636,25 +636,25 @@ export const apps: App[] = [
         "Cryptaura es una ventana al mercado cripto en tiempo real. La lista de mercados se actualiza en vivo con el precio, la variación del día y el volumen de cada par, y se puede ordenar por volumen, por las mayores subas o por las mayores bajas.",
         "Al entrar a un par aparece todo lo que mira un trader: el gráfico de velas en varios intervalos, el libro de órdenes con barras de profundidad y el spread, y la cinta de las últimas operaciones. El libro se verifica mensaje a mensaje con el checksum que publica el exchange, así que lo que se ve es exactamente el estado del mercado.",
         "El mismo par se compara entre Kraken, Coinbase y Binance: dónde está la mejor compra, dónde la mejor venta y cuánta diferencia hay entre ellos.",
-        "Vienen en camino las alertas con notificación, un panorama del mercado con el índice de miedo y codicia y los titulares del día, y resúmenes hechos con IA que explican qué está pasando sin recomendar nunca qué hacer. Cryptaura es solo información: no es asesoramiento financiero.",
+        "Además tiene alertas de precio, de movimiento y de spread, un panorama del mercado con el índice de miedo y codicia, y un simulador para practicar con dinero ficticio contra precios reales, con órdenes de mercado y límite. En camino: notificaciones con la app cerrada y resúmenes hechos con IA que explican qué está pasando sin recomendar nunca qué hacer. Cryptaura es solo información: no es asesoramiento financiero.",
       ],
       en: [
         "Cryptaura is a window into the crypto market in real time. The market list updates live with each pair's price, daily change and volume, and can be sorted by volume, top gainers or top losers.",
         "Open a pair and you get everything a trader looks at: a candlestick chart in several intervals, the order book with depth bars and the spread, and the tape of the latest trades. The book is verified message by message with the checksum the exchange publishes, so what you see is exactly the state of the market.",
         "The same pair is compared across Kraken, Coinbase and Binance: where the best bid is, where the best ask is and how far apart they are.",
-        "Coming next: alerts with notifications, a market overview with the Fear & Greed index and the day's headlines, and AI briefs that explain what is happening without ever recommending what to do. Cryptaura is information only: it is not financial advice.",
+        "It also has price, move and spread alerts, a market overview with the Fear & Greed index, and a simulator to practice with fake money against real prices, with market and limit orders. Coming next: notifications with the app closed and AI briefs that explain what is happening without ever recommending what to do. Cryptaura is information only: it is not financial advice.",
       ],
       pt: [
         "Cryptaura é uma janela para o mercado cripto em tempo real. A lista de mercados se atualiza ao vivo com o preço, a variação do dia e o volume de cada par, e pode ser ordenada por volume, pelas maiores altas ou pelas maiores baixas.",
         "Ao abrir um par aparece tudo o que um trader olha: o gráfico de velas em vários intervalos, o livro de ofertas com barras de profundidade e o spread, e a fita das últimas operações. O livro é verificado mensagem a mensagem com o checksum que a exchange publica, então o que se vê é exatamente o estado do mercado.",
         "O mesmo par é comparado entre Kraken, Coinbase e Binance: onde está a melhor compra, onde está a melhor venda e quanta diferença há entre elas.",
-        "Estão a caminho os alertas com notificação, um panorama do mercado com o índice de medo e ganância e as manchetes do dia, e resumos feitos com IA que explicam o que está acontecendo sem nunca recomendar o que fazer. Cryptaura é só informação: não é assessoria financeira.",
+        "Também tem alertas de preço, de movimento e de spread, um panorama do mercado com o índice de medo e ganância, e um simulador para praticar com dinheiro fictício e preços reais, com ordens a mercado e limite. A caminho: notificações com o app fechado e resumos feitos com IA que explicam o que está acontecendo sem nunca recomendar o que fazer. Cryptaura é só informação: não é assessoria financeira.",
       ],
       it: [
         "Cryptaura è una finestra sul mercato cripto in tempo reale. L'elenco dei mercati si aggiorna dal vivo con prezzo, variazione del giorno e volume di ogni coppia, e si può ordinare per volume, per i maggiori rialzi o per i maggiori ribassi.",
         "Aprendo una coppia compare tutto quello che guarda un trader: il grafico a candele in vari intervalli, il book degli ordini con le barre di profondità e lo spread, e il nastro degli ultimi scambi. Il book viene verificato messaggio per messaggio con il checksum pubblicato dall'exchange, quindi ciò che si vede è esattamente lo stato del mercato.",
         "La stessa coppia viene confrontata tra Kraken, Coinbase e Binance: dov'è il miglior prezzo in acquisto, dove quello in vendita e quanta differenza c'è tra loro.",
-        "In arrivo: avvisi con notifica, una panoramica del mercato con l'indice di paura e avidità e i titoli del giorno, e riassunti fatti con l'IA che spiegano cosa sta succedendo senza mai raccomandare cosa fare. Cryptaura è solo informazione: non è consulenza finanziaria.",
+        "Ha anche avvisi di prezzo, di movimento e di spread, una panoramica del mercato con l'indice di paura e avidità, e un simulatore per esercitarsi con denaro fittizio su prezzi reali, con ordini a mercato e limite. In arrivo: notifiche con l'app chiusa e riassunti fatti con l'IA che spiegano cosa sta succedendo senza mai raccomandare cosa fare. Cryptaura è solo informazione: non è consulenza finanziaria.",
       ],
     },
     claim: {
@@ -739,8 +739,50 @@ export const apps: App[] = [
         },
       },
     ],
-    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
-    screenshots: [],
+    // Capturas provisorias, con la fuente demo de la app. Se reemplazan por
+    // capturas reales del teléfono antes de publicar.
+    screenshots: [
+      {
+        src: "/apps/cryptaura/01.jpg",
+        alt: { es: "Lista de mercados en vivo con precio, variación y volumen, en tema oscuro", en: "Live market list with price, change and volume, in dark theme", pt: "Lista de mercados ao vivo com preço, variação e volume, no tema escuro", it: "Elenco dei mercati dal vivo con prezzo, variazione e volume, in tema scuro" },
+      },
+      {
+        src: "/apps/cryptaura/02.jpg",
+        alt: { es: "Detalle de BTC/USD con el gráfico de velas y volumen y el resumen del mercado", en: "BTC/USD detail with the candlestick and volume chart and the market brief", pt: "Detalhe de BTC/USD com o gráfico de velas e volume e o resumo do mercado", it: "Dettaglio di BTC/USD con il grafico a candele e volumi e il riassunto del mercato" },
+      },
+      {
+        src: "/apps/cryptaura/03.jpg",
+        alt: { es: "Libro de órdenes verificado con checksum, desequilibrio y profundidad del mercado", en: "Checksum-verified order book, book imbalance and market depth", pt: "Livro de ofertas verificado por checksum, desequilíbrio e profundidade do mercado", it: "Book degli ordini verificato con checksum, squilibrio e profondità del mercato" },
+      },
+      {
+        src: "/apps/cryptaura/04.jpg",
+        alt: { es: "Comparación de ETH/USD entre Kraken, Coinbase y Binance y operaciones recientes", en: "ETH/USD compared across Kraken, Coinbase and Binance, plus recent trades", pt: "Comparação de ETH/USD entre Kraken, Coinbase e Binance e operações recentes", it: "Confronto di ETH/USD tra Kraken, Coinbase e Binance e scambi recenti" },
+      },
+      {
+        src: "/apps/cryptaura/05.jpg",
+        alt: { es: "Panorama del mercado con el resumen del día y el índice de miedo y codicia", en: "Market overview with the daily brief and the Fear & Greed index", pt: "Panorama do mercado com o resumo do dia e o índice de medo e ganância", it: "Panoramica del mercato con il riassunto del giorno e l'indice di paura e avidità" },
+      },
+      {
+        src: "/apps/cryptaura/06.jpg",
+        alt: { es: "Simulador con el valor de la cuenta, posiciones y órdenes abiertas", en: "Simulator with account value, positions and open orders", pt: "Simulador com o valor da conta, posições e ordens abertas", it: "Simulatore con valore del conto, posizioni e ordini aperti" },
+      },
+      {
+        src: "/apps/cryptaura/07.jpg",
+        alt: { es: "Pantalla para operar en el simulador, en tema claro", en: "Simulator trade ticket, in light theme", pt: "Tela para operar no simulador, no tema claro", it: "Schermata per operare nel simulatore, in tema chiaro" },
+      },
+      {
+        src: "/apps/cryptaura/08.jpg",
+        alt: { es: "Alertas activas e historial de alertas disparadas", en: "Active alerts and triggered alert history", pt: "Alertas ativos e histórico de alertas disparados", it: "Avvisi attivi e storico degli avvisi scattati" },
+      },
+      {
+        src: "/apps/cryptaura/09.jpg",
+        alt: { es: "Detalle de SOL/USD en tema claro", en: "SOL/USD detail in light theme", pt: "Detalhe de SOL/USD no tema claro", it: "Dettaglio di SOL/USD in tema chiaro" },
+      },
+      {
+        src: "/apps/cryptaura/10.jpg",
+        alt: { es: "Ajustes de tema, idioma y fuente de datos", en: "Theme, language and data source settings", pt: "Ajustes de tema, idioma e fonte de dados", it: "Impostazioni di tema, lingua e fonte dei dati" },
+      },
+    ],
     tech: {
       intro: { es: "Cryptaura es un proyecto de datos en tiempo real: la app consume las WebSocket públicas de los exchanges y mantiene un libro de órdenes verificado mensaje a mensaje. La lógica de mercado vive en paquetes sin React y con tests, pensados para compartirse con el backend serverless, que es la fase siguiente.", en: "Cryptaura is a real-time data project: the app consumes the exchanges' public WebSockets and keeps an order book verified message by message. The market logic lives in React-free, tested packages, designed to be shared with the serverless backend, which is the next phase.", pt: "Cryptaura é um projeto de dados em tempo real: o app consome as WebSockets públicas das exchanges e mantém um livro de ofertas verificado mensagem a mensagem. A lógica de mercado fica em pacotes sem React e com testes, pensados para serem compartilhados com o backend serverless, que é a próxima fase.", it: "Cryptaura è un progetto di dati in tempo reale: l'app consuma le WebSocket pubbliche degli exchange e mantiene un book degli ordini verificato messaggio per messaggio. La logica di mercato vive in pacchetti senza React e con test, pensati per essere condivisi con il backend serverless, che è la fase successiva." },
       items: [
