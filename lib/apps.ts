@@ -2105,8 +2105,50 @@ export const apps: App[] = [
         },
       },
     ],
-    // Sin capturas todavía: la ficha muestra marcos de teléfono como placeholder.
-    screenshots: [],
+    // Capturas provisorias, con datos de ejemplo de un bar. Se reemplazan por
+    // capturas reales del teléfono antes de publicar.
+    screenshots: [
+      {
+        src: "/apps/bumko/01.jpg",
+        alt: { es: "Pantalla de venta: cada producto es un botón grande con su precio y su stock", en: "Sell screen: every product is a big button with its price and stock", pt: "Tela de venda: cada produto é um botão grande com preço e estoque", it: "Schermata di vendita: ogni prodotto è un pulsante grande con prezzo e giacenza" },
+      },
+      {
+        src: "/apps/bumko/02.jpg",
+        alt: { es: "Opciones de un producto: precio de lista, otro precio o regalo", en: "Product options: list price, another price or giveaway", pt: "Opções de um produto: preço de tabela, outro preço ou cortesia", it: "Opzioni di un prodotto: prezzo di listino, altro prezzo o omaggio" },
+      },
+      {
+        src: "/apps/bumko/03.jpg",
+        alt: { es: "Stock: productos cargados con su stock, precio, costo y 2x1", en: "Stock: products with their stock, price, cost and 2-for-1", pt: "Estoque: produtos com estoque, preço, custo e 2x1", it: "Magazzino: prodotti con giacenza, prezzo, costo e 2x1" },
+      },
+      {
+        src: "/apps/bumko/04.jpg",
+        alt: { es: "Evento en curso con caja inicial, vendido y total, y eventos anteriores", en: "Live event with starting cash, sales and total, plus past events", pt: "Evento em andamento com caixa inicial, vendido e total, e eventos anteriores", it: "Evento in corso con fondo cassa, venduto e totale, ed eventi precedenti" },
+      },
+      {
+        src: "/apps/bumko/05.jpg",
+        alt: { es: "Reportes por día con lo vendido, el costo, el resultado y los productos más vendidos", en: "Daily reports with sales, cost, result and best-selling products", pt: "Relatórios por dia com o vendido, o custo, o resultado e os produtos mais vendidos", it: "Report giornalieri con venduto, costo, risultato e prodotti più venduti" },
+      },
+      {
+        src: "/apps/bumko/06.jpg",
+        alt: { es: "El QR del bar para sumar gente al equipo, para compartir por WhatsApp", en: "The bar's QR code to add people to the team, shared on WhatsApp", pt: "O QR do bar para adicionar pessoas à equipe, para compartilhar pelo WhatsApp", it: "Il QR del bar per aggiungere persone alla squadra, da condividere su WhatsApp" },
+      },
+      {
+        src: "/apps/bumko/07.jpg",
+        alt: { es: "Pedidos para entrar al equipo y los roles de cada persona", en: "Requests to join the team and each person's role", pt: "Pedidos para entrar na equipe e o papel de cada pessoa", it: "Richieste per entrare nella squadra e il ruolo di ogni persona" },
+      },
+      {
+        src: "/apps/bumko/08.jpg",
+        alt: { es: "Pantalla de venta en tema claro", en: "Sell screen in light theme", pt: "Tela de venda no tema claro", it: "Schermata di vendita in tema chiaro" },
+      },
+      {
+        src: "/apps/bumko/09.jpg",
+        alt: { es: "Eventos en tema claro", en: "Events in light theme", pt: "Eventos no tema claro", it: "Eventi in tema chiaro" },
+      },
+      {
+        src: "/apps/bumko/10.jpg",
+        alt: { es: "Ajustes: cuenta, bar, idioma y tema", en: "Settings: account, bar, language and theme", pt: "Ajustes: conta, bar, idioma e tema", it: "Impostazioni: account, bar, lingua e tema" },
+      },
+    ],
     tech: {
       intro: { es: "Bumko es una app colaborativa en tiempo real: varias personas venden a la vez sobre el mismo stock desde distintos teléfonos, con roles, seguridad del lado del servidor y una versión web que comparte la misma base.", en: "Bumko is a real-time collaborative app: several people sell at the same time from the same stock on different phones, with roles, server-side security and a web version sharing the same database.", pt: "Bumko é um app colaborativo em tempo real: várias pessoas vendem ao mesmo tempo sobre o mesmo estoque em celulares diferentes, com papéis, segurança no lado do servidor e uma versão web que compartilha a mesma base.", it: "Bumko è un'app collaborativa in tempo reale: più persone vendono allo stesso tempo sullo stesso magazzino da telefoni diversi, con ruoli, sicurezza lato server e una versione web che condivide lo stesso database." },
       items: [
