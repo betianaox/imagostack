@@ -308,8 +308,41 @@ export const apps: App[] = [
         },
       },
     ],
-    // Todavía no hay capturas: la app está en desarrollo.
-    screenshots: [],
+    // Capturas provisorias del modo demo: se reemplazan por las del teléfono.
+    screenshots: [
+      {
+        src: "/apps/floppy/01.jpg",
+        alt: { es: "Inicio: la entrada única para hablar, sacar una foto, escribir o guardar un enlace", en: "Home: one way in to speak, snap a photo, type or save a link", pt: "Início: a entrada única para falar, tirar uma foto, escrever ou salvar um link", it: "Home: l'unico ingresso per parlare, scattare una foto, scrivere o salvare un link" },
+      },
+      {
+        src: "/apps/floppy/02.jpg",
+        alt: { es: "Lo que entendió la IA: una tarea, un gasto y una nota de un solo texto", en: "What the AI understood: a task, an expense and a note from a single text", pt: "O que a IA entendeu: uma tarefa, um gasto e uma nota de um único texto", it: "Cosa ha capito l'IA: un'attività, una spesa e una nota da un solo testo" },
+      },
+      {
+        src: "/apps/floppy/03.jpg",
+        alt: { es: "Agenda: calendario del mes y tareas del día", en: "Agenda: monthly calendar and the day's tasks", pt: "Agenda: calendário do mês e tarefas do dia", it: "Agenda: calendario del mese e attività del giorno" },
+      },
+      {
+        src: "/apps/floppy/04.jpg",
+        alt: { es: "Gastos: total del mes y distribución por categoría", en: "Expenses: month total and breakdown by category", pt: "Gastos: total do mês e distribuição por categoria", it: "Spese: totale del mese e ripartizione per categoria" },
+      },
+      {
+        src: "/apps/floppy/05.jpg",
+        alt: { es: "Guardados: notas, enlaces y fotos con resumen y etiquetas", en: "Saved: notes, links and photos with summaries and tags", pt: "Salvos: notas, links e fotos com resumo e etiquetas", it: "Salvati: note, link e foto con riassunto ed etichette" },
+      },
+      {
+        src: "/apps/floppy/06.jpg",
+        alt: { es: "Buscador: responde preguntas a partir de lo guardado", en: "Search: answers questions from what you saved", pt: "Busca: responde perguntas a partir do que foi salvo", it: "Ricerca: risponde alle domande a partire da ciò che hai salvato" },
+      },
+      {
+        src: "/apps/floppy/07.jpg",
+        alt: { es: "Inicio en tema oscuro", en: "Home in dark theme", pt: "Início no tema escuro", it: "Home con tema scuro" },
+      },
+      {
+        src: "/apps/floppy/08.jpg",
+        alt: { es: "Ingreso con código por correo", en: "Sign-in with an email code", pt: "Login com código por e-mail", it: "Accesso con codice via email" },
+      },
+    ],
     tech: {
       intro: {
         es: "Floppy usa n8n como backend: los flujos reciben lo que manda la app, lo pasan por un modelo multimodal que devuelve datos estructurados y lo guardan en Postgres. Las piezas marcadas en desarrollo son las próximas etapas.",
