@@ -912,6 +912,190 @@ export const apps: App[] = [
     },
   },
   {
+    slug: "floppy",
+    name: { es: "Floppy", en: "Floppy", pt: "Floppy", it: "Floppy" },
+    tagline: {
+      es: "Habla, saca una foto o comparte: Floppy lo guarda y lo ordena solo.",
+      en: "Speak, snap a photo or share: Floppy saves it and sorts it for you.",
+      pt: "Fale, tire uma foto ou compartilhe: o Floppy guarda e organiza sozinho.",
+      it: "Parla, scatta una foto o condividi: Floppy lo salva e lo ordina da solo.",
+    },
+    description: {
+      es: "Floppy es el lugar donde guardar todo lo que hoy queda desordenado en el celular. Una nota de voz se convierte en tareas con fecha, la foto de un ticket en un gasto con su categoría, y un enlace compartido desde otra app en un guardado con resumen y etiquetas. Después se encuentra todo con un buscador que entiende lo que buscas.",
+      en: "Floppy is the place for everything that ends up scattered on your phone. A voice note becomes dated tasks, a receipt photo becomes an expense with its category, and a link shared from another app becomes a saved item with a summary and tags. Then you find it all with a search that understands what you mean.",
+      pt: "Floppy é o lugar para guardar tudo o que hoje fica bagunçado no celular. Uma nota de voz vira tarefas com data, a foto de um cupom vira um gasto com a sua categoria, e um link compartilhado de outro app vira um item salvo com resumo e etiquetas. Depois tudo se encontra com uma busca que entende o que você procura.",
+      it: "Floppy è il posto dove salvare tutto quello che oggi resta in disordine sul telefono. Una nota vocale diventa attività con una data, la foto di uno scontrino una spesa con la sua categoria, e un link condiviso da un'altra app un elemento salvato con riassunto ed etichette. Poi si ritrova tutto con una ricerca che capisce cosa cerchi.",
+    },
+    body: {
+      es: [
+        "Floppy tiene una sola puerta de entrada: hablar, sacar una foto, escribir o compartir desde cualquier otra app. No hay que elegir dónde va cada cosa: la inteligencia artificial entiende qué es y lo manda a su lugar.",
+        "Lo que hay que hacer va a la Agenda, con su fecha. Lo que gastaste va a Gastos, con el comercio, el total y la categoría, para ver mes a mes en qué se va la plata. Las notas, los enlaces y las fotos que te interesan van a Guardados, con un resumen y etiquetas automáticas.",
+        "Un mismo audio puede dejar una tarea y un gasto a la vez, y una foto de un papel con anotaciones se convierte en una lista de pendientes. Para encontrar algo no hace falta recordar cómo lo guardaste: el buscador entiende frases como \"la receta que vi la semana pasada\".",
+        "Floppy está en desarrollo.",
+      ],
+      en: [
+        "Floppy has a single way in: speak, snap a photo, type or share from any other app. You don't choose where things go: AI understands what each one is and sends it to its place.",
+        "Things to do go to the Agenda, with their date. What you spent goes to Expenses, with the merchant, the total and the category, so you can see month by month where the money goes. Notes, links and photos you care about go to Saved, with a summary and automatic tags.",
+        "A single voice note can leave a task and an expense at once, and a photo of a handwritten note becomes a to-do list. To find something you don't need to remember how you saved it: search understands phrases like \"the recipe I saw last week\".",
+        "Floppy is in development.",
+      ],
+      pt: [
+        "O Floppy tem uma única porta de entrada: falar, tirar uma foto, escrever ou compartilhar de qualquer outro app. Não é preciso escolher onde vai cada coisa: a inteligência artificial entende o que é e manda para o seu lugar.",
+        "O que é preciso fazer vai para a Agenda, com a sua data. O que você gastou vai para Gastos, com a loja, o total e a categoria, para ver mês a mês para onde vai o dinheiro. As notas, os links e as fotos que interessam vão para Salvos, com resumo e etiquetas automáticas.",
+        "Um mesmo áudio pode deixar uma tarefa e um gasto ao mesmo tempo, e a foto de um papel com anotações vira uma lista de pendências. Para encontrar algo não é preciso lembrar como você salvou: a busca entende frases como \"a receita que vi na semana passada\".",
+        "O Floppy está em desenvolvimento.",
+      ],
+      it: [
+        "Floppy ha un'unica porta d'ingresso: parlare, scattare una foto, scrivere o condividere da qualsiasi altra app. Non bisogna scegliere dove va ogni cosa: l'intelligenza artificiale capisce cos'è e la manda al suo posto.",
+        "Le cose da fare vanno nell'Agenda, con la loro data. Quello che hai speso va in Spese, con il negozio, il totale e la categoria, per vedere mese per mese dove vanno i soldi. Le note, i link e le foto che ti interessano vanno in Salvati, con un riassunto ed etichette automatiche.",
+        "Uno stesso audio può lasciare un'attività e una spesa insieme, e la foto di un foglio con appunti diventa una lista di cose da fare. Per trovare qualcosa non serve ricordare come l'hai salvato: la ricerca capisce frasi come \"la ricetta che ho visto la settimana scorsa\".",
+        "Floppy è in sviluppo.",
+      ],
+    },
+    claim: {
+      es: "Guardar, como siempre. Ordenar, nunca más.",
+      en: "Save it, as always. Sort it, never again.",
+      pt: "Guardar, como sempre. Organizar, nunca mais.",
+      it: "Salvare, come sempre. Ordinare, mai più.",
+    },
+    category: { es: "Productividad", en: "Productivity", pt: "Produtividade", it: "Produttività" },
+    // En desarrollo: el botón muestra "Muy pronto en Google Play".
+    playStoreUrl: "",
+    icon: "/apps/floppy/icon.png",
+    feature: "/apps/floppy/feature.png",
+    // El verde del logo y su versión oscura
+    accent: ["#0f5c4c", "#1f957d"],
+    languages: {
+      es: ["Español", "Inglés", "Portugués"],
+      en: ["Spanish", "English", "Portuguese"],
+      pt: ["Espanhol", "Inglês", "Português"],
+      it: ["Spagnolo", "Inglese", "Portoghese"],
+    },
+    features: [
+      {
+        icon: "sparkles",
+        title: { es: "Una sola entrada", en: "One way in", pt: "Uma só entrada", it: "Un solo ingresso" },
+        description: {
+          es: "Voz, foto, texto o compartir desde otra app. La IA decide si es una tarea, un gasto o un guardado.",
+          en: "Voice, photo, text or share from another app. AI decides whether it's a task, an expense or a saved item.",
+          pt: "Voz, foto, texto ou compartilhar de outro app. A IA decide se é uma tarefa, um gasto ou um item salvo.",
+          it: "Voce, foto, testo o condivisione da un'altra app. L'IA decide se è un'attività, una spesa o un elemento salvato.",
+        },
+      },
+      {
+        icon: "check",
+        title: { es: "Agenda", en: "Agenda", pt: "Agenda", it: "Agenda" },
+        description: {
+          es: "Las tareas con su fecha, en un calendario, y un resumen de lo que hay para hoy.",
+          en: "Tasks with their dates, on a calendar, plus a summary of what's on for today.",
+          pt: "As tarefas com a sua data, em um calendário, e um resumo do que há para hoje.",
+          it: "Le attività con la loro data, in un calendario, e un riepilogo di cosa c'è oggi.",
+        },
+      },
+      {
+        icon: "chart",
+        title: { es: "Gastos", en: "Expenses", pt: "Gastos", it: "Spese" },
+        description: {
+          es: "Del ticket a la planilla sin escribir: comercio, total y categoría, con el cierre de cada mes.",
+          en: "From receipt to spreadsheet without typing: merchant, total and category, with a monthly wrap-up.",
+          pt: "Do cupom à planilha sem digitar: loja, total e categoria, com o fechamento de cada mês.",
+          it: "Dallo scontrino al foglio senza scrivere: negozio, totale e categoria, con la chiusura di ogni mese.",
+        },
+      },
+      {
+        icon: "search",
+        title: { es: "Guardados y buscador", en: "Saved and search", pt: "Salvos e busca", it: "Salvati e ricerca" },
+        description: {
+          es: "Notas, enlaces y fotos con resumen y etiquetas, y un buscador que encuentra por significado.",
+          en: "Notes, links and photos with summaries and tags, and a search that finds things by meaning.",
+          pt: "Notas, links e fotos com resumo e etiquetas, e uma busca que encontra pelo significado.",
+          it: "Note, link e foto con riassunto ed etichette, e una ricerca che trova per significato.",
+        },
+      },
+    ],
+    // Todavía no hay capturas: la app está en desarrollo.
+    screenshots: [],
+    tech: {
+      intro: {
+        es: "Floppy usa n8n como backend: los flujos reciben lo que manda la app, lo pasan por un modelo multimodal que devuelve datos estructurados y lo guardan en Postgres. Las piezas marcadas en desarrollo son las próximas etapas.",
+        en: "Floppy uses n8n as its backend: workflows receive what the app sends, run it through a multimodal model that returns structured data and store it in Postgres. Pieces marked in progress are the next stages.",
+        pt: "O Floppy usa o n8n como backend: os fluxos recebem o que o app envia, passam por um modelo multimodal que devolve dados estruturados e salvam no Postgres. As peças marcadas em desenvolvimento são as próximas etapas.",
+        it: "Floppy usa n8n come backend: i flussi ricevono ciò che invia l'app, lo passano a un modello multimodale che restituisce dati strutturati e lo salvano in Postgres. I pezzi segnati in sviluppo sono le prossime fasi.",
+      },
+      items: [
+        { area: "app", name: "React Native + Expo + TypeScript", role: { es: "App Android con grabación de audio, cámara y recepción de contenido compartido desde otras apps.", en: "Android app with audio recording, camera and receiving content shared from other apps.", pt: "App Android com gravação de áudio, câmera e recebimento de conteúdo compartilhado de outros apps.", it: "App Android con registrazione audio, fotocamera e ricezione di contenuti condivisi da altre app." } },
+        { area: "backend", name: "n8n", role: { es: "Orquesta todo: el flujo de entrada (webhook, IA, base y respuesta), los resúmenes programados y el agente que responde preguntas.", en: "Orchestrates everything: the intake workflow (webhook, AI, database and response), scheduled summaries and the agent that answers questions.", pt: "Orquestra tudo: o fluxo de entrada (webhook, IA, banco e resposta), os resumos programados e o agente que responde perguntas.", it: "Orchestra tutto: il flusso di ingresso (webhook, IA, database e risposta), i riepiloghi programmati e l'agente che risponde alle domande." } },
+        { area: "ia", name: "Google Gemini", role: { es: "Entiende audio, imágenes y texto en una sola llamada y devuelve tareas y gastos como JSON validado contra un esquema.", en: "Understands audio, images and text in a single call and returns tasks and expenses as JSON validated against a schema.", pt: "Entende áudio, imagens e texto em uma única chamada e devolve tarefas e gastos como JSON validado contra um esquema.", it: "Capisce audio, immagini e testo in un'unica chiamata e restituisce attività e spese come JSON validato con uno schema." } },
+        { area: "datos", name: "Supabase (Postgres)", role: { es: "Tareas, gastos y guardados en tablas con restricciones; las consultas del mes y de la agenda se resuelven en SQL.", en: "Tasks, expenses and saved items in constrained tables; monthly and agenda queries are solved in SQL.", pt: "Tarefas, gastos e itens salvos em tabelas com restrições; as consultas do mês e da agenda são resolvidas em SQL.", it: "Attività, spese ed elementi salvati in tabelle con vincoli; le query del mese e dell'agenda si risolvono in SQL." } },
+        { area: "ia", name: { es: "Búsqueda semántica con pgvector (en desarrollo)", en: "Semantic search with pgvector (in progress)", pt: "Busca semântica com pgvector (em desenvolvimento)", it: "Ricerca semantica con pgvector (in sviluppo)" }, role: { es: "Embeddings de cada guardado para buscar por significado, y un agente que responde con lo que encuentra (RAG).", en: "Embeddings for each saved item to search by meaning, and an agent that answers from what it finds (RAG).", pt: "Embeddings de cada item salvo para buscar pelo significado, e um agente que responde com o que encontra (RAG).", it: "Embedding di ogni elemento salvato per cercare per significato, e un agente che risponde con ciò che trova (RAG)." } },
+        { area: "auth", name: { es: "Supabase Auth (en desarrollo)", en: "Supabase Auth (in progress)", pt: "Supabase Auth (em desenvolvimento)", it: "Supabase Auth (in sviluppo)" }, role: { es: "Inicio de sesión con correo o Google; cada dato guardado con su dueño, listo para espacios compartidos.", en: "Sign-in with email or Google; every record stored with its owner, ready for shared spaces.", pt: "Login com e-mail ou Google; cada dado salvo com o seu dono, pronto para espaços compartilhados.", it: "Accesso con email o Google; ogni dato salvato con il suo proprietario, pronto per spazi condivisi." } },
+        { area: "datos", name: { es: "Python (en desarrollo)", en: "Python (in progress)", pt: "Python (em desenvolvimento)", it: "Python (in sviluppo)" }, role: { es: "Informe mensual de gastos con gráficos, generado a partir de la base.", en: "Monthly expense report with charts, generated from the database.", pt: "Relatório mensal de gastos com gráficos, gerado a partir do banco.", it: "Report mensile delle spese con grafici, generato dal database." } },
+      ],
+    },
+    privacy: {
+      updatedAt: "2026-11-09",
+      collects: [
+        {
+          type: { es: "Datos de la cuenta", en: "Account data", pt: "Dados da conta", it: "Dati dell'account" },
+          purpose: {
+            es: "Tu correo electrónico y tu nombre, para crear tu cuenta e iniciar sesión.",
+            en: "Your email address and name, to create your account and sign in.",
+            pt: "O seu e-mail e o seu nome, para criar a sua conta e fazer login.",
+            it: "La tua email e il tuo nome, per creare il tuo account e accedere.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: { es: "Lo que guardas", en: "What you save", pt: "O que você salva", it: "Quello che salvi" },
+          purpose: {
+            es: "Tareas, gastos, notas, enlaces y fotos que cargas, para mostrártelos, ordenarlos y buscarlos.",
+            en: "The tasks, expenses, notes, links and photos you add, to show, sort and search them for you.",
+            pt: "Tarefas, gastos, notas, links e fotos que você adiciona, para mostrar, organizar e buscar.",
+            it: "Attività, spese, note, link e foto che aggiungi, per mostrarli, ordinarli e cercarli.",
+          },
+          storage: "servidor",
+        },
+        {
+          type: { es: "Audio e imágenes", en: "Audio and images", pt: "Áudio e imagens", it: "Audio e immagini" },
+          purpose: {
+            es: "Las notas de voz y las fotos se envían para extraer su contenido con inteligencia artificial. El audio no se conserva después de procesarlo.",
+            en: "Voice notes and photos are sent to extract their content with AI. Audio is not kept after processing.",
+            pt: "As notas de voz e as fotos são enviadas para extrair o seu conteúdo com inteligência artificial. O áudio não é guardado depois do processamento.",
+            it: "Le note vocali e le foto vengono inviate per estrarne il contenuto con l'intelligenza artificiale. L'audio non viene conservato dopo l'elaborazione.",
+          },
+          storage: "servidor",
+        },
+      ],
+      permissions: [
+        {
+          name: "Micrófono (android.permission.RECORD_AUDIO)",
+          reason: { es: "Para grabar notas de voz, solo cuando tocas el botón de hablar.", en: "To record voice notes, only when you tap the speak button.", pt: "Para gravar notas de voz, só quando você toca no botão de falar.", it: "Per registrare note vocali, solo quando tocchi il pulsante per parlare." },
+        },
+        {
+          name: "Cámara (android.permission.CAMERA)",
+          reason: { es: "Para sacar fotos de tickets, papeles o cualquier cosa que quieras guardar.", en: "To take photos of receipts, notes or anything you want to save.", pt: "Para tirar fotos de cupons, papéis ou qualquer coisa que você queira salvar.", it: "Per scattare foto di scontrini, appunti o qualsiasi cosa tu voglia salvare." },
+        },
+      ],
+      processedOnDevice: false,
+      thirdParties: [
+        {
+          name: "Google Gemini",
+          purpose: { es: "Entender el audio, las imágenes y el texto que envías y convertirlos en tareas, gastos y guardados.", en: "To understand the audio, images and text you send and turn them into tasks, expenses and saved items.", pt: "Entender o áudio, as imagens e o texto que você envia e transformá-los em tarefas, gastos e itens salvos.", it: "Capire l'audio, le immagini e il testo che invii e trasformarli in attività, spese ed elementi salvati." },
+          policyUrl: "https://policies.google.com/privacy",
+        },
+        {
+          name: "Supabase",
+          purpose: { es: "Alojar la base de datos y la cuenta.", en: "To host the database and your account.", pt: "Hospedar o banco de dados e a conta.", it: "Ospitare il database e l'account." },
+          policyUrl: "https://supabase.com/privacy",
+        },
+      ],
+      directedToChildren: false,
+      showsAds: false,
+      hasInAppPurchases: false,
+      minAge: 13,
+    },
+  },
+  {
     slug: "oraculos",
     // El italiano usa el nombre en ingles a proposito: la app no tiene ficha en
     // italiano, asi que quien la busque desde Italia va a encontrar la inglesa.

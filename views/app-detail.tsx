@@ -408,6 +408,8 @@ function Screens({
   /** En una ficha de dos apps, cada galería dice de cuál es. */
   titled: boolean;
 }) {
+  // Una app en desarrollo puede no tener capturas todavía.
+  if (app.screenshots.length === 0) return null;
   return (
     <section className="shell py-14 md:py-20">
       <Reveal>
