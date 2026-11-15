@@ -838,6 +838,21 @@ export const pt: Dictionary = {
     perAppLink: "Termos de serviço do {app}",
   },
 
+  oraculosPromo: {
+    kicker: "Oráculos",
+    title: "Pergunte o que te preocupa",
+    text: "Tarô, Anjos, Runas, Egípcio e Buzios. Baixe o app grátis e pergunte já.",
+    soundOn: "Ouvir",
+    soundOff: "Silenciar",
+    play: "Reproduzir",
+    badgeLabel: "Baixe o Oráculos no Google Play",
+    videos: {
+      tarot: "O botão do tarô",
+      egipcio: "A tenda egípcia",
+      angeles: "A máquina dos anjos",
+    },
+  },
+
   meta: {
     homeTitle: "ImagoStack — Apps para Android | Full-cycle, full-stack",
     homeDescription:

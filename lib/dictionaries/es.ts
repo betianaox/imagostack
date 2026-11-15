@@ -869,6 +869,21 @@ export const es = {
     perAppLink: "Términos del servicio de {app}",
   },
 
+  oraculosPromo: {
+    kicker: "Oráculos",
+    title: "Pregunta lo que te preocupa",
+    text: "Tarot, Ángeles, Runas, I Ching, Egipcio y Buzios. Descarga la app gratis y pregunta ya.",
+    soundOn: "Escuchar",
+    soundOff: "Silenciar",
+    play: "Reproducir",
+    badgeLabel: "Descarga Oráculos en Google Play",
+    videos: {
+      tarot: "El botón del tarot",
+      egipcio: "La carpa egipcia",
+      angeles: "La máquina de los ángeles",
+    },
+  },
+
   meta: {
     homeTitle: "ImagoStack — Apps para Android | Full-cycle, full-stack",
     homeDescription:

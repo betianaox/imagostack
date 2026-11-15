@@ -217,3 +217,17 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Cielo estrellado de la banda de videos de Oráculos */
+.oraculos-stars {
+  background-image:
+    radial-gradient(1.2px 1.2px at 12% 18%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 72%, #f6e7c1 50%, transparent 51%),
+    radial-gradient(1.4px 1.4px at 46% 34%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 82%, #fff 50%, transparent 51%),
+    radial-gradient(1.3px 1.3px at 78% 22%, #f6e7c1 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 58%, #fff 50%, transparent 51%),
+    radial-gradient(1.1px 1.1px at 6% 88%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 54% 8%, #f6e7c1 50%, transparent 51%);
+  background-size: 420px 420px;
+}

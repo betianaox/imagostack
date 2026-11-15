@@ -5,7 +5,8 @@ import { OpenChatLink } from "@/components/chat/open-chat-link";
 import { ContactForm } from "@/components/contact-form";
 import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
-import { appsVisibles } from "@/lib/apps";
+import { OraculosPromo } from "@/components/oraculos-promo";
+import { appsVisibles, getApp } from "@/lib/apps";
 import { getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -93,6 +94,9 @@ export function HomeView({ lang }: { lang: Locale }) {
           </div>
         </div>
       </section>
+
+      {/* ─────────── Videos de Oráculos: un corte después del encabezado ─────────── */}
+      <OraculosPromo lang={lang} text={dict.oraculosPromo} playStoreUrl={getApp("oraculos")?.playStoreUrl} />
 
       {/* ───────────────────────── Apps ───────────────────────── */}
       <section id="apps" className="shell scroll-mt-24 py-20 md:py-28">

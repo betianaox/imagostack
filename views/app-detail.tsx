@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AppCard } from "@/components/app-card";
 import { AppIcon } from "@/components/app-visuals";
+import { OraculosPromo } from "@/components/oraculos-promo";
 import { Icon } from "@/components/icons";
 import { Reveal } from "@/components/reveal";
 import { ScreenshotGallery } from "@/components/screenshot-gallery";
@@ -159,6 +160,11 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
           )}
         </div>
       </section>
+
+      {/* ─────────── Videos promocionales (solo en la ficha de Oráculos) ─────────── */}
+      {app.slug === "oraculos" && (
+        <OraculosPromo lang={lang} text={dict.oraculosPromo} playStoreUrl={app.playStoreUrl} />
+      )}
 
       {/* ───────────────────────── Capturas ───────────────────────── */}
       <Screens app={app} lang={lang} dict={dict} titled={!!companion} />
