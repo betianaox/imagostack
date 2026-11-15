@@ -838,7 +838,7 @@ export const en: Dictionary = {
   oraculosPromo: {
     kicker: "Oráculos",
     title: "Ask now!",
-    text: "Tarot, Angels, Runes, Egyptian and Buzios. Download the app for free and ask now.",
+    text: "Tarot, Angels, Runes, Egyptian and Buzios. Download the app for free",
     soundOn: "Listen",
     soundOff: "Mute",
     play: "Play",

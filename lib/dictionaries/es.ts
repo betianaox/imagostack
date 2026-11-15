@@ -872,7 +872,7 @@ export const es = {
   oraculosPromo: {
     kicker: "Oráculos",
     title: "¡Pregunta ahora!",
-    text: "Tarot, Ángeles, Runas, I Ching, Egipcio y Buzios. Descarga la app gratis y pregunta ya.",
+    text: "Tarot, Ángeles, Runas, I Ching, Egipcio y Buzios. Descarga la app gratis",
     soundOn: "Escuchar",
     soundOff: "Silenciar",
     play: "Reproducir",
