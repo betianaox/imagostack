@@ -282,6 +282,16 @@ export function AppDetailView({ app, lang }: { app: App; lang: Locale }) {
                     {fillText(dict.appPage.privacyOf, { app: t(member.name, lang) })}
                   </Link>
                 ))}
+                {family.map((member) => (
+                  <Link
+                    key={`${member.slug}-terminos`}
+                    href={path(`/apps/${member.slug}/terminos`, lang)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:underline"
+                  >
+                    <Icon name="shield" className="size-4" />
+                    {fillText(dict.appPage.termsOf, { app: t(member.name, lang) })}
+                  </Link>
+                ))}
               </div>
             </Reveal>
             <div className="divide-y divide-brand-500/10 rounded-2xl border border-brand-500/10 bg-white">
@@ -483,6 +493,13 @@ function About({
             >
               <Icon name="shield" className="size-4" />
               {dict.appPage.privacyLink}
+            </Link>
+            <Link
+              href={path(`/apps/${app.slug}/terminos`, lang)}
+              className="inline-flex items-center gap-2 rounded-xl border border-brand-500/20 bg-white px-4 py-2.5 text-sm font-semibold text-brand-700 transition hover:border-brand-500/40"
+            >
+              <Icon name="shield" className="size-4" />
+              {dict.appPage.termsLink}
             </Link>
             <Link
               href={path("/soporte", lang)}

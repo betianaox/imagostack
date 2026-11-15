@@ -226,6 +226,8 @@ export const it: Dictionary = {
     },
     faqTitle: "Domande frequenti",
     privacyOf: "Privacy di {app}",
+    termsLink: "Termini di servizio",
+    termsOf: "Termini di {app}",
   },
 
   gallery: {
@@ -811,6 +813,62 @@ export const it: Dictionary = {
     s12p: "{company} — {jurisdiction}. Assistenza e privacy: [{email}](mailto:{email}).",
   },
 
+  appTerms: {
+    title: "Termini di servizio di {app}",
+    intro:
+      "Le condizioni per usare {app}, un'app di {company}.",
+    acceptance: "Accettazione",
+    acceptanceP:
+      "Scaricando, installando o usando {app} accetti questi termini e l'[informativa sulla privacy di {app}]({appPrivacyUrl}). Se non sei d'accordo, non usare l'applicazione. Questi termini completano i [termini d'uso generali]({termsUrl}) di {company}: se qualcosa non coincide, per {app} vale quanto scritto in questa pagina.",
+    about: "Cos'è {app}",
+    license: "Licenza e uso consentito",
+    licenseP:
+      "Ti concediamo una licenza personale, limitata, revocabile, non esclusiva e non trasferibile per usare {app} su dispositivi che controlli. Non puoi copiarla, modificarla, decompilarla né ridistribuirla, né usarla per attività illegali, per danneggiare altre persone o per interferire con il suo funzionamento, ad esempio con accessi automatizzati o cercando di aggirarne i limiti.",
+    age: "Età minima",
+    ageMin:
+      "Per usare {app} devi avere almeno {age} anni. Se non li hai, non usare l'applicazione.",
+    ageAll:
+      "{app} è adatta a tutte le età. Se sei minorenne, usala con il permesso e la supervisione di un genitore o di un adulto responsabile.",
+    ads: "Pubblicità e annunci con premio",
+    adsP:
+      "{app} è gratuita e si finanzia con annunci mostrati da **Google AdMob**. Il contenuto di ogni annuncio è responsabilità di chi lo pubblica, e le pagine o app a cui rimanda sono regolate dalle proprie condizioni.",
+    adsRewarded:
+      "Alcune funzioni o vantaggi possono essere sbloccati guardando un annuncio con premio. I premi dipendono dalla disponibilità di annunci, non hanno valore in denaro, non si possono vendere, trasferire né convertire in denaro, e possiamo modificarne la quantità, la frequenza o i limiti giornalieri.",
+    noPurchases:
+      "{app} non offre acquisti in-app: non devi pagare nulla per usarla.",
+    purchases: "Acquisti in-app",
+    purchasesP:
+      "Gli acquisti all'interno di {app} sono elaborati da Google Play e regolati dalle sue condizioni e dalla sua politica di rimborso.",
+    thirdParties: "Servizi di terzi",
+    thirdPartiesP:
+      "Per funzionare, {app} usa servizi di terzi: {list}. Se uno di essi non è disponibile o cambia le sue condizioni, alcune funzioni possono smettere di funzionare. Non controlliamo questi servizi e non ne rispondiamo.",
+    data: "I tuoi dati",
+    dataDevice:
+      "Le informazioni di {app} sono salvate sul tuo dispositivo. Ne sei responsabile, anche del backup: se elimini l'app o perdi il telefono, non possiamo recuperarle. I dettagli sono nell'[informativa sulla privacy di {app}]({appPrivacyUrl}).",
+    dataServer:
+      "Per funzionare, {app} elabora parte delle informazioni fuori dal tuo dispositivo, sui nostri server o su quelli dei nostri fornitori, come spiega l'[informativa sulla privacy di {app}]({appPrivacyUrl}). Sei responsabile di ciò che carichi nell'app e di avere il diritto di farlo.",
+    warranty: "Garanzie e responsabilità",
+    warrantyP:
+      "{app} è fornita “così com'è” e può presentare errori o interruzioni. Possiamo aggiornarla, modificare o rimuovere funzioni, o interromperla. Nella misura massima consentita dalla legge, {company} non risponde di danni indiretti né di perdita di dati, opportunità o profitti derivanti dall'uso o dall'impossibilità di usare l'app.",
+    consumerP:
+      "Nulla di tutto ciò limita i diritti che ti spettano come consumatore, compresi quelli della Legge 24.240 di tutela dei consumatori della {jurisdiction} e quelli delle norme a tutela dei consumatori del tuo paese di residenza.",
+    termination: "Cessazione",
+    terminationP:
+      "Puoi smettere di usare {app} in qualsiasi momento disinstallandola. Possiamo sospendere il tuo accesso se violi questi termini.",
+    changes: "Modifiche a questi termini",
+    changesP:
+      "Possiamo aggiornare questi termini. La data dell'ultima versione è indicata in alto e, se la modifica è importante, lo comunicheremo nell'app o in questa pagina. Se continui a usare {app} dopo la modifica, accetti la nuova versione.",
+    law: "Legge applicabile",
+    lawP:
+      "Questi termini sono regolati dalle leggi della {jurisdiction}. Qualsiasi controversia sarà sottoposta ai tribunali competenti di tale giurisdizione, fatte salve le norme a tutela dei consumatori del tuo luogo di residenza.",
+    contact: "Contatti",
+    contactP:
+      "{company} — {jurisdiction}. Domande su questi termini o su {app}: [{email}](mailto:{email}).",
+    perAppIntro:
+      "Inoltre, ogni app ha i propri termini di servizio, con le condizioni specifiche di quell'app:",
+    perAppLink: "Termini di servizio di {app}",
+  },
+
   meta: {
     homeTitle: "ImagoStack — App per Android | Full-cycle, full-stack",
     homeDescription:
@@ -837,6 +895,9 @@ export const it: Dictionary = {
     appPrivacyTitle: "Informativa sulla privacy di {app}",
     appPrivacyDescription:
       "Come {app} tratta i tuoi dati: quali informazioni gestisce, dove vengono salvate e come puoi cancellarle.",
+    appTermsTitle: "Termini di servizio di {app}",
+    appTermsDescription:
+      "Le condizioni per usare {app}: cosa include, cosa non è consentito e le responsabilità di ciascuna parte.",
     keywords: [
       "ImagoStack",
       "app per Android",

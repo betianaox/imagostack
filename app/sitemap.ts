@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAppTerms } from "@/lib/app-terms";
 import { apps } from "@/lib/apps";
 import { locales, localeTags, path } from "@/lib/i18n";
 import { site } from "@/lib/site";
@@ -22,7 +23,8 @@ const staticRoutes: Route[] = [
   { route: "/eliminar-datos", lastModified: site.legalUpdatedAt, changeFrequency: "yearly", priority: 0.4 },
 ];
 
-// Una app oculta no tiene ficha (devuelve 404), pero sí política de privacidad.
+// Una app oculta no tiene ficha (devuelve 404), pero sí política de privacidad
+// y términos del servicio.
 const appRoutes: Route[] = apps.flatMap((app) => [
   ...(app.oculta
     ? []
@@ -39,6 +41,12 @@ const appRoutes: Route[] = apps.flatMap((app) => [
     lastModified: app.privacy.updatedAt,
     changeFrequency: "yearly" as const,
     priority: 0.4,
+  },
+  {
+    route: `/apps/${app.slug}/terminos`,
+    lastModified: getAppTerms(app.slug)?.updatedAt ?? app.privacy.updatedAt,
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
   },
 ]);
 

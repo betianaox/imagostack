@@ -216,6 +216,8 @@ export const en: Dictionary = {
     },
     faqTitle: "Frequently asked questions",
     privacyOf: "{app} privacy",
+    termsLink: "Terms of service",
+    termsOf: "{app} terms",
   },
 
   gallery: {
@@ -777,6 +779,62 @@ export const en: Dictionary = {
     s12p: "{company} — {jurisdiction}. Support and privacy: [{email}](mailto:{email}).",
   },
 
+  appTerms: {
+    title: "{app} terms of service",
+    intro:
+      "The terms for using {app}, an app by {company}.",
+    acceptance: "Acceptance",
+    acceptanceP:
+      "By downloading, installing or using {app} you accept these terms and the [{app} privacy policy]({appPrivacyUrl}). If you do not agree, do not use the app. These terms complement {company}'s [general terms of use]({termsUrl}): if anything differs, this page applies to {app}.",
+    about: "What {app} is",
+    license: "Licence and acceptable use",
+    licenseP:
+      "We grant you a personal, limited, revocable, non-exclusive and non-transferable licence to use {app} on devices you control. You may not copy, modify, reverse engineer or redistribute it, or use it for illegal activities, to harm other people or to interfere with how it works, for example through automated access or by trying to bypass its limits.",
+    age: "Minimum age",
+    ageMin:
+      "You must be at least {age} years old to use {app}. If you are not, do not use the app.",
+    ageAll:
+      "{app} is suitable for all ages. If you are a minor, use it with the permission and supervision of a parent or responsible adult.",
+    ads: "Advertising and rewarded ads",
+    adsP:
+      "{app} is free and funded by ads served by **Google AdMob**. Each ad's content is the responsibility of its advertiser, and any pages or apps it leads to are governed by their own terms.",
+    adsRewarded:
+      "Some features or benefits can be unlocked by watching a rewarded ad. Rewards depend on ads being available, have no monetary value, cannot be sold, transferred or exchanged for money, and we may change their amount, frequency or daily limits.",
+    noPurchases:
+      "{app} has no in-app purchases: you do not have to pay anything to use it.",
+    purchases: "In-app purchases",
+    purchasesP:
+      "Purchases within {app} are processed by Google Play and are governed by its terms and refund policy.",
+    thirdParties: "Third-party services",
+    thirdPartiesP:
+      "To work, {app} uses third-party services: {list}. If any of them is unavailable or changes its terms, some features may stop working. We do not control those services and are not responsible for them.",
+    data: "Your data",
+    dataDevice:
+      "{app}'s information is stored on your device. You are responsible for it and for backing it up: if you delete the app or lose your phone, we cannot recover it. The details are in the [{app} privacy policy]({appPrivacyUrl}).",
+    dataServer:
+      "To work, {app} processes some information outside your device, on our servers or those of our providers, as explained in the [{app} privacy policy]({appPrivacyUrl}). You are responsible for what you upload to the app and for having the right to do so.",
+    warranty: "Warranties and liability",
+    warrantyP:
+      "{app} is provided “as is” and may have errors or interruptions. We may update it, change or remove features, or discontinue it. To the fullest extent permitted by law, {company} is not liable for indirect damages or for loss of data, opportunities or profits arising from the use of, or inability to use, the app.",
+    consumerP:
+      "Nothing here limits your rights as a consumer, including those under Consumer Protection Law 24,240 of {jurisdiction} and the consumer protection rules of your country of residence.",
+    termination: "Termination",
+    terminationP:
+      "You can stop using {app} at any time by uninstalling it. We may suspend your access if you breach these terms.",
+    changes: "Changes to these terms",
+    changesP:
+      "We may update these terms. The date of the latest version is shown above and, if the change is significant, we will announce it in the app or on this page. If you keep using {app} after the change, you accept the new version.",
+    law: "Governing law",
+    lawP:
+      "These terms are governed by the laws of {jurisdiction}. Any dispute will be submitted to the competent courts of that jurisdiction, without prejudice to the consumer protection rules of your place of residence.",
+    contact: "Contact",
+    contactP:
+      "{company} — {jurisdiction}. Questions about these terms or about {app}: [{email}](mailto:{email}).",
+    perAppIntro:
+      "In addition, each app has its own terms of service, with the conditions specific to that app:",
+    perAppLink: "{app} terms of service",
+  },
+
   meta: {
     homeTitle: "ImagoStack — Android Apps | Full-cycle, full-stack",
     homeDescription:
@@ -802,6 +860,9 @@ export const en: Dictionary = {
     appPrivacyTitle: "{app} privacy policy",
     appPrivacyDescription:
       "How {app} handles your data: what information it holds, where it is stored and how you can delete it.",
+    appTermsTitle: "{app} terms of service",
+    appTermsDescription:
+      "The terms for using {app}: what it includes, what is not allowed and each party's responsibilities.",
     keywords: [
       "ImagoStack",
       "Android apps",

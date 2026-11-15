@@ -12,6 +12,8 @@ import type { L10n } from "@/lib/i18n";
  *   • La ficha /apps/<slug> con su galería de capturas
  *   • La política de privacidad por app /apps/<slug>/privacidad
  *     (la URL que hay que pegar en la ficha de Google Play Console)
+ *   • Los términos del servicio por app /apps/<slug>/terminos
+ *     (sus cláusulas propias viven en `lib/app-terms.ts`)
  *   • Las tarjetas sociales /apps/<slug>/og.png
  *   • El sitemap.xml
  *

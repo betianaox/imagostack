@@ -60,6 +60,19 @@ export function TermsView({ lang }: { lang: Locale }) {
       updatedAtLabel={dict.legal.updatedAt}
     >
       <Blocks blocks={fill(dict.termsPage.blocks, values)} />
+
+      <p>
+        <Inline text={dict.appTerms.perAppIntro} />
+      </p>
+      <ul>
+        {apps.map((app) => (
+          <li key={app.slug}>
+            <Link href={path(`/apps/${app.slug}/terminos`, lang)}>
+              {fillText(dict.appTerms.perAppLink, { app: t(app.name, lang) })}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </LegalPage>
   );
 }
