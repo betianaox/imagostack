@@ -186,7 +186,6 @@ function PromoVideo({
           </button>
         </div>
       </div>
-      <figcaption className="mt-3 text-center text-sm text-white/60">{label}</figcaption>
     </figure>
   );
 }
