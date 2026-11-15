@@ -871,7 +871,7 @@ export const es = {
 
   oraculosPromo: {
     kicker: "Oráculos",
-    title: "Pregunta lo que te preocupa",
+    title: "¡Pregunta ahora!",
     text: "Tarot, Ángeles, Runas, I Ching, Egipcio y Buzios. Descarga la app gratis y pregunta ya.",
     soundOn: "Escuchar",
     soundOff: "Silenciar",

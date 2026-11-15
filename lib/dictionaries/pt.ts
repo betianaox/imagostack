@@ -840,7 +840,7 @@ export const pt: Dictionary = {
 
   oraculosPromo: {
     kicker: "Oráculos",
-    title: "Pergunte o que te preocupa",
+    title: "Pergunte agora!",
     text: "Tarô, Anjos, Runas, Egípcio e Buzios. Baixe o app grátis e pergunte já.",
     soundOn: "Ouvir",
     soundOff: "Silenciar",

@@ -58,10 +58,10 @@ export function OraculosPromo({
 
       <div className="shell relative py-16 md:py-24">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-[13px] font-semibold tracking-[0.18em] text-[#f0d28c] uppercase">
+          <p className="text-[13px] font-semibold tracking-[0.14em] text-[#f0d28c] uppercase">
             {text.kicker}
           </p>
-          <h2 className="mt-4 font-serif text-3xl leading-tight font-semibold tracking-tight text-[#f3e9d2] text-balance md:text-[2.6rem]">
+          <h2 className="mt-4 text-3xl leading-tight font-semibold tracking-tight text-[#f3e9d2] text-balance md:text-[2.75rem]">
             {text.title}
           </h2>
           <p className="mt-4 text-base leading-relaxed text-white/70 md:text-lg">

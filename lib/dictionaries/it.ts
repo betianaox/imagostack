@@ -871,7 +871,7 @@ export const it: Dictionary = {
 
   oraculosPromo: {
     kicker: "Oráculos",
-    title: "Chiedi ciò che ti preoccupa",
+    title: "Chiedi ora!",
     text: "Tarocchi, Angeli, Rune e molto altro. Scarica l'app gratis e chiedi subito.",
     soundOn: "Ascolta",
     soundOff: "Disattiva audio",
