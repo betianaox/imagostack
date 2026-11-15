@@ -2545,6 +2545,16 @@ export function getApp(slug: string): App | undefined {
 }
 
 /**
+ * La ficha a la que vuelven sus páginas legales. Una app oculta no tiene ficha
+ * (devuelve 404), así que vuelve a la de la app que la muestra como compañera:
+ * los términos de Mallnest Business vuelven a la ficha de Mallnest.
+ */
+export function legalBackApp(app: App): App {
+  if (!app.oculta) return app;
+  return apps.find((other) => other.companion === app.slug && !other.oculta) ?? app;
+}
+
+/**
  * Las apps que se muestran.
  *
  * Todo lo que arma un listado usa ESTA y no `apps`: la home, /apps, el pie, el

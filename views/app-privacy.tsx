@@ -1,6 +1,6 @@
 import { LegalHighlight, LegalPage } from "@/components/legal-page";
 import { Blocks, Inline, type Block } from "@/components/rich-text";
-import type { App } from "@/lib/apps";
+import { legalBackApp, type App } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { legalValues } from "@/lib/legal";
@@ -14,6 +14,7 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
   const dict = getDictionary(lang);
   const s = dict.appPrivacy;
   const { privacy } = app;
+  const backApp = legalBackApp(app);
 
   const base = { ...legalValues(lang), app: t(app.name, lang) };
   const text = (template: string, extra: Record<string, string> = {}) =>
@@ -179,8 +180,8 @@ export function AppPrivacyView({ app, lang }: { app: App; lang: Locale }) {
       intro={text(s.intro)}
       updatedAt={privacy.updatedAt}
       updatedAtLabel={dict.legal.updatedAt}
-      backHref={path(`/apps/${app.slug}`, lang)}
-      backLabel={fillText(dict.legal.backToApp, { app: t(app.name, lang) })}
+      backHref={path(`/apps/${backApp.slug}`, lang)}
+      backLabel={fillText(dict.legal.backToApp, { app: t(backApp.name, lang) })}
     >
       <LegalHighlight>
         <p>

@@ -1,7 +1,7 @@
 import { LegalPage } from "@/components/legal-page";
 import { Blocks, type Block } from "@/components/rich-text";
 import { getAppTerms } from "@/lib/app-terms";
-import type { App } from "@/lib/apps";
+import { legalBackApp, type App } from "@/lib/apps";
 import { fillText, getDictionary } from "@/lib/dictionaries";
 import { path, t, type Locale } from "@/lib/i18n";
 import { legalValues } from "@/lib/legal";
@@ -19,6 +19,7 @@ export function AppTermsView({ app, lang }: { app: App; lang: Locale }) {
   const dict = getDictionary(lang);
   const s = dict.appTerms;
   const { privacy } = app;
+  const backApp = legalBackApp(app);
   const extra = getAppTerms(app.slug);
 
   const base = {
@@ -108,8 +109,8 @@ export function AppTermsView({ app, lang }: { app: App; lang: Locale }) {
       intro={text(s.intro)}
       updatedAt={extra?.updatedAt ?? privacy.updatedAt}
       updatedAtLabel={dict.legal.updatedAt}
-      backHref={path(`/apps/${app.slug}`, lang)}
-      backLabel={fillText(dict.legal.backToApp, { app: t(app.name, lang) })}
+      backHref={path(`/apps/${backApp.slug}`, lang)}
+      backLabel={fillText(dict.legal.backToApp, { app: t(backApp.name, lang) })}
     >
       <Blocks blocks={blocks} />
     </LegalPage>
